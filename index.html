@@ -375,6 +375,26 @@
             background-color: var(--dark-red);
         }
 
+        /* Export/Import Buttons */
+        .export-import {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .export-import button {
+            background-color: var(--accent-red);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .export-import button:hover {
+            background-color: var(--dark-red);
+        }
+
         /* Products List in Admin */
         .products-list {
             margin-top: 40px;
@@ -773,7 +793,11 @@
                 </div>
                 <button id="submitProductBtn" onclick="submitProduct()">إضافة اشتراك</button>
             </div>
-
+            <div class="export-import">
+                <button onclick="exportProducts()">تصدير المنتجات</button>
+                <input type="file" id="importProducts" accept=".json" style="display: none;" onchange="importProducts(event)">
+                <button onclick="document.getElementById('importProducts').click()">استيراد المنتجات</button>
+            </div>
             <div class="products-list" id="adminProductsList">
                 <h3>قائمة الاشتراكات</h3>
                 <!-- سيتم إضافة الاشتراكات هنا ديناميكيًا -->
@@ -853,11 +877,43 @@
         
         // تحميل البيانات من localStorage عند بدء التشغيل
         document.addEventListener('DOMContentLoaded', function() {
-            const savedProducts = localStorage.getItem('foreverStoreProducts');
-            if (savedProducts) {
-                products = JSON.parse(savedProducts);
+            try {
+                const savedProducts = localStorage.getItem('foreverStoreProducts');
+                console.log('Loading products from localStorage:', savedProducts);
+                if (savedProducts) {
+                    products = JSON.parse(savedProducts);
+                    // Migrate old categories if they exist
+                    products = products.map(product => ({
+                        ...product,
+                        category: product.category === 'streaming' || product.category === 'premium' ? 'subscriptions' : product.category
+                    }));
+                } else {
+                    // Default products if localStorage is empty
+                    products = [
+                        {
+                            id: Date.now() + 1,
+                            name: "اشتراك نتفليكس",
+                            description: "اشتراك شهري لنتفليكس بجودة عالية",
+                            price: 10,
+                            image: "https://via.placeholder.com/150",
+                            category: "subscriptions"
+                        },
+                        {
+                            id: Date.now() + 2,
+                            name: "بلايستيشن بلس",
+                            description: "اشتراك سنوي للعب أونلاين",
+                            price: 30,
+                            image: "https://via.placeholder.com/150",
+                            category: "gaming"
+                        }
+                    ];
+                    saveProducts();
+                }
                 renderProducts();
                 renderAdminProductsList();
+            } catch (error) {
+                console.error('Error loading products from localStorage:', error);
+                alert('حدث خطأ أثناء تحميل المنتجات. يرجى التحقق من وحدة التحكم.');
             }
             
             // إعداد رفع الصور
@@ -880,6 +936,53 @@
                     document.querySelector('#imageUpload p').textContent = 'تم رفع الصورة بنجاح';
                 };
                 reader.readAsDataURL(file);
+            }
+        }
+        
+        // تصدير المنتجات
+        function exportProducts() {
+            try {
+                const productsData = JSON.stringify(products, null, 2);
+                const blob = new Blob([productsData], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'foreverStoreProducts.json';
+                a.click();
+                URL.revokeObjectURL(url);
+                alert('تم تصدير المنتجات بنجاح!');
+            } catch (error) {
+                console.error('Error exporting products:', error);
+                alert('حدث خطأ أثناء تصدير المنتجات.');
+            }
+        }
+        
+        // استيراد المنتجات
+        function importProducts(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    try {
+                        const importedProducts = JSON.parse(e.target.result);
+                        if (Array.isArray(importedProducts)) {
+                            products = importedProducts.map(product => ({
+                                ...product,
+                                category: product.category === 'streaming' || product.category === 'premium' ? 'subscriptions' : product.category
+                            }));
+                            saveProducts();
+                            renderProducts();
+                            renderAdminProductsList();
+                            alert('تم استيراد المنتجات بنجاح!');
+                        } else {
+                            alert('ملف غير صالح! يجب أن يحتوي على قائمة منتجات.');
+                        }
+                    } catch (error) {
+                        console.error('Error importing products:', error);
+                        alert('خطأ أثناء استيراد المنتجات: ' + error.message);
+                    }
+                };
+                reader.readAsText(file);
             }
         }
         
@@ -954,48 +1057,58 @@
                 return;
             }
             
-            if (editingProductId) {
-                // تعديل المنتج الموجود
-                const productIndex = products.findIndex(p => p.id === editingProductId);
-                if (productIndex !== -1) {
-                    products[productIndex] = {
-                        id: editingProductId,
+            try {
+                if (editingProductId) {
+                    // تعديل المنتج الموجود
+                    const productIndex = products.findIndex(p => p.id === editingProductId);
+                    if (productIndex !== -1) {
+                        products[productIndex] = {
+                            id: editingProductId,
+                            name,
+                            description: desc,
+                            price: parseInt(price),
+                            image: imageSrc,
+                            category
+                        };
+                        alert('تم تعديل الاشتراك بنجاح!');
+                    }
+                } else {
+                    // إضافة منتج جديد
+                    const newProduct = {
+                        id: Date.now(),
                         name,
                         description: desc,
                         price: parseInt(price),
                         image: imageSrc,
                         category
                     };
-                    alert('تم تعديل الاشتراك بنجاح!');
+                    products.push(newProduct);
+                    alert('تم إضافة الاشتراك بنجاح!');
                 }
-            } else {
-                // إضافة منتج جديد
-                const newProduct = {
-                    id: Date.now(),
-                    name,
-                    description: desc,
-                    price: parseInt(price),
-                    image: imageSrc,
-                    category
-                };
-                products.push(newProduct);
-                alert('تم إضافة الاشتراك بنجاح!');
+                
+                saveProducts();
+                renderProducts();
+                renderAdminProductsList();
+                resetForm();
+            } catch (error) {
+                console.error('Error submitting product:', error);
+                alert('حدث خطأ أثناء إضافة/تعديل المنتج.');
             }
-            
-            saveProducts();
-            renderProducts();
-            renderAdminProductsList();
-            resetForm();
         }
         
         // حذف منتج
         function deleteProduct(productId) {
             if (confirm('هل أنت متأكد من حذف هذا الاشتراك؟')) {
-                products = products.filter(p => p.id !== productId);
-                saveProducts();
-                renderProducts();
-                renderAdminProductsList();
-                alert('تم حذف الاشتراك بنجاح!');
+                try {
+                    products = products.filter(p => p.id !== productId);
+                    saveProducts();
+                    renderProducts();
+                    renderAdminProductsList();
+                    alert('تم حذف الاشتراك بنجاح!');
+                } catch (error) {
+                    console.error('Error deleting product:', error);
+                    alert('حدث خطأ أثناء حذف المنتج.');
+                }
             }
         }
         
@@ -1030,7 +1143,13 @@
         
         // حفظ المنتجات في localStorage
         function saveProducts() {
-            localStorage.setItem('foreverStoreProducts', JSON.stringify(products));
+            try {
+                localStorage.setItem('foreverStoreProducts', JSON.stringify(products));
+                console.log('Products saved to localStorage:', products);
+            } catch (error) {
+                console.error('Error saving products to localStorage:', error);
+                alert('حدث خطأ أثناء حفظ المنتجات.');
+            }
         }
         
         // عرض المنتجات في الصفحة الرئيسية
