@@ -205,6 +205,27 @@
             background-color: var(--accent-red);
             margin: 10px auto;
         }
+
+        .category-section {
+            margin-bottom: 40px;
+        }
+
+        .category-title {
+            font-size: 24px;
+            color: var(--accent-red);
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .category-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--main-red);
+            margin: 10px auto;
+        }
         
         .products-grid {
             display: grid;
@@ -672,7 +693,7 @@
                     <ul>
                         <li><a href="#home">الرئيسية</a></li>
                         <li><a href="#products">الاشتراكات</a></li>
-                        <li><a href="#social">التواصل</a></li>
+                        <li Armour and Protection><a href="#social">التواصل</a></li>
                         <li><a href="#contact">اتصل بنا</a></li>
                         <li class="admin-login">
                             <button class="admin-btn">دخول المدير</button>
@@ -703,8 +724,17 @@
     <section class="products" id="products">
         <div class="container">
             <h2 class="section-title">اشتراكاتنا</h2>
-            <div class="products-grid" id="productsGrid">
-                <!-- سيتم إضافة المنتجات ديناميكيًا -->
+            <div class="category-section" id="streamingSection">
+                <h3 class="category-title">باقة Streaming</h3>
+                <div class="products-grid" id="streamingGrid"></div>
+            </div>
+            <div class="category-section" id="gamingSection">
+                <h3 class="category-title">باقة Gaming</h3>
+                <div class="products-grid" id="gamingGrid"></div>
+            </div>
+            <div class="category-section" id="premiumSection">
+                <h3 class="category-title">باقة Premium</h3>
+                <div class="products-grid" id="premiumGrid"></div>
             </div>
         </div>
     </section>
@@ -797,6 +827,7 @@
                     <p>الدفع عبر تحويل الأموال إلى محفظة أورنج موني</p>
                     <p>رقم المحفظة: 0785039924</p>
                     <p>اسم صاحب المحفظة: <strong>محمد هنديه</strong></p>
+                    <p>رقم المحفظة واسم صاحبها ضمان لثقتكم، حيث يتطلب إنشاء محفظة أورنج موني تقديم هوية رسمية.</p>
                 </div>
                 
                 <div class="footer-section">
@@ -893,7 +924,7 @@
             document.getElementById('paymentModal').style.display = 'none';
         }
         
-        // إتمام عملية الدفع مع إنشاء رقم عشوائي
+        // إتمام عملية الدفع مع إنشاء رقم عشوائي من 5 أرقام
         function completePayment() {
             const customerName = document.getElementById('customerName').value;
             const walletName = document.getElementById('walletName').value;
@@ -903,8 +934,8 @@
                 return;
             }
             
-            // إنشاء رقم عشوائي من 1 إلى 10
-            const randomNumber = Math.floor(Math.random() * 10) + 1;
+            // إنشاء رقم عشوائي من 5 أرقام (من 10000 إلى 99999)
+            const randomNumber = Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000;
             
             alert(`شكراً لك! تم استلام طلبك وسيتم التفعيل خلال 24 ساعة.\nرقم التحقق العشوائي الخاص بك: ${randomNumber}\nيرجى إرسال هذا الرقم إلينا عبر الإنستغرام (@foreverstore_jo) لتأكيد الطلب.`);
             document.getElementById('paymentModal').style.display = 'none';
@@ -1009,31 +1040,90 @@
         
         // عرض المنتجات في الصفحة الرئيسية
         function renderProducts() {
-            const productsGrid = document.getElementById('productsGrid');
-            productsGrid.innerHTML = '';
+            const streamingGrid = document.getElementById('streamingGrid');
+            const gamingGrid = document.getElementById('gamingGrid');
+            const premiumGrid = document.getElementById('premiumGrid');
             
-            if (products.length === 0) {
-                productsGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px;">لا توجد اشتراكات متاحة حالياً</p>';
-                return;
+            // إفراغ الشبكات
+            streamingGrid.innerHTML = '';
+            gamingGrid.innerHTML = '';
+            premiumGrid.innerHTML = '';
+            
+            // تصفية المنتجات حسب الفئة
+            const streamingProducts = products.filter(p => p.category === 'streaming');
+            const gamingProducts = products.filter(p => p.category === 'gaming');
+            const premiumProducts = products.filter(p => p.category === 'premium');
+            
+            // إخفاء الأقسام إذا كانت فارغة
+            document.getElementById('streamingSection').style.display = streamingProducts.length > 0 ? 'block' : 'none';
+            document.getElementById('gamingSection').style.display = gamingProducts.length > 0 ? 'block' : 'none';
+            document.getElementById('premiumSection').style.display = premiumProducts.length > 0 ? 'block' : 'none';
+            
+            // عرض منتجات Streaming
+            if (streamingProducts.length === 0) {
+                streamingGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px;">لا توجد اشتراكات متاحة في باقة Streaming</p>';
+            } else {
+                streamingProducts.forEach(product => {
+                    const productCard = document.createElement('div');
+                    productCard.className = 'product-card';
+                    productCard.innerHTML = `
+                        <div class="product-image">
+                            <img src="${product.image}" alt="${product.name}">
+                        </div>
+                        <div class="product-info">
+                            <h3>${product.name}</h3>
+                            <p>${product.description}</p>
+                            <div class="product-price">${product.price} دينار أردني</div>
+                            <button class="buy-btn" onclick="openPayment(${product.id})">شراء الآن</button>
+                        </div>
+                    `;
+                    streamingGrid.appendChild(productCard);
+                });
             }
             
-            products.forEach(product => {
-                const productCard = document.createElement('div');
-                productCard.className = 'product-card';
-                productCard.innerHTML = `
-                    <div class="product-image">
-                        <img src="${product.image}" alt="${product.name}">
-                    </div>
-                    <div class="product-info">
-                        <h3>${product.name}</h3>
-                        <p>${product.description}</p>
-                        <div class="product-price">${product.price} دينار أردني</div>
-                        <button class="buy-btn" onclick="openPayment(${product.id})">شراء الآن</button>
-                    </div>
-                `;
-                
-                productsGrid.appendChild(productCard);
-            });
+            // عرض منتجات Gaming
+            if (gamingProducts.length === 0) {
+                gamingGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px;">لا توجد اشتراكات متاحة في باقة Gaming</p>';
+            } else {
+                gamingProducts.forEach(product => {
+                    const productCard = document.createElement('div');
+                    productCard.className = 'product-card';
+                    productCard.innerHTML = `
+                        <div class="product-image">
+                            <img src="${product.image}" alt="${product.name}">
+                        </div>
+                        <div class="product-info">
+                            <h3>${product.name}</h3>
+                            <p>${product.description}</p>
+                            <div class="product-price">${product.price} دينار أردني</div>
+                            <button class="buy-btn" onclick="openPayment(${product.id})">شراء الآن</button>
+                        </div>
+                    `;
+                    gamingGrid.appendChild(productCard);
+                });
+            }
+            
+            // عرض منتجات Premium
+            if (premiumProducts.length === 0) {
+                premiumGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px;">لا توجد اشتراكات متاحة في باقة Premium</p>';
+            } else {
+                premiumProducts.forEach(product => {
+                    const productCard = document.createElement('div');
+                    productCard.className = 'product-card';
+                    productCard.innerHTML = `
+                        <div class="product-image">
+                            <img src="${product.image}" alt="${product.name}">
+                        </div>
+                        <div class="product-info">
+                            <h3>${product.name}</h3>
+                            <p>${product.description}</p>
+                            <div class="product-price">${product.price} دينار أردني</div>
+                            <button class="buy-btn" onclick="openPayment(${product.id})">شراء الآن</button>
+                        </div>
+                    `;
+                    premiumGrid.appendChild(productCard);
+                });
+            }
         }
         
         // عرض قائمة المنتجات في لوحة الإدارة
@@ -1051,7 +1141,7 @@
                 productItem.className = 'product-item';
                 productItem.innerHTML = `
                     <div class="product-item-info">
-                        <strong>${product.name}</strong> - ${product.price} دينار أردني
+                        <strong>${product.name}</strong> - ${product.price} دينار أردني (${product.category})
                     </div>
                     <div class="product-item-actions">
                         <button onclick="editProduct(${product.id})">تعديل</button>
