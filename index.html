@@ -693,7 +693,7 @@
                     <ul>
                         <li><a href="#home">الرئيسية</a></li>
                         <li><a href="#products">الاشتراكات</a></li>
-                        <li Armour and Protection><a href="#social">التواصل</a></li>
+                        <li><a href="#social">التواصل</a></li>
                         <li><a href="#contact">اتصل بنا</a></li>
                         <li class="admin-login">
                             <button class="admin-btn">دخول المدير</button>
@@ -723,18 +723,14 @@
     <!-- Products Section -->
     <section class="products" id="products">
         <div class="container">
-            <h2 class="section-title">اشتراكاتنا</h2>
-            <div class="category-section" id="streamingSection">
-                <h3 class="category-title">باقة Streaming</h3>
-                <div class="products-grid" id="streamingGrid"></div>
+            <h2 class="section-title">الاشتراكات والمنتجات</h2>
+            <div class="category-section" id="subscriptionsSection">
+                <h3 class="category-title">الاشتراكات والمنتجات</h3>
+                <div class="products-grid" id="subscriptionsGrid"></div>
             </div>
             <div class="category-section" id="gamingSection">
                 <h3 class="category-title">باقة Gaming</h3>
                 <div class="products-grid" id="gamingGrid"></div>
-            </div>
-            <div class="category-section" id="premiumSection">
-                <h3 class="category-title">باقة Premium</h3>
-                <div class="products-grid" id="premiumGrid"></div>
             </div>
         </div>
     </section>
@@ -766,9 +762,8 @@
                 <input type="text" id="productDesc" placeholder="وصف الاشتراك">
                 <input type="number" id="productPrice" placeholder="السعر (دينار أردني)">
                 <select id="productCategory">
-                    <option value="streaming">باقة streaming</option>
+                    <option value="subscriptions">الاشتراكات والمنتجات</option>
                     <option value="gaming">باقة gaming</option>
-                    <option value="premium">باقة premium</option>
                 </select>
                 <div class="image-upload" id="imageUpload">
                     <i class="fas fa-cloud-upload-alt"></i>
@@ -1026,7 +1021,7 @@
             document.getElementById('productName').value = '';
             document.getElementById('productDesc').value = '';
             document.getElementById('productPrice').value = '';
-            document.getElementById('productCategory').value = 'streaming';
+            document.getElementById('productCategory').value = 'subscriptions';
             document.getElementById('uploadedImage').src = '';
             document.getElementById('uploadedImage').style.display = 'none';
             document.querySelector('#imageUpload p').textContent = 'انقر لرفع صورة للاشتراك';
@@ -1040,30 +1035,26 @@
         
         // عرض المنتجات في الصفحة الرئيسية
         function renderProducts() {
-            const streamingGrid = document.getElementById('streamingGrid');
+            const subscriptionsGrid = document.getElementById('subscriptionsGrid');
             const gamingGrid = document.getElementById('gamingGrid');
-            const premiumGrid = document.getElementById('premiumGrid');
             
             // إفراغ الشبكات
-            streamingGrid.innerHTML = '';
+            subscriptionsGrid.innerHTML = '';
             gamingGrid.innerHTML = '';
-            premiumGrid.innerHTML = '';
             
             // تصفية المنتجات حسب الفئة
-            const streamingProducts = products.filter(p => p.category === 'streaming');
+            const subscriptionsProducts = products.filter(p => p.category === 'subscriptions');
             const gamingProducts = products.filter(p => p.category === 'gaming');
-            const premiumProducts = products.filter(p => p.category === 'premium');
             
             // إخفاء الأقسام إذا كانت فارغة
-            document.getElementById('streamingSection').style.display = streamingProducts.length > 0 ? 'block' : 'none';
+            document.getElementById('subscriptionsSection').style.display = subscriptionsProducts.length > 0 ? 'block' : 'none';
             document.getElementById('gamingSection').style.display = gamingProducts.length > 0 ? 'block' : 'none';
-            document.getElementById('premiumSection').style.display = premiumProducts.length > 0 ? 'block' : 'none';
             
-            // عرض منتجات Streaming
-            if (streamingProducts.length === 0) {
-                streamingGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px;">لا توجد اشتراكات متاحة في باقة Streaming</p>';
+            // عرض منتجات الاشتراكات والمنتجات
+            if (subscriptionsProducts.length === 0) {
+                subscriptionsGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px;">لا توجد اشتراكات أو منتجات متاحة</p>';
             } else {
-                streamingProducts.forEach(product => {
+                subscriptionsProducts.forEach(product => {
                     const productCard = document.createElement('div');
                     productCard.className = 'product-card';
                     productCard.innerHTML = `
@@ -1077,7 +1068,7 @@
                             <button class="buy-btn" onclick="openPayment(${product.id})">شراء الآن</button>
                         </div>
                     `;
-                    streamingGrid.appendChild(productCard);
+                    subscriptionsGrid.appendChild(productCard);
                 });
             }
             
@@ -1102,28 +1093,6 @@
                     gamingGrid.appendChild(productCard);
                 });
             }
-            
-            // عرض منتجات Premium
-            if (premiumProducts.length === 0) {
-                premiumGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px;">لا توجد اشتراكات متاحة في باقة Premium</p>';
-            } else {
-                premiumProducts.forEach(product => {
-                    const productCard = document.createElement('div');
-                    productCard.className = 'product-card';
-                    productCard.innerHTML = `
-                        <div class="product-image">
-                            <img src="${product.image}" alt="${product.name}">
-                        </div>
-                        <div class="product-info">
-                            <h3>${product.name}</h3>
-                            <p>${product.description}</p>
-                            <div class="product-price">${product.price} دينار أردني</div>
-                            <button class="buy-btn" onclick="openPayment(${product.id})">شراء الآن</button>
-                        </div>
-                    `;
-                    premiumGrid.appendChild(productCard);
-                });
-            }
         }
         
         // عرض قائمة المنتجات في لوحة الإدارة
@@ -1141,7 +1110,7 @@
                 productItem.className = 'product-item';
                 productItem.innerHTML = `
                     <div class="product-item-info">
-                        <strong>${product.name}</strong> - ${product.price} دينار أردني (${product.category})
+                        <strong>${product.name}</strong> - ${product.price} دينار أردني (${product.category === 'subscriptions' ? 'الاشتراكات والمنتجات' : 'باقة gaming'})
                     </div>
                     <div class="product-item-actions">
                         <button onclick="editProduct(${product.id})">تعديل</button>
