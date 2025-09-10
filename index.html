@@ -353,6 +353,55 @@
         .add-product-form button:hover {
             background-color: var(--dark-red);
         }
+
+        /* Products List in Admin */
+        .products-list {
+            margin-top: 40px;
+        }
+
+        .products-list h3 {
+            color: var(--accent-red);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .product-item {
+            background-color: var(--dark-bg);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid var(--main-red);
+        }
+
+        .product-item-info {
+            flex: 1;
+        }
+
+        .product-item-actions button {
+            background-color: var(--accent-red);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: all 0.3s;
+        }
+
+        .product-item-actions button:hover {
+            background-color: var(--dark-red);
+        }
+
+        .product-item-actions button.delete {
+            background-color: #dc3545;
+        }
+
+        .product-item-actions button.delete:hover {
+            background-color: #c82333;
+        }
         
         /* Payment Modal */
         .modal {
@@ -595,6 +644,18 @@
                 flex-direction: column;
                 align-items: center;
             }
+
+            .product-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .product-item-actions {
+                margin-top: 10px;
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+            }
         }
     </style>
 </head>
@@ -669,7 +730,8 @@
     <div class="container">
         <div class="admin-panel" id="adminPanel">
             <h2>لوحة تحكم المدير</h2>
-            <div class="add-product-form">
+            <div class="add-product-form" id="addProductForm">
+                <input type="hidden" id="editProductId">
                 <input type="text" id="productName" placeholder="اسم الاشتراك">
                 <input type="text" id="productDesc" placeholder="وصف الاشتراك">
                 <input type="number" id="productPrice" placeholder="السعر (دينار أردني)">
@@ -684,7 +746,12 @@
                     <img id="uploadedImage" src="" alt="الصورة المرفوعة">
                     <input type="file" id="imageInput" accept="image/*" style="display: none;">
                 </div>
-                <button onclick="addProduct()">إضافة اشتراك</button>
+                <button id="submitProductBtn" onclick="submitProduct()">إضافة اشتراك</button>
+            </div>
+
+            <div class="products-list" id="adminProductsList">
+                <h3>قائمة الاشتراكات</h3>
+                <!-- سيتم إضافة الاشتراكات هنا ديناميكيًا -->
             </div>
         </div>
     </div>
@@ -751,6 +818,7 @@
     <script>
         // بيانات الاشتراكات
         let products = [];
+        let editingProductId = null;
         
         // بيانات المدير
         const adminUsername = "mamaisloveme";
@@ -762,6 +830,7 @@
             if (savedProducts) {
                 products = JSON.parse(savedProducts);
                 renderProducts();
+                renderAdminProductsList();
             }
             
             // إعداد رفع الصور
@@ -801,6 +870,7 @@
             if (username === adminUsername && password === adminPassword) {
                 document.getElementById('adminPanel').style.display = 'block';
                 document.querySelector('.login-form').style.display = 'none';
+                renderAdminProductsList();
                 alert('تم تسجيل الدخول بنجاح!');
             } else {
                 alert('اسم المستخدم أو كلمة المرور غير صحيحة!');
@@ -822,7 +892,7 @@
             document.getElementById('paymentModal').style.display = 'none';
         }
         
-        // إتمام عملية الدفع
+        // إتمام عملية الدفع مع إنشاء رقم عشوائي
         function completePayment() {
             const customerName = document.getElementById('customerName').value;
             const walletName = document.getElementById('walletName').value;
@@ -832,7 +902,10 @@
                 return;
             }
             
-            alert('شكراً لك! تم استلام طلبك وسيتم التفعيل خلال 24 ساعة.');
+            // إنشاء رقم عشوائي من 1 إلى 10
+            const randomNumber = Math.floor(Math.random() * 10) + 1;
+            
+            alert(`شكراً لك! تم استلام طلبك وسيتم التفعيل خلال 24 ساعة.\nرقم التحقق العشوائي الخاص بك: ${randomNumber}\nيرجى إرسال هذا الرقم إلينا عبر الإنستغرام (@foreverstore_jo) لتأكيد الطلب.`);
             document.getElementById('paymentModal').style.display = 'none';
             
             // مسح الحقول
@@ -841,8 +914,8 @@
             document.getElementById('transactionId').value = '';
         }
         
-        // إضافة منتج جديد
-        function addProduct() {
+        // إضافة أو تعديل منتج
+        function submitProduct() {
             const name = document.getElementById('productName').value;
             const desc = document.getElementById('productDesc').value;
             const price = document.getElementById('productPrice').value;
@@ -854,27 +927,78 @@
                 return;
             }
             
-            const newProduct = {
-                id: Date.now(), // استخدام الطابع الزمني كمعرف فريد
-                name,
-                description: desc,
-                price: parseInt(price),
-                image: imageSrc,
-                category
-            };
+            if (editingProductId) {
+                // تعديل المنتج الموجود
+                const productIndex = products.findIndex(p => p.id === editingProductId);
+                if (productIndex !== -1) {
+                    products[productIndex] = {
+                        id: editingProductId,
+                        name,
+                        description: desc,
+                        price: parseInt(price),
+                        image: imageSrc,
+                        category
+                    };
+                    alert('تم تعديل الاشتراك بنجاح!');
+                }
+            } else {
+                // إضافة منتج جديد
+                const newProduct = {
+                    id: Date.now(),
+                    name,
+                    description: desc,
+                    price: parseInt(price),
+                    image: imageSrc,
+                    category
+                };
+                products.push(newProduct);
+                alert('تم إضافة الاشتراك بنجاح!');
+            }
             
-            products.push(newProduct);
             saveProducts();
             renderProducts();
-            alert('تم إضافة الاشتراك بنجاح!');
-            
-            // مسح الحقول
+            renderAdminProductsList();
+            resetForm();
+        }
+        
+        // حذف منتج
+        function deleteProduct(productId) {
+            if (confirm('هل أنت متأكد من حذف هذا الاشتراك؟')) {
+                products = products.filter(p => p.id !== productId);
+                saveProducts();
+                renderProducts();
+                renderAdminProductsList();
+                alert('تم حذف الاشتراك بنجاح!');
+            }
+        }
+        
+        // تحرير منتج
+        function editProduct(productId) {
+            const product = products.find(p => p.id === productId);
+            if (product) {
+                editingProductId = productId;
+                document.getElementById('productName').value = product.name;
+                document.getElementById('productDesc').value = product.description;
+                document.getElementById('productPrice').value = product.price;
+                document.getElementById('productCategory').value = product.category;
+                document.getElementById('uploadedImage').src = product.image;
+                document.getElementById('uploadedImage').style.display = 'block';
+                document.querySelector('#imageUpload p').textContent = 'تم رفع الصورة بنجاح';
+                document.getElementById('submitProductBtn').textContent = 'حفظ التعديلات';
+            }
+        }
+        
+        // إعادة تعيين النموذج
+        function resetForm() {
+            editingProductId = null;
             document.getElementById('productName').value = '';
             document.getElementById('productDesc').value = '';
             document.getElementById('productPrice').value = '';
+            document.getElementById('productCategory').value = 'streaming';
             document.getElementById('uploadedImage').src = '';
             document.getElementById('uploadedImage').style.display = 'none';
             document.querySelector('#imageUpload p').textContent = 'انقر لرفع صورة للاشتراك';
+            document.getElementById('submitProductBtn').textContent = 'إضافة اشتراك';
         }
         
         // حفظ المنتجات في localStorage
@@ -882,7 +1006,7 @@
             localStorage.setItem('foreverStoreProducts', JSON.stringify(products));
         }
         
-        // عرض المنتجات
+        // عرض المنتجات في الصفحة الرئيسية
         function renderProducts() {
             const productsGrid = document.getElementById('productsGrid');
             productsGrid.innerHTML = '';
@@ -908,6 +1032,32 @@
                 `;
                 
                 productsGrid.appendChild(productCard);
+            });
+        }
+        
+        // عرض قائمة المنتجات في لوحة الإدارة
+        function renderAdminProductsList() {
+            const adminProductsList = document.getElementById('adminProductsList');
+            adminProductsList.innerHTML = '<h3>قائمة الاشتراكات</h3>';
+            
+            if (products.length === 0) {
+                adminProductsList.innerHTML += '<p style="text-align: center;">لا توجد اشتراكات</p>';
+                return;
+            }
+            
+            products.forEach(product => {
+                const productItem = document.createElement('div');
+                productItem.className = 'product-item';
+                productItem.innerHTML = `
+                    <div class="product-item-info">
+                        <strong>${product.name}</strong> - ${product.price} دينار أردني
+                    </div>
+                    <div class="product-item-actions">
+                        <button onclick="editProduct(${product.id})">تعديل</button>
+                        <button class="delete" onclick="deleteProduct(${product.id})">حذف</button>
+                    </div>
+                `;
+                adminProductsList.appendChild(productItem);
             });
         }
         
