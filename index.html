@@ -89,71 +89,6 @@
             background-color: rgba(255, 255, 255, 0.2);
         }
         
-        /* Admin Login */
-        .admin-login {
-            position: relative;
-        }
-        
-        .admin-btn {
-            background-color: var(--accent-red);
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s;
-        }
-        
-        .admin-btn:hover {
-            background-color: var(--dark-red);
-        }
-        
-        .login-form {
-            display: none;
-            position: absolute;
-            top: 40px;
-            left: 0;
-            background-color: var(--card-bg);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-            width: 300px;
-            z-index: 10;
-            border: 1px solid var(--accent-red);
-        }
-        
-        .login-form h3 {
-            margin-bottom: 15px;
-            color: var(--accent-red);
-            text-align: center;
-        }
-        
-        .login-form input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid var(--main-red);
-            border-radius: 4px;
-            background-color: var(--dark-bg);
-            color: white;
-        }
-        
-        .login-form button {
-            background-color: var(--accent-red);
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
-            transition: all 0.3s;
-        }
-        
-        .login-form button:hover {
-            background-color: var(--dark-red);
-        }
-        
         /* Hero Section */
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect x="0" y="0" width="100" height="100" fill="%238B0000"/><path d="M30,30 L70,30 L70,70 L30,70 Z" stroke="%23FF2400" stroke-width="5" fill="none"/><circle cx="50" cy="50" r="15" fill="%23FF2400"/></svg>');
@@ -296,6 +231,16 @@
         
         .buy-btn:hover {
             background-color: var(--dark-red);
+        }
+        
+        .out-of-stock {
+            background-color: #555;
+            cursor: not-allowed;
+        }
+        
+        .out-of-stock:hover {
+            background-color: #555;
+            transform: none;
         }
         
         /* Admin Panel */
@@ -715,15 +660,6 @@
                         <li><a href="#products">الاشتراكات</a></li>
                         <li><a href="#social">التواصل</a></li>
                         <li><a href="#contact">اتصل بنا</a></li>
-                        <li class="admin-login">
-                            <button class="admin-btn">دخول المدير</button>
-                            <div class="login-form">
-                                <h3>تسجيل الدخول للمدير</h3>
-                                <input type="text" id="username" placeholder="اسم المستخدم">
-                                <input type="password" id="password" placeholder="كلمة المرور">
-                                <button onclick="login()">دخول</button>
-                            </div>
-                        </li>
                     </ul>
                 </nav>
             </div>
@@ -735,7 +671,7 @@
         <div class="container">
             <div class="hero-content">
                 <h1>Forever Store لخدمة المطفرين</h1>
-                <p>أفضل اشتراكات الترفيه بأرخص الأسعار</p>
+                <p>أفضل اشتراكات الترفيه والألعاب بأرخص الأسعار</p>
             </div>
         </div>
     </section>
@@ -751,6 +687,10 @@
             <div class="category-section" id="gamingSection">
                 <h3 class="category-title">باقة Gaming</h3>
                 <div class="products-grid" id="gamingGrid"></div>
+            </div>
+            <div class="category-section" id="pcGamesSection">
+                <h3 class="category-title">ألعاب بي سي (أوفلاين - مشترك)</h3>
+                <div class="products-grid" id="pcGamesGrid"></div>
             </div>
         </div>
     </section>
@@ -784,6 +724,7 @@
                 <select id="productCategory">
                     <option value="subscriptions">الاشتراكات والمنتجات</option>
                     <option value="gaming">باقة gaming</option>
+                    <option value="pcGames">ألعاب بي سي (أوفلاين)</option>
                 </select>
                 <div class="image-upload" id="imageUpload">
                     <i class="fas fa-cloud-upload-alt"></i>
@@ -838,7 +779,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>عن Forever Store</h3>
-                    <p>متجرنا متخصص في بيع اشتراكات الترفيه بأسعار منافسة وخدمة عملاء متميزة.</p>
+                    <p>متجرنا متخصص في بيع اشتراكات الترفيه والألعاب بأسعار منافسة وخدمة عملاء متميزة.</p>
                 </div>
                 
                 <div class="footer-section">
@@ -871,10 +812,6 @@
         let products = [];
         let editingProductId = null;
         
-        // بيانات المدير
-        const adminUsername = "mamaisloveme";
-        const adminPassword = "fuckurownmother";
-        
         // تحميل البيانات من localStorage عند بدء التشغيل
         document.addEventListener('DOMContentLoaded', function() {
             try {
@@ -893,10 +830,11 @@
                         {
                             id: Date.now() + 1,
                             name: "اشتراك نتفليكس",
-                            description: "اشتراك شهري لنتفليكس بجودة عالية",
-                            price: 10,
+                            description: "نفذت الكمية",
+                            price: 1.50,
                             image: "https://via.placeholder.com/150",
-                            category: "subscriptions"
+                            category: "subscriptions",
+                            outOfStock: true
                         },
                         {
                             id: Date.now() + 2,
@@ -905,6 +843,30 @@
                             price: 30,
                             image: "https://via.placeholder.com/150",
                             category: "gaming"
+                        },
+                        {
+                            id: Date.now() + 3,
+                            name: "The Witcher 3: Wild Hunt",
+                            description: "لعبة أكشن ومغامرات ملحمية (مشترك)",
+                            price: 2,
+                            image: "https://via.placeholder.com/150",
+                            category: "pcGames"
+                        },
+                        {
+                            id: Date.now() + 4,
+                            name: "Stardew Valley",
+                            description: "لعبة محاكاة زراعية ومغامرات (مشترك)",
+                            price: 2,
+                            image: "https://via.placeholder.com/150",
+                            category: "pcGames"
+                        },
+                        {
+                            id: Date.now() + 5,
+                            name: "Hollow Knight",
+                            description: "لعبة منصات واستكشاف مليئة بالتحديات (مشترك)",
+                            price: 2,
+                            image: "https://via.placeholder.com/150",
+                            category: "pcGames"
                         }
                     ];
                     saveProducts();
@@ -986,31 +948,14 @@
             }
         }
         
-        // عرض/إخفاء نموذج تسجيل الدخول
-        document.querySelector('.admin-btn').addEventListener('click', function() {
-            const loginForm = document.querySelector('.login-form');
-            loginForm.style.display = loginForm.style.display === 'block' ? 'none' : 'block';
-        });
-        
-        // تسجيل الدخول للمدير
-        function login() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            if (username === adminUsername && password === adminPassword) {
-                document.getElementById('adminPanel').style.display = 'block';
-                document.querySelector('.login-form').style.display = 'none';
-                renderAdminProductsList();
-                alert('تم تسجيل الدخول بنجاح!');
-            } else {
-                alert('اسم المستخدم أو كلمة المرور غير صحيحة!');
-            }
-        }
-        
         // فتح نموذج الدفع
         function openPayment(productId) {
             const product = products.find(p => p.id === productId);
             if (product) {
+                if (product.outOfStock) {
+                    alert('هذا المنتج نفذت كميته!');
+                    return;
+                }
                 document.getElementById('selectedProduct').textContent = `الاشتراك: ${product.name}`;
                 document.getElementById('selectedPrice').textContent = `السعر: ${product.price} دينار أردني`;
                 document.getElementById('paymentModal').style.display = 'flex';
@@ -1066,7 +1011,7 @@
                             id: editingProductId,
                             name,
                             description: desc,
-                            price: parseInt(price),
+                            price: parseFloat(price),
                             image: imageSrc,
                             category
                         };
@@ -1078,7 +1023,7 @@
                         id: Date.now(),
                         name,
                         description: desc,
-                        price: parseInt(price),
+                        price: parseFloat(price),
                         image: imageSrc,
                         category
                     };
@@ -1156,18 +1101,22 @@
         function renderProducts() {
             const subscriptionsGrid = document.getElementById('subscriptionsGrid');
             const gamingGrid = document.getElementById('gamingGrid');
+            const pcGamesGrid = document.getElementById('pcGamesGrid');
             
             // إفراغ الشبكات
             subscriptionsGrid.innerHTML = '';
             gamingGrid.innerHTML = '';
+            pcGamesGrid.innerHTML = '';
             
             // تصفية المنتجات حسب الفئة
             const subscriptionsProducts = products.filter(p => p.category === 'subscriptions');
             const gamingProducts = products.filter(p => p.category === 'gaming');
+            const pcGamesProducts = products.filter(p => p.category === 'pcGames');
             
             // إخفاء الأقسام إذا كانت فارغة
             document.getElementById('subscriptionsSection').style.display = subscriptionsProducts.length > 0 ? 'block' : 'none';
             document.getElementById('gamingSection').style.display = gamingProducts.length > 0 ? 'block' : 'none';
+            document.getElementById('pcGamesSection').style.display = pcGamesProducts.length > 0 ? 'block' : 'none';
             
             // عرض منتجات الاشتراكات والمنتجات
             if (subscriptionsProducts.length === 0) {
@@ -1175,7 +1124,7 @@
             } else {
                 subscriptionsProducts.forEach(product => {
                     const productCard = document.createElement('div');
-                    productCard.className = 'product-card';
+                    productCard.className = 'product-card' + (product.outOfStock ? ' out-of-stock' : '');
                     productCard.innerHTML = `
                         <div class="product-image">
                             <img src="${product.image}" alt="${product.name}">
@@ -1184,7 +1133,7 @@
                             <h3>${product.name}</h3>
                             <p>${product.description}</p>
                             <div class="product-price">${product.price} دينار أردني</div>
-                            <button class="buy-btn" onclick="openPayment(${product.id})">شراء الآن</button>
+                            <button class="buy-btn" ${product.outOfStock ? 'disabled' : ''} onclick="openPayment(${product.id})">شراء الآن</button>
                         </div>
                     `;
                     subscriptionsGrid.appendChild(productCard);
@@ -1212,6 +1161,28 @@
                     gamingGrid.appendChild(productCard);
                 });
             }
+            
+            // عرض ألعاب بي سي
+            if (pcGamesProducts.length === 0) {
+                pcGamesGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px;">لا توجد ألعاب بي سي متاحة</p>';
+            } else {
+                pcGamesProducts.forEach(product => {
+                    const productCard = document.createElement('div');
+                    productCard.className = 'product-card';
+                    productCard.innerHTML = `
+                        <div class="product-image">
+                            <img src="${product.image}" alt="${product.name}">
+                        </div>
+                        <div class="product-info">
+                            <h3>${product.name}</h3>
+                            <p>${product.description}</p>
+                            <div class="product-price">${product.price} دينار أردني</div>
+                            <button class="buy-btn" onclick="openPayment(${product.id})">شراء الآن</button>
+                        </div>
+                    `;
+                    pcGamesGrid.appendChild(productCard);
+                });
+            }
         }
         
         // عرض قائمة المنتجات في لوحة الإدارة
@@ -1229,7 +1200,7 @@
                 productItem.className = 'product-item';
                 productItem.innerHTML = `
                     <div class="product-item-info">
-                        <strong>${product.name}</strong> - ${product.price} دينار أردني (${product.category === 'subscriptions' ? 'الاشتراكات والمنتجات' : 'باقة gaming'})
+                        <strong>${product.name}</strong> - ${product.price} دينار أردني (${product.category === 'subscriptions' ? 'الاشتراكات والمنتجات' : product.category === 'gaming' ? 'باقة gaming' : 'ألعاب بي سي'}) ${product.outOfStock ? '(نفذت الكمية)' : ''}
                     </div>
                     <div class="product-item-actions">
                         <button onclick="editProduct(${product.id})">تعديل</button>
@@ -1245,12 +1216,6 @@
             const modal = document.getElementById('paymentModal');
             if (event.target === modal) {
                 closeModal();
-            }
-            
-            const loginForm = document.querySelector('.login-form');
-            const adminBtn = document.querySelector('.admin-btn');
-            if (loginForm.style.display === 'block' && !event.target.closest('.login-form') && !event.target.closest('.admin-btn')) {
-                loginForm.style.display = 'none';
             }
         };
     </script>
