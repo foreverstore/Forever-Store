@@ -1,1223 +1,1627 @@
 <!DOCTYPE html>
+
 <html lang="ar" dir="rtl">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Forever Store - اشتراكات الترفيه</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
+
         :root {
+
             --main-red: #8B0000;
+
             --dark-red: #5D0000;
+
             --light-red: #A52A2A;
+
             --accent-red: #FF2400;
+
             --text-color: #FFFFFF;
+
             --light-bg: #1A0000;
+
             --dark-bg: #0D0000;
+
             --card-bg: #220000;
+
             --shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+
         }
+
         
+
         * {
+
             margin: 0;
+
             padding: 0;
+
             box-sizing: border-box;
+
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
         }
+
         
+
         body {
+
             background: linear-gradient(to bottom, var(--dark-bg), var(--light-bg));
+
             color: var(--text-color);
+
             line-height: 1.6;
+
             min-height: 100vh;
+
         }
+
         
+
         .container {
+
             max-width: 1200px;
+
             margin: 0 auto;
+
             padding: 0 15px;
+
         }
+
         
+
         /* Header Styles */
+
         header {
+
             background: linear-gradient(to right, var(--dark-red), var(--main-red));
+
             color: white;
+
             padding: 15px 0;
+
             box-shadow: var(--shadow);
+
             position: sticky;
+
             top: 0;
+
             z-index: 100;
+
         }
+
         
+
         .header-content {
+
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
+
         }
+
         
+
         .logo {
+
             font-size: 28px;
+
             font-weight: bold;
+
             display: flex;
+
             align-items: center;
+
         }
+
         
+
         .logo i {
+
             margin-right: 10px;
+
             color: var(--accent-red);
+
         }
+
         
+
         nav ul {
+
             display: flex;
+
             list-style: none;
+
         }
+
         
+
         nav ul li {
+
             margin-left: 20px;
+
         }
+
         
+
         nav ul li a {
+
             color: white;
+
             text-decoration: none;
+
             font-weight: 500;
+
             transition: all 0.3s;
+
             padding: 5px 10px;
+
             border-radius: 4px;
+
         }
+
         
+
         nav ul li a:hover {
+
             background-color: rgba(255, 255, 255, 0.2);
+
         }
+
         
+
         /* Hero Section */
+
         .hero {
+
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect x="0" y="0" width="100" height="100" fill="%238B0000"/><path d="M30,30 L70,30 L70,70 L30,70 Z" stroke="%23FF2400" stroke-width="5" fill="none"/><circle cx="50" cy="50" r="15" fill="%23FF2400"/></svg>');
+
             background-size: cover;
+
             height: 500px;
+
             display: flex;
+
             align-items: center;
+
             color: white;
+
             text-align: center;
+
             position: relative;
+
         }
+
         
+
         .hero-content {
+
             max-width: 800px;
+
             margin: 0 auto;
+
             padding: 20px;
+
         }
+
         
+
         .hero-content h1 {
+
             font-size: 48px;
+
             margin-bottom: 20px;
+
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
             color: var(--accent-red);
+
         }
+
         
+
         .hero-content p {
+
             font-size: 20px;
+
             margin-bottom: 30px;
+
         }
+
         
-        /* Products Section */
-        .products {
-            padding: 50px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-            color: var(--accent-red);
-            font-size: 32px;
-            position: relative;
-        }
-        
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
+
+        .hero-content .cta-btn {
+
             background-color: var(--accent-red);
-            margin: 10px auto;
+
+            color: white;
+
+            padding: 12px 24px;
+
+            border-radius: 4px;
+
+            text-decoration: none;
+
+            font-size: 18px;
+
+            transition: background-color 0.3s;
+
         }
+
+        
+
+        .hero-content .cta-btn:hover {
+
+            background-color: var(--dark-red);
+
+        }
+
+        
+
+        /* Products Section */
+
+        .products {
+
+            padding: 50px 0;
+
+        }
+
+        
+
+        .section-title {
+
+            text-align: center;
+
+            margin-bottom: 40px;
+
+            color: var(--accent-red);
+
+            font-size: 32px;
+
+            position: relative;
+
+        }
+
+        
+
+        .section-title::after {
+
+            content: '';
+
+            display: block;
+
+            width: 80px;
+
+            height: 4px;
+
+            background-color: var(--accent-red);
+
+            margin: 10px auto;
+
+        }
+
+
 
         .category-section {
+
             margin-bottom: 40px;
+
         }
+
+
 
         .category-title {
+
             font-size: 24px;
+
             color: var(--accent-red);
+
             margin-bottom: 20px;
+
             text-align: center;
+
             position: relative;
+
         }
+
+
 
         .category-title::after {
+
             content: '';
+
             display: block;
+
             width: 60px;
+
             height: 3px;
+
             background-color: var(--main-red);
+
             margin: 10px auto;
+
         }
+
         
+
         .products-grid {
+
             display: grid;
+
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+
             gap: 30px;
+
         }
+
         
+
         .product-card {
+
             background-color: var(--card-bg);
+
             border-radius: 8px;
+
             overflow: hidden;
+
             box-shadow: var(--shadow);
+
             transition: transform 0.3s;
+
             border: 1px solid var(--main-red);
+
         }
+
         
+
         .product-card:hover {
+
             transform: translateY(-10px);
+
         }
+
         
+
         .product-image {
+
             height: 200px;
+
             overflow: hidden;
+
             background-color: var(--dark-bg);
+
             display: flex;
+
             align-items: center;
+
             justify-content: center;
+
         }
+
         
+
         .product-image img {
+
             max-width: 100%;
+
             max-height: 100%;
+
             object-fit: contain;
+
             transition: transform 0.5s;
+
         }
+
         
+
         .product-card:hover .product-image img {
+
             transform: scale(1.1);
+
         }
+
         
+
         .product-info {
+
             padding: 20px;
+
         }
+
         
+
         .product-info h3 {
+
             margin-bottom: 10px;
+
             color: var(--accent-red);
+
         }
+
         
+
         .product-price {
+
             font-size: 22px;
+
             font-weight: bold;
+
             color: var(--accent-red);
+
             margin: 10px 0;
+
         }
+
         
+
         .buy-btn {
+
             background-color: var(--accent-red);
+
             color: white;
+
             border: none;
+
             padding: 10px 15px;
+
             border-radius: 4px;
+
             cursor: pointer;
+
             width: 100%;
+
             font-size: 16px;
+
             transition: background-color 0.3s;
+
         }
+
         
+
         .buy-btn:hover {
+
             background-color: var(--dark-red);
-        }
-        
-        .out-of-stock {
-            background-color: #555;
-            cursor: not-allowed;
-        }
-        
-        .out-of-stock:hover {
-            background-color: #555;
-            transform: none;
-        }
-        
-        /* Admin Panel */
-        .admin-panel {
-            display: none;
-            background-color: var(--card-bg);
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-            margin: 40px 0;
-            border: 1px solid var(--accent-red);
-        }
-        
-        .admin-panel h2 {
-            color: var(--accent-red);
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        
-        .add-product-form {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        
-        .add-product-form input, .add-product-form select, .add-product-form textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid var(--main-red);
-            border-radius: 4px;
-            background-color: var(--dark-bg);
-            color: white;
-        }
-        
-        .image-upload {
-            grid-column: span 2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            border: 2px dashed var(--main-red);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .image-upload:hover {
-            border-color: var(--accent-red);
-        }
-        
-        .image-upload i {
-            font-size: 40px;
-            color: var(--accent-red);
-            margin-bottom: 10px;
-        }
-        
-        .image-upload img {
-            max-width: 100%;
-            max-height: 150px;
-            margin-top: 10px;
-            display: none;
-        }
-        
-        .add-product-form button {
-            grid-column: span 2;
-            background-color: var(--accent-red);
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: all 0.3s;
-        }
-        
-        .add-product-form button:hover {
-            background-color: var(--dark-red);
+
         }
 
-        /* Export/Import Buttons */
-        .export-import {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-        .export-import button {
-            background-color: var(--accent-red);
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .export-import button:hover {
-            background-color: var(--dark-red);
-        }
+        
 
-        /* Products List in Admin */
-        .products-list {
-            margin-top: 40px;
-        }
+        /* How It Works Section */
 
-        .products-list h3 {
-            color: var(--accent-red);
-            margin-bottom: 20px;
-            text-align: center;
-        }
+        .how-it-works {
 
-        .product-item {
-            background-color: var(--dark-bg);
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border: 1px solid var(--main-red);
-        }
-
-        .product-item-info {
-            flex: 1;
-        }
-
-        .product-item-actions button {
-            background-color: var(--accent-red);
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-left: 10px;
-            transition: all 0.3s;
-        }
-
-        .product-item-actions button:hover {
-            background-color: var(--dark-red);
-        }
-
-        .product-item-actions button.delete {
-            background-color: #dc3545;
-        }
-
-        .product-item-actions button.delete:hover {
-            background-color: #c82333;
-        }
-        
-        /* Payment Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .modal-content {
-            background-color: var(--card-bg);
-            padding: 30px;
-            border-radius: 8px;
-            width: 90%;
-            max-width: 500px;
-            position: relative;
-            border: 2px solid var(--accent-red);
-        }
-        
-        .close-modal {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            font-size: 24px;
-            cursor: pointer;
-            color: var(--accent-red);
-        }
-        
-        .close-modal:hover {
-            color: white;
-        }
-        
-        .payment-details {
-            margin: 20px 0;
-            padding: 20px;
-            background-color: var(--dark-bg);
-            border-radius: 8px;
-        }
-        
-        .payment-details h3 {
-            color: var(--accent-red);
-            margin-bottom: 15px;
-        }
-        
-        .payment-info {
-            margin-bottom: 15px;
-            font-size: 18px;
-        }
-        
-        .wallet-info {
-            background-color: var(--dark-red);
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-            border-right: 4px solid var(--accent-red);
-        }
-        
-        .wallet-info strong {
-            color: var(--accent-red);
-        }
-        
-        .payment-form input {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: 1px solid var(--main-red);
-            border-radius: 4px;
-            background-color: var(--dark-bg);
-            color: white;
-        }
-        
-        .payment-form button {
-            background-color: var(--accent-red);
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
-            font-size: 16px;
-            transition: all 0.3s;
-        }
-        
-        .payment-form button:hover {
-            background-color: var(--dark-red);
-        }
-        
-        /* Social Media Section */
-        .social-media {
-            background-color: var(--card-bg);
             padding: 50px 0;
-            text-align: center;
-            margin: 50px 0;
+
+            background-color: var(--card-bg);
+
             border-top: 1px solid var(--main-red);
+
             border-bottom: 1px solid var(--main-red);
+
         }
+
         
-        .social-media h2 {
-            color: var(--accent-red);
-            margin-bottom: 30px;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-        
-        .social-link {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-decoration: none;
-            color: white;
-            transition: all 0.3s;
-            padding: 20px;
-            border-radius: 8px;
-            background-color: var(--dark-bg);
-            width: 150px;
-        }
-        
-        .social-link:hover {
-            transform: translateY(-10px);
-            background-color: var(--main-red);
-        }
-        
-        .social-link i {
-            font-size: 40px;
-            margin-bottom: 15px;
-            color: var(--accent-red);
-        }
-        
-        .social-link span {
-            font-weight: 500;
-        }
-        
-        /* Footer */
-        footer {
-            background: linear-gradient(to right, var(--dark-red), var(--main-red));
-            color: white;
-            padding: 40px 0 20px;
-            text-align: center;
-            margin-top: 50px;
-        }
-        
-        .footer-content {
+
+        .steps {
+
             display: grid;
+
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
             gap: 30px;
-            margin-bottom: 30px;
-        }
-        
-        .footer-section h3 {
-            margin-bottom: 20px;
-            font-size: 20px;
-        }
-        
-        .footer-section p, .footer-section li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-section ul {
-            list-style: none;
-        }
-        
-        .footer-section a {
-            color: white;
-            text-decoration: none;
-        }
-        
-        .footer-section a:hover {
-            text-decoration: underline;
-        }
-        
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 15px;
-        }
-        
-        .social-icons a {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
-            text-align: center;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transition: all 0.3s;
-        }
-        
-        .social-icons a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-3px);
-        }
-        
-        .copyright {
+
             margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+
         }
+
         
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            nav ul {
-                margin-top: 15px;
-                justify-content: center;
-            }
-            
-            .hero-content h1 {
-                font-size: 36px;
-            }
-            
-            .hero-content p {
-                font-size: 18px;
-            }
-            
-            .add-product-form {
-                grid-template-columns: 1fr;
-            }
-            
-            .add-product-form button {
-                grid-column: 1;
-            }
-            
-            .social-links {
-                flex-direction: column;
-                align-items: center;
-            }
 
-            .product-item {
-                flex-direction: column;
-                align-items: flex-start;
-            }
+        .step {
 
-            .product-item-actions {
-                margin-top: 10px;
-                width: 100%;
-                display: flex;
-                justify-content: flex-end;
-            }
+            text-align: center;
+
+            padding: 20px;
+
+            background-color: var(--dark-bg);
+
+            border-radius: 8px;
+
+            border: 1px solid var(--main-red);
+
         }
+
+        
+
+        .step i {
+
+            font-size: 40px;
+
+            color: var(--accent-red);
+
+            margin-bottom: 15px;
+
+        }
+
+        
+
+        .step h3 {
+
+            color: var(--accent-red);
+
+            margin-bottom: 10px;
+
+        }
+
+        
+
+        /* Social Media Section */
+
+        .social-media {
+
+            padding: 50px 0;
+
+            text-align: center;
+
+        }
+
+        
+
+        .social-links {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 30px;
+
+            flex-wrap: wrap;
+
+        }
+
+        
+
+        .social-link {
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            text-decoration: none;
+
+            color: white;
+
+            transition: all 0.3s;
+
+            padding: 20px;
+
+            border-radius: 8px;
+
+            background-color: var(--dark-bg);
+
+            width: 150px;
+
+        }
+
+        
+
+        .social-link:hover {
+
+            transform: translateY(-10px);
+
+            background-color: var(--main-red);
+
+        }
+
+        
+
+        .social-link i {
+
+            font-size: 40px;
+
+            margin-bottom: 15px;
+
+            color: var(--accent-red);
+
+        }
+
+        
+
+        .social-link span {
+
+            font-weight: 500;
+
+        }
+
+        
+
+        /* Payment Modal */
+
+        .modal {
+
+            display: none;
+
+            position: fixed;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            background-color: rgba(0, 0, 0, 0.9);
+
+            z-index: 1000;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+        
+
+        .modal-content {
+
+            background-color: var(--card-bg);
+
+            padding: 30px;
+
+            border-radius: 8px;
+
+            width: 90%;
+
+            max-width: 500px;
+
+            position: relative;
+
+            border: 2px solid var(--accent-red);
+
+        }
+
+        
+
+        .close-modal {
+
+            position: absolute;
+
+            top: 10px;
+
+            left: 10px;
+
+            font-size: 24px;
+
+            cursor: pointer;
+
+            color: var(--accent-red);
+
+        }
+
+        
+
+        .close-modal:hover {
+
+            color: white;
+
+        }
+
+        
+
+        .payment-details {
+
+            margin: 20px 0;
+
+            padding: 20px;
+
+            background-color: var(--dark-bg);
+
+            border-radius: 8px;
+
+        }
+
+        
+
+        .payment-details h3 {
+
+            color: var(--accent-red);
+
+            margin-bottom: 15px;
+
+        }
+
+        
+
+        .payment-info {
+
+            margin-bottom: 15px;
+
+            font-size: 18px;
+
+        }
+
+        
+
+        .wallet-info {
+
+            background-color: var(--dark-red);
+
+            padding: 15px;
+
+            border-radius: 8px;
+
+            margin: 15px 0;
+
+            border-right: 4px solid var(--accent-red);
+
+        }
+
+        
+
+        .wallet-info strong {
+
+            color: var(--accent-red);
+
+        }
+
+        
+
+        .payment-form input {
+
+            width: 100%;
+
+            padding: 12px;
+
+            margin-bottom: 15px;
+
+            border: 1px solid var(--main-red);
+
+            border-radius: 4px;
+
+            background-color: var(--dark-bg);
+
+            color: white;
+
+        }
+
+        
+
+        .payment-form button {
+
+            background-color: var(--accent-red);
+
+            color: white;
+
+            border: none;
+
+            padding: 12px;
+
+            border-radius: 4px;
+
+            cursor: pointer;
+
+            width: 100%;
+
+            font-size: 16px;
+
+            transition: all 0.3s;
+
+        }
+
+        
+
+        .payment-form button:hover {
+
+            background-color: var(--dark-red);
+
+        }
+
+        
+
+        /* Footer */
+
+        footer {
+
+            background: linear-gradient(to right, var(--dark-red), var(--main-red));
+
+            color: white;
+
+            padding: 40px 0 20px;
+
+            text-align: center;
+
+            margin-top: 50px;
+
+        }
+
+        
+
+        .footer-content {
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+            gap: 30px;
+
+            margin-bottom: 30px;
+
+        }
+
+        
+
+        .footer-section h3 {
+
+            margin-bottom: 20px;
+
+            font-size: 20px;
+
+        }
+
+        
+
+        .footer-section p, .footer-section li {
+
+            margin-bottom: 10px;
+
+        }
+
+        
+
+        .footer-section ul {
+
+            list-style: none;
+
+        }
+
+        
+
+        .footer-section a {
+
+            color: white;
+
+            text-decoration: none;
+
+        }
+
+        
+
+        .footer-section a:hover {
+
+            text-decoration: underline;
+
+        }
+
+        
+
+        .social-icons {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 15px;
+
+            margin-top: 15px;
+
+        }
+
+        
+
+        .social-icons a {
+
+            display: inline-block;
+
+            width: 40px;
+
+            height: 40px;
+
+            line-height: 40px;
+
+            text-align: center;
+
+            background-color: rgba(255, 255, 255, 0.1);
+
+            border-radius: 50%;
+
+            transition: all 0.3s;
+
+        }
+
+        
+
+        .social-icons a:hover {
+
+            background-color: rgba(255, 255, 255, 0.2);
+
+            transform: translateY(-3px);
+
+        }
+
+        
+
+        .copyright {
+
+            margin-top: 30px;
+
+            padding-top: 20px;
+
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+        }
+
+        
+
+        /* Responsive Design */
+
+        @media (max-width: 768px) {
+
+            .header-content {
+
+                flex-direction: column;
+
+                text-align: center;
+
+            }
+
+            
+
+            nav ul {
+
+                margin-top: 15px;
+
+                justify-content: center;
+
+            }
+
+            
+
+            .hero-content h1 {
+
+                font-size: 36px;
+
+            }
+
+            
+
+            .hero-content p {
+
+                font-size: 18px;
+
+            }
+
+            
+
+            .social-links {
+
+                flex-direction: column;
+
+                align-items: center;
+
+            }
+
+            
+
+            .steps {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
     </style>
+
 </head>
+
 <body>
+
     <!-- Header -->
+
     <header>
+
         <div class="container">
+
             <div class="header-content">
+
                 <div class="logo">
+
                     <i class="fas fa-crown"></i>
+
                     Forever Store
+
                 </div>
+
                 <nav>
+
                     <ul>
+
                         <li><a href="#home">الرئيسية</a></li>
-                        <li><a href="#products">الاشتراكات</a></li>
+
+                        <li><a href="#products">الألعاب</a></li>
+
+                        <li><a href="#how-it-works">كيف يعمل</a></li>
+
                         <li><a href="#social">التواصل</a></li>
+
                         <li><a href="#contact">اتصل بنا</a></li>
+
                     </ul>
+
                 </nav>
+
             </div>
+
         </div>
+
     </header>
 
+
+
     <!-- Hero Section -->
+
     <section class="hero" id="home">
+
         <div class="container">
+
             <div class="hero-content">
+
                 <h1>Forever Store لخدمة المطفرين</h1>
-                <p>أفضل اشتراكات الترفيه والألعاب بأرخص الأسعار</p>
+
+                <p>أفضل الألعاب بأرخص الأسعار</p>
+
+                <a href="#products" class="cta-btn">اطلب الآن</a>
+
             </div>
+
         </div>
+
     </section>
+
+
 
     <!-- Products Section -->
+
     <section class="products" id="products">
+
         <div class="container">
-            <h2 class="section-title">الاشتراكات والمنتجات</h2>
-            <div class="category-section" id="subscriptionsSection">
-                <h3 class="category-title">الاشتراكات والمنتجات</h3>
-                <div class="products-grid" id="subscriptionsGrid"></div>
+
+            <h2 class="section-title">الألعاب المتوفرة</h2>
+
+            <div class="category-section">
+
+                <h3 class="category-title">ألعاب شهيرة</h3>
+
+                <div class="products-grid" id="productsGrid"></div>
+
             </div>
-            <div class="category-section" id="gamingSection">
-                <h3 class="category-title">باقة Gaming</h3>
-                <div class="products-grid" id="gamingGrid"></div>
-            </div>
-            <div class="category-section" id="pcGamesSection">
-                <h3 class="category-title">ألعاب بي سي (أوفلاين - مشترك)</h3>
-                <div class="products-grid" id="pcGamesGrid"></div>
-            </div>
+
         </div>
+
     </section>
+
+
+
+    <!-- How It Works Section -->
+
+    <section class="how-it-works" id="how-it-works">
+
+        <div class="container">
+
+            <h2 class="section-title">كيف يعمل</h2>
+
+            <p style="text-align: center; margin-bottom: 30px;">استكشف خطوات بسيطة توضح لك كيف تتم عملية الشراء والتفعيل بكل سرعة وسهولة</p>
+
+            <div class="steps">
+
+                <div class="step">
+
+                    <i class="fas fa-code"></i>
+
+                    <h3>استلم الحساب بعد الدفع</h3>
+
+                    <p>بمجرد إتمام الدفع، سيصلك الحساب مباشرة عبر الإنستغرام (@foreverstore_jo).</p>
+
+                </div>
+
+                <div class="step">
+
+                    <i class="fas fa-cog"></i>
+
+                    <h3>اتبع تعليمات التفعيل</h3>
+
+                    <p>نوفر لك خطوات بسيطة لتفعيل الحساب على المنصة أو التطبيق.</p>
+
+                </div>
+
+                <div class="step">
+
+                    <i class="fas fa-play"></i>
+
+                    <h3>استمتع بالخدمة فورًا</h3>
+
+                    <p>بعد التفعيل، استخدم اللعبة مباشرة دون تأخير.</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
 
     <!-- Social Media Section -->
+
     <section class="social-media" id="social">
+
         <div class="container">
+
             <h2 class="section-title">تواصل معنا</h2>
+
             <div class="social-links">
+
                 <a href="https://www.instagram.com/foreverstore_jo/" target="_blank" class="social-link">
+
                     <i class="fab fa-instagram"></i>
+
                     <span>إنستغرام</span>
+
                 </a>
+
                 <a href="https://discord.gg/SjK67aExfX" target="_blank" class="social-link">
+
                     <i class="fab fa-discord"></i>
+
                     <span>ديسكورد</span>
+
                 </a>
+
+                <a href="https://storees-shop.com/verify" target="_blank" class="social-link">
+
+                    <i class="fas fa-check-circle"></i>
+
+                    <span>موثوق</span>
+
+                </a>
+
             </div>
+
         </div>
+
     </section>
 
-    <!-- Admin Panel -->
-    <div class="container">
-        <div class="admin-panel" id="adminPanel">
-            <h2>لوحة تحكم المدير</h2>
-            <div class="add-product-form" id="addProductForm">
-                <input type="hidden" id="editProductId">
-                <input type="text" id="productName" placeholder="اسم الاشتراك">
-                <input type="text" id="productDesc" placeholder="وصف الاشتراك">
-                <input type="number" id="productPrice" placeholder="السعر (دينار أردني)">
-                <select id="productCategory">
-                    <option value="subscriptions">الاشتراكات والمنتجات</option>
-                    <option value="gaming">باقة gaming</option>
-                    <option value="pcGames">ألعاب بي سي (أوفلاين)</option>
-                </select>
-                <div class="image-upload" id="imageUpload">
-                    <i class="fas fa-cloud-upload-alt"></i>
-                    <p>انقر لرفع صورة للاشتراك</p>
-                    <img id="uploadedImage" src="" alt="الصورة المرفوعة">
-                    <input type="file" id="imageInput" accept="image/*" style="display: none;">
-                </div>
-                <button id="submitProductBtn" onclick="submitProduct()">إضافة اشتراك</button>
-            </div>
-            <div class="export-import">
-                <button onclick="exportProducts()">تصدير المنتجات</button>
-                <input type="file" id="importProducts" accept=".json" style="display: none;" onchange="importProducts(event)">
-                <button onclick="document.getElementById('importProducts').click()">استيراد المنتجات</button>
-            </div>
-            <div class="products-list" id="adminProductsList">
-                <h3>قائمة الاشتراكات</h3>
-                <!-- سيتم إضافة الاشتراكات هنا ديناميكيًا -->
-            </div>
-        </div>
-    </div>
+
 
     <!-- Payment Modal -->
+
     <div class="modal" id="paymentModal">
+
         <div class="modal-content">
+
             <span class="close-modal" onclick="closeModal()">&times;</span>
+
             <h2>إتمام عملية الشراء</h2>
+
             
+
             <div class="payment-details">
+
                 <h3>تفاصيل الطلب</h3>
-                <p id="selectedProduct">الاشتراك: </p>
+
+                <p id="selectedProduct">اللعبة: </p>
+
                 <p id="selectedPrice">السعر: </p>
+
             </div>
+
             
+
             <div class="wallet-info">
+
                 <h3>التحويل إلى أورنج موني</h3>
-                <p class="payment-info">رقم المحفظة: <strong>0785039924</strong></p>
+
+                <p class="payment-info">رقم المحفظة: <strong>+962785039924</strong></p>
+
                 <p>اسم صاحب المحفظة: <strong>محمد هنديه</strong></p>
+
+                <p style="font-size: 14px; color: var(--light-red); margin-top: 10px;">التسليم عبر الإنستغرام (@foreverstore_jo) بعد التحقق</p>
+
             </div>
+
             
+
             <form class="payment-form">
+
                 <input type="text" id="customerName" placeholder="اسمك بالكامل" required>
+
                 <input type="text" id="walletName" placeholder="اسم صاحب المحفظة المحول منها" required>
+
                 <input type="text" id="transactionId" placeholder="رقم المعاملة (إن وجد)">
+
                 <button type="button" onclick="completePayment()">تأكيد عملية الشراء</button>
+
             </form>
+
         </div>
+
     </div>
 
+
+
     <!-- Footer -->
+
     <footer id="contact">
+
         <div class="container">
+
             <div class="footer-content">
+
                 <div class="footer-section">
+
                     <h3>عن Forever Store</h3>
-                    <p>متجرنا متخصص في بيع اشتراكات الترفيه والألعاب بأسعار منافسة وخدمة عملاء متميزة.</p>
+
+                    <p>متجرنا متخصص في بيع الألعاب بأسعار منافسة وخدمة عملاء متميزة. التسليم عبر الإنستغرام لضمان السرعة والأمان.</p>
+
                 </div>
+
                 
+
                 <div class="footer-section">
+
                     <h3>طرق الدفع</h3>
+
                     <p>الدفع عبر تحويل الأموال إلى محفظة أورنج موني</p>
-                    <p>رقم المحفظة: 0785039924</p>
+
+                    <p>رقم المحفظة: +962785039924</p>
+
                     <p>اسم صاحب المحفظة: <strong>محمد هنديه</strong></p>
+
                     <p>رقم المحفظة واسم صاحبها ضمان لثقتكم، حيث يتطلب إنشاء محفظة أورنج موني تقديم هوية رسمية.</p>
+
                 </div>
+
                 
+
                 <div class="footer-section">
+
                     <h3>اتصل بنا</h3>
+
                     <p>للاستفسارات والدعم الفني:</p>
-                    <p>هاتف: 0785039924</p>
+
+                    <p>هاتف: +962785039924</p>
+
+                    <p>التسليم والدعم عبر الإنستغرام: @foreverstore_jo</p>
+
                     <div class="social-icons">
+
                         <a href="https://www.instagram.com/foreverstore_jo/" target="_blank"><i class="fab fa-instagram"></i></a>
+
                         <a href="https://discord.gg/SjK67aExfX" target="_blank"><i class="fab fa-discord"></i></a>
+
+                        <a href="https://storees-shop.com/verify" target="_blank"><i class="fas fa-check-circle"></i></a>
+
                     </div>
+
                 </div>
+
             </div>
+
             
+
             <div class="copyright">
+
                 <p>جميع الحقوق محفوظة &copy; 2025 Forever Store</p>
+
             </div>
+
         </div>
+
     </footer>
 
+
+
     <script>
-        // بيانات الاشتراكات
-        let products = [];
-        let editingProductId = null;
+
+        // بيانات الألعاب
+
+        let products = [
+
+            {
+
+                id: 1,
+
+                name: "Elden Ring",
+
+                description: "لعبة تقمص أدوار مفتوحة العالم مع عناصر Souls واستكشاف واسع.",
+
+                price: 18,
+
+                image: "https://via.placeholder.com/300x200?text=Elden+Ring",
+
+                category: "games"
+
+            },
+
+            {
+
+                id: 2,
+
+                name: "Mortal Kombat 1",
+
+                description: "لعبة قتال أسطورية مع شخصيات جديدة وميكانيكيات قتال محسنة.",
+
+                price: 15,
+
+                image: "https://via.placeholder.com/300x200?text=Mortal+Kombat+1",
+
+                category: "games"
+
+            },
+
+            {
+
+                id: 3,
+
+                name: "Ninja Gaiden 4",
+
+                description: "لعبة أكشن سريعة مع تحديات قتالية صعبة ومهارات النينجا.",
+
+                price: 16,
+
+                image: "https://via.placeholder.com/300x200?text=Ninja+Gaiden+4",
+
+                category: "games"
+
+            },
+
+            {
+
+                id: 4,
+
+                name: "Dying Light: The Beast",
+
+                description: "لعبة زومبي مفتوحة العالم مع أكشن البقاء وتجربة مثيرة.",
+
+                price: 14,
+
+                image: "https://via.placeholder.com/300x200?text=Dying+Light+The+Beast",
+
+                category: "games"
+
+            },
+
+            {
+
+                id: 5,
+
+                name: "Hollow Knight",
+
+                description: "لعبة ميترويدفانيا مليئة بالمغامرات والتحديات في عالم غامض.",
+
+                price: 10,
+
+                image: "https://via.placeholder.com/300x200?text=Hollow+Knight",
+
+                category: "games"
+
+            },
+
+            {
+
+                id: 6,
+
+                name: "Hollow Knight: Silksong",
+
+                description: "الجزء الثاني من Hollow Knight مع مغامرات جديدة لشخصية هورنت.",
+
+                price: 2,
+
+                image: "https://ibb.co/Ldp9kY8h",
+
+                category: "games"
+
+            },
+
+            {
+
+                id: 7,
+
+                name: "Silent Hill f",
+
+                description: "لعبة رعب جديدة في سلسلة Silent Hill مع أجواء غامضة ومخيفة.",
+
+                price: 17,
+
+                image: "https://via.placeholder.com/300x200?text=Silent+Hill+f",
+
+                category: "games"
+
+            }
+
+        ];
+
         
-        // تحميل البيانات من localStorage عند بدء التشغيل
+
+        // تحميل البيانات من localStorage
+
         document.addEventListener('DOMContentLoaded', function() {
-            try {
-                const savedProducts = localStorage.getItem('foreverStoreProducts');
-                console.log('Loading products from localStorage:', savedProducts);
-                if (savedProducts) {
-                    products = JSON.parse(savedProducts);
-                    // Migrate old categories if they exist
-                    products = products.map(product => ({
-                        ...product,
-                        category: product.category === 'streaming' || product.category === 'premium' ? 'subscriptions' : product.category
-                    }));
-                } else {
-                    // Default products if localStorage is empty
-                    products = [
-                        {
-                            id: Date.now() + 1,
-                            name: "اشتراك نتفليكس",
-                            description: "نفذت الكمية",
-                            price: 1.50,
-                            image: "https://via.placeholder.com/150",
-                            category: "subscriptions",
-                            outOfStock: true
-                        },
-                        {
-                            id: Date.now() + 2,
-                            name: "بلايستيشن بلس",
-                            description: "اشتراك سنوي للعب أونلاين",
-                            price: 30,
-                            image: "https://via.placeholder.com/150",
-                            category: "gaming"
-                        },
-                        {
-                            id: Date.now() + 3,
-                            name: "The Witcher 3: Wild Hunt",
-                            description: "لعبة أكشن ومغامرات ملحمية (مشترك)",
-                            price: 2,
-                            image: "https://via.placeholder.com/150",
-                            category: "pcGames"
-                        },
-                        {
-                            id: Date.now() + 4,
-                            name: "Stardew Valley",
-                            description: "لعبة محاكاة زراعية ومغامرات (مشترك)",
-                            price: 2,
-                            image: "https://via.placeholder.com/150",
-                            category: "pcGames"
-                        },
-                        {
-                            id: Date.now() + 5,
-                            name: "Hollow Knight",
-                            description: "لعبة منصات واستكشاف مليئة بالتحديات (مشترك)",
-                            price: 2,
-                            image: "https://via.placeholder.com/150",
-                            category: "pcGames"
-                        }
-                    ];
-                    saveProducts();
-                }
-                renderProducts();
-                renderAdminProductsList();
-            } catch (error) {
-                console.error('Error loading products from localStorage:', error);
-                alert('حدث خطأ أثناء تحميل المنتجات. يرجى التحقق من وحدة التحكم.');
-            }
-            
-            // إعداد رفع الصور
-            document.getElementById('imageUpload').addEventListener('click', function() {
-                document.getElementById('imageInput').click();
-            });
-            
-            document.getElementById('imageInput').addEventListener('change', handleImageUpload);
-        });
-        
-        // معالجة رفع الصورة
-        function handleImageUpload(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const uploadedImage = document.getElementById('uploadedImage');
-                    uploadedImage.src = e.target.result;
-                    uploadedImage.style.display = 'block';
-                    document.querySelector('#imageUpload p').textContent = 'تم رفع الصورة بنجاح';
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-        
-        // تصدير المنتجات
-        function exportProducts() {
-            try {
-                const productsData = JSON.stringify(products, null, 2);
-                const blob = new Blob([productsData], { type: 'application/json' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = 'foreverStoreProducts.json';
-                a.click();
-                URL.revokeObjectURL(url);
-                alert('تم تصدير المنتجات بنجاح!');
-            } catch (error) {
-                console.error('Error exporting products:', error);
-                alert('حدث خطأ أثناء تصدير المنتجات.');
-            }
-        }
-        
-        // استيراد المنتجات
-        function importProducts(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    try {
-                        const importedProducts = JSON.parse(e.target.result);
-                        if (Array.isArray(importedProducts)) {
-                            products = importedProducts.map(product => ({
-                                ...product,
-                                category: product.category === 'streaming' || product.category === 'premium' ? 'subscriptions' : product.category
-                            }));
-                            saveProducts();
-                            renderProducts();
-                            renderAdminProductsList();
-                            alert('تم استيراد المنتجات بنجاح!');
-                        } else {
-                            alert('ملف غير صالح! يجب أن يحتوي على قائمة منتجات.');
-                        }
-                    } catch (error) {
-                        console.error('Error importing products:', error);
-                        alert('خطأ أثناء استيراد المنتجات: ' + error.message);
-                    }
-                };
-                reader.readAsText(file);
-            }
-        }
-        
-        // فتح نموذج الدفع
-        function openPayment(productId) {
-            const product = products.find(p => p.id === productId);
-            if (product) {
-                if (product.outOfStock) {
-                    alert('هذا المنتج نفذت كميته!');
-                    return;
-                }
-                document.getElementById('selectedProduct').textContent = `الاشتراك: ${product.name}`;
-                document.getElementById('selectedPrice').textContent = `السعر: ${product.price} دينار أردني`;
-                document.getElementById('paymentModal').style.display = 'flex';
-            }
-        }
-        
-        // إغلاق النموذج
-        function closeModal() {
-            document.getElementById('paymentModal').style.display = 'none';
-        }
-        
-        // إتمام عملية الدفع مع إنشاء رقم عشوائي من 5 أرقام
-        function completePayment() {
-            const customerName = document.getElementById('customerName').value;
-            const walletName = document.getElementById('walletName').value;
-            
-            if (!customerName || !walletName) {
-                alert('يرجى ملء جميع الحقول المطلوبة!');
-                return;
-            }
-            
-            // إنشاء رقم عشوائي من 5 أرقام (من 10000 إلى 99999)
-            const randomNumber = Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000;
-            
-            alert(`شكراً لك! تم استلام طلبك وسيتم التفعيل خلال 24 ساعة.\nرقم التحقق العشوائي الخاص بك: ${randomNumber}\nيرجى إرسال هذا الرقم إلينا عبر الإنستغرام (@foreverstore_jo) لتأكيد الطلب.`);
-            document.getElementById('paymentModal').style.display = 'none';
-            
-            // مسح الحقول
-            document.getElementById('customerName').value = '';
-            document.getElementById('walletName').value = '';
-            document.getElementById('transactionId').value = '';
-        }
-        
-        // إضافة أو تعديل منتج
-        function submitProduct() {
-            const name = document.getElementById('productName').value;
-            const desc = document.getElementById('productDesc').value;
-            const price = document.getElementById('productPrice').value;
-            const category = document.getElementById('productCategory').value;
-            const imageSrc = document.getElementById('uploadedImage').src || '';
-            
-            if (!name || !desc || !price || imageSrc === '') {
-                alert('يرجى ملء جميع الحقول ورفع صورة!');
-                return;
-            }
-            
-            try {
-                if (editingProductId) {
-                    // تعديل المنتج الموجود
-                    const productIndex = products.findIndex(p => p.id === editingProductId);
-                    if (productIndex !== -1) {
-                        products[productIndex] = {
-                            id: editingProductId,
-                            name,
-                            description: desc,
-                            price: parseFloat(price),
-                            image: imageSrc,
-                            category
-                        };
-                        alert('تم تعديل الاشتراك بنجاح!');
-                    }
-                } else {
-                    // إضافة منتج جديد
-                    const newProduct = {
-                        id: Date.now(),
-                        name,
-                        description: desc,
-                        price: parseFloat(price),
-                        image: imageSrc,
-                        category
-                    };
-                    products.push(newProduct);
-                    alert('تم إضافة الاشتراك بنجاح!');
-                }
-                
+
+            const savedProducts = localStorage.getItem('foreverStoreProducts');
+
+            if (savedProducts) {
+
+                products = JSON.parse(savedProducts);
+
+            } else {
+
                 saveProducts();
-                renderProducts();
-                renderAdminProductsList();
-                resetForm();
-            } catch (error) {
-                console.error('Error submitting product:', error);
-                alert('حدث خطأ أثناء إضافة/تعديل المنتج.');
+
             }
-        }
+
+            renderProducts();
+
+        });
+
         
-        // حذف منتج
-        function deleteProduct(productId) {
-            if (confirm('هل أنت متأكد من حذف هذا الاشتراك؟')) {
-                try {
-                    products = products.filter(p => p.id !== productId);
-                    saveProducts();
-                    renderProducts();
-                    renderAdminProductsList();
-                    alert('تم حذف الاشتراك بنجاح!');
-                } catch (error) {
-                    console.error('Error deleting product:', error);
-                    alert('حدث خطأ أثناء حذف المنتج.');
-                }
-            }
-        }
-        
-        // تحرير منتج
-        function editProduct(productId) {
-            const product = products.find(p => p.id === productId);
-            if (product) {
-                editingProductId = productId;
-                document.getElementById('productName').value = product.name;
-                document.getElementById('productDesc').value = product.description;
-                document.getElementById('productPrice').value = product.price;
-                document.getElementById('productCategory').value = product.category;
-                document.getElementById('uploadedImage').src = product.image;
-                document.getElementById('uploadedImage').style.display = 'block';
-                document.querySelector('#imageUpload p').textContent = 'تم رفع الصورة بنجاح';
-                document.getElementById('submitProductBtn').textContent = 'حفظ التعديلات';
-            }
-        }
-        
-        // إعادة تعيين النموذج
-        function resetForm() {
-            editingProductId = null;
-            document.getElementById('productName').value = '';
-            document.getElementById('productDesc').value = '';
-            document.getElementById('productPrice').value = '';
-            document.getElementById('productCategory').value = 'subscriptions';
-            document.getElementById('uploadedImage').src = '';
-            document.getElementById('uploadedImage').style.display = 'none';
-            document.querySelector('#imageUpload p').textContent = 'انقر لرفع صورة للاشتراك';
-            document.getElementById('submitProductBtn').textContent = 'إضافة اشتراك';
-        }
-        
-        // حفظ المنتجات في localStorage
-        function saveProducts() {
-            try {
-                localStorage.setItem('foreverStoreProducts', JSON.stringify(products));
-                console.log('Products saved to localStorage:', products);
-            } catch (error) {
-                console.error('Error saving products to localStorage:', error);
-                alert('حدث خطأ أثناء حفظ المنتجات.');
-            }
-        }
-        
-        // عرض المنتجات في الصفحة الرئيسية
+
+        // عرض الألعاب
+
         function renderProducts() {
-            const subscriptionsGrid = document.getElementById('subscriptionsGrid');
-            const gamingGrid = document.getElementById('gamingGrid');
-            const pcGamesGrid = document.getElementById('pcGamesGrid');
+
+            const productsGrid = document.getElementById('productsGrid');
+
+            productsGrid.innerHTML = '';
+
             
-            // إفراغ الشبكات
-            subscriptionsGrid.innerHTML = '';
-            gamingGrid.innerHTML = '';
-            pcGamesGrid.innerHTML = '';
-            
-            // تصفية المنتجات حسب الفئة
-            const subscriptionsProducts = products.filter(p => p.category === 'subscriptions');
-            const gamingProducts = products.filter(p => p.category === 'gaming');
-            const pcGamesProducts = products.filter(p => p.category === 'pcGames');
-            
-            // إخفاء الأقسام إذا كانت فارغة
-            document.getElementById('subscriptionsSection').style.display = subscriptionsProducts.length > 0 ? 'block' : 'none';
-            document.getElementById('gamingSection').style.display = gamingProducts.length > 0 ? 'block' : 'none';
-            document.getElementById('pcGamesSection').style.display = pcGamesProducts.length > 0 ? 'block' : 'none';
-            
-            // عرض منتجات الاشتراكات والمنتجات
-            if (subscriptionsProducts.length === 0) {
-                subscriptionsGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px;">لا توجد اشتراكات أو منتجات متاحة</p>';
-            } else {
-                subscriptionsProducts.forEach(product => {
-                    const productCard = document.createElement('div');
-                    productCard.className = 'product-card' + (product.outOfStock ? ' out-of-stock' : '');
-                    productCard.innerHTML = `
-                        <div class="product-image">
-                            <img src="${product.image}" alt="${product.name}">
-                        </div>
-                        <div class="product-info">
-                            <h3>${product.name}</h3>
-                            <p>${product.description}</p>
-                            <div class="product-price">${product.price} دينار أردني</div>
-                            <button class="buy-btn" ${product.outOfStock ? 'disabled' : ''} onclick="openPayment(${product.id})">شراء الآن</button>
-                        </div>
-                    `;
-                    subscriptionsGrid.appendChild(productCard);
-                });
-            }
-            
-            // عرض منتجات Gaming
-            if (gamingProducts.length === 0) {
-                gamingGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px;">لا توجد اشتراكات متاحة في باقة Gaming</p>';
-            } else {
-                gamingProducts.forEach(product => {
-                    const productCard = document.createElement('div');
-                    productCard.className = 'product-card';
-                    productCard.innerHTML = `
-                        <div class="product-image">
-                            <img src="${product.image}" alt="${product.name}">
-                        </div>
-                        <div class="product-info">
-                            <h3>${product.name}</h3>
-                            <p>${product.description}</p>
-                            <div class="product-price">${product.price} دينار أردني</div>
-                            <button class="buy-btn" onclick="openPayment(${product.id})">شراء الآن</button>
-                        </div>
-                    `;
-                    gamingGrid.appendChild(productCard);
-                });
-            }
-            
-            // عرض ألعاب بي سي
-            if (pcGamesProducts.length === 0) {
-                pcGamesGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px;">لا توجد ألعاب بي سي متاحة</p>';
-            } else {
-                pcGamesProducts.forEach(product => {
-                    const productCard = document.createElement('div');
-                    productCard.className = 'product-card';
-                    productCard.innerHTML = `
-                        <div class="product-image">
-                            <img src="${product.image}" alt="${product.name}">
-                        </div>
-                        <div class="product-info">
-                            <h3>${product.name}</h3>
-                            <p>${product.description}</p>
-                            <div class="product-price">${product.price} دينار أردني</div>
-                            <button class="buy-btn" onclick="openPayment(${product.id})">شراء الآن</button>
-                        </div>
-                    `;
-                    pcGamesGrid.appendChild(productCard);
-                });
-            }
-        }
-        
-        // عرض قائمة المنتجات في لوحة الإدارة
-        function renderAdminProductsList() {
-            const adminProductsList = document.getElementById('adminProductsList');
-            adminProductsList.innerHTML = '<h3>قائمة الاشتراكات</h3>';
-            
-            if (products.length === 0) {
-                adminProductsList.innerHTML += '<p style="text-align: center;">لا توجد اشتراكات</p>';
-                return;
-            }
-            
+
             products.forEach(product => {
-                const productItem = document.createElement('div');
-                productItem.className = 'product-item';
-                productItem.innerHTML = `
-                    <div class="product-item-info">
-                        <strong>${product.name}</strong> - ${product.price} دينار أردني (${product.category === 'subscriptions' ? 'الاشتراكات والمنتجات' : product.category === 'gaming' ? 'باقة gaming' : 'ألعاب بي سي'}) ${product.outOfStock ? '(نفذت الكمية)' : ''}
+
+                const productCard = document.createElement('div');
+
+                productCard.className = 'product-card';
+
+                productCard.innerHTML = `
+
+                    <div class="product-image">
+
+                        <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/300x200?text=Loading+Failed'">
+
                     </div>
-                    <div class="product-item-actions">
-                        <button onclick="editProduct(${product.id})">تعديل</button>
-                        <button class="delete" onclick="deleteProduct(${product.id})">حذف</button>
+
+                    <div class="product-info">
+
+                        <h3>${product.name}</h3>
+
+                        <p>${product.description}</p>
+
+                        <div class="product-price">${product.price} دينار أردني</div>
+
+                        <button class="buy-btn" onclick="openPayment(${product.id})">اطلب الآن</button>
+
                     </div>
+
                 `;
-                adminProductsList.appendChild(productItem);
+
+                productsGrid.appendChild(productCard);
+
             });
+
         }
+
         
-        // إغلاق نموذج الدفع عند النقر خارج المحتوى
-        window.onclick = function(event) {
-            const modal = document.getElementById('paymentModal');
-            if (event.target === modal) {
-                closeModal();
+
+        // فتح نموذج الدفع
+
+        function openPayment(productId) {
+
+            const product = products.find(p => p.id === productId);
+
+            if (product) {
+
+                document.getElementById('selectedProduct').textContent = `اللعبة: ${product.name}`;
+
+                document.getElementById('selectedPrice').textContent = `السعر: ${product.price} دينار أردني`;
+
+                document.getElementById('paymentModal').style.display = 'flex';
+
             }
+
+        }
+
+        
+
+        // إغلاق النموذج
+
+        function closeModal() {
+
+            document.getElementById('paymentModal').style.display = 'none';
+
+        }
+
+        
+
+        // إتمام عملية الدفع
+
+        function completePayment() {
+
+            const customerName = document.getElementById('customerName').value;
+
+            const walletName = document.getElementById('walletName').value;
+
+            
+
+            if (!customerName || !walletName) {
+
+                alert('يرجى ملء جميع الحقول المطلوبة!');
+
+                return;
+
+            }
+
+            
+
+            const randomNumber = Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000;
+
+            
+
+            alert(`شكراً لك! تم استلام طلبك وسيتم التفعيل خلال 24 ساعة.\nرقم التحقق العشوائي الخاص بك: ${randomNumber}\nيرجى إرسال هذا الرقم إلينا عبر الإنستغرام (@foreverstore_jo) لتأكيد الطلب والتسليم.`);
+
+            document.getElementById('paymentModal').style.display = 'none';
+
+            
+
+            document.getElementById('customerName').value = '';
+
+            document.getElementById('walletName').value = '';
+
+            document.getElementById('transactionId').value = '';
+
+        }
+
+        
+
+        // حفظ الألعاب
+
+        function saveProducts() {
+
+            localStorage.setItem('foreverStoreProducts', JSON.stringify(products));
+
+        }
+
+        
+
+        // إغلاق النموذج عند النقر خارج
+
+        window.onclick = function(event) {
+
+            const modal = document.getElementById('paymentModal');
+
+            if (event.target === modal) {
+
+                closeModal();
+
+            }
+
         };
+
     </script>
+
 </body>
+
 </html>
+
+
