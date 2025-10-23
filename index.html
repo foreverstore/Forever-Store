@@ -16,6 +16,7 @@
             --dark-bg: #0D0000;
             --card-bg: #220000;
             --shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+            --success-green: #2E8B57;
         }
         
         * {
@@ -189,8 +190,8 @@
             box-shadow: var(--shadow);
             transition: transform 0.3s;
             border: 1px solid var(--main-red);
-            display: flex; /* Added */
-            flex-direction: column; /* Added */
+            display: flex;
+            flex-direction: column;
         }
         
         .product-card:hover {
@@ -204,6 +205,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
         }
         
         .product-image img {
@@ -217,12 +219,24 @@
             transform: scale(1.1);
         }
         
+        .sold-out-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: var(--dark-red);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            z-index: 2;
+        }
+        
         .product-info {
             padding: 20px;
-            min-height: 180px; 
+            min-height: 180px;
             display: flex;
             flex-direction: column;
-            flex-grow: 1; /* Added to make info fill space */
+            flex-grow: 1;
         }
         
         .product-info h3 {
@@ -231,9 +245,9 @@
         }
         
         .product-info p {
-            font-size: 14px; 
+            font-size: 14px;
             margin-bottom: 15px;
-            flex-grow: 1; /* Makes description take available space */
+            flex-grow: 1;
         }
         
         .product-price {
@@ -253,13 +267,12 @@
             width: 100%;
             font-size: 16px;
             transition: background-color 0.3s;
-            margin-top: auto; 
+            margin-top: auto;
         }
 
-        /* Style for sold out button */
         .buy-btn[disabled] {
-            background-color: #5D0000; /* Darker red */
-            color: #A52A2A; /* Lighter text */
+            background-color: #5D0000;
+            color: #A52A2A;
             cursor: not-allowed;
         }
         
@@ -434,6 +447,50 @@
             background-color: var(--dark-red);
         }
         
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: var(--success-green);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 4px;
+            box-shadow: var(--shadow);
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s;
+        }
+        
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .toast i {
+            font-size: 20px;
+        }
+        
+        /* Loading Spinner */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
         /* Footer */
         footer {
             background: linear-gradient(to right, var(--dark-red), var(--main-red));
@@ -511,6 +568,11 @@
             nav ul {
                 margin-top: 15px;
                 justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 5px;
             }
             
             .hero-content h1 {
@@ -528,6 +590,24 @@
             
             .steps {
                 grid-template-columns: 1fr;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                height: 400px;
+            }
+            
+            .hero-content h1 {
+                font-size: 28px;
             }
         }
     </style>
@@ -570,13 +650,15 @@
             <div class="category-section">
                 <h3 class="category-title">الاشتراكات</h3>
                 <div class="products-grid" id="subscriptionsGrid">
-                    </div>
+                    <!-- سيتم تعبئتها بالجافاسكريبت -->
+                </div>
             </div>
 
             <div class="category-section">
                 <h3 class="category-title">ألعاب ستيم (حسابات مشتركة)</h3>
                 <div class="products-grid" id="productsGrid">
-                    </div>
+                    <!-- سيتم تعبئتها بالجافاسكريبت -->
+                </div>
             </div>
         </div>
     </section>
@@ -617,7 +699,7 @@
                     <i class="fab fa-discord"></i>
                     <span>ديسكورد</span>
                 </a>
-                </div>
+            </div>
         </div>
     </section>
 
@@ -643,9 +725,16 @@
                 <input type="text" id="customerName" placeholder="اسمك بالكامل" required>
                 <input type="text" id="walletName" placeholder="اسم صاحب المحفظة المحول منها" required>
                 <input type="text" id="transactionId" placeholder="رقم المعاملة (إن وجد)">
-                <button type="button" onclick="completePayment()">تأكيد عملية الشراء</button>
+                <button type="button" onclick="completePayment()" id="paymentButton">
+                    <span id="paymentButtonText">تأكيد عملية الشراء</span>
+                </button>
             </form>
         </div>
+    </div>
+
+    <div class="toast" id="successToast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">تم إرسال طلبك بنجاح!</span>
     </div>
 
     <footer id="contact">
@@ -672,7 +761,7 @@
                     <div class="social-icons">
                         <a href="https://www.instagram.com/foreverstore_jo/" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="https://discord.gg/SjK67aExfX" target="_blank"><i class="fab fa-discord"></i></a>
-                        </div>
+                    </div>
                 </div>
             </div>
             
@@ -693,7 +782,7 @@
                 price: 1.50, 
                 image: "https://image.api.playstation.com/vulcan/ap/rnd/202302/2314/03b2283a0050212a792d405d40c11516a5b671c6f5051161.png", 
                 category: "subscription",
-                soldOut: true // خاصية جديدة للإشارة لنفاذ الكمية
+                soldOut: true
             },
             {
                 id: 102,
@@ -747,7 +836,7 @@
                 name: "The Witcher 3: Wild Hunt",
                 description: "حساب ستيم مشترك (اوفلاين). مغامرة جيرالت الأسطورية في عالم ضخم.",
                 price: 2, 
-                image: "https://image.api.playstation.com/vulcan/img/rnd/202010/2217/LsaRVlfP2s0R2o63bifkYI0W.png",
+                image: "https://ibb.co/BHYjBjV5",
                 category: "games",
                 soldOut: false
             },
@@ -800,6 +889,7 @@
 
                 productCard.innerHTML = `
                     <div class="product-image">
+                        ${product.soldOut ? '<div class="sold-out-badge">نفذت الكمية</div>' : ''}
                         <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/300x200?text=Image+Not+Found'">
                     </div>
                     <div class="product-info">
@@ -824,7 +914,7 @@
         // فتح نموذج الدفع (يمنع الفتح إذا نفذت الكمية)
         function openPayment(productId) {
             const product = products.find(p => p.id === productId);
-            if (product && !product.soldOut) { // التأكد أن المنتج موجود وغير مباع
+            if (product && !product.soldOut) {
                 document.getElementById('selectedProduct').textContent = `المنتج: ${product.name}`;
                 document.getElementById('selectedPrice').textContent = `السعر: ${product.price.toFixed(2)} دينار أردني`;
                 document.getElementById('paymentModal').style.display = 'flex';
@@ -840,20 +930,57 @@
         function completePayment() {
             const customerName = document.getElementById('customerName').value;
             const walletName = document.getElementById('walletName').value;
+            const paymentButton = document.getElementById('paymentButton');
+            const paymentButtonText = document.getElementById('paymentButtonText');
             
             if (!customerName || !walletName) {
-                alert('يرجى ملء جميع الحقول المطلوبة!');
+                showToast('يرجى ملء جميع الحقول المطلوبة!', 'error');
                 return;
             }
             
-            const randomNumber = Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000;
+            // إظهار مؤشر التحميل
+            paymentButton.disabled = true;
+            paymentButtonText.innerHTML = '<span class="loading"></span> جاري المعالجة...';
             
-            alert(`شكراً لك! تم استلام طلبك وسيتم التفعيل خلال 24 ساعة.\nرقم التحقق العشوائي الخاص بك: ${randomNumber}\nيرجى إرسال هذا الرقم إلينا عبر الإنستغرام (@foreverstore_jo) لتأكيد الطلب والتسليم.`);
-            document.getElementById('paymentModal').style.display = 'none';
+            // محاكاة عملية المعالجة
+            setTimeout(() => {
+                const randomNumber = Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000;
+                
+                // إعادة تعيين الزر
+                paymentButton.disabled = false;
+                paymentButtonText.textContent = 'تأكيد عملية الشراء';
+                
+                // إظهار رسالة النجاح
+                showToast(`تم استلام طلبك بنجاح! رقم التحقق: ${randomNumber}`);
+                
+                // إغلاق النموذج
+                document.getElementById('paymentModal').style.display = 'none';
+                
+                // إعادة تعيين النموذج
+                document.getElementById('customerName').value = '';
+                document.getElementById('walletName').value = '';
+                document.getElementById('transactionId').value = '';
+            }, 2000);
+        }
+        
+        // إظهار رسالة نجاح
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('successToast');
+            const toastMessage = document.getElementById('toastMessage');
             
-            document.getElementById('customerName').value = '';
-            document.getElementById('walletName').value = '';
-            document.getElementById('transactionId').value = '';
+            toastMessage.textContent = message;
+            
+            if (type === 'error') {
+                toast.style.backgroundColor = 'var(--main-red)';
+            } else {
+                toast.style.backgroundColor = 'var(--success-green)';
+            }
+            
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 5000);
         }
         
         // حفظ المنتجات
