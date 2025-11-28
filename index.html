@@ -13,9 +13,9 @@
             --accent-red: #FF2400;
             --text-color: #FFFFFF;
             --light-bg: #1A0000;
-            --dark-bg: #0D0000;
-            --card-bg: #220000;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+            --dark-bg: #050000;
+            --card-bg: #1f0000;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
             --success-green: #2E8B57;
         }
         
@@ -27,7 +27,7 @@
         }
         
         body {
-            background: linear-gradient(to bottom, var(--dark-bg), var(--light-bg));
+            background: linear-gradient(to bottom, var(--dark-bg), #2a0000);
             color: var(--text-color);
             line-height: 1.6;
             min-height: 100vh;
@@ -41,13 +41,14 @@
         
         /* Header Styles */
         header {
-            background: linear-gradient(to right, var(--dark-red), var(--main-red));
+            background: linear-gradient(to right, #000000, var(--dark-red));
             color: white;
             padding: 15px 0;
             box-shadow: var(--shadow);
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 2px solid var(--accent-red);
         }
         
         .header-content {
@@ -61,6 +62,8 @@
             font-weight: bold;
             display: flex;
             align-items: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
         .logo i {
@@ -87,21 +90,23 @@
         }
         
         nav ul li a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
+            color: var(--accent-red);
+            background-color: rgba(255, 36, 0, 0.1);
         }
         
-        /* Hero Section - UPDATED BACKGROUND */
+        /* Hero Section */
         .hero {
-            /* استخدم صورة ذات جودة عالية ومرتبطة بالألعاب والترفيه */
-            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80');
+            /* صورة خلفية مضمونة من Unsplash */
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(60, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
             background-size: cover;
             background-position: center;
-            height: 500px;
+            height: 550px;
             display: flex;
             align-items: center;
             color: white;
             text-align: center;
             position: relative;
+            box-shadow: inset 0 -50px 50px #000;
         }
         
         .hero-content {
@@ -111,73 +116,69 @@
         }
         
         .hero-content h1 {
-            font-size: 48px;
+            font-size: 56px;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            text-shadow: 0 0 10px var(--accent-red);
+            color: white;
+            font-weight: 800;
+        }
+        
+        .hero-content span {
             color: var(--accent-red);
         }
         
         .hero-content p {
-            font-size: 20px;
+            font-size: 22px;
             margin-bottom: 30px;
+            color: #ddd;
         }
         
         .hero-content .cta-btn {
             background-color: var(--accent-red);
             color: white;
-            padding: 12px 24px;
-            border-radius: 4px;
+            padding: 15px 35px;
+            border-radius: 50px;
             text-decoration: none;
-            font-size: 18px;
-            transition: background-color 0.3s;
+            font-size: 20px;
+            transition: all 0.3s;
             font-weight: bold;
+            box-shadow: 0 0 15px var(--dark-red);
+            border: 2px solid var(--accent-red);
         }
         
         .hero-content .cta-btn:hover {
-            background-color: var(--dark-red);
+            background-color: transparent;
+            color: var(--accent-red);
+            box-shadow: 0 0 25px var(--accent-red);
         }
         
         /* Products Section */
         .products {
-            padding: 50px 0;
+            padding: 70px 0;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             color: var(--accent-red);
-            font-size: 32px;
+            font-size: 36px;
             position: relative;
+            text-transform: uppercase;
         }
         
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent-red);
-            margin: 10px auto;
-        }
-
         .category-section {
-            margin-bottom: 40px;
+            margin-bottom: 60px;
         }
 
         .category-title {
-            font-size: 24px;
-            color: var(--accent-red);
-            margin-bottom: 20px;
-            text-align: center;
-            position: relative;
-        }
-
-        .category-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background-color: var(--main-red);
-            margin: 10px auto;
+            font-size: 26px;
+            color: white;
+            margin-bottom: 25px;
+            border-right: 5px solid var(--accent-red);
+            padding-right: 15px;
+            background: linear-gradient(to left, transparent, rgba(255, 36, 0, 0.1));
+            padding: 10px;
+            border-radius: 4px;
         }
         
         .products-grid {
@@ -188,23 +189,26 @@
         
         .product-card {
             background-color: var(--card-bg);
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
             box-shadow: var(--shadow);
-            transition: transform 0.3s;
-            border: 1px solid var(--main-red);
+            transition: all 0.3s;
+            border: 1px solid #330000;
             display: flex;
             flex-direction: column;
+            position: relative;
         }
         
         .product-card:hover {
             transform: translateY(-10px);
+            border-color: var(--accent-red);
+            box-shadow: 0 10px 20px rgba(255, 36, 0, 0.2);
         }
         
         .product-image {
-            height: 200px;
+            height: 220px;
             overflow: hidden;
-            background-color: var(--dark-bg);
+            background-color: #000;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -222,117 +226,150 @@
             transform: scale(1.1);
         }
         
-        .sold-out-badge {
+        /* Badges */
+        .badge {
             position: absolute;
-            top: 10px;
-            left: 10px;
-            background-color: var(--dark-red);
-            color: white;
-            padding: 5px 10px;
+            padding: 6px 12px;
             border-radius: 4px;
             font-weight: bold;
+            font-size: 14px;
             z-index: 2;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
         }
 
-        /* NEW - Special Offer Badge */
+        .sold-out-badge {
+            top: 10px;
+            left: 10px;
+            background-color: #333;
+            color: #aaa;
+            border: 1px solid #555;
+        }
+
         .special-offer-badge {
-            position: absolute;
             top: 10px;
             right: 10px;
-            background-color: #007bff; /* Blue for offer */
-            color: white;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-weight: bold;
-            z-index: 2;
+            background-color: #FFD700;
+            color: #000;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
         
         .product-info {
             padding: 20px;
-            min-height: 180px;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
         }
         
         .product-info h3 {
-            margin-bottom: 10px;
-            color: var(--accent-red);
+            margin-bottom: 8px;
+            color: white;
+            font-size: 18px;
         }
         
         .product-info p {
-            font-size: 14px;
+            font-size: 13px;
             margin-bottom: 15px;
+            color: #ccc;
             flex-grow: 1;
+            line-height: 1.4;
         }
         
         .product-price {
-            font-size: 22px;
+            font-size: 24px;
             font-weight: bold;
             color: var(--accent-red);
             margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .old-price {
+            font-size: 16px;
+            text-decoration: line-through;
+            color: #666;
+            margin-left: 10px;
         }
         
         .buy-btn {
-            background-color: var(--accent-red);
+            background: linear-gradient(45deg, var(--dark-red), var(--accent-red));
             color: white;
             border: none;
-            padding: 10px 15px;
-            border-radius: 4px;
+            padding: 12px 15px;
+            border-radius: 6px;
             cursor: pointer;
             width: 100%;
             font-size: 16px;
-            transition: background-color 0.3s;
+            font-weight: bold;
+            transition: all 0.3s;
             margin-top: auto;
         }
 
         .buy-btn[disabled] {
-            background-color: #5D0000;
-            color: #A52A2A;
+            background: #333;
+            color: #777;
             cursor: not-allowed;
         }
         
         .buy-btn:hover:not([disabled]) {
-            background-color: var(--dark-red);
+            filter: brightness(1.2);
+            box-shadow: 0 5px 15px rgba(255, 36, 0, 0.3);
         }
         
         /* How It Works Section */
         .how-it-works {
-            padding: 50px 0;
-            background-color: var(--card-bg);
-            border-top: 1px solid var(--main-red);
-            border-bottom: 1px solid var(--main-red);
+            padding: 80px 0;
+            background-color: #110000;
+            border-top: 2px solid var(--dark-red);
+            border-bottom: 2px solid var(--dark-red);
         }
         
         .steps {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
+            gap: 40px;
+            margin-top: 40px;
         }
         
         .step {
             text-align: center;
-            padding: 20px;
-            background-color: var(--dark-bg);
-            border-radius: 8px;
-            border: 1px solid var(--main-red);
+            padding: 30px 20px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 36, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-red);
         }
         
         .step i {
-            font-size: 40px;
+            font-size: 50px;
             color: var(--accent-red);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         
         .step h3 {
-            color: var(--accent-red);
-            margin-bottom: 10px;
+            color: white;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .step p {
+            color: #bbb;
         }
         
         /* Social Media Section */
         .social-media {
-            padding: 50px 0;
+            padding: 60px 0;
             text-align: center;
         }
         
@@ -350,28 +387,26 @@
             text-decoration: none;
             color: white;
             transition: all 0.3s;
-            padding: 20px;
-            border-radius: 8px;
-            background-color: var(--dark-bg);
-            width: 150px;
+            padding: 25px;
+            border-radius: 12px;
+            background-color: var(--card-bg);
+            width: 160px;
+            border: 1px solid #330000;
         }
         
         .social-link:hover {
             transform: translateY(-10px);
-            background-color: var(--main-red);
+            background-color: var(--accent-red);
+            border-color: var(--accent-red);
         }
         
         .social-link i {
-            font-size: 40px;
+            font-size: 45px;
             margin-bottom: 15px;
-            color: var(--accent-red);
+            color: var(--text-color);
         }
         
-        .social-link span {
-            font-weight: 500;
-        }
-        
-        /* Payment Modal (No change needed) */
+        /* Modal & Footer (Consistent Styles) */
         .modal {
             display: none;
             position: fixed;
@@ -379,29 +414,32 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 0.95);
             z-index: 1000;
             align-items: center;
             justify-content: center;
+            backdrop-filter: blur(5px);
         }
         
         .modal-content {
-            background-color: var(--card-bg);
-            padding: 30px;
-            border-radius: 8px;
-            width: 90%;
+            background-color: #1a0000;
+            padding: 40px;
+            border-radius: 15px;
+            width: 95%;
             max-width: 500px;
             position: relative;
             border: 2px solid var(--accent-red);
+            box-shadow: 0 0 30px rgba(255, 36, 0, 0.2);
         }
         
         .close-modal {
             position: absolute;
-            top: 10px;
-            left: 10px;
-            font-size: 24px;
+            top: 15px;
+            left: 20px;
+            font-size: 30px;
             cursor: pointer;
             color: var(--accent-red);
+            transition: color 0.3s;
         }
         
         .close-modal:hover {
@@ -411,87 +449,77 @@
         .payment-details {
             margin: 20px 0;
             padding: 20px;
-            background-color: var(--dark-bg);
+            background-color: #000;
             border-radius: 8px;
-        }
-        
-        .payment-details h3 {
-            color: var(--accent-red);
-            margin-bottom: 15px;
-        }
-        
-        .payment-info {
-            margin-bottom: 15px;
-            font-size: 18px;
-        }
-        
-        .wallet-info {
-            background-color: var(--dark-red);
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
             border-right: 4px solid var(--accent-red);
         }
         
-        .wallet-info strong {
-            color: var(--accent-red);
+        .wallet-info {
+            background-color: #2a0000;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+            border: 1px dashed var(--accent-red);
         }
         
         .payment-form input {
             width: 100%;
-            padding: 12px;
+            padding: 15px;
             margin-bottom: 15px;
-            border: 1px solid var(--main-red);
-            border-radius: 4px;
-            background-color: var(--dark-bg);
+            border: 1px solid #440000;
+            border-radius: 6px;
+            background-color: #0d0000;
             color: white;
+            font-size: 16px;
+        }
+        
+        .payment-form input:focus {
+            outline: none;
+            border-color: var(--accent-red);
         }
         
         .payment-form button {
             background-color: var(--accent-red);
             color: white;
             border: none;
-            padding: 12px;
-            border-radius: 4px;
+            padding: 15px;
+            border-radius: 6px;
             cursor: pointer;
             width: 100%;
-            font-size: 16px;
+            font-size: 18px;
+            font-weight: bold;
             transition: all 0.3s;
         }
         
         .payment-form button:hover {
-            background-color: var(--dark-red);
+            background-color: #cc1f00;
         }
-        
-        /* Toast Notification (No change needed) */
+
         .toast {
             position: fixed;
-            bottom: 20px;
-            left: 20px;
+            bottom: 30px;
+            left: 30px;
             background-color: var(--success-green);
             color: white;
-            padding: 15px 25px;
-            border-radius: 4px;
-            box-shadow: var(--shadow);
+            padding: 15px 30px;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
             z-index: 1001;
             display: flex;
             align-items: center;
-            gap: 10px;
-            transform: translateY(100px);
+            gap: 15px;
+            transform: translateY(150px);
             opacity: 0;
-            transition: all 0.3s;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
         }
         
         .toast.show {
             transform: translateY(0);
             opacity: 1;
         }
-        
-        .toast i {
-            font-size: 20px;
-        }
-        
-        /* Loading Spinner (No change needed) */
+
+        /* Loading */
         .loading {
             display: inline-block;
             width: 20px;
@@ -500,131 +528,38 @@
             border-radius: 50%;
             border-top-color: #fff;
             animation: spin 1s ease-in-out infinite;
-            margin-right: 10px;
         }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
-        /* Footer (No change needed) */
+        @keyframes spin { to { transform: rotate(360deg); } }
+
         footer {
-            background: linear-gradient(to right, var(--dark-red), var(--main-red));
+            background: #0a0000;
             color: white;
-            padding: 40px 0 20px;
-            text-align: center;
-            margin-top: 50px;
+            padding: 60px 0 30px;
+            border-top: 5px solid var(--main-red);
         }
         
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-        
-        .footer-section h3 {
-            margin-bottom: 20px;
-            font-size: 20px;
-        }
-        
-        .footer-section p, .footer-section li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-section ul {
-            list-style: none;
-        }
-        
-        .footer-section a {
-            color: white;
-            text-decoration: none;
-        }
-        
-        .footer-section a:hover {
-            text-decoration: underline;
-        }
-        
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 15px;
+            gap: 40px;
+            margin-bottom: 40px;
         }
         
         .social-icons a {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
-            text-align: center;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transition: all 0.3s;
+            margin: 0 5px;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            transition: color 0.3s;
         }
-        
-        .social-icons a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-3px);
-        }
+        .social-icons a:hover { color: var(--accent-red); }
         
         .copyright {
-            margin-top: 30px;
+            margin-top: 40px;
             padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            nav ul {
-                margin-top: 15px;
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-            
-            nav ul li {
-                margin: 5px;
-            }
-            
-            .hero-content h1 {
-                font-size: 36px;
-            }
-            
-            .hero-content p {
-                font-size: 18px;
-            }
-            
-            .social-links {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .steps {
-                grid-template-columns: 1fr;
-            }
-            
-            .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero {
-                height: 400px;
-            }
-            
-            .hero-content h1 {
-                font-size: 28px;
-            }
+            border-top: 1px solid #333;
+            text-align: center;
+            font-size: 14px;
+            color: #777;
         }
     </style>
 </head>
@@ -633,15 +568,14 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <i class="fas fa-crown"></i>
+                    <i class="fas fa-gamepad"></i>
                     Forever Store
                 </div>
                 <nav>
                     <ul>
                         <li><a href="#home">الرئيسية</a></li>
-                        <li><a href="#products">المنتجات</a></li>
-                        <li><a href="#how-it-works">كيف يعمل</a></li>
-                        <li><a href="#social">التواصل</a></li>
+                        <li><a href="#products">العروض</a></li>
+                        <li><a href="#how-it-works">الطريقة</a></li>
                         <li><a href="#contact">اتصل بنا</a></li>
                     </ul>
                 </nav>
@@ -652,56 +586,53 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <h1>Forever Store لخدمة المطفرين</h1>
-                <p>أفضل الألعاب والاشتراكات بأرخص الأسعار - عروض خاصة حصرية!</p>
-                <a href="#products" class="cta-btn">اطلب الآن</a>
+                <h1>FOREVER <span>STORE</span></h1>
+                <p>متجر اللاعبين الأول.. أسعار خرافية وخدمة فورية</p>
+                <p style="font-size: 16px; color: #aaa; margin-top: -20px; margin-bottom: 40px;">نضمن لك أفضل تجربة لعب بأقل التكاليف</p>
+                <a href="#products" class="cta-btn">تصفح العروض النارية <i class="fas fa-fire"></i></a>
             </div>
         </div>
     </section>
 
     <section class="products" id="products">
         <div class="container">
-            <h2 class="section-title">المنتجات المتوفرة</h2>
+            <h2 class="section-title">قائمة المنتجات</h2>
 
             <div class="category-section">
-                <h3 class="category-title">ألعاب سوني 4 (PlayStation 4) - 👑 عرض اليوم 👑</h3>
-                <div class="products-grid" id="ps4GamesGrid">
-                    </div>
+                <h3 class="category-title"><i class="fab fa-playstation"></i> عروض البلايستيشن 4 (الحصرية)</h3>
+                <div class="products-grid" id="ps4GamesGrid"></div>
             </div>
             
             <div class="category-section">
-                <h3 class="category-title">الاشتراكات</h3>
-                <div class="products-grid" id="subscriptionsGrid">
-                    </div>
+                <h3 class="category-title"><i class="fas fa-tv"></i> اشتراكات المشاهدة</h3>
+                <div class="products-grid" id="subscriptionsGrid"></div>
             </div>
 
             <div class="category-section">
-                <h3 class="category-title">ألعاب ستيم (حسابات مشتركة)</h3>
-                <div class="products-grid" id="gamesGrid">
-                    </div>
+                <h3 class="category-title"><i class="fab fa-steam"></i> ألعاب PC (ستيم)</h3>
+                <div class="products-grid" id="gamesGrid"></div>
             </div>
         </div>
     </section>
 
     <section class="how-it-works" id="how-it-works">
         <div class="container">
-            <h2 class="section-title">كيف يعمل</h2>
-            <p style="text-align: center; margin-bottom: 30px;">استكشف خطوات بسيطة توضح لك كيف تتم عملية الشراء والتفعيل بكل سرعة وسهولة</p>
+            <h2 class="section-title">طريقة الشراء واللعب</h2>
             <div class="steps">
                 <div class="step">
-                    <i class="fas fa-code"></i>
-                    <h3>استلم الحساب بعد الدفع</h3>
-                    <p>بمجرد إتمام الدفع، سيصلك الحساب مباشرة عبر الإنستغرام (@foreverstore.jo).</p>
+                    <i class="fas fa-wallet"></i>
+                    <h3>1. حول المبلغ</h3>
+                    <p>عن طريق محفظة أورنج موني بسهولة.</p>
                 </div>
                 <div class="step">
-                    <i class="fas fa-cog"></i>
-                    <h3>اتبع تعليمات التفعيل</h3>
-                    <p>نوفر لك خطوات بسيطة لتفعيل الحساب على المنصة أو التطبيق (اللعب اوفلاين للألعاب).</p>
+                    <i class="fab fa-instagram"></i>
+                    <h3>2. استلم الحساب</h3>
+                    <p>راسلنا على الانستغرام بصورة التحويل لاستلام معلوماتك فوراً.</p>
                 </div>
                 <div class="step">
-                    <i class="fas fa-play"></i>
-                    <h3>استمتع بالخدمة فورًا</h3>
-                    <p>بعد التفعيل، استخدم اللعبة أو الاشتراك مباشرة دون تأخير.</p>
+                    <i class="fas fa-gamepad"></i>
+                    <h3>3. العب أونلاين/اوفلاين</h3>
+                    <p>حسب نوع المنتج، استمتع باللعبة كاملة.</p>
                 </div>
             </div>
         </div>
@@ -709,15 +640,15 @@
 
     <section class="social-media" id="social">
         <div class="container">
-            <h2 class="section-title">تواصل معنا</h2>
+            <h2 class="section-title">تابعنا لكل جديد</h2>
             <div class="social-links">
                 <a href="https://www.instagram.com/foreverstore.jo/" target="_blank" class="social-link">
                     <i class="fab fa-instagram"></i>
-                    <span>إنستغرام</span>
+                    <span>Instagram</span>
                 </a>
                 <a href="https://discord.gg/SjK67aExfX" target="_blank" class="social-link">
                     <i class="fab fa-discord"></i>
-                    <span>ديسكورد</span>
+                    <span>Discord</span>
                 </a>
             </div>
         </div>
@@ -726,357 +657,229 @@
     <div class="modal" id="paymentModal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal()">&times;</span>
-            <h2>إتمام عملية الشراء</h2>
+            <div style="text-align: center; margin-bottom: 20px;">
+                <i class="fas fa-shopping-cart" style="font-size: 40px; color: var(--accent-red);"></i>
+                <h2 style="margin-top: 10px;">إتمام الطلب</h2>
+            </div>
             
             <div class="payment-details">
-                <h3>تفاصيل الطلب</h3>
-                <p id="selectedProduct">المنتج: </p>
-                <p id="selectedPrice">السعر: </p>
+                <p id="selectedProduct" style="font-size: 18px; font-weight: bold; margin-bottom: 5px;">المنتج: </p>
+                <p id="selectedPrice" style="color: var(--accent-red); font-size: 20px;">السعر: </p>
+                <p style="font-size: 12px; color: #888; margin-top: 5px;">* السعر شامل الدعم الفني</p>
             </div>
             
             <div class="wallet-info">
-                <h3>التحويل إلى أورنج موني</h3>
-                <p class="payment-info">رقم المحفظة: <strong>+962785039924</strong></p>
-                <p>اسم صاحب المحفظة: <strong>محمد هنديه</strong></p>
-                <p style="font-size: 14px; color: var(--light-red); margin-top: 10px;">التسليم عبر الإنستغرام (@foreverstore.jo) بعد التحقق</p>
+                <h3 style="color: var(--accent-red); margin-bottom: 10px;">Orange Money</h3>
+                <p style="font-size: 22px; font-weight: bold; letter-spacing: 1px;">0785039924</p>
+                <p style="color: #ccc; margin-top: 5px;">باسم: محمد هنديه</p>
             </div>
             
             <form class="payment-form">
-                <input type="text" id="customerName" placeholder="اسمك بالكامل" required>
-                <input type="text" id="walletName" placeholder="اسم صاحب المحفظة المحول منها" required>
-                <input type="text" id="transactionId" placeholder="رقم المعاملة (إن وجد)">
+                <input type="text" id="customerName" placeholder="اسمك الكريم" required>
+                <input type="text" id="walletName" placeholder="اسم المحول منه (للمطابقة)" required>
                 <button type="button" onclick="completePayment()" id="paymentButton">
-                    <span id="paymentButtonText">تأكيد عملية الشراء</span>
+                    <span id="paymentButtonText">تأكيد وإرسال الطلب</span>
                 </button>
             </form>
         </div>
     </div>
 
     <div class="toast" id="successToast">
-        <i class="fas fa-check-circle"></i>
-        <span id="toastMessage">تم إرسال طلبك بنجاح!</span>
+        <i class="fas fa-check-circle" style="font-size: 24px;"></i>
+        <div>
+            <h4 style="margin-bottom: 2px;">تم الطلب بنجاح!</h4>
+            <span id="toastMessage" style="font-size: 14px;">سيتم التواصل معك قريباً</span>
+        </div>
     </div>
 
     <footer id="contact">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>عن Forever Store</h3>
-                    <p>متجرنا متخصص في بيع الألعاب والاشتراكات بأسعار منافسة. التسليم عبر الإنستغرام لضمان السرعة والأمان.</p>
+                    <h3>Forever Store</h3>
+                    <p>وجهتك الأولى للألعاب الاقتصادية. نوفر لك أحدث الألعاب العالمية بأسعار في متناول الجميع.</p>
                 </div>
-                
                 <div class="footer-section">
-                    <h3>طرق الدفع</h3>
-                    <p>الدفع عبر تحويل الأموال إلى محفظة أورنج موني</p>
-                    <p>رقم المحفظة: +962785039924</p>
-                    <p>اسم صاحب المحفظة: <strong>محمد هنديه</strong></p>
-                    <p>رقم المحفظة واسم صاحبها ضمان لثقتكم، حيث يتطلب إنشاء محفظة أورنج موني تقديم هوية رسمية.</p>
+                    <h3>بيانات الدفع</h3>
+                    <p><i class="fas fa-mobile-alt"></i> محفظة أورنج موني</p>
+                    <p style="color: var(--accent-red); font-weight: bold;">0785039924</p>
+                    <p>محمد هنديه</p>
                 </div>
-                
                 <div class="footer-section">
-                    <h3>اتصل بنا</h3>
-                    <p>للاستفسارات والدعم الفني:</p>
-                    <p>هاتف: +962785039924</p>
-                    <p>التسليم والدعم عبر الإنستغرام: @foreverstore.jo</p>
-                    <div class="social-icons">
-                        <a href="https://www.instagram.com/foreverstore.jo/" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://discord.gg/SjK67aExfX" target="_blank"><i class="fab fa-discord"></i></a>
+                    <h3>الدعم الفني</h3>
+                    <p>نحن متواجدون لخدمتك عبر:</p>
+                    <p><i class="fab fa-instagram"></i> @foreverstore.jo</p>
+                    <div class="social-icons" style="justify-content: start; margin-top: 10px;">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
                     </div>
                 </div>
             </div>
-            
             <div class="copyright">
-                <p>جميع الحقوق محفوظة &copy; 2025 Forever Store</p>
+                <p>&copy; 2025 Forever Store. صنع بكل حب للاعبين.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // بيانات المنتجات (الاشتراكات والألعاب المحدثة)
+        // دالة لتوليد رابط صورة (يضمن أن الصورة دائماً تعمل)
+        // يستخدم خدمة placehold.co التي تولد صوراً بالنصوص
+        function getImg(text, bgColor = '220000', textColor = 'FF2400') {
+            const encodedText = encodeURIComponent(text);
+            return `https://placehold.co/600x400/${bgColor}/${textColor}?text=${encodedText}&font=roboto`;
+        }
+
         let products = [
-             // --- PS4 Games (NEW CATEGORY) ---
+            // --- عرض اليوم الناري (PS4) ---
             {
                 id: 200,
-                name: "FC 26 (PlayStation 4)",
-                description: "حساب سوني 4 مشترك (اوفلاين). **عرض اليوم الخاص!**",
+                name: "EA Sports FC 26 (PS4)",
+                description: "🔥 عرض خاص لليوم فقط! نسخة كاملة تدعم اللعب **أونلاين واوفلاين**. شامل التحديثات.",
                 price: 10.00, 
-                image: "https://cdn.pixabay.com/photo/2020/12/03/09/24/football-5799738_1280.png", // صورة رياضية
+                // صورة مخصصة للعرض
+                image: "https://placehold.co/600x400/000000/FFD700?text=FC+26+%0A+Online+%26+Offline+%0A+Special+Offer", 
                 category: "ps4_games",
-                soldOut: false
+                soldOut: false,
+                special: true
             },
+
             // --- الاشتراكات ---
             {
                 id: 101,
-                name: "Netflix (شهر)",
-                description: "نفذت الكمية حالياً. حساب مشترك.",
+                name: "Netflix (4K UHD)",
+                description: "شهر كامل - ملف مشترك - ضمان كامل المدة.",
                 price: 1.50,  
-                image: "https://image.api.playstation.com/vulcan/ap/rnd/202302/2314/03b2283a0050212a792d405d40c11516a5b671c6f5051161.png", 
+                image: getImg("Netflix Premium", "000000", "E50914"), 
                 category: "subscription",
                 soldOut: true
             },
             {
                 id: 102,
-                name: "Crunchyroll (شهر)",
-                description: "الحساب مشترك الخطة ميغا فان بدون وجع رأس الاعلانات والسيرفرات.",
+                name: "Crunchyroll Mega Fan",
+                description: "شهر كامل - بدون إعلانات - مشاهدة اوفلاين.",
                 price: 3.00,  
-                image: "https://image.api.playstation.com/vulcan/ap/rnd/202311/0815/be4e3f4e1f776d54203a3036b13e16104c3e803d6d06d4e2.png", 
+                image: getImg("Crunchyroll \n 1 Month", "F47521", "000000"), 
                 category: "subscription",
                 soldOut: false
             },
             {
                 id: 103,
-                name: "Crunchyroll (3 شهور)",
-                description: "الحساب مشترك الخطة ميغا فان بدون وجع رأس الاعلانات والسيرفرات.",
+                name: "Crunchyroll (3 Months)",
+                description: "3 شهور - باقة Mega Fan - ضمان كامل.",
                 price: 5.00,  
-                image: "https://image.api.playstation.com/vulcan/ap/rnd/202311/0815/be4e3f4e1f776d54203a3036b13e16104c3e803d6d06d4e2.png", 
-                category: "subscription",
-                soldOut: false
-            },
-            {
-                id: 104,
-                name: "Crunchyroll (سنة)",
-                description: "الحساب مشترك الخطة ميغا فان بدون وجع رأس الاعلانات والسيرفرات.",
-                price: 8.00,  
-                image: "https://image.api.playstation.com/vulcan/ap/rnd/202311/0815/be4e3f4e1f776d54203a3036b13e16104c3e803d6d06d4e2.png", 
+                image: getImg("Crunchyroll \n 3 Months", "F47521", "000000"), 
                 category: "subscription",
                 soldOut: false
             },
 
-            // --- ألعاب ستيم (الألعاب الأصلية) ---
+            // --- ألعاب ستيم (اوفلاين) ---
             {
                 id: 1,
-                name: "Elden Ring",
-                description: "حساب ستيم مشترك (اوفلاين). تحفة العالم المفتوح من FromSoftware.",
+                name: "Elden Ring + DLC",
+                description: "حساب ستيم مشترك (نمط القصة Offline). شامل إضافة Shadow of the Erdtree.",
                 price: 2.00, 
-                image: "https://image.api.playstation.com/vulcan/ap/rnd/202108/0410/0Jm1c6l2de3O0s8PAsjdf2Hi.png",
-                category: "games",
-                soldOut: false
-            },
-            {
-                id: 2,
-                name: "Dark Souls 3",
-                description: "حساب ستيم مشترك (اوفلاين). اختبر مهاراتك في لعبة الآكشن-آر بي جي الصعبة.",
-                price: 2.00, 
-                image: "https://image.api.playstation.com/vulcan/img/rnd/202010/2614/8L9sFL1f0b0Q0kCi0rO8nCIR.png",
-                category: "games",
-                soldOut: false
-            },
-            {
-                id: 3,
-                name: "The Witcher 3: Wild Hunt",
-                description: "حساب ستيم مشترك (اوفلاين). مغامرة جيرالت الأسطورية في عالم ضخم.",
-                price: 2.00, 
-                image: "https://image.api.playstation.com/vulcan/img/rnd/202010/2217/LsaRVlfP2s0R2o63bifkYI0W.png",
-                category: "games",
-                soldOut: false
-            },
-            {
-                id: 4,
-                name: "Dying Light 2",
-                description: "حساب ستيم مشترك (اوفلاين). عالم مفتوح، باركور، وزومبي.",
-                price: 2.00, 
-                image: "https://image.api.playstation.com/vulcan/ap/rnd/202106/2911/iUPQC2fOk8tq6vK4nKuaS1dJ.png", 
-                category: "games",
-                soldOut: false
-            },
-            {
-                id: 5,
-                name: "Silent Hill f",
-                description: "حساب ستيم مشترك (اوفلاين). الفصل الجديد من لعبة الرعب النفسي الشهيرة.",
-                price: 2.00, 
-                image: "https://image.api.playstation.com/vulcan/ap/rnd/202210/1821/x0m5Be0t90s5rec93c2kUf0M.png", 
-                category: "games",
-                soldOut: false
-            },
-            
-            // --- ألعاب جديدة مشهورة وترند حالياً (2 دينار) ---
-            {
-                id: 6,
-                name: "Dying Light: The Following - Enhanced Edition",
-                description: "حساب ستيم مشترك (اوفلاين). النسخة المحسنة من Dying Light مع محتوى إضافي.",
-                price: 2.00, 
-                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/239140/header.jpg", 
+                image: getImg("Elden Ring \n + DLC", "1a1a1a", "C0C0C0"),
                 category: "games",
                 soldOut: false
             },
             {
                 id: 7,
                 name: "Baldur's Gate 3",
-                description: "حساب ستيم مشترك (اوفلاين). لعبة الأدوار الحائزة على جوائز من Larian Studios.",
+                description: "لعبة السنة! حساب ستيم مشترك (Offline). تجربة RPG لا مثيل لها.",
                 price: 2.00, 
-                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1086940/header.jpg", 
+                image: getImg("Baldur's Gate 3", "2d0000", "ff9900"), 
                 category: "games",
                 soldOut: false
             },
             {
                 id: 8,
-                name: "Cyberpunk 2077",
-                description: "حساب ستيم مشترك (اوفلاين). مغامرة مستقبلية في مدينة Night City.",
+                name: "Cyberpunk 2077: Ultimate",
+                description: "شامل إضافة Phantom Liberty. حساب ستيم (Offline).",
                 price: 2.00, 
-                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg", 
-                category: "games",
-                soldOut: false
-            },
-            {
-                id: 9,
-                name: "Red Dead Redemption 2",
-                description: "حساب ستيم مشترك (اوفلاين). مغامرة الغرب الأمريكي من Rockstar Games.",
-                price: 2.00, 
-                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg", 
-                category: "games",
-                soldOut: false
-            },
-            {
-                id: 10,
-                name: "God of War",
-                description: "حساب ستيم مشترك (اوفلاين). رحلة كريتوس وأتريوس في عالم الأساطير الإسكندنافية.",
-                price: 2.00, 
-                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1593500/header.jpg", 
-                category: "games",
-                soldOut: false
-            },
-            {
-                id: 11,
-                name: "Hogwarts Legacy",
-                description: "حساب ستيم مشترك (اوفلاين). مغامرة في عالم هاري بوتر السحري.",
-                price: 2.00, 
-                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/990080/header.jpg", 
-                category: "games",
-                soldOut: false
-            },
-            {
-                id: 12,
-                name: "Resident Evil 4 Remake",
-                description: "حساب ستيم مشترك (اوفلاين). إعادة تصنيع كلاسيكية الرعب.",
-                price: 2.00, 
-                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg", 
-                category: "games",
-                soldOut: false
-            },
-            {
-                id: 13,
-                name: "Star Wars Jedi: Survivor",
-                description: "حساب ستيم مشترك (اوفلاين). مغامرة جديدة في عالم Star Wars.",
-                price: 2.00, 
-                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1774580/header.jpg", 
+                image: getImg("Cyberpunk 2077 \n Ultimate", "fcee0a", "000000"), 
                 category: "games",
                 soldOut: false
             },
             {
                 id: 14,
-                name: "Call of Duty: Modern Warfare II",
-                description: "حساب ستيم مشترك (اوفلاين). إعادة تصنيع لعبة الرماية الشهيرة.",
+                name: "Call of Duty: MW II",
+                description: "حساب ستيم مشترك لتختيم القصة (Campaign Only).",
                 price: 2.00, 
-                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1938090/header.jpg", 
-                category: "games",
-                soldOut: false
-            },
-            {
-                id: 15,
-                name: "Assassin's Creed Valhalla",
-                description: "حساب ستيم مشترك (اوفلاين). مغامرة الفايكنج في إنجلترا.",
-                price: 2.00, 
-                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/2208920/header.jpg", 
-                category: "games",
-                soldOut: false
-            },
-            {
-                id: 16,
-                name: "Final Fantasy VII Remake",
-                description: "حساب ستيم مشترك (اوفلاين). إعادة تصنيع كلاسيكية RPG.",
-                price: 2.00, 
-                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1462040/header.jpg", 
-                category: "games",
-                soldOut: false
-            },
-            {
-                id: 17,
-                name: "The Last of Us Part I",
-                description: "حساب ستيم مشترك (اوفلاين). رحلة جويل وإيلي في عالم ما بعد الانهيار.",
-                price: 2.00, 
-                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1888930/header.jpg", 
-                category: "games",
-                soldOut: false
-            },
-            {
-                id: 18,
-                name: "Spider-Man Remastered",
-                description: "حساب ستيم مشترك (اوفلاين). تجربة سبايدرمان الكلاسيكية على PC.",
-                price: 2.00, 
-                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1817070/header.jpg", 
-                category: "games",
-                soldOut: false
-            },
-            {
-                id: 19,
-                name: "Dead Space Remake",
-                description: "حساب ستيم مشترك (اوفلاين). إعادة تصنيع كلاسيكية الرعب في الفضاء.",
-                price: 2.00, 
-                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1693980/header.jpg", 
+                image: getImg("COD: MW II \n Campaign", "000000", "57e32c"), 
                 category: "games",
                 soldOut: false
             },
             {
                 id: 20,
                 name: "Forza Horizon 5",
-                description: "حساب ستيم مشترك (اوفلاين). سباقات مفتوحة في المكسيك.",
+                description: "أفضل لعبة سباقات. حساب ستيم مشترك (Offline Mode).",
                 price: 2.00, 
-                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1551360/header.jpg", 
+                image: getImg("Forza Horizon 5", "ff0055", "ffffff"), 
+                category: "games",
+                soldOut: false
+            },
+            {
+                id: 4,
+                name: "Black Myth: Wukong",
+                description: "اللعبة الترند! حساب ستيم مشترك (Offline). جرافيكس خيالي.",
+                price: 2.00, 
+                image: getImg("Black Myth: \n Wukong", "000000", "ffd700"), 
+                category: "games",
+                soldOut: false
+            },
+            {
+                id: 12,
+                name: "Resident Evil 4 Remake",
+                description: "رعب وبقاء. حساب ستيم مشترك (Offline).",
+                price: 2.00, 
+                image: getImg("Resident Evil 4", "300000", "ff0000"), 
                 category: "games",
                 soldOut: false
             }
         ];
         
-        // تحميل البيانات من localStorage
         document.addEventListener('DOMContentLoaded', function() {
-            const savedProducts = localStorage.getItem('foreverStoreProducts');
-            if (savedProducts) {
-                // دمج المنتجات الجديدة مع الموجودة في localStorage
-                const currentProducts = JSON.parse(savedProducts).filter(p => p.id < 200);
-                products = [...currentProducts, ...products.filter(p => p.id >= 200)]; // لإبقاء العرض الجديد دائمًا
-                // للتأكد من أننا نستخدم المنتجات المحدثة
-            } else {
-                saveProducts();
-            }
+            // نقوم دائماً بتحديث البيانات لضمان ظهور الصور الجديدة
             renderProducts();
         });
         
-        // عرض المنتجات (مُعدلة لدعم الفئة الجديدة)
         function renderProducts() {
             const gamesGrid = document.getElementById('gamesGrid');
             const subscriptionsGrid = document.getElementById('subscriptionsGrid'); 
-            const ps4GamesGrid = document.getElementById('ps4GamesGrid'); // شبكة ألعاب السوني الجديدة
+            const ps4GamesGrid = document.getElementById('ps4GamesGrid');
             
             gamesGrid.innerHTML = '';
             subscriptionsGrid.innerHTML = ''; 
-            ps4GamesGrid.innerHTML = ''; // تفريغ الشبكة الجديدة
+            ps4GamesGrid.innerHTML = ''; 
             
             products.forEach(product => {
                 const productCard = document.createElement('div');
                 productCard.className = 'product-card';
                 
-                // تحديد نص الزر وحالته (مفعل/معطل)
-                const isSpecialOffer = product.id === 200; // تحديد العرض الخاص
-                const buttonText = product.soldOut ? 'نفذت الكمية' : 'اطلب الآن';
+                const isSpecialOffer = product.special === true;
+                const buttonText = product.soldOut ? 'نفذت الكمية' : 'شراء الآن';
                 const buttonDisabled = product.soldOut ? 'disabled' : '';
+                const oldPrice = isSpecialOffer ? (product.price * 1.5).toFixed(2) : null;
 
                 productCard.innerHTML = `
                     <div class="product-image">
-                        ${product.soldOut ? '<div class="sold-out-badge">نفذت الكمية</div>' : ''}
-                        ${isSpecialOffer && !product.soldOut ? '<div class="special-offer-badge">عرض خاص!</div>' : ''}
-                        <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/300x200?text=Image+Not+Found'">
+                        ${product.soldOut ? '<div class="badge sold-out-badge">نفذت الكمية</div>' : ''}
+                        ${isSpecialOffer && !product.soldOut ? '<div class="badge special-offer-badge">عرض خاص 🔥</div>' : ''}
+                        <img src="${product.image}" alt="${product.name}">
                     </div>
                     <div class="product-info">
                         <h3>${product.name}</h3>
                         <p>${product.description}</p>
-                        <div class="product-price">${product.price.toFixed(2)} دينار أردني</div>
+                        <div class="product-price">
+                            <span>${product.price.toFixed(2)} دينار</span>
+                            ${oldPrice ? `<span class="old-price">${oldPrice} JD</span>` : ''}
+                        </div>
                         <button class="buy-btn" onclick="openPayment(${product.id})" ${buttonDisabled}>
-                            ${buttonText}
+                            ${buttonText} <i class="fas fa-shopping-basket"></i>
                         </button>
                     </div>
                 `;
                 
-                // توزيع المنتج على القسم الصحيح
                 if (product.category === 'games') {
                     gamesGrid.appendChild(productCard);
                 } else if (product.category === 'subscription') {
@@ -1087,22 +890,19 @@
             });
         }
         
-        // فتح نموذج الدفع (يمنع الفتح إذا نفذت الكمية)
         function openPayment(productId) {
             const product = products.find(p => p.id === productId);
             if (product && !product.soldOut) {
-                document.getElementById('selectedProduct').textContent = `المنتج: ${product.name}`;
-                document.getElementById('selectedPrice').textContent = `السعر: ${product.price.toFixed(2)} دينار أردني`;
+                document.getElementById('selectedProduct').textContent = `📦 المنتج: ${product.name}`;
+                document.getElementById('selectedPrice').textContent = `💰 السعر: ${product.price.toFixed(2)} دينار`;
                 document.getElementById('paymentModal').style.display = 'flex';
             }
         }
         
-        // إغلاق النموذج (لا تغيير)
         function closeModal() {
             document.getElementById('paymentModal').style.display = 'none';
         }
         
-        // إتمام عملية الدفع (لا تغيير)
         function completePayment() {
             const customerName = document.getElementById('customerName').value;
             const walletName = document.getElementById('walletName').value;
@@ -1110,67 +910,59 @@
             const paymentButtonText = document.getElementById('paymentButtonText');
             
             if (!customerName || !walletName) {
-                showToast('يرجى ملء جميع الحقول المطلوبة!', 'error');
+                // اهتزاز الزر في حال الخطأ
+                paymentButton.style.animation = "shake 0.5s";
+                setTimeout(() => paymentButton.style.animation = "", 500);
+                alert('يرجى تعبئة اسمك واسم المحفظة لنتأكد من التحويل!');
                 return;
             }
             
-            // إظهار مؤشر التحميل
             paymentButton.disabled = true;
             paymentButtonText.innerHTML = '<span class="loading"></span> جاري المعالجة...';
             
-            // محاكاة عملية المعالجة
             setTimeout(() => {
-                const randomNumber = Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000;
+                const randomNumber = Math.floor(Math.random() * 90000) + 10000;
                 
-                // إعادة تعيين الزر
                 paymentButton.disabled = false;
-                paymentButtonText.textContent = 'تأكيد عملية الشراء';
+                paymentButtonText.textContent = 'تأكيد وإرسال الطلب';
                 
-                // إظهار رسالة النجاح
-                showToast(`تم استلام طلبك بنجاح! رقم التحقق: ${randomNumber}`);
+                // رسالة مخصصة
+                const message = `تم استلام طلبك! صور الشاشة وراسلنا عالانستا برقم الطلب: #${randomNumber}`;
+                document.getElementById('toastMessage').textContent = message;
                 
-                // إغلاق النموذج
+                const toast = document.getElementById('successToast');
+                toast.classList.add('show');
+                
                 document.getElementById('paymentModal').style.display = 'none';
                 
-                // إعادة تعيين النموذج
                 document.getElementById('customerName').value = '';
                 document.getElementById('walletName').value = '';
-                document.getElementById('transactionId').value = '';
-            }, 2000);
+                
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 6000);
+            }, 1500);
         }
         
-        // إظهار رسالة نجاح (لا تغيير)
-        function showToast(message, type = 'success') {
-            const toast = document.getElementById('successToast');
-            const toastMessage = document.getElementById('toastMessage');
-            
-            toastMessage.textContent = message;
-            
-            if (type === 'error') {
-                toast.style.backgroundColor = 'var(--main-red)';
-            } else {
-                toast.style.backgroundColor = 'var(--success-green)';
-            }
-            
-            toast.classList.add('show');
-            
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 5000);
-        }
-        
-        // حفظ المنتجات (لا تغيير)
-        function saveProducts() {
-            localStorage.setItem('foreverStoreProducts', JSON.stringify(products));
-        }
-        
-        // إغلاق النموذج عند النقر خارج (لا تغيير)
         window.onclick = function(event) {
             const modal = document.getElementById('paymentModal');
             if (event.target === modal) {
                 closeModal();
             }
         };
+
+        // إضافة حركة الاهتزاز في CSS
+        const styleSheet = document.createElement("style");
+        styleSheet.innerText = `
+            @keyframes shake {
+                0% { transform: translateX(0); }
+                25% { transform: translateX(-5px); }
+                50% { transform: translateX(5px); }
+                75% { transform: translateX(-5px); }
+                100% { transform: translateX(0); }
+            }
+        `;
+        document.head.appendChild(styleSheet);
     </script>
 </body>
 </html>
