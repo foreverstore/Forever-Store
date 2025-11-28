@@ -90,7 +90,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-right: auto; /* Push to left in RTL */
+            margin-right: auto;
             margin-left: 20px;
         }
 
@@ -203,7 +203,7 @@
         }
         
         .product-image {
-            height: 160px;
+            height: 180px;
             width: 100%;
             position: relative;
             background: #000;
@@ -212,7 +212,8 @@
         .product-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* يضمن ملء الصورة */
+            object-fit: cover;
+            object-position: top;
         }
         
         .badge {
@@ -476,8 +477,8 @@
                 <h3>عن Forever Store</h3>
                 <p class="footer-bio">متجرنا متخصص في بيع الألعاب والاشتراكات بأسعار منافسة. التسليم عبر الإنستغرام لضمان السرعة والأمان. جميع منتجاتنا تأتي مع <strong>ضمان مدى الحياة</strong> لراحتكم.</p>
                 <div class="social-icons">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="https://www.instagram.com/foreverstore.jo/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://discord.gg/SjK67aExfX" target="_blank"><i class="fab fa-discord"></i></a>
                 </div>
             </div>
 
@@ -522,26 +523,25 @@
     <div class="toast" id="toast">تم استلام طلبك بنجاح!</div>
 
     <script>
-        // أسعار الصرف التقريبية مقابل الدينار الأردني
+        // أسعار الصرف التقريبية
         const rates = {
             JOD: 1,
             SAR: 5.30,
             AED: 5.17,
             USD: 1.41,
-            EGP: 70.00, // سعر تقريبي متغير
+            EGP: 70.00,
             QAR: 5.15
         };
 
         const products = [
-            // --- PS4 / PS5 ---
+            // --- PS4 ---
             {
                 id: 200,
                 name: "EA SPORTS FC 26",
                 desc: "عرض اليوم! نسخة كاملة (أونلاين + اوفلاين). ضمان مدى الحياة.",
                 price: 10.00,
                 oldPrice: 35.00,
-                // صورة مضمونة لكرة القدم
-                img: "https://images.unsplash.com/photo-1518091043644-c1d4457512c6?q=80&w=1000&auto=format&fit=crop", 
+                img: "image_fcb3e4.jpg", 
                 type: "ps4",
                 special: true
             },
@@ -552,7 +552,6 @@
                 name: "Netflix Premium (4K)",
                 desc: "ملف خاص - ضمان مدى الحياة.",
                 price: 1.50,
-                // شعار نتفلكس الرسمي
                 img: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1200px-Netflix_2015_logo.svg.png",
                 type: "sub",
                 soldOut: true
@@ -562,8 +561,7 @@
                 name: "Crunchyroll Mega Fan (1 Month)",
                 desc: "شهر كامل بدون إعلانات. ضمان مدى الحياة.",
                 price: 3.00,
-                // شعار كرانشي رول الرسمي
-                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Crunchyroll_2018.png/800px-Crunchyroll_2018.png",
+                img: "image_fcb0f7.png",
                 type: "sub"
             },
             {
@@ -571,7 +569,7 @@
                 name: "Crunchyroll Mega Fan (3 Months)",
                 desc: "اشتراك 3 شهور. توفير وضمان مدى الحياة.",
                 price: 5.00,  
-                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Crunchyroll_2018.png/800px-Crunchyroll_2018.png",
+                img: "image_fcb0f7.png",
                 type: "sub"
             },
             {
@@ -579,7 +577,7 @@
                 name: "Crunchyroll Mega Fan (1 Year)",
                 desc: "اشتراك سنة كاملة. أفضل توفير وضمان.",
                 price: 8.00,  
-                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Crunchyroll_2018.png/800px-Crunchyroll_2018.png",
+                img: "image_fcb0f7.png",
                 type: "sub"
             },
 
@@ -671,6 +669,14 @@
                 price: 2.00,
                 img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg",
                 type: "pc"
+            },
+            {
+                id: 12,
+                name: "Mortal Kombat 1",
+                desc: "قتال دموي. ضمان مدى الحياة.",
+                price: 2.00,
+                img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1971870/header.jpg",
+                type: "pc"
             }
         ];
 
@@ -697,7 +703,6 @@
                 const soldBadge = p.soldOut ? '<div class="badge badge-sold">نفذت الكمية</div>' : '';
                 const oldPriceHtml = displayOldPrice ? `<span class="old-price">${displayOldPrice} ${currentCurrency}</span>` : '';
 
-                // نستخدم data-base-price لتخزين السعر الأصلي بالدينار
                 card.innerHTML = `
                     <div class="product-image">
                         ${badge} ${soldBadge}
@@ -708,7 +713,7 @@
                         <h3>${p.name}</h3>
                         <p>${p.desc}</p>
                         <div class="price-row">
-                            <span class="price" data-base="${p.price}">${displayPrice} ${currentCurrency}</span>
+                            <span class="price">${displayPrice} ${currentCurrency}</span>
                             ${oldPriceHtml}
                         </div>
                         <button class="buy-btn" onclick="openModal(${p.id}, '${displayPrice} ${currentCurrency}')" ${btnState}>${btnText}</button>
@@ -721,9 +726,8 @@
             });
         }
 
-        // دالة تحديث العملة عند تغيير القائمة
         function updateCurrency() {
-            render(); // إعادة رسم المنتجات بالأسعار الجديدة
+            render(); 
         }
 
         function openModal(id, priceStr) {
@@ -731,7 +735,7 @@
             if(!product) return;
             
             document.getElementById('modalPrdName').innerText = product.name;
-            document.getElementById('modalPrdPrice').innerText = priceStr; // السعر بالعملة المختارة
+            document.getElementById('modalPrdPrice').innerText = priceStr;
             document.getElementById('paymentModal').style.display = 'flex';
         }
 
@@ -757,7 +761,6 @@
             document.getElementById('walletName').value = '';
         }
 
-        // تشغيل أولي
         render();
         
         window.onclick = function(e) {
