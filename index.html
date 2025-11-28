@@ -9,11 +9,8 @@
         :root {
             --main-red: #8B0000;
             --dark-red: #5D0000;
-            --accent-red: #FF2400; /* أحمر فاقع للعروض */
+            --accent-red: #FF2400;
             --text-color: #FFFFFF;
-            --bg-gradient-start: #0f0c29;
-            --bg-gradient-mid: #302b63;
-            --bg-gradient-end: #24243e;
             --card-bg: #1a1a1a;
             --shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
         }
@@ -83,7 +80,6 @@
         
         /* Hero Section */
         .hero {
-            /* خلفية متحركة أو صورة قوية */
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/library_hero.jpg');
             background-size: cover;
             background-position: center;
@@ -165,7 +161,7 @@
         }
         
         .product-image {
-            height: 160px; /* ارتفاع مناسب للصور الأفقية */
+            height: 160px;
             width: 100%;
             position: relative;
         }
@@ -173,7 +169,7 @@
         .product-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* لضمان ملء الصورة للمساحة */
+            object-fit: cover;
         }
         
         .badge {
@@ -272,32 +268,50 @@
             font-size: 18px;
         }
 
-        /* Toast */
-        .toast {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: var(--accent-red);
-            color: white;
-            padding: 15px 30px;
-            border-radius: 30px;
-            opacity: 0;
-            transition: 0.4s;
-            z-index: 2000;
-            font-weight: bold;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-        }
-        .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
-
-        /* Footer */
+        /* Footer & Payment Logos */
         footer {
             background: #0d0d0d;
-            padding: 40px 0;
+            padding: 40px 0 20px;
             text-align: center;
             border-top: 2px solid #333;
             margin-top: 50px;
         }
+
+        .footer-payments {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #222;
+        }
+
+        .footer-payments h4 {
+            color: #888;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .payment-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .payment-img {
+            height: 40px; /* حجم موحد للشعارات */
+            width: auto;
+            filter: grayscale(100%) brightness(200%); /* لون رمادي فاتح */
+            opacity: 0.6;
+            transition: all 0.3s ease;
+            object-fit: contain;
+        }
+
+        .payment-img:hover {
+            filter: grayscale(0%) brightness(100%); /* رجوع للألوان الأصلية */
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
         .social-icons a { font-size: 24px; color: white; margin: 0 10px; transition: 0.3s; }
         .social-icons a:hover { color: var(--accent-red); }
 
@@ -332,7 +346,6 @@
     </section>
 
     <div class="container products" id="products">
-
         <h2 class="category-title" id="ps4"><i class="fab fa-playstation"></i> عروض PlayStation الحصرية</h2>
         <div class="products-grid" id="ps4Grid"></div>
 
@@ -341,17 +354,32 @@
 
         <h2 class="category-title" id="pc"><i class="fab fa-steam"></i> ألعاب PC / Steam (Offline)</h2>
         <div class="products-grid" id="pcGrid"></div>
-
     </div>
 
     <footer>
         <div class="container">
             <h3>Forever Store</h3>
-            <p>جميع الحقوق محفوظة © 2025</p>
-            <div class="social-icons" style="margin-top: 20px;">
+            <p style="margin-bottom: 20px; color: #aaa;">نضمن لك أفضل تجربة لعب بأقل التكاليف</p>
+            
+            <div class="social-icons">
                 <a href="#"><i class="fab fa-instagram"></i></a>
                 <a href="#"><i class="fab fa-discord"></i></a>
             </div>
+
+            <div class="footer-payments">
+                <h4>طرق الدفع المتاحة</h4>
+                <div class="payment-icons">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Orange_logo.svg" title="Orange Money" class="payment-img" alt="Orange Money">
+                    
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/CliQ_logo.png/640px-CliQ_logo.png" title="CliQ" class="payment-img" style="height: 30px;" alt="CliQ">
+                    
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" title="PayPal" class="payment-img" alt="PayPal">
+                    
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Binance_Logo.svg" title="Binance" class="payment-img" alt="Binance">
+                </div>
+            </div>
+
+            <p style="margin-top: 30px; font-size: 12px; color: #555;">جميع الحقوق محفوظة © 2025</p>
         </div>
     </footer>
 
@@ -369,6 +397,8 @@
                 0785039924<br>
                 <span style="font-size:14px; font-weight:normal;">محمد هنديه</span>
             </div>
+            
+            <p style="font-size: 13px; color: #aaa; margin-bottom: 15px;">للدفع عبر PayPal أو Binance أو CliQ يرجى التواصل معنا عبر الإنستغرام أو الديسكورد للتفاصيل.</p>
 
             <input type="text" id="custName" placeholder="اسمك">
             <input type="text" id="walletName" placeholder="اسم المحول منه">
@@ -379,7 +409,6 @@
     <div class="toast" id="toast">تم استلام طلبك بنجاح!</div>
 
     <script>
-        // قاعدة البيانات (تم استخدام صور ألعاب حقيقية من Steam و مصادر موثوقة)
         const products = [
             // --- PS4 / PS5 Special ---
             {
@@ -388,7 +417,6 @@
                 desc: "عرض اليوم! نسخة كاملة (أونلاين + اوفلاين) مع ضمان.",
                 price: 10.00,
                 oldPrice: 35.00,
-                // صورة ترويجية لكرة القدم (بديلة لأن اللعبة لم تصدر، لكنها واقعية جداً)
                 img: "https://image.api.playstation.com/vulcan/ap/rnd/202405/2312/7504443916723235300f34047e174418641957488950575e.jpg", 
                 type: "ps4",
                 special: true
@@ -413,7 +441,7 @@
                 type: "sub"
             },
 
-            // --- PC Games (Steam) - صور حقيقية من متجر ستيم ---
+            // --- PC Games (Steam) ---
             {
                 id: 1,
                 name: "Grand Theft Auto V",
@@ -517,7 +545,6 @@
             const subs = document.getElementById('subsGrid');
             const pc = document.getElementById('pcGrid');
             
-            // تفريغ المحتوى
             ps4.innerHTML = subs.innerHTML = pc.innerHTML = '';
 
             products.forEach(p => {
@@ -552,7 +579,6 @@
             });
         }
 
-        // Modal Functions
         function openModal(id) {
             const product = products.find(p => p.id === id);
             if(!product) return;
@@ -575,25 +601,20 @@
                 return;
             }
 
-            // إظهار رسالة النجاح
             closeModal();
             const toast = document.getElementById('toast');
             toast.classList.add('show');
             setTimeout(() => toast.classList.remove('show'), 4000);
 
-            // تفريغ الحقول
             document.getElementById('custName').value = '';
             document.getElementById('walletName').value = '';
         }
 
-        // تشغيل عند التحميل
         render();
         
-        // إغلاق المودال عند الضغط خارجه
         window.onclick = function(e) {
             if(e.target == document.getElementById('paymentModal')) closeModal();
         }
     </script>
-
 </body>
 </html>
