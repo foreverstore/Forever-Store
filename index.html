@@ -36,9 +36,9 @@
         
         /* Header */
         header {
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             border-bottom: 3px solid var(--main-red);
-            padding: 15px 0;
+            padding: 10px 0;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -49,22 +49,63 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
         }
         
-        .logo {
-            font-size: 26px;
+        /* Logo */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent-red);
+            box-shadow: 0 0 10px var(--dark-red);
+        }
+
+        .logo-text {
+            font-size: 22px;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 1px;
             color: white;
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+        
+        .logo-text span {
+            font-size: 12px;
+            color: var(--accent-red);
+            letter-spacing: 2px;
+        }
+
+        /* Currency Switcher */
+        .currency-wrapper {
             display: flex;
             align-items: center;
             gap: 10px;
+            margin-right: auto; /* Push to left in RTL */
+            margin-left: 20px;
+        }
+
+        .currency-select {
+            background: #222;
+            color: white;
+            border: 1px solid var(--accent-red);
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            outline: none;
         }
         
-        .logo i { color: var(--accent-red); }
-        
-        nav ul { display: flex; list-style: none; gap: 20px; }
+        nav ul { display: flex; list-style: none; gap: 15px; }
         nav ul li a {
             color: #ddd;
             text-decoration: none;
@@ -72,6 +113,7 @@
             transition: 0.3s;
             padding: 5px 10px;
             border-radius: 5px;
+            font-size: 14px;
         }
         nav ul li a:hover {
             color: white;
@@ -83,7 +125,7 @@
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/library_hero.jpg');
             background-size: cover;
             background-position: center;
-            height: 500px;
+            height: 450px;
             display: flex;
             align-items: center;
             text-align: center;
@@ -96,7 +138,7 @@
         }
         
         .hero-content h1 {
-            font-size: 50px;
+            font-size: 45px;
             margin-bottom: 15px;
             text-shadow: 0 0 20px var(--main-red);
         }
@@ -106,8 +148,8 @@
         .cta-btn {
             background: var(--accent-red);
             color: white;
-            padding: 15px 40px;
-            font-size: 20px;
+            padding: 12px 35px;
+            font-size: 18px;
             font-weight: bold;
             text-decoration: none;
             border-radius: 50px;
@@ -124,23 +166,23 @@
         }
         
         /* Products */
-        .products { padding: 60px 0; }
+        .products { padding: 50px 0; }
         
         .category-title {
-            font-size: 24px;
+            font-size: 22px;
             background: linear-gradient(90deg, var(--main-red), transparent);
-            padding: 10px 20px;
-            margin-bottom: 30px;
+            padding: 8px 20px;
+            margin-bottom: 25px;
             border-radius: 4px;
             display: inline-block;
-            min-width: 300px;
+            min-width: 250px;
         }
         
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 25px;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
         }
         
         .product-card {
@@ -164,19 +206,20 @@
             height: 160px;
             width: 100%;
             position: relative;
+            background: #000;
         }
         
         .product-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; /* يضمن ملء الصورة */
         }
         
         .badge {
             position: absolute;
             top: 10px;
-            padding: 5px 10px;
-            font-size: 12px;
+            padding: 4px 8px;
+            font-size: 11px;
             font-weight: bold;
             border-radius: 3px;
             z-index: 2;
@@ -188,9 +231,9 @@
             position: absolute;
             bottom: 0;
             width: 100%;
-            background: rgba(46, 139, 87, 0.9);
+            background: rgba(46, 139, 87, 0.95);
             color: white;
-            font-size: 12px;
+            font-size: 11px;
             text-align: center;
             padding: 3px 0;
             font-weight: bold;
@@ -205,8 +248,8 @@
             flex-direction: column;
         }
         
-        .product-info h3 { font-size: 17px; margin-bottom: 5px; color: white; height: 40px; overflow: hidden; }
-        .product-info p { font-size: 13px; color: #bbb; margin-bottom: 15px; line-height: 1.4; height: 40px; overflow: hidden; }
+        .product-info h3 { font-size: 16px; margin-bottom: 5px; color: white; height: 40px; overflow: hidden; }
+        .product-info p { font-size: 12px; color: #bbb; margin-bottom: 15px; line-height: 1.4; height: 35px; overflow: hidden; }
         
         .price-row {
             margin-top: auto;
@@ -216,8 +259,8 @@
             margin-bottom: 10px;
         }
         
-        .price { font-size: 20px; font-weight: bold; color: var(--accent-red); }
-        .old-price { font-size: 14px; text-decoration: line-through; color: #666; }
+        .price { font-size: 18px; font-weight: bold; color: var(--accent-red); }
+        .old-price { font-size: 13px; text-decoration: line-through; color: #666; }
         
         .buy-btn {
             width: 100%;
@@ -279,7 +322,7 @@
             font-size: 18px;
         }
 
-        /* Footer & Payment Logos */
+        /* Footer */
         footer {
             background: #0d0d0d;
             padding: 40px 0 20px;
@@ -301,6 +344,7 @@
             margin: 0 auto;
             line-height: 1.8;
             color: #ccc;
+            font-size: 14px;
         }
 
         .footer-payments {
@@ -320,12 +364,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 25px;
+            gap: 20px;
             flex-wrap: wrap;
         }
 
         .payment-img {
-            height: 40px;
+            height: 35px;
             width: auto;
             filter: grayscale(100%) brightness(200%);
             opacity: 0.6;
@@ -359,17 +403,45 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
         .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .header-content { flex-direction: column; gap: 15px; }
+            .currency-wrapper { margin: 10px 0; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+            .hero-content h1 { font-size: 30px; }
+        }
     </style>
 </head>
 <body>
 
     <header>
         <div class="container header-content">
-            <div class="logo"><i class="fas fa-crown"></i> FOREVER STORE</div>
+            <a href="#" class="logo-container">
+                <img src="our_theme.jpg" alt="Logo" class="logo-img">
+                <div class="logo-text">
+                    FOREVER
+                    <span>STORE</span>
+                </div>
+            </a>
+            
+            <div class="currency-wrapper">
+                <i class="fas fa-globe" style="color:var(--accent-red)"></i>
+                <select id="currencySelector" class="currency-select" onchange="updateCurrency()">
+                    <option value="JOD">دينار أردني (JOD)</option>
+                    <option value="SAR">ريال سعودي (SAR)</option>
+                    <option value="AED">درهم إماراتي (AED)</option>
+                    <option value="USD">دولار أمريكي (USD)</option>
+                    <option value="EGP">جنيه مصري (EGP)</option>
+                    <option value="QAR">ريال قطري (QAR)</option>
+                </select>
+            </div>
+
             <nav>
                 <ul>
                     <li><a href="#home">الرئيسية</a></li>
                     <li><a href="#ps4">سوني</a></li>
+                    <li><a href="#subs">اشتراكات</a></li>
                     <li><a href="#pc">PC</a></li>
                 </ul>
             </nav>
@@ -385,22 +457,24 @@
     </section>
 
     <div class="container products" id="products">
+        
         <h2 class="category-title" id="ps4"><i class="fab fa-playstation"></i> عروض PlayStation الحصرية</h2>
         <div class="products-grid" id="ps4Grid"></div>
 
-        <h2 class="category-title"><i class="fas fa-ticket-alt"></i> اشتراكات المشاهدة</h2>
+        <h2 class="category-title" id="subs"><i class="fas fa-ticket-alt"></i> اشتراكات المشاهدة</h2>
         <div class="products-grid" id="subsGrid"></div>
 
         <h2 class="category-title" id="pc"><i class="fab fa-steam"></i> ألعاب PC / Steam (Offline)</h2>
         <div class="products-grid" id="pcGrid"></div>
+
     </div>
 
     <footer>
         <div class="container">
             <div class="footer-content">
+                <img src="our_theme.jpg" alt="Logo" style="width: 70px; border-radius: 50%; border: 2px solid var(--accent-red);">
                 <h3>عن Forever Store</h3>
                 <p class="footer-bio">متجرنا متخصص في بيع الألعاب والاشتراكات بأسعار منافسة. التسليم عبر الإنستغرام لضمان السرعة والأمان. جميع منتجاتنا تأتي مع <strong>ضمان مدى الحياة</strong> لراحتكم.</p>
-                
                 <div class="social-icons">
                     <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-discord"></i></a>
@@ -410,13 +484,10 @@
             <div class="footer-payments">
                 <h4>طرق الدفع المتاحة</h4>
                 <div class="payment-icons">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Orange_logo.svg" title="Orange Money" class="payment-img" alt="Orange Money">
-                    
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/CliQ_logo.png/640px-CliQ_logo.png" title="CliQ" class="payment-img" style="height: 30px;" alt="CliQ">
-                    
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" title="PayPal" class="payment-img" alt="PayPal">
-                    
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Binance_Logo.svg" title="Binance" class="payment-img" alt="Binance">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Orange_logo.svg" title="Orange Money" class="payment-img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/CliQ_logo.png/640px-CliQ_logo.png" title="CliQ" class="payment-img" style="height: 30px;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" title="PayPal" class="payment-img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Binance_Logo.svg" title="Binance" class="payment-img">
                 </div>
             </div>
 
@@ -451,16 +522,26 @@
     <div class="toast" id="toast">تم استلام طلبك بنجاح!</div>
 
     <script>
+        // أسعار الصرف التقريبية مقابل الدينار الأردني
+        const rates = {
+            JOD: 1,
+            SAR: 5.30,
+            AED: 5.17,
+            USD: 1.41,
+            EGP: 70.00, // سعر تقريبي متغير
+            QAR: 5.15
+        };
+
         const products = [
-            // --- PS4 / PS5 Special ---
+            // --- PS4 / PS5 ---
             {
                 id: 200,
                 name: "EA SPORTS FC 26",
                 desc: "عرض اليوم! نسخة كاملة (أونلاين + اوفلاين). ضمان مدى الحياة.",
                 price: 10.00,
                 oldPrice: 35.00,
-                // صورة كرة قدم احترافية عالية الجودة (كونسبت)
-                img: "https://images.unsplash.com/photo-1579952363873-27f3bde9be28?q=80&w=1000&auto=format&fit=crop", 
+                // صورة مضمونة لكرة القدم
+                img: "https://images.unsplash.com/photo-1518091043644-c1d4457512c6?q=80&w=1000&auto=format&fit=crop", 
                 type: "ps4",
                 special: true
             },
@@ -471,28 +552,38 @@
                 name: "Netflix Premium (4K)",
                 desc: "ملف خاص - ضمان مدى الحياة.",
                 price: 1.50,
-                img: "https://i.ibb.co/L5w2R3w/netflix-banner.jpg",
+                // شعار نتفلكس الرسمي
+                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1200px-Netflix_2015_logo.svg.png",
                 type: "sub",
                 soldOut: true
             },
             {
                 id: 102,
-                name: "Crunchyroll Mega Fan",
-                desc: "بدون إعلانات. ضمان مدى الحياة.",
+                name: "Crunchyroll Mega Fan (1 Month)",
+                desc: "شهر كامل بدون إعلانات. ضمان مدى الحياة.",
                 price: 3.00,
-                img: "https://i.ibb.co/V9h4J9b/crunchyroll-banner.jpg",
+                // شعار كرانشي رول الرسمي
+                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Crunchyroll_2018.png/800px-Crunchyroll_2018.png",
                 type: "sub"
             },
             {
                 id: 103,
-                name: "Crunchyroll (3 Months)",
-                desc: "باقة Mega Fan - ضمان مدى الحياة.",
+                name: "Crunchyroll Mega Fan (3 Months)",
+                desc: "اشتراك 3 شهور. توفير وضمان مدى الحياة.",
                 price: 5.00,  
-                img: "https://i.ibb.co/V9h4J9b/crunchyroll-banner.jpg",
+                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Crunchyroll_2018.png/800px-Crunchyroll_2018.png",
+                type: "sub"
+            },
+            {
+                id: 104,
+                name: "Crunchyroll Mega Fan (1 Year)",
+                desc: "اشتراك سنة كاملة. أفضل توفير وضمان.",
+                price: 8.00,  
+                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Crunchyroll_2018.png/800px-Crunchyroll_2018.png",
                 type: "sub"
             },
 
-            // --- PC Games (Steam) ---
+            // --- PC Games ---
             {
                 id: 1,
                 name: "Grand Theft Auto V",
@@ -580,14 +671,6 @@
                 price: 2.00,
                 img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg",
                 type: "pc"
-            },
-            {
-                id: 12,
-                name: "Mortal Kombat 1",
-                desc: "قتال دموي. ضمان مدى الحياة.",
-                price: 2.00,
-                img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1971870/header.jpg",
-                type: "pc"
             }
         ];
 
@@ -595,6 +678,8 @@
             const ps4 = document.getElementById('ps4Grid');
             const subs = document.getElementById('subsGrid');
             const pc = document.getElementById('pcGrid');
+            const currentCurrency = document.getElementById('currencySelector').value;
+            const rate = rates[currentCurrency];
             
             ps4.innerHTML = subs.innerHTML = pc.innerHTML = '';
 
@@ -602,12 +687,17 @@
                 const card = document.createElement('div');
                 card.className = 'product-card';
                 
+                // حساب السعر بناءً على العملة
+                const displayPrice = (p.price * rate).toFixed(2);
+                const displayOldPrice = p.oldPrice ? (p.oldPrice * rate).toFixed(2) : null;
+
                 const btnText = p.soldOut ? 'نفذت الكمية' : 'شراء الآن <i class="fas fa-shopping-cart"></i>';
                 const btnState = p.soldOut ? 'disabled' : '';
                 const badge = p.special ? '<div class="badge badge-offer">عرض خاص 🔥</div>' : '';
                 const soldBadge = p.soldOut ? '<div class="badge badge-sold">نفذت الكمية</div>' : '';
-                const oldPriceHtml = p.oldPrice ? `<span class="old-price">${p.oldPrice} JD</span>` : '';
+                const oldPriceHtml = displayOldPrice ? `<span class="old-price">${displayOldPrice} ${currentCurrency}</span>` : '';
 
+                // نستخدم data-base-price لتخزين السعر الأصلي بالدينار
                 card.innerHTML = `
                     <div class="product-image">
                         ${badge} ${soldBadge}
@@ -618,10 +708,10 @@
                         <h3>${p.name}</h3>
                         <p>${p.desc}</p>
                         <div class="price-row">
-                            <span class="price">${p.price.toFixed(2)} دينار</span>
+                            <span class="price" data-base="${p.price}">${displayPrice} ${currentCurrency}</span>
                             ${oldPriceHtml}
                         </div>
-                        <button class="buy-btn" onclick="openModal(${p.id})" ${btnState}>${btnText}</button>
+                        <button class="buy-btn" onclick="openModal(${p.id}, '${displayPrice} ${currentCurrency}')" ${btnState}>${btnText}</button>
                     </div>
                 `;
 
@@ -631,12 +721,17 @@
             });
         }
 
-        function openModal(id) {
+        // دالة تحديث العملة عند تغيير القائمة
+        function updateCurrency() {
+            render(); // إعادة رسم المنتجات بالأسعار الجديدة
+        }
+
+        function openModal(id, priceStr) {
             const product = products.find(p => p.id === id);
             if(!product) return;
             
             document.getElementById('modalPrdName').innerText = product.name;
-            document.getElementById('modalPrdPrice').innerText = product.price.toFixed(2) + ' دينار أردني';
+            document.getElementById('modalPrdPrice').innerText = priceStr; // السعر بالعملة المختارة
             document.getElementById('paymentModal').style.display = 'flex';
         }
 
@@ -662,6 +757,7 @@
             document.getElementById('walletName').value = '';
         }
 
+        // تشغيل أولي
         render();
         
         window.onclick = function(e) {
