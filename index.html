@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forever Store - اشتراكات الترفيه</title>
+    <title>Forever Store - اشتراكات الترفيه والألعاب</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -90,10 +90,12 @@
             background-color: rgba(255, 255, 255, 0.2);
         }
         
-        /* Hero Section */
+        /* Hero Section - UPDATED BACKGROUND */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect x="0" y="0" width="100" height="100" fill="%238B0000"/><path d="M30,30 L70,30 L70,70 L30,70 Z" stroke="%23FF2400" stroke-width="5" fill="none"/><circle cx="50" cy="50" r="15" fill="%23FF2400"/></svg>');
+            /* استخدم صورة ذات جودة عالية ومرتبطة بالألعاب والترفيه */
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80');
             background-size: cover;
+            background-position: center;
             height: 500px;
             display: flex;
             align-items: center;
@@ -111,7 +113,7 @@
         .hero-content h1 {
             font-size: 48px;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
             color: var(--accent-red);
         }
         
@@ -128,6 +130,7 @@
             text-decoration: none;
             font-size: 18px;
             transition: background-color 0.3s;
+            font-weight: bold;
         }
         
         .hero-content .cta-btn:hover {
@@ -224,6 +227,19 @@
             top: 10px;
             left: 10px;
             background-color: var(--dark-red);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        /* NEW - Special Offer Badge */
+        .special-offer-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #007bff; /* Blue for offer */
             color: white;
             padding: 5px 10px;
             border-radius: 4px;
@@ -355,7 +371,7 @@
             font-weight: 500;
         }
         
-        /* Payment Modal */
+        /* Payment Modal (No change needed) */
         .modal {
             display: none;
             position: fixed;
@@ -447,7 +463,7 @@
             background-color: var(--dark-red);
         }
         
-        /* Toast Notification */
+        /* Toast Notification (No change needed) */
         .toast {
             position: fixed;
             bottom: 20px;
@@ -475,7 +491,7 @@
             font-size: 20px;
         }
         
-        /* Loading Spinner */
+        /* Loading Spinner (No change needed) */
         .loading {
             display: inline-block;
             width: 20px;
@@ -491,7 +507,7 @@
             to { transform: rotate(360deg); }
         }
         
-        /* Footer */
+        /* Footer (No change needed) */
         footer {
             background: linear-gradient(to right, var(--dark-red), var(--main-red));
             color: white;
@@ -637,7 +653,7 @@
         <div class="container">
             <div class="hero-content">
                 <h1>Forever Store لخدمة المطفرين</h1>
-                <p>أفضل الألعاب والاشتراكات بأرخص الأسعار</p>
+                <p>أفضل الألعاب والاشتراكات بأرخص الأسعار - عروض خاصة حصرية!</p>
                 <a href="#products" class="cta-btn">اطلب الآن</a>
             </div>
         </div>
@@ -648,17 +664,21 @@
             <h2 class="section-title">المنتجات المتوفرة</h2>
 
             <div class="category-section">
+                <h3 class="category-title">ألعاب سوني 4 (PlayStation 4) - 👑 عرض اليوم 👑</h3>
+                <div class="products-grid" id="ps4GamesGrid">
+                    </div>
+            </div>
+            
+            <div class="category-section">
                 <h3 class="category-title">الاشتراكات</h3>
                 <div class="products-grid" id="subscriptionsGrid">
-                    <!-- سيتم تعبئتها بالجافاسكريبت -->
-                </div>
+                    </div>
             </div>
 
             <div class="category-section">
                 <h3 class="category-title">ألعاب ستيم (حسابات مشتركة)</h3>
-                <div class="products-grid" id="productsGrid">
-                    <!-- سيتم تعبئتها بالجافاسكريبت -->
-                </div>
+                <div class="products-grid" id="gamesGrid">
+                    </div>
             </div>
         </div>
     </section>
@@ -681,7 +701,7 @@
                 <div class="step">
                     <i class="fas fa-play"></i>
                     <h3>استمتع بالخدمة فورًا</h3>
-                    <p>بعد التفعيل، استخدم اللعبة مباشرة دون تأخير.</p>
+                    <p>بعد التفعيل، استخدم اللعبة أو الاشتراك مباشرة دون تأخير.</p>
                 </div>
             </div>
         </div>
@@ -774,12 +794,22 @@
     <script>
         // بيانات المنتجات (الاشتراكات والألعاب المحدثة)
         let products = [
-            // --- الاشتراكات (الجديدة) ---
+             // --- PS4 Games (NEW CATEGORY) ---
+            {
+                id: 200,
+                name: "FC 26 (PlayStation 4)",
+                description: "حساب سوني 4 مشترك (اوفلاين). **عرض اليوم الخاص!**",
+                price: 10.00, 
+                image: "https://cdn.pixabay.com/photo/2020/12/03/09/24/football-5799738_1280.png", // صورة رياضية
+                category: "ps4_games",
+                soldOut: false
+            },
+            // --- الاشتراكات ---
             {
                 id: 101,
                 name: "Netflix (شهر)",
                 description: "نفذت الكمية حالياً. حساب مشترك.",
-                price: 1.50, 
+                price: 1.50,  
                 image: "https://image.api.playstation.com/vulcan/ap/rnd/202302/2314/03b2283a0050212a792d405d40c11516a5b671c6f5051161.png", 
                 category: "subscription",
                 soldOut: true
@@ -788,7 +818,7 @@
                 id: 102,
                 name: "Crunchyroll (شهر)",
                 description: "الحساب مشترك الخطة ميغا فان بدون وجع رأس الاعلانات والسيرفرات.",
-                price: 3, 
+                price: 3.00,  
                 image: "https://image.api.playstation.com/vulcan/ap/rnd/202311/0815/be4e3f4e1f776d54203a3036b13e16104c3e803d6d06d4e2.png", 
                 category: "subscription",
                 soldOut: false
@@ -797,7 +827,7 @@
                 id: 103,
                 name: "Crunchyroll (3 شهور)",
                 description: "الحساب مشترك الخطة ميغا فان بدون وجع رأس الاعلانات والسيرفرات.",
-                price: 5, 
+                price: 5.00,  
                 image: "https://image.api.playstation.com/vulcan/ap/rnd/202311/0815/be4e3f4e1f776d54203a3036b13e16104c3e803d6d06d4e2.png", 
                 category: "subscription",
                 soldOut: false
@@ -806,7 +836,7 @@
                 id: 104,
                 name: "Crunchyroll (سنة)",
                 description: "الحساب مشترك الخطة ميغا فان بدون وجع رأس الاعلانات والسيرفرات.",
-                price: 8, 
+                price: 8.00,  
                 image: "https://image.api.playstation.com/vulcan/ap/rnd/202311/0815/be4e3f4e1f776d54203a3036b13e16104c3e803d6d06d4e2.png", 
                 category: "subscription",
                 soldOut: false
@@ -817,7 +847,7 @@
                 id: 1,
                 name: "Elden Ring",
                 description: "حساب ستيم مشترك (اوفلاين). تحفة العالم المفتوح من FromSoftware.",
-                price: 2, 
+                price: 2.00, 
                 image: "https://image.api.playstation.com/vulcan/ap/rnd/202108/0410/0Jm1c6l2de3O0s8PAsjdf2Hi.png",
                 category: "games",
                 soldOut: false
@@ -826,7 +856,7 @@
                 id: 2,
                 name: "Dark Souls 3",
                 description: "حساب ستيم مشترك (اوفلاين). اختبر مهاراتك في لعبة الآكشن-آر بي جي الصعبة.",
-                price: 2, 
+                price: 2.00, 
                 image: "https://image.api.playstation.com/vulcan/img/rnd/202010/2614/8L9sFL1f0b0Q0kCi0rO8nCIR.png",
                 category: "games",
                 soldOut: false
@@ -835,7 +865,7 @@
                 id: 3,
                 name: "The Witcher 3: Wild Hunt",
                 description: "حساب ستيم مشترك (اوفلاين). مغامرة جيرالت الأسطورية في عالم ضخم.",
-                price: 2, 
+                price: 2.00, 
                 image: "https://image.api.playstation.com/vulcan/img/rnd/202010/2217/LsaRVlfP2s0R2o63bifkYI0W.png",
                 category: "games",
                 soldOut: false
@@ -844,7 +874,7 @@
                 id: 4,
                 name: "Dying Light 2",
                 description: "حساب ستيم مشترك (اوفلاين). عالم مفتوح، باركور، وزومبي.",
-                price: 2, 
+                price: 2.00, 
                 image: "https://image.api.playstation.com/vulcan/ap/rnd/202106/2911/iUPQC2fOk8tq6vK4nKuaS1dJ.png", 
                 category: "games",
                 soldOut: false
@@ -853,7 +883,7 @@
                 id: 5,
                 name: "Silent Hill f",
                 description: "حساب ستيم مشترك (اوفلاين). الفصل الجديد من لعبة الرعب النفسي الشهيرة.",
-                price: 2, 
+                price: 2.00, 
                 image: "https://image.api.playstation.com/vulcan/ap/rnd/202210/1821/x0m5Be0t90s5rec93c2kUf0M.png", 
                 category: "games",
                 soldOut: false
@@ -864,7 +894,7 @@
                 id: 6,
                 name: "Dying Light: The Following - Enhanced Edition",
                 description: "حساب ستيم مشترك (اوفلاين). النسخة المحسنة من Dying Light مع محتوى إضافي.",
-                price: 2, 
+                price: 2.00, 
                 image: "https://cdn.cloudflare.steamstatic.com/steam/apps/239140/header.jpg", 
                 category: "games",
                 soldOut: false
@@ -873,7 +903,7 @@
                 id: 7,
                 name: "Baldur's Gate 3",
                 description: "حساب ستيم مشترك (اوفلاين). لعبة الأدوار الحائزة على جوائز من Larian Studios.",
-                price: 2, 
+                price: 2.00, 
                 image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1086940/header.jpg", 
                 category: "games",
                 soldOut: false
@@ -882,7 +912,7 @@
                 id: 8,
                 name: "Cyberpunk 2077",
                 description: "حساب ستيم مشترك (اوفلاين). مغامرة مستقبلية في مدينة Night City.",
-                price: 2, 
+                price: 2.00, 
                 image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg", 
                 category: "games",
                 soldOut: false
@@ -891,7 +921,7 @@
                 id: 9,
                 name: "Red Dead Redemption 2",
                 description: "حساب ستيم مشترك (اوفلاين). مغامرة الغرب الأمريكي من Rockstar Games.",
-                price: 2, 
+                price: 2.00, 
                 image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg", 
                 category: "games",
                 soldOut: false
@@ -900,7 +930,7 @@
                 id: 10,
                 name: "God of War",
                 description: "حساب ستيم مشترك (اوفلاين). رحلة كريتوس وأتريوس في عالم الأساطير الإسكندنافية.",
-                price: 2, 
+                price: 2.00, 
                 image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1593500/header.jpg", 
                 category: "games",
                 soldOut: false
@@ -909,7 +939,7 @@
                 id: 11,
                 name: "Hogwarts Legacy",
                 description: "حساب ستيم مشترك (اوفلاين). مغامرة في عالم هاري بوتر السحري.",
-                price: 2, 
+                price: 2.00, 
                 image: "https://cdn.cloudflare.steamstatic.com/steam/apps/990080/header.jpg", 
                 category: "games",
                 soldOut: false
@@ -918,7 +948,7 @@
                 id: 12,
                 name: "Resident Evil 4 Remake",
                 description: "حساب ستيم مشترك (اوفلاين). إعادة تصنيع كلاسيكية الرعب.",
-                price: 2, 
+                price: 2.00, 
                 image: "https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg", 
                 category: "games",
                 soldOut: false
@@ -927,7 +957,7 @@
                 id: 13,
                 name: "Star Wars Jedi: Survivor",
                 description: "حساب ستيم مشترك (اوفلاين). مغامرة جديدة في عالم Star Wars.",
-                price: 2, 
+                price: 2.00, 
                 image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1774580/header.jpg", 
                 category: "games",
                 soldOut: false
@@ -936,7 +966,7 @@
                 id: 14,
                 name: "Call of Duty: Modern Warfare II",
                 description: "حساب ستيم مشترك (اوفلاين). إعادة تصنيع لعبة الرماية الشهيرة.",
-                price: 2, 
+                price: 2.00, 
                 image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1938090/header.jpg", 
                 category: "games",
                 soldOut: false
@@ -945,7 +975,7 @@
                 id: 15,
                 name: "Assassin's Creed Valhalla",
                 description: "حساب ستيم مشترك (اوفلاين). مغامرة الفايكنج في إنجلترا.",
-                price: 2, 
+                price: 2.00, 
                 image: "https://cdn.cloudflare.steamstatic.com/steam/apps/2208920/header.jpg", 
                 category: "games",
                 soldOut: false
@@ -954,7 +984,7 @@
                 id: 16,
                 name: "Final Fantasy VII Remake",
                 description: "حساب ستيم مشترك (اوفلاين). إعادة تصنيع كلاسيكية RPG.",
-                price: 2, 
+                price: 2.00, 
                 image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1462040/header.jpg", 
                 category: "games",
                 soldOut: false
@@ -963,7 +993,7 @@
                 id: 17,
                 name: "The Last of Us Part I",
                 description: "حساب ستيم مشترك (اوفلاين). رحلة جويل وإيلي في عالم ما بعد الانهيار.",
-                price: 2, 
+                price: 2.00, 
                 image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1888930/header.jpg", 
                 category: "games",
                 soldOut: false
@@ -972,7 +1002,7 @@
                 id: 18,
                 name: "Spider-Man Remastered",
                 description: "حساب ستيم مشترك (اوفلاين). تجربة سبايدرمان الكلاسيكية على PC.",
-                price: 2, 
+                price: 2.00, 
                 image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1817070/header.jpg", 
                 category: "games",
                 soldOut: false
@@ -981,7 +1011,7 @@
                 id: 19,
                 name: "Dead Space Remake",
                 description: "حساب ستيم مشترك (اوفلاين). إعادة تصنيع كلاسيكية الرعب في الفضاء.",
-                price: 2, 
+                price: 2.00, 
                 image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1693980/header.jpg", 
                 category: "games",
                 soldOut: false
@@ -990,7 +1020,7 @@
                 id: 20,
                 name: "Forza Horizon 5",
                 description: "حساب ستيم مشترك (اوفلاين). سباقات مفتوحة في المكسيك.",
-                price: 2, 
+                price: 2.00, 
                 image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1551360/header.jpg", 
                 category: "games",
                 soldOut: false
@@ -1001,32 +1031,39 @@
         document.addEventListener('DOMContentLoaded', function() {
             const savedProducts = localStorage.getItem('foreverStoreProducts');
             if (savedProducts) {
-                products = JSON.parse(savedProducts);
+                // دمج المنتجات الجديدة مع الموجودة في localStorage
+                const currentProducts = JSON.parse(savedProducts).filter(p => p.id < 200);
+                products = [...currentProducts, ...products.filter(p => p.id >= 200)]; // لإبقاء العرض الجديد دائمًا
+                // للتأكد من أننا نستخدم المنتجات المحدثة
             } else {
                 saveProducts();
             }
             renderProducts();
         });
         
-        // عرض المنتجات (مُعدلة لدعم نفاذ الكمية)
+        // عرض المنتجات (مُعدلة لدعم الفئة الجديدة)
         function renderProducts() {
-            const productsGrid = document.getElementById('productsGrid');
+            const gamesGrid = document.getElementById('gamesGrid');
             const subscriptionsGrid = document.getElementById('subscriptionsGrid'); 
+            const ps4GamesGrid = document.getElementById('ps4GamesGrid'); // شبكة ألعاب السوني الجديدة
             
-            productsGrid.innerHTML = '';
+            gamesGrid.innerHTML = '';
             subscriptionsGrid.innerHTML = ''; 
+            ps4GamesGrid.innerHTML = ''; // تفريغ الشبكة الجديدة
             
             products.forEach(product => {
                 const productCard = document.createElement('div');
                 productCard.className = 'product-card';
                 
                 // تحديد نص الزر وحالته (مفعل/معطل)
+                const isSpecialOffer = product.id === 200; // تحديد العرض الخاص
                 const buttonText = product.soldOut ? 'نفذت الكمية' : 'اطلب الآن';
                 const buttonDisabled = product.soldOut ? 'disabled' : '';
 
                 productCard.innerHTML = `
                     <div class="product-image">
                         ${product.soldOut ? '<div class="sold-out-badge">نفذت الكمية</div>' : ''}
+                        ${isSpecialOffer && !product.soldOut ? '<div class="special-offer-badge">عرض خاص!</div>' : ''}
                         <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/300x200?text=Image+Not+Found'">
                     </div>
                     <div class="product-info">
@@ -1041,9 +1078,11 @@
                 
                 // توزيع المنتج على القسم الصحيح
                 if (product.category === 'games') {
-                    productsGrid.appendChild(productCard);
+                    gamesGrid.appendChild(productCard);
                 } else if (product.category === 'subscription') {
                     subscriptionsGrid.appendChild(productCard);
+                } else if (product.category === 'ps4_games') {
+                    ps4GamesGrid.appendChild(productCard);
                 }
             });
         }
@@ -1058,12 +1097,12 @@
             }
         }
         
-        // إغلاق النموذج
+        // إغلاق النموذج (لا تغيير)
         function closeModal() {
             document.getElementById('paymentModal').style.display = 'none';
         }
         
-        // إتمام عملية الدفع
+        // إتمام عملية الدفع (لا تغيير)
         function completePayment() {
             const customerName = document.getElementById('customerName').value;
             const walletName = document.getElementById('walletName').value;
@@ -1100,7 +1139,7 @@
             }, 2000);
         }
         
-        // إظهار رسالة نجاح
+        // إظهار رسالة نجاح (لا تغيير)
         function showToast(message, type = 'success') {
             const toast = document.getElementById('successToast');
             const toastMessage = document.getElementById('toastMessage');
@@ -1120,12 +1159,12 @@
             }, 5000);
         }
         
-        // حفظ المنتجات
+        // حفظ المنتجات (لا تغيير)
         function saveProducts() {
             localStorage.setItem('foreverStoreProducts', JSON.stringify(products));
         }
         
-        // إغلاق النموذج عند النقر خارج
+        // إغلاق النموذج عند النقر خارج (لا تغيير)
         window.onclick = function(event) {
             const modal = document.getElementById('paymentModal');
             if (event.target === modal) {
