@@ -1,5 +1,550 @@
-<script>
-        // ... (باقي الكود السابق كما هو) ...
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forever Store - متجر الألعاب</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --main-red: #8B0000;
+            --dark-red: #5D0000;
+            --accent-red: #FF2400;
+            --text-color: #FFFFFF;
+            --card-bg: #1a1a1a;
+            --shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(to bottom, #000000, #2b0000);
+            color: var(--text-color);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            background: rgba(0, 0, 0, 0.95);
+            border-bottom: 3px solid var(--main-red);
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        /* Logo */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent-red);
+            box-shadow: 0 0 10px var(--dark-red);
+        }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+        
+        .logo-text span {
+            font-size: 12px;
+            color: var(--accent-red);
+            letter-spacing: 2px;
+        }
+
+        /* Currency Switcher */
+        .currency-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-right: auto;
+            margin-left: 20px;
+        }
+
+        .currency-select {
+            background: #222;
+            color: white;
+            border: 1px solid var(--accent-red);
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            outline: none;
+        }
+        
+        nav ul { display: flex; list-style: none; gap: 15px; }
+        nav ul li a {
+            color: #ddd;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        nav ul li a:hover {
+            color: white;
+            background: var(--main-red);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/library_hero.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 450px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            border-bottom: 2px solid var(--dark-red);
+        }
+        
+        .hero-content {
+            width: 100%;
+            padding: 20px;
+        }
+        
+        .hero-content h1 {
+            font-size: 45px;
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px var(--main-red);
+        }
+        
+        .hero-content span { color: var(--accent-red); }
+        
+        .cta-btn {
+            background: var(--accent-red);
+            color: white;
+            padding: 12px 35px;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 20px;
+            transition: 0.3s;
+            box-shadow: 0 0 15px var(--dark-red);
+        }
+        
+        .cta-btn:hover {
+            transform: scale(1.05);
+            background: white;
+            color: var(--dark-red);
+        }
+        
+        /* Products */
+        .products { padding: 50px 0; }
+        
+        .category-title {
+            font-size: 22px;
+            background: linear-gradient(90deg, var(--main-red), transparent);
+            padding: 8px 20px;
+            margin-bottom: 25px;
+            border-radius: 4px;
+            display: inline-block;
+            min-width: 250px;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        
+        .product-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: 0.3s;
+            border: 1px solid #333;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-red);
+            box-shadow: 0 10px 20px rgba(255, 36, 0, 0.15);
+        }
+        
+        /* تعديل الصور لتظهر بشكل كامل (contain) */
+        .product-image {
+            height: 350px;
+            width: 100%;
+            position: relative;
+            background: #000; /* خلفية سوداء للفراغات */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain; /* يظهر الصورة كاملة بدون قص */
+        }
+        
+        .badge {
+            position: absolute;
+            top: 10px;
+            padding: 4px 8px;
+            font-size: 11px;
+            font-weight: bold;
+            border-radius: 3px;
+            z-index: 2;
+        }
+        
+        .badge-offer { right: 10px; background: #FFD700; color: black; animation: pulse 1.5s infinite; }
+        .badge-sold { left: 10px; background: #333; color: #fff; border: 1px solid #777; }
+        .badge-warranty {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: rgba(46, 139, 87, 0.95);
+            color: white;
+            font-size: 11px;
+            text-align: center;
+            padding: 3px 0;
+            font-weight: bold;
+        }
+        
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+
+        .product-info {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-info h3 { font-size: 16px; margin-bottom: 5px; color: white; height: 40px; overflow: hidden; }
+        .product-info p { font-size: 12px; color: #bbb; margin-bottom: 15px; line-height: 1.4; height: 35px; overflow: hidden; }
+        
+        .price-row {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .price { font-size: 18px; font-weight: bold; color: var(--accent-red); }
+        .old-price { font-size: 13px; text-decoration: line-through; color: #666; }
+        
+        .buy-btn {
+            width: 100%;
+            padding: 10px;
+            background: var(--main-red);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+        
+        .buy-btn:hover:not([disabled]) { background: var(--accent-red); }
+        .buy-btn[disabled] { background: #444; color: #888; cursor: not-allowed; }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            background: #151515;
+            padding: 30px;
+            width: 90%;
+            max-width: 450px;
+            border-radius: 15px;
+            border: 2px solid var(--main-red);
+            text-align: center;
+        }
+        
+        .modal-content input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            background: #222;
+            border: 1px solid #444;
+            color: white;
+            border-radius: 5px;
+        }
+        
+        .orange-money {
+            background: #ff7900;
+            color: black;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* Footer */
+        footer {
+            background: #0d0d0d;
+            padding: 40px 0 20px;
+            text-align: center;
+            border-top: 2px solid #333;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .footer-bio {
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        .footer-payments {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #222;
+            width: 100%;
+        }
+
+        .footer-payments h4 {
+            color: #888;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .payment-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .payment-img {
+            height: 35px;
+            width: auto;
+            filter: grayscale(100%) brightness(200%);
+            opacity: 0.6;
+            transition: all 0.3s ease;
+            object-fit: contain;
+        }
+
+        .payment-img:hover {
+            filter: grayscale(0%) brightness(100%);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .social-icons a { font-size: 24px; color: white; margin: 0 10px; transition: 0.3s; }
+        .social-icons a:hover { color: var(--accent-red); }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--accent-red);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            opacity: 0;
+            transition: 0.4s;
+            z-index: 2000;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+        .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .header-content { flex-direction: column; gap: 15px; }
+            .currency-wrapper { margin: 10px 0; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+            .hero-content h1 { font-size: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo-container">
+                <img src="our_theme.jpg" alt="Logo" class="logo-img">
+                <div class="logo-text">
+                    FOREVER
+                    <span>STORE</span>
+                </div>
+            </a>
+            
+            <div class="currency-wrapper">
+                <i class="fas fa-globe" style="color:var(--accent-red)"></i>
+                <select id="currencySelector" class="currency-select" onchange="updateCurrency()">
+                    <option value="JOD">دينار أردني (JOD)</option>
+                    <option value="SAR">ريال سعودي (SAR)</option>
+                    <option value="AED">درهم إماراتي (AED)</option>
+                    <option value="USD">دولار أمريكي (USD)</option>
+                    <option value="EGP">جنيه مصري (EGP)</option>
+                    <option value="QAR">ريال قطري (QAR)</option>
+                </select>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#ps4">سوني</a></li>
+                    <li><a href="#services">خدمات</a></li>
+                    <li><a href="#subs">اشتراكات</a></li>
+                    <li><a href="#pc">PC</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>أقوى العروض <br> <span>لألعاب 2025</span></h1>
+            <p>حسابات أصلية، ضمان مدى الحياة، وتسليم فوري</p>
+            <a href="#products" class="cta-btn">تصفح المتجر</a>
+        </div>
+    </section>
+
+    <div class="container products" id="products">
+        
+        <h2 class="category-title" id="ps4"><i class="fab fa-playstation"></i> عروض PlayStation الحصرية</h2>
+        <div class="products-grid" id="ps4Grid"></div>
+
+        <h2 class="category-title" id="services"><i class="fas fa-bolt"></i> خدمات الشحن والرشق</h2>
+        <div class="products-grid" id="servicesGrid"></div>
+
+        <h2 class="category-title" id="subs"><i class="fas fa-ticket-alt"></i> اشتراكات المشاهدة</h2>
+        <div class="products-grid" id="subsGrid"></div>
+
+        <h2 class="category-title" id="pc"><i class="fab fa-steam"></i> ألعاب PC / Steam (Offline)</h2>
+        <div class="products-grid" id="pcGrid"></div>
+
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <img src="our_theme.jpg" alt="Logo" style="width: 70px; border-radius: 50%; border: 2px solid var(--accent-red);">
+                <h3>عن Forever Store</h3>
+                <p class="footer-bio">متجرنا متخصص في بيع الألعاب والاشتراكات بأسعار منافسة. التسليم عبر الإنستغرام لضمان السرعة والأمان. جميع منتجاتنا تأتي مع <strong>ضمان مدى الحياة</strong> لراحتكم.</p>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/foreverstore.jo/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://discord.gg/SjK67aExfX" target="_blank"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-payments">
+                <h4>طرق الدفع المتاحة</h4>
+                <div class="payment-icons">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Orange_logo.svg" title="Orange Money" class="payment-img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/CliQ_logo.png/640px-CliQ_logo.png" title="CliQ" class="payment-img" style="height: 30px;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" title="PayPal" class="payment-img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Binance_Logo.svg" title="Binance" class="payment-img">
+                </div>
+            </div>
+
+            <p style="margin-top: 30px; font-size: 12px; color: #555;">جميع الحقوق محفوظة لدى Forever Store © 2025</p>
+        </div>
+    </footer>
+
+    <div class="modal" id="paymentModal">
+        <div class="modal-content">
+            <span style="float:left; cursor:pointer; font-size:24px;" onclick="closeModal()">&times;</span>
+            <h2 style="color: var(--accent-red);">إتمام الطلب</h2>
+            <div style="margin: 20px 0; text-align: right;">
+                <p id="modalPrdName" style="font-weight:bold; color:white;"></p>
+                <p id="modalPrdPrice" style="color:var(--accent-red); font-size:18px;"></p>
+                <p id="modalWarranty" style="color: #2E8B57; font-size: 12px; margin-top: 5px; display: none;">* يشمل ضمان كامل المدة</p>
+            </div>
+            
+            <div class="orange-money">
+                <i class="fas fa-wallet"></i> Orange Money<br>
+                0785039924<br>
+                <span style="font-size:14px; font-weight:normal;">محمد هنديه</span>
+                <hr style="border: 0; border-top: 1px dashed #000; margin: 10px 0;">
+                <p style="font-size: 12px; font-weight: normal; margin-top: 5px;">
+                    <i class="fas fa-shield-alt"></i> 
+                    ضمان حقك محفوظ: لا يمكن إنشاء محفظة أورنج موني إلا بهوية رسمية موثقة.
+                </p>
+            </div>
+            
+            <p style="font-size: 13px; color: #aaa; margin-bottom: 15px;">للدفع عبر PayPal أو Binance أو CliQ يرجى التواصل معنا عبر الإنستغرام.</p>
+
+            <input type="text" id="custName" placeholder="اسمك">
+            <input type="text" id="walletName" placeholder="اسم المحول منه">
+            <button class="buy-btn" onclick="confirmOrder()">تأكيد وإرسال</button>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">تم استلام طلبك بنجاح!</div>
+
+    <script>
+        const rates = {
+            JOD: 1,
+            SAR: 5.30,
+            AED: 5.17,
+            USD: 1.41,
+            EGP: 70.00,
+            QAR: 5.15
+        };
 
         const products = [
             // --- PS4 ---
@@ -28,21 +573,23 @@
                 name: "رشق متابعين انستا (1000 متابع)",
                 desc: "متابعين حقيقيين، ثبات عالي. (بدون ضمان).",
                 price: 1.00,
+                // صورة معبرة عن المتابعين
                 img: "https://images.unsplash.com/photo-1611162616475-46b635cb6868?q=80&w=1000&auto=format&fit=crop",
                 type: "services",
-                noWarranty: true // الانستا فقط هو الذي لا يوجد عليه ضمان
+                noWarranty: true // بدون ضمان
             },
 
             // --- Subscriptions ---
             {
                 id: 101,
                 name: "Netflix Premium (4K)",
-                desc: "ملف خاص - ضمان كامل المدة.", // تم تعديل الوصف
+                desc: "ملف خاص - ضمان كامل المدة.",
                 price: 1.50,
-                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1200px-Netflix_2015_logo.svg.png",
+                // تم تغيير الصورة كما طلبت
+                img: "https://images.unsplash.com/photo-1611162616475-46b635cb6868?q=80&w=1000&auto=format&fit=crop",
                 type: "sub",
                 soldOut: true
-                // تم إزالة (noWarranty: true) لكي يظهر الضمان تلقائياً
+                // تم إزالة noWarranty: true لتفعيل الضمان
             },
             {
                 id: 102,
@@ -78,7 +625,6 @@
                 img: "https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg",
                 type: "pc"
             },
-            // ... (باقي الألعاب كما هي) ...
             {
                 id: 2,
                 name: "Elden Ring + DLC",
@@ -158,7 +704,116 @@
                 price: 2.00,
                 img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg",
                 type: "pc"
+            },
+            {
+                id: 12,
+                name: "Mortal Kombat 1",
+                desc: "قتال دموي. ضمان مدى الحياة.",
+                price: 2.00,
+                img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1971870/header.jpg",
+                type: "pc"
             }
         ];
+
+        function render() {
+            const ps4 = document.getElementById('ps4Grid');
+            const subs = document.getElementById('subsGrid');
+            const pc = document.getElementById('pcGrid');
+            const services = document.getElementById('servicesGrid');
+            const currentCurrency = document.getElementById('currencySelector').value;
+            const rate = rates[currentCurrency];
+            
+            ps4.innerHTML = subs.innerHTML = pc.innerHTML = services.innerHTML = '';
+
+            products.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                
+                const displayPrice = (p.price * rate).toFixed(2);
+                const displayOldPrice = p.oldPrice ? (p.oldPrice * rate).toFixed(2) : null;
+
+                const btnText = p.soldOut ? 'نفذت الكمية' : 'شراء الآن <i class="fas fa-shopping-cart"></i>';
+                const btnState = p.soldOut ? 'disabled' : '';
+                const badge = p.special ? '<div class="badge badge-offer">عرض خاص 🔥</div>' : '';
+                const soldBadge = p.soldOut ? '<div class="badge badge-sold">نفذت الكمية</div>' : '';
+                const oldPriceHtml = displayOldPrice ? `<span class="old-price">${displayOldPrice} ${currentCurrency}</span>` : '';
+                
+                // إخفاء الضمان للمنتجات المحددة
+                const warrantyBadge = !p.noWarranty ? '<div class="badge-warranty"><i class="fas fa-shield-alt"></i> ضمان كامل المدة</div>' : '';
+
+                card.innerHTML = `
+                    <div class="product-image">
+                        ${badge} ${soldBadge}
+                        ${warrantyBadge}
+                        <img src="${p.img}" alt="${p.name}">
+                    </div>
+                    <div class="product-info">
+                        <h3>${p.name}</h3>
+                        <p>${p.desc}</p>
+                        <div class="price-row">
+                            <span class="price">${displayPrice} ${currentCurrency}</span>
+                            ${oldPriceHtml}
+                        </div>
+                        <button class="buy-btn" onclick="openModal(${p.id}, '${displayPrice} ${currentCurrency}')" ${btnState}>${btnText}</button>
+                    </div>
+                `;
+
+                if(p.type === 'ps4') ps4.appendChild(card);
+                else if(p.type === 'sub') subs.appendChild(card);
+                else if(p.type === 'services') services.appendChild(card);
+                else pc.appendChild(card);
+            });
+        }
+
+        function updateCurrency() {
+            render(); 
+        }
+
+        function openModal(id, priceStr) {
+            const product = products.find(p => p.id === id);
+            if(!product) return;
+            
+            document.getElementById('modalPrdName').innerText = product.name;
+            document.getElementById('modalPrdPrice').innerText = priceStr;
+            
+            // التحكم في ظهور الضمان داخل النافذة المنبثقة
+            const warrantyText = document.getElementById('modalWarranty');
+            if (product.noWarranty) {
+                warrantyText.style.display = 'none';
+            } else {
+                warrantyText.style.display = 'block';
+            }
+
+            document.getElementById('paymentModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('paymentModal').style.display = 'none';
+        }
+
+        function confirmOrder() {
+            const name = document.getElementById('custName').value;
+            const wallet = document.getElementById('walletName').value;
+
+            if(!name || !wallet) {
+                alert('الرجاء كتابة اسمك واسم المحفظة!');
+                return;
+            }
+
+            closeModal();
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 4000);
+
+            document.getElementById('custName').value = '';
+            document.getElementById('walletName').value = '';
+        }
+
+        render();
         
-        // ... (باقي الكود كما هو) ...
+        window.onclick = function(e) {
+            if(e.target == document.getElementById('paymentModal')) closeModal();
+        }
+    </script>
+</body>
+</html>
