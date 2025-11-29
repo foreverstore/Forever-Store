@@ -207,6 +207,9 @@
             width: 100%;
             position: relative;
             background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .product-image img {
@@ -263,6 +266,18 @@
         .price { font-size: 18px; font-weight: bold; color: var(--accent-red); }
         .old-price { font-size: 13px; text-decoration: line-through; color: #666; }
         
+        /* Select Box for Insta */
+        .insta-select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            background: #222;
+            color: white;
+            border: 1px solid var(--accent-red);
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
         .buy-btn {
             width: 100%;
             padding: 10px;
@@ -461,6 +476,7 @@
     </section>
 
     <div class="container products" id="products">
+        
         <h2 class="category-title" id="ps4"><i class="fab fa-playstation"></i> عروض PlayStation الحصرية</h2>
         <div class="products-grid" id="ps4Grid"></div>
 
@@ -472,6 +488,7 @@
 
         <h2 class="category-title" id="pc"><i class="fab fa-steam"></i> ألعاب PC / Steam (Offline)</h2>
         <div class="products-grid" id="pcGrid"></div>
+
     </div>
 
     <footer>
@@ -524,7 +541,7 @@
             <p style="font-size: 13px; color: #aaa; margin-bottom: 15px;">للدفع عبر PayPal أو Binance أو CliQ يرجى التواصل معنا عبر الإنستغرام.</p>
 
             <input type="text" id="custName" placeholder="اسمك">
-            <input type="text" id="walletName" placeholder="اسم صاحب المحفظة (للمطابقة)">
+            <input type="text" id="walletName" placeholder="اسم المحول منه">
             <button class="buy-btn" onclick="confirmOrder()">تأكيد وإرسال</button>
         </div>
     </div>
@@ -532,7 +549,7 @@
     <div class="toast" id="toast"></div>
 
     <script>
-        let selectedProductName = ""; // متغير لحفظ اسم المنتج المختار
+        let selectedProductName = ""; 
 
         const rates = {
             JOD: 1,
@@ -544,6 +561,18 @@
         };
 
         const products = [
+            // --- Custom Product (New) ---
+            {
+                id: 999,
+                name: "منتج حسب الطلب",
+                desc: "لم تجد لعبتك؟ اطلبها الآن وسنوفرها لك بأرخص سعر.",
+                price: 0.00, // السعر بالاتفاق
+                // صورة استفهام / يد تحكم
+                img: "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=1000&auto=format&fit=crop", 
+                type: "pc", // يظهر في قسم الـ PC أو الألعاب
+                isCustom: true
+            },
+
             // --- PS4 ---
             {
                 id: 200,
@@ -562,41 +591,14 @@
                 name: "شحن جواهر فري فاير (500+83)",
                 desc: "شحن فوري عبر المعرف (ID). 583 جوهرة بسعر خرافي! ضمان عدم الباند.",
                 price: 3.60,
-                // صورة فري فاير
+                // صورة لعبة فري فاير
                 img: "https://images.hdqwalls.com/download/garena-free-fire-2020-5k-ve-1280x720.jpg",
                 type: "services"
             },
             {
                 id: 302,
-                name: "رشق متابعين انستا (1000 متابع)",
-                desc: "متابعين حقيقيين، ثبات عالي. (بدون ضمان).",
-                price: 1.00,
-                // شعار انستغرام
-                img: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png",
-                type: "services",
-                noWarranty: true 
-            },
-
-            // --- Subscriptions ---
-            {
-                id: 101,
-                name: "Netflix Premium (4K)",
-                desc: "ملف خاص - ضمان كامل المدة.",
-                price: 1.50,
-                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1200px-Netflix_2015_logo.svg.png",
-                type: "sub",
-                soldOut: true
-            },
-            {
-                id: 102,
-                name: "Crunchyroll Mega Fan (1 Month)",
-                desc: "شهر كامل بدون إعلانات. ضمان مدى الحياة.",
-                price: 3.00,
-                img: "image_fcb0f7.png",
-                type: "sub"
-            },
-            {
-                id: 103,
-                name: "Crunchyroll Mega Fan (3 Months)",
-                desc: "اشتراك 3 شهور. توفير وضمان مدى الحياة.",
-  
+                name: "رشق متابعين انستا",
+                desc: "اختر الكمية التي تريدها. متابعين حقيقيين، ثبات عالي. (بدون ضمان).",
+                price: 1.00, // سعر الـ 1000 الأساسي
+                // شعار انستغرام الرسمي
+                img: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_ic
