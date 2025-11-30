@@ -14,7 +14,6 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
        (function(){
-          // مفتاحك العام جاهز هنا
           emailjs.init("vZaABNKjHKVCGOhDk"); 
        })();
     </script>
@@ -310,8 +309,21 @@
             { id: 10, name: "Resident Evil 4", desc: "رعب (Offline).", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg", type: "pc" },
             { id: 11, name: "Cyberpunk 2077", desc: "عالم المستقبل.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg", type: "pc" },
             { id: 12, name: "Mortal Kombat 1", desc: "قتال دموي.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1971870/header.jpg", type: "pc" },
-            { id: 13, name: "بكج العاب السولز", desc: "الالعاب كما في الصورة.", price: 3.49, img: "https://cdn.cloudflare.steamstatic.com/steam/bundles/18836/header.jpg", type: "pc" },
-            { id: 14, name: "بكج جميع اجزاء ريزدينت ايفل", desc: "جميع اجزاء رزدينت ايفل.", price: 3.49, img: "https://cdn.cloudflare.steamstatic.com/steam/bundles/34557/header.jpg", type: "pc" }
+            // --- New Product Here ---
+            { 
+                id: 13, name: "بكج جميع أجزاء Resident Evil", 
+                desc: "جميع الأجزاء كما في الصورة. تجربة رعب كاملة.", 
+                price: 5.00, 
+                img: "resdent-evil-pack.jpg", 
+                type: "pc" 
+            },
+            { 
+                id: 14, name: "بكج ألعاب السولز (Souls Pack)", 
+                desc: "أقوى ألعاب الصعوبة والتحدي.", 
+                price: 3.49, 
+                img: "https://cdn.cloudflare.steamstatic.com/steam/bundles/18836/header.jpg", // Placeholder
+                type: "pc" 
+            }
         ];
 
         document.addEventListener('DOMContentLoaded', () => { renderProducts(); });
@@ -401,7 +413,6 @@
                 price: document.getElementById('modalPrdPrice').innerText
             };
 
-            // ✅ الإرسال بالأكواد الصحيحة
             emailjs.send('service_x31cu0s', 'template_znmanl1', templateParams)
                 .then(function() {
                     closeModal();
