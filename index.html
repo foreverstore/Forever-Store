@@ -8,8 +8,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+       (function(){
+          // 👇👇👇 ضع مفتاحك العام هنا (Public Key) 👇👇👇
+          emailjs.init("ضع_هنا_Public_Key_الخاص_بك"); 
+       })();
+    </script>
 
     <style>
         :root {
@@ -104,14 +114,13 @@
         }
         .product-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); border-color: rgba(255,255,255,0.1); }
 
-        /* *** تعديل الصور لتظهر بالكامل *** */
         .card-img-wrapper {
             position: relative; width: 100%; height: 380px; overflow: hidden; background: #000;
             display: flex; align-items: center; justify-content: center;
         }
         .card-img {
             max-width: 100%; max-height: 100%; width: auto; height: auto;
-            object-fit: contain; /* السر هنا: تظهر كاملة */
+            object-fit: contain; /* إظهار الصورة بالكامل */
             transition: 0.5s ease;
         }
         .product-card:hover .card-img { transform: scale(1.05); }
@@ -119,6 +128,7 @@
         .badges-container { position: absolute; top: 10px; left: 10px; right: 10px; display: flex; justify-content: space-between; z-index: 2; pointer-events: none; }
         .badge { padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; font-weight: 700; }
         .badge-hot { background: var(--primary); color: white; animation: pulse 2s infinite; }
+        .badge-sold { background: #333; color: #aaa; }
         
         .warranty-strip {
             position: absolute; bottom: 0; left: 0; width: 100%;
@@ -168,13 +178,17 @@
         .modal-btn { width: 100%; padding: 14px; background: var(--primary); color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; }
 
         /* Toast */
-        .toast-container { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 3000; pointer-events: none; }
-        .toast {
-            background: white; color: #000; padding: 15px 25px; border-radius: 50px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 10px;
-            font-weight: 700; margin-top: 10px; opacity: 0; transform: translateY(20px); transition: 0.4s;
+        .toast-container { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 3000; pointer-events: none; width: 100%; display: flex; justify-content: center; }
+        .toast-msg {
+            background: white; color: #000; padding: 15px 30px; border-radius: 50px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 15px;
+            font-weight: 700; opacity: 0; transform: translateY(30px); transition: all 0.4s;
+            min-width: 320px; justify-content: center;
         }
-        .toast.show { opacity: 1; transform: translateY(0); }
+        .toast-msg.active { opacity: 1; transform: translateY(0); }
+        .toast-msg i { font-size: 1.5rem; }
+        .toast-msg.success i { color: #2ecc71; }
+        .toast-msg.error i { color: var(--primary); }
 
         /* Footer */
         footer { background: #0a0a0a; padding: 60px 0 30px; border-top: 1px solid #222; margin-top: 50px; }
@@ -223,6 +237,7 @@
                 <a href="#home" class="nav-link">الرئيسية</a>
                 <a href="#ps4" class="nav-link">سوني</a>
                 <a href="#services" class="nav-link">خدمات</a>
+                <a href="#subs" class="nav-link">اشتراكات</a>
                 <a href="#pc" class="nav-link">PC</a>
             </nav>
         </div>
@@ -248,6 +263,11 @@
             <h2 class="section-title" id="services"><i class="fas fa-bolt"></i> خدمات الشحن والرشق</h2>
         </div>
         <div class="products-grid" id="servicesGrid"></div>
+
+        <div class="section-header">
+            <h2 class="section-title" id="subs"><i class="fas fa-ticket-alt"></i> اشتراكات المشاهدة</h2>
+        </div>
+        <div class="products-grid" id="subsGrid"></div>
 
         <div class="section-header">
             <h2 class="section-title" id="pc"><i class="fab fa-steam"></i> ألعاب PC / Steam</h2>
@@ -315,11 +335,11 @@
             <div class="input-group">
                 <input type="text" id="walletName" class="input-field" placeholder="اسم صاحب المحفظة المحول منها">
             </div>
-            <button class="modal-btn" onclick="confirmOrder()">تأكيد وإرسال الطلب</button>
+            <button class="modal-btn btn-confirm" onclick="submitOrder()">تأكيد وإرسال الطلب</button>
         </div>
     </div>
 
-    <div class="toast-container" id="toastContainer"></div>
+    <div class="toast-container" id="toastWrapper"></div>
 
     <script>
         const rates = { JOD: 1, SAR: 5.30, USD: 1.41, EGP: 70.00 };
@@ -332,45 +352,69 @@
                 id: 200, name: "EA SPORTS FC 26", 
                 desc: "نسخة كاملة (أونلاين + أوفلاين). الأكثر طلباً!", 
                 price: 10.00, oldPrice: 35.00, 
-                img: "image_fcb3e4.jpg", 
+                img: "image_fcb3e4.jpg", // اسم الصورة التي رفعتها
                 type: "ps4", special: true 
             },
-            // --- PRODUCT ADDED HERE: BLACK OPS 7 ---
             { 
                 id: 201, name: "Call of Duty: Black Ops 7", 
                 desc: "النسخة الكاملة (Campaign + Multiplayer).", 
                 price: 13.00, oldPrice: 45.00, 
-                img: "bo7.jpg", // صورة فخمة للبلاك اوبس
+                img: "bo7.jpg", // اسم الصورة التي رفعتها
                 type: "ps4", special: true 
             },
 
             // --- Services ---
             { 
                 id: 301, name: "شحن جواهر فري فاير (583)", 
-                desc: "شحن فوري ورسمي عبر الـ ID.", 
+                desc: "شحن فوري ورسمي عبر الـ ID. (500 + 83 بونص).", 
                 price: 3.60, 
-                img: "free-fire-diamond.webp", 
-                type: "services"
+                img: "free-fire-100-diamonds-pc-builder-qatar-best-pc-gaming-store-in-qatar.webp", // اسم الصورة التي رفعتها
+                type: "services", noWarranty: true
             },
             { 
                 id: 302, name: "رشق متابعين انستغرام", 
-                desc: "متابعين بجودة عالية، ثبات ممتاز.", 
-                price: 1.00, 
-                img: "ad-instagram.png", 
-                type: "services", noWarranty: true, isInsta: true
+                desc: "اختر الكمية المطلوبة. متابعين بجودة عالية.", 
+                price: 1.00, // السعر الأساسي للألف
+                img: "ad-instagram.png", // اسم الصورة التي رفعتها
+                type: "services", noWarranty: true, isInsta: true 
             },
 
-            // --- Subscriptions ---
-            { id: 101, name: "Netflix Premium (4K)", desc: "ملف خاص - ضمان كامل المدة.", price: 1.50, img: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1200px-Netflix_2015_logo.svg.png", type: "services", soldOut: true }, // وضعتها مع الخدمات لترتيب أفضل أو ممكن ترجعها قسم لحالها
-            { id: 102, name: "Crunchyroll Mega Fan", desc: "شهر كامل بدون إعلانات.", price: 3.00, img: "image_fcb0f7.png", type: "services" },
-            { id: 102, name: "Crunchyroll Mega Fan", desc: "ثلاثة شهور كامل بدون إعلانات.", price: 5.00, img: "image_fcb0f7.png", type: "services" },
-            { id: 102, name: "Crunchyroll Mega Fan", desc: "سنة كامل بدون إعلانات.", price: 8.00, img: "image_fcb0f7.png", type: "services" },
+            // --- SUBSCRIPTIONS ---
+            { 
+                id: 101, name: "Netflix Premium (4K)", 
+                desc: "ملف خاص بك - ضمان كامل المدة.", 
+                price: 1.50, 
+                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/800px-Netflix_2015_logo.svg.png", 
+                type: "subs", soldOut: true 
+            },
+            { 
+                id: 102, name: "Crunchyroll Mega Fan", 
+                desc: "شهر كامل بدون إعلانات + مشاهدة أوفلاين.", 
+                price: 3.00, 
+                img: "image_fcb0f7.png", // اسم الصورة التي رفعتها
+                type: "subs" 
+            },
+            { 
+                id: 103, name: "Crunchyroll (3 Months)", 
+                desc: "اشتراك 3 شهور. توفير أكبر.", 
+                price: 5.00, 
+                img: "image_fcb0f7.png", 
+                type: "subs" 
+            },
+            { 
+                id: 104, name: "Crunchyroll (1 Year)", 
+                desc: "اشتراك سنة كاملة. الصفقة الأفضل.", 
+                price: 8.00, 
+                img: "image_fcb0f7.png", 
+                type: "subs" 
+            },
 
-            // --- PC ---
+            // --- PC GAMES ---
             { id: 1, name: "Grand Theft Auto V", desc: "نسخة ستيم الأصلية (Offline).", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg", type: "pc" },
             { id: 2, name: "Elden Ring + DLC", desc: "لعبة السنة مع الإضافة.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg", type: "pc" },
-            { id: 3, name: "Call of Duty: MW III", desc: "تختيم القصة (Campaign).", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/2519060/header.jpg", type: "pc" },
-            { id: 4, name: "Black Myth: Wukong", desc: "اللعبة الأسطورية.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg", type: "pc" },
+            { id: 3, name: "Call of Duty: MW III", desc: "تختيم القصة فقط.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/2519060/header.jpg", type: "pc" },
+            { id: 4, name: "Black Myth: Wukong", desc: "اللعبة الترند!", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg", type: "pc" },
+            { id: 5, name: "Minecraft", desc: "حساب أصلي (Java & Bedrock).", price: 3.00, img: "https://image.api.playstation.com/vulcan/img/rnd/202010/2117/2mFy3G4811b7d581179e832876618454952018898516d71b.png", type: "pc" },
             { id: 999, name: "منتج حسب الطلب", desc: "أي لعبة في بالك نوفرها لك.", price: 0.00, img: "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=1000", type: "pc", isCustom: true }
         ];
 
@@ -387,6 +431,7 @@
             const containers = {
                 ps4: document.getElementById('ps4Grid'),
                 services: document.getElementById('servicesGrid'),
+                subs: document.getElementById('subsGrid'),
                 pc: document.getElementById('pcGrid')
             };
 
@@ -430,7 +475,7 @@
                 badgesHtml += '</div>';
 
                 let warrantyHtml = (!p.noWarranty && !p.isCustom) ? 
-                    '<div class="warranty-strip"><i class="fas fa-shield-alt"></i> ضمان مدى الحياة</div>' : '';
+                    '<div class="warranty-strip"><i class="fas fa-shield-alt"></i> ضمان كامل المدة</div>' : '';
 
                 const btnState = p.soldOut ? 'disabled' : '';
                 const btnText = p.soldOut ? 'نفذت الكمية' : 'شراء الآن <i class="fas fa-shopping-cart"></i>';
@@ -460,7 +505,6 @@
                 `;
 
                 if (containers[p.type]) containers[p.type].appendChild(card);
-                else if(p.type === 'sub') containers['services'].appendChild(card); // دمج الاشتراكات مع الخدمات لترتيب أفضل
             });
         }
 
@@ -490,36 +534,67 @@
 
         function closeModal() { document.getElementById('paymentModal').style.display = 'none'; }
 
-        function confirmOrder() {
+        // --- دالة إرسال الإيميل ---
+        function submitOrder() {
             const name = document.getElementById('custName').value;
             const wallet = document.getElementById('walletName').value;
-            if(!name || !wallet) { showToast('يرجى تعبئة الاسم واسم المحفظة!', 'error'); return; }
             const orderId = Math.floor(10000 + Math.random() * 90000);
-            closeModal();
-            
-            const toast = document.createElement('div');
-            toast.className = 'toast';
-            toast.innerHTML = `<i class="fas fa-check-circle"></i><div><div>تم استلام الطلب! <strong>#${orderId}</strong></div><div style="font-size:0.8rem; font-weight:400;">صور الشاشة وراسلنا عالانستا</div></div>`;
-            document.getElementById('toastContainer').appendChild(toast);
-            setTimeout(() => toast.classList.add('show'), 100);
-            setTimeout(() => { toast.classList.remove('show'); setTimeout(() => toast.remove(), 500); }, 5000);
-            document.getElementById('custName').value = '';
-            document.getElementById('walletName').value = '';
-        }
 
-        function showToast(msg, type) {
-            const toast = document.createElement('div');
-            toast.className = 'toast';
-            toast.style.borderRight = type === 'error' ? '5px solid red' : '5px solid green';
-            toast.innerHTML = `<div>${msg}</div>`;
-            document.getElementById('toastContainer').appendChild(toast);
-            setTimeout(() => toast.classList.add('show'), 100);
-            setTimeout(() => { toast.classList.remove('show'); setTimeout(() => toast.remove(), 500); }, 3000);
+            if(!name || !wallet) {
+                alert('الرجاء كتابة الاسم واسم المحفظة!');
+                return;
+            }
+
+            const btn = document.querySelector('.btn-confirm');
+            const originalText = btn.innerText;
+            btn.innerText = "جاري الإرسال...";
+            btn.style.opacity = "0.7";
+            btn.disabled = true;
+
+            const templateParams = {
+                from_name: name,
+                wallet_name: wallet,
+                product_name: document.getElementById('modalPrdName').innerText,
+                order_id: orderId,
+                price: document.getElementById('modalPrdPrice').innerText
+            };
+
+            // 👇👇👇 ضع معرفات EmailJS الخاصة بك هنا 👇👇👇
+            emailjs.send('ضع_هنا_Service_ID', 'ضع_هنا_Template_ID', templateParams)
+                .then(function(response) {
+                    closeModal();
+                    
+                    const toast = document.createElement('div');
+                    toast.className = 'toast-msg success';
+                    toast.innerHTML = `
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <div>تم إرسال الطلب بنجاح! <strong>#${orderId}</strong></div>
+                            <div style="font-size:0.8rem; font-weight:400; opacity:0.8;">راجع بريدك أو تواصل معنا</div>
+                        </div>
+                    `;
+                    
+                    const wrapper = document.getElementById('toastWrapper');
+                    wrapper.appendChild(toast);
+                    setTimeout(() => toast.classList.add('active'), 10);
+                    setTimeout(() => { toast.classList.remove('active'); setTimeout(() => toast.remove(), 500); }, 5000);
+
+                    document.getElementById('custName').value = '';
+                    document.getElementById('walletName').value = '';
+                    btn.innerText = originalText;
+                    btn.style.opacity = "1";
+                    btn.disabled = false;
+
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    alert('حدث خطأ في الإرسال، يرجى المحاولة مرة أخرى أو التواصل عبر الإنستغرام');
+                    btn.innerText = originalText;
+                    btn.style.opacity = "1";
+                    btn.disabled = false;
+                });
         }
 
         window.onclick = function(e) { if(e.target == document.getElementById('paymentModal')) closeModal(); }
     </script>
 </body>
 </html>
-
-
