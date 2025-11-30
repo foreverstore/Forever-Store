@@ -302,16 +302,17 @@
             { id: 2, name: "Elden Ring + DLC", desc: "لعبة السنة مع الإضافة.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg", type: "pc" },
             { id: 3, name: "Call of Duty: MW III", desc: "تختيم القصة فقط.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/2519060/header.jpg", type: "pc" },
             { id: 4, name: "Black Myth: Wukong", desc: "اللعبة الترند!", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg", type: "pc" },
+            { id: 5, name: "Minecraft", desc: "حساب أصلي (Java & Bedrock).", price: 3.00, img: "https://image.api.playstation.com/vulcan/img/rnd/202010/2117/2mFy3G4811b7d581179e832876618454952018898516d71b.png", type: "pc" },
             { id: 6, name: "Tekken 8", desc: "قتال شوارع.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1778820/header.jpg", type: "pc" },
             { id: 7, name: "Red Dead Redemption 2", desc: "عالم مفتوح وقصة أسطورية.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg", type: "pc" },
             { id: 8, name: "God of War Ragnarök", desc: "مغامرة كريتوس.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/2322010/header.jpg", type: "pc" },
             { id: 9, name: "Forza Horizon 5", desc: "سباقات سيارات.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1551360/header.jpg", type: "pc" },
             { id: 10, name: "Resident Evil 4", desc: "رعب (Offline).", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg", type: "pc" },
             { id: 11, name: "Cyberpunk 2077", desc: "عالم المستقبل.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg", type: "pc" },
-            { id: 12, name: "Mortal Kombat 1", desc: "قتال دموي.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1971870/header.jpg", type: "pc" }
-            { id: 12, name: "بكج العاب السولز", desc: "الالعاب كما في الصورة .", price: 3.49, img: "souls=games-pack", type: "pc" }
-                    { id: 12, name: " بكج جميع اجزاء ريزدينت ايفل ", desc: "   جميع اجزاء رزدينت ايفل .", price: 3.49, img: "resdent-evil-pack", type: "pc" }
-
+            { id: 12, name: "Mortal Kombat 1", desc: "قتال دموي.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1971870/header.jpg", type: "pc" },
+            { id: 13, name: "بكج العاب السولز", desc: "الالعاب كما في الصورة.", price: 3.49, img: "https://cdn.cloudflare.steamstatic.com/steam/bundles/18836/header.jpg", type: "pc" },
+            { id: 14, name: "بكج جميع اجزاء ريزدينت ايفل", desc: "جميع اجزاء رزدينت ايفل.", price: 3.49, img: "https://cdn.cloudflare.steamstatic.com/steam/bundles/34557/header.jpg", type: "pc" }
+        ];
 
         document.addEventListener('DOMContentLoaded', () => { renderProducts(); });
 
@@ -400,7 +401,7 @@
                 price: document.getElementById('modalPrdPrice').innerText
             };
 
-            // ارسال الايميل بالمعرفات الجاهزة
+            // ✅ الإرسال بالأكواد الصحيحة
             emailjs.send('service_x31cu0s', 'template_znmanl1', templateParams)
                 .then(function() {
                     closeModal();
@@ -439,5 +440,3 @@
     </script>
 </body>
 </html>
-
-
