@@ -32,7 +32,6 @@
         
         .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
 
-        /* Header */
         header { background: rgba(10, 10, 10, 0.95); border-bottom: 1px solid rgba(255,255,255,0.1); position: sticky; top: 0; z-index: 1000; padding: 15px 0; backdrop-filter: blur(12px); }
         .header-inner { display: flex; justify-content: space-between; align-items: center; }
         .logo-box { display: flex; align-items: center; gap: 12px; text-decoration: none; }
@@ -48,7 +47,6 @@
         .nav-link:hover { background: rgba(255,255,255,0.1); color: white; }
         .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 24px; cursor: pointer; }
 
-        /* Hero */
         .hero-section { position: relative; height: 450px; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; margin-bottom: 50px; }
         .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('https://wallpaperaccess.com/full/7445.jpg') center/cover; filter: brightness(0.3); z-index: 1; }
         .hero-content { position: relative; z-index: 2; padding: 20px; }
@@ -56,7 +54,6 @@
         .btn-glow { background: var(--primary); color: white; padding: 15px 40px; border-radius: 50px; text-decoration: none; font-weight: 700; box-shadow: 0 0 20px rgba(229, 9, 20, 0.4); display: inline-block; transition: var(--transition); }
         .btn-glow:hover { transform: scale(1.05); }
 
-        /* Products */
         .section-header { margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
         .section-title { font-size: 1.5rem; font-weight: 800; display: flex; align-items: center; gap: 10px; }
         .section-title i { color: var(--primary); }
@@ -91,7 +88,6 @@
         .add-btn:hover:not(:disabled) { background: var(--primary); color: white; }
         .add-btn:disabled { background: #333; color: #666; cursor: not-allowed; }
 
-        /* Modal */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
         .modal-box { background: #1a1a1a; width: 90%; max-width: 450px; padding: 25px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); position: relative; animation: slideUp 0.4s; }
         @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
@@ -102,14 +98,12 @@
         .input-field { width: 100%; padding: 12px; background: #252525; border: 1px solid #333; border-radius: 8px; color: white; margin-bottom: 10px; outline: none; }
         .modal-btn { width: 100%; padding: 12px; background: var(--primary); color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; }
 
-        /* Toast */
         .toast-container { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 3000; width: 100%; display: flex; justify-content: center; pointer-events: none; }
         .toast-msg { background: white; color: black; padding: 15px 25px; border-radius: 50px; display: flex; align-items: center; gap: 10px; font-weight: 700; opacity: 0; transform: translateY(30px); transition: 0.4s; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         .toast-msg.active { opacity: 1; transform: translateY(0); }
         .toast-msg.success i { color: #2ecc71; }
         .toast-msg.error i { color: var(--primary); }
 
-        /* Footer */
         footer { background: #0a0a0a; padding: 50px 0 20px; border-top: 1px solid #222; margin-top: 50px; text-align: center; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 30px; }
         .social-bar { display: flex; justify-content: center; gap: 15px; margin-top: 15px; }
@@ -171,24 +165,16 @@
 
     <div class="container" id="products-area">
         
-        <div class="section-header">
-            <h2 class="section-title" id="ps4"><i class="fab fa-playstation"></i> عروض PlayStation</h2>
-        </div>
+        <div class="section-header"><h2 class="section-title" id="ps4"><i class="fab fa-playstation"></i> عروض PlayStation</h2></div>
         <div class="products-grid" id="ps4Grid"></div>
 
-        <div class="section-header">
-            <h2 class="section-title" id="services"><i class="fas fa-bolt"></i> خدمات الشحن والرشق</h2>
-        </div>
+        <div class="section-header"><h2 class="section-title" id="services"><i class="fas fa-bolt"></i> خدمات الشحن والرشق</h2></div>
         <div class="products-grid" id="servicesGrid"></div>
 
-        <div class="section-header">
-            <h2 class="section-title" id="subs"><i class="fas fa-ticket-alt"></i> اشتراكات المشاهدة</h2>
-        </div>
+        <div class="section-header"><h2 class="section-title" id="subs"><i class="fas fa-ticket-alt"></i> اشتراكات المشاهدة</h2></div>
         <div class="products-grid" id="subsGrid"></div>
 
-        <div class="section-header">
-            <h2 class="section-title" id="pc"><i class="fab fa-steam"></i> ألعاب PC / Steam</h2>
-        </div>
+        <div class="section-header"><h2 class="section-title" id="pc"><i class="fab fa-steam"></i> ألعاب PC / Steam</h2></div>
         <div class="products-grid" id="pcGrid"></div>
 
     </div>
@@ -261,41 +247,22 @@
 
         const products = [
             // --- Custom ---
-            { 
-                id: 999, name: "منتج حسب الطلب", 
-                desc: "اطلب أي لعبة تريدها وسنوفرها لك.", 
-                price: 0.00, img: "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=800&auto=format&fit=crop", 
-                type: "pc", isCustom: true 
-            },
+            { id: 999, name: "منتج حسب الطلب", desc: "اطلب أي لعبة تريدها وسنوفرها لك.", price: 0.00, img: "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=800&auto=format&fit=crop", type: "pc", isCustom: true },
+            
             // --- PS4 ---
-            { 
-                id: 200, name: "EA SPORTS FC 26", 
-                desc: "نسخة كاملة (أونلاين + أوفلاين). الأكثر طلباً!", 
-                price: 10.00, oldPrice: 35.00, 
-                img: "image_fcb3e4.jpg", type: "ps4", special: true 
-            },
-            { 
-                id: 201, name: "Call of Duty: Black Ops 7", 
-                desc: "النسخة الكاملة (Campaign + Multiplayer).", 
-                price: 13.00, oldPrice: 45.00, 
-                img: "bo7.jpg", type: "ps4", special: true 
-            },
+            { id: 200, name: "EA SPORTS FC 26", desc: "نسخة كاملة (أونلاين + أوفلاين).", price: 10.00, oldPrice: 35.00, img: "image_fcb3e4.jpg", type: "ps4", special: true },
+            { id: 201, name: "Call of Duty: Black Ops 7", desc: "النسخة الكاملة (Campaign + Multiplayer).", price: 13.00, oldPrice: 45.00, img: "bo7.jpg", type: "ps4", special: true },
+
             // --- Services ---
-            { 
-                id: 301, name: "شحن جواهر فري فاير (583)", 
-                desc: "شحن فوري ورسمي عبر الـ ID. (500 + 83 بونص).", 
-                price: 3.60, img: "free-fire-100-diamonds-pc-builder-qatar-best-pc-gaming-store-in-qatar.webp", type: "services", noWarranty: true 
-            },
-            { 
-                id: 302, name: "رشق متابعين انستغرام", 
-                desc: "اختر الكمية المطلوبة. متابعين بجودة عالية.", 
-                price: 1.00, img: "ad-instagram.png", type: "services", noWarranty: true, isInsta: true 
-            },
+            { id: 301, name: "شحن جواهر فري فاير (583)", desc: "شحن فوري ورسمي عبر الـ ID.", price: 3.60, img: "free-fire-100-diamonds-pc-builder-qatar-best-pc-gaming-store-in-qatar.webp", type: "services", noWarranty: true },
+            { id: 302, name: "رشق متابعين انستغرام", desc: "اختر الكمية المطلوبة. متابعين بجودة.", price: 1.00, img: "ad-instagram.png", type: "services", noWarranty: true, isInsta: true },
+
             // --- Subs ---
             { id: 101, name: "Netflix Premium (4K)", desc: "ملف خاص بك - ضمان كامل المدة.", price: 1.50, img: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/800px-Netflix_2015_logo.svg.png", type: "subs" },
             { id: 102, name: "Crunchyroll Mega Fan", desc: "شهر كامل بدون إعلانات.", price: 3.00, img: "image_fcb0f7.png", type: "subs" },
             { id: 103, name: "Crunchyroll (3 Months)", desc: "اشتراك 3 شهور توفير.", price: 5.00, img: "image_fcb0f7.png", type: "subs" },
             { id: 104, name: "Crunchyroll (1 Year)", desc: "اشتراك سنة كاملة.", price: 8.00, img: "image_fcb0f7.png", type: "subs" },
+
             // --- PC ---
             { id: 1, name: "Grand Theft Auto V", desc: "نسخة ستيم الأصلية (Offline).", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg", type: "pc" },
             { id: 2, name: "Elden Ring + DLC", desc: "لعبة السنة مع الإضافة.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg", type: "pc" },
@@ -308,24 +275,10 @@
             { id: 9, name: "Forza Horizon 5", desc: "سباقات سيارات.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1551360/header.jpg", type: "pc" },
             { id: 10, name: "Resident Evil 4", desc: "رعب (Offline).", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg", type: "pc" },
             { id: 11, name: "Cyberpunk 2077", desc: "عالم المستقبل.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg", type: "pc" },
+            { id: 15, name: "No I'm not human", desc: "تجربة لعبة رعب برسوم خفيفة.", price: 2.00, img: "no.jpg", type: "pc" },
             { id: 12, name: "Mortal Kombat 1", desc: "قتال دموي.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1971870/header.jpg", type: "pc" },
-            // --- New Product Here ---
-            { id: 29, name: "No I'm not human", desc: "تجربة لعبة رعب برسوم خفيفة .", price: 2.00, img: "no.jpg", type: "pc" },
-            
-
-                id: 13, name: "بكج جميع أجزاء Resident Evil", 
-                desc: "جميع الأجزاء كما في الصورة. تجربة رعب كاملة.", 
-                price: 5.00, 
-                img: "resdent-evil-pack.jpg", 
-                type: "pc" 
-            },
-            { 
-                id: 14, name: "بكج ألعاب السولز (Souls Pack)", 
-                desc: "أقوى ألعاب الصعوبة والتحدي.", 
-                price: 3.49, 
-                img: "https://cdn.cloudflare.steamstatic.com/steam/bundles/18836/header.jpg", // Placeholder
-                type: "pc" 
-            }
+            { id: 13, name: "بكج Resident Evil", desc: "جميع الأجزاء كما في الصورة.", price: 5.00, img: "resdent-evil-pack.jpg", type: "pc" },
+            { id: 14, name: "بكج ألعاب السولز", desc: "أقوى ألعاب الصعوبة.", price: 3.49, img: "https://cdn.cloudflare.steamstatic.com/steam/bundles/18836/header.jpg", type: "pc" },
         ];
 
         document.addEventListener('DOMContentLoaded', () => { renderProducts(); });
@@ -453,4 +406,3 @@
     </script>
 </body>
 </html>
-
