@@ -1,535 +1,628 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Forever Store | المتجر الأقوى للألعاب والخدمات</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Forever Store | المتجر الأقوى للألعاب والخدمات</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script type="text/javascript">
-       (function(){
-          emailjs.init("vZaABNKjHKVCGOhDk"); 
-       })();
-    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+       (function(){
+          emailjs.init("vZaABNKjHKVCGOhDk"); 
+       })();
+    </script>
 
-    <style>
-        :root {
-            --primary: #e50914; --primary-dark: #b20710; --accent: #ffb700;
-            --bg-dark: #0f0f0f; --bg-card: #141414; --text-main: #ffffff; --text-muted: #b3b3b3;
-            --border-radius: 12px; --transition: 0.3s;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { font-family: 'Cairo', sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; background-image: radial-gradient(circle at 10% 20%, rgba(229, 9, 20, 0.05) 0%, transparent 20%); }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-dark); }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+    <style>
+        :root {
+            --primary: #e50914; --primary-dark: #b20710; --accent: #ffb700;
+            --bg-dark: #0f0f0f; --bg-card: #141414; --text-main: #ffffff; --text-muted: #b3b3b3;
+            --border-radius: 12px; --transition: 0.3s;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { font-family: 'Cairo', sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; background-image: radial-gradient(circle at 10% 20%, rgba(229, 9, 20, 0.05) 0%, transparent 20%); }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+
+        /* Header */
+        header { background: rgba(10, 10, 10, 0.95); border-bottom: 1px solid rgba(255,255,255,0.1); position: sticky; top: 0; z-index: 1000; padding: 15px 0; backdrop-filter: blur(12px); }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; }
+        .logo-box { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-img { width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--primary); object-fit: cover; }
+        .logo-text { font-size: 22px; font-weight: 900; color: var(--text-main); line-height: 1; }
+        .logo-text span { color: var(--primary); font-size: 14px; letter-spacing: 2px; }
+        
+        .nav-controls { display: flex; align-items: center; gap: 15px; }
+        .currency-selector { background: #222; border: 1px solid #333; color: white; padding: 8px; border-radius: 6px; cursor: pointer; outline: none; font-weight: bold; }
+        
+        .main-nav { display: flex; gap: 10px; }
+        .nav-link { color: var(--text-muted); text-decoration: none; padding: 8px 15px; border-radius: 6px; font-weight: 600; transition: var(--transition); }
+        .nav-link:hover { background: rgba(255,255,255,0.1); color: white; }
+        .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 24px; cursor: pointer; }
         
-        .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+        /* New Banner Style */
+        .discount-banner { background: #4a0000; color: white; text-align: center; padding: 12px 0; margin-bottom: 20px; font-weight: 600; border-bottom: 3px solid var(--primary); }
+        .discount-banner strong { font-size: 1.1rem; color: var(--accent); margin: 0 5px; background: rgba(255, 255, 255, 0.1); padding: 3px 8px; border-radius: 4px; display: inline-block; }
+        .discount-banner i { color: var(--primary); margin-left: 5px; }
 
-        /* Header */
-        header { background: rgba(10, 10, 10, 0.95); border-bottom: 1px solid rgba(255,255,255,0.1); position: sticky; top: 0; z-index: 1000; padding: 15px 0; backdrop-filter: blur(12px); }
-        .header-inner { display: flex; justify-content: space-between; align-items: center; }
-        .logo-box { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .logo-img { width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--primary); object-fit: cover; }
-        .logo-text { font-size: 22px; font-weight: 900; color: var(--text-main); line-height: 1; }
-        .logo-text span { color: var(--primary); font-size: 14px; letter-spacing: 2px; }
-        
-        .nav-controls { display: flex; align-items: center; gap: 15px; }
-        .currency-selector { background: #222; border: 1px solid #333; color: white; padding: 8px; border-radius: 6px; cursor: pointer; outline: none; font-weight: bold; }
-        
-        .main-nav { display: flex; gap: 10px; }
-        .nav-link { color: var(--text-muted); text-decoration: none; padding: 8px 15px; border-radius: 6px; font-weight: 600; transition: var(--transition); }
-        .nav-link:hover { background: rgba(255,255,255,0.1); color: white; }
-        .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 24px; cursor: pointer; }
+        /* Hero */
+        .hero-section { position: relative; height: 450px; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; margin-bottom: 50px; }
+        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('https://wallpaperaccess.com/full/7445.jpg') center/cover; filter: brightness(0.3); z-index: 1; }
+        .hero-content { position: relative; z-index: 2; padding: 20px; }
+        .hero-title { font-size: 3.5rem; font-weight: 900; margin-bottom: 15px; }
+        .btn-glow { background: var(--primary); color: white; padding: 15px 40px; border-radius: 50px; text-decoration: none; font-weight: 700; box-shadow: 0 0 20px rgba(229, 9, 20, 0.4); display: inline-block; transition: var(--transition); }
+        .btn-glow:hover { transform: scale(1.05); }
 
-        /* Hero */
-        .hero-section { position: relative; height: 450px; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; margin-bottom: 50px; }
-        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('https://wallpaperaccess.com/full/7445.jpg') center/cover; filter: brightness(0.3); z-index: 1; }
-        .hero-content { position: relative; z-index: 2; padding: 20px; }
-        .hero-title { font-size: 3.5rem; font-weight: 900; margin-bottom: 15px; }
-        .btn-glow { background: var(--primary); color: white; padding: 15px 40px; border-radius: 50px; text-decoration: none; font-weight: 700; box-shadow: 0 0 20px rgba(229, 9, 20, 0.4); display: inline-block; transition: var(--transition); }
-        .btn-glow:hover { transform: scale(1.05); }
+        /* Products */
+        .section-header { margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+        .section-title { font-size: 1.5rem; font-weight: 800; display: flex; align-items: center; gap: 10px; }
+        .section-title i { color: var(--primary); }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 25px; margin-bottom: 60px; }
 
-        /* Products */
-        .section-header { margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
-        .section-title { font-size: 1.5rem; font-weight: 800; display: flex; align-items: center; gap: 10px; }
-        .section-title i { color: var(--primary); }
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 25px; margin-bottom: 60px; }
+        .product-card { background: var(--bg-card); border-radius: var(--border-radius); overflow: hidden; border: 1px solid rgba(255,255,255,0.05); transition: var(--transition); position: relative; display: flex; flex-direction: column; }
+        .product-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
 
-        .product-card { background: var(--bg-card); border-radius: var(--border-radius); overflow: hidden; border: 1px solid rgba(255,255,255,0.05); transition: var(--transition); position: relative; display: flex; flex-direction: column; }
-        .product-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .card-img-wrapper { position: relative; width: 100%; height: 350px; background: #000; overflow: hidden; }
+        .card-img { width: 100%; height: 100%; object-fit: contain; transition: 0.5s; }
+        .product-card:hover .card-img { transform: scale(1.05); }
 
-        .card-img-wrapper { position: relative; width: 100%; height: 350px; background: #000; overflow: hidden; }
-        .card-img { width: 100%; height: 100%; object-fit: contain; transition: 0.5s; }
-        .product-card:hover .card-img { transform: scale(1.05); }
+        .badges-container { position: absolute; top: 10px; left: 10px; right: 10px; display: flex; justify-content: space-between; pointer-events: none; z-index: 2; }
+        .badge { padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 800; }
+        .badge-hot { background: var(--primary); color: white; animation: pulse 2s infinite; }
+        .badge-sold { background: #333; color: #aaa; }
+        
+        .warranty-strip { position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(46, 204, 113, 0.95); color: white; text-align: center; font-size: 0.8rem; padding: 4px; font-weight: 700; transform: translateY(100%); transition: var(--transition); }
+        .product-card:hover .warranty-strip { transform: translateY(0); }
 
-        .badges-container { position: absolute; top: 10px; left: 10px; right: 10px; display: flex; justify-content: space-between; pointer-events: none; z-index: 2; }
-        .badge { padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 800; }
-        .badge-hot { background: var(--primary); color: white; animation: pulse 2s infinite; }
-        .badge-sold { background: #333; color: #aaa; }
-        
-        .warranty-strip { position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(46, 204, 113, 0.95); color: white; text-align: center; font-size: 0.8rem; padding: 4px; font-weight: 700; transform: translateY(100%); transition: var(--transition); }
-        .product-card:hover .warranty-strip { transform: translateY(0); }
+        .card-body { padding: 15px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .product-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 5px; }
+        .product-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px; line-height: 1.4; }
+        
+        .custom-select { width: 100%; padding: 8px; background: #222; border: 1px solid #333; color: white; border-radius: 6px; margin-bottom: 10px; outline: none; }
+        
+        .price-area { display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; }
+        .current-price { font-size: 1.2rem; font-weight: 800; color: var(--primary); }
+        .old-price { font-size: 0.85rem; text-decoration: line-through; color: #666; }
+        
+        .add-btn { width: 100%; padding: 10px; background: white; color: black; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; transition: var(--transition); }
+        .add-btn:hover:not(:disabled) { background: var(--primary); color: white; }
+        .add-btn:disabled { background: #333; color: #666; cursor: not-allowed; }
 
-        .card-body { padding: 15px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-        .product-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 5px; }
-        .product-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px; line-height: 1.4; }
-        
-        .custom-select { width: 100%; padding: 8px; background: #222; border: 1px solid #333; color: white; border-radius: 6px; margin-bottom: 10px; outline: none; }
-        
-        .price-area { display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; }
-        .current-price { font-size: 1.2rem; font-weight: 800; color: var(--primary); }
-        .old-price { font-size: 0.85rem; text-decoration: line-through; color: #666; }
-        
-        .add-btn { width: 100%; padding: 10px; background: white; color: black; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; transition: var(--transition); }
-        .add-btn:hover:not(:disabled) { background: var(--primary); color: white; }
-        .add-btn:disabled { background: #333; color: #666; cursor: not-allowed; }
+        /* Reviews Styling */
+        .reviews-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin-bottom: 40px; }
+        .review-card { background: #1e1e1e; padding: 15px; border-radius: 10px; border-right: 3px solid var(--accent); transition: 0.3s; }
+        .review-card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        .review-header { display: flex; justify-content: space-between; margin-bottom: 10px; }
+        .review-rating { color: var(--accent); font-size: 1.1rem; }
+        .review-name { font-weight: 700; color: var(--primary); }
+        .review-comment { font-size: 0.95rem; color: var(--text-muted); line-height: 1.5; }
+        .review-date { font-size: 0.75rem; color: #555; margin-top: 10px; }
 
-        /* Reviews Styling */
-        .reviews-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin-bottom: 40px; }
-        .review-card { background: #1e1e1e; padding: 15px; border-radius: 10px; border-right: 3px solid var(--accent); transition: 0.3s; }
-        .review-card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
-        .review-header { display: flex; justify-content: space-between; margin-bottom: 10px; }
-        .review-rating { color: var(--accent); font-size: 1.1rem; }
-        .review-name { font-weight: 700; color: var(--primary); }
-        .review-comment { font-size: 0.95rem; color: var(--text-muted); line-height: 1.5; }
-        .review-date { font-size: 0.75rem; color: #555; margin-top: 10px; }
+        .feedback-form-container { max-width: 600px; margin: 0 auto 50px; padding: 25px; background: var(--bg-card); border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); }
+        .input-field { width: 100%; padding: 12px; background: #252525; border: 1px solid #333; border-radius: 8px; color: white; margin-bottom: 10px; outline: none; }
+        .input-field:focus { border-color: var(--primary); }
+        .discount-input { display: flex; gap: 10px; align-items: center; margin-bottom: 15px; }
+        .discount-input input { flex-grow: 1; }
+        .apply-btn { padding: 10px 15px; background: var(--accent); color: black; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; transition: var(--transition); }
+        .apply-btn:hover { background: #ffc93c; }
 
-        .feedback-form-container { max-width: 600px; margin: 0 auto 50px; padding: 25px; background: var(--bg-card); border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); }
-        .input-field { width: 100%; padding: 12px; background: #252525; border: 1px solid #333; border-radius: 8px; color: white; margin-bottom: 10px; outline: none; }
-        .input-field:focus { border-color: var(--primary); }
 
-        /* Modal */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
-        .modal-box { background: #1a1a1a; width: 90%; max-width: 450px; padding: 25px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); position: relative; animation: slideUp 0.4s; }
-        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        .close-modal { position: absolute; top: 15px; left: 15px; background: none; border: none; color: #666; font-size: 24px; cursor: pointer; }
-        
-        .order-summary { background: #252525; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-right: 3px solid var(--primary); }
-        .orange-money-box { background: #ff7900; color: black; padding: 15px; border-radius: 8px; margin-bottom: 20px; text-align: center; }
-        .modal-btn { width: 100%; padding: 12px; background: var(--primary); color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; }
+        /* Modal */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
+        .modal-box { background: #1a1a1a; width: 90%; max-width: 450px; padding: 25px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); position: relative; animation: slideUp 0.4s; }
+        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .close-modal { position: absolute; top: 15px; left: 15px; background: none; border: none; color: #666; font-size: 24px; cursor: pointer; }
+        
+        .order-summary { background: #252525; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-right: 3px solid var(--primary); }
+        .orange-money-box { background: #ff7900; color: black; padding: 15px; border-radius: 8px; margin-bottom: 20px; text-align: center; }
+        .modal-btn { width: 100%; padding: 12px; background: var(--primary); color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; }
 
-        /* Toast */
-        .toast-container { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 3000; width: 100%; display: flex; justify-content: center; pointer-events: none; }
-        .toast-msg { background: white; color: black; padding: 15px 25px; border-radius: 50px; display: flex; align-items: center; gap: 10px; font-weight: 700; opacity: 0; transform: translateY(30px); transition: 0.4s; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center; }
-        .toast-msg.active { opacity: 1; transform: translateY(0); }
-        .toast-msg.success i { color: #2ecc71; }
-        .toast-msg.error i { color: var(--primary); }
+        /* Toast */
+        .toast-container { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 3000; width: 100%; display: flex; justify-content: center; pointer-events: none; }
+        .toast-msg { background: white; color: black; padding: 15px 25px; border-radius: 50px; display: flex; align-items: center; gap: 10px; font-weight: 700; opacity: 0; transform: translateY(30px); transition: 0.4s; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center; }
+        .toast-msg.active { opacity: 1; transform: translateY(0); }
+        .toast-msg.success i { color: #2ecc71; }
+        .toast-msg.error i { color: var(--primary); }
 
-        /* Footer */
-        footer { background: #0a0a0a; padding: 50px 0 20px; border-top: 1px solid #222; margin-top: 50px; text-align: center; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 30px; }
-        .social-bar { display: flex; justify-content: center; gap: 15px; margin-top: 15px; }
-        .social-link { width: 40px; height: 40px; border-radius: 50%; background: #222; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: 0.3s; }
-        .social-link:hover { background: var(--primary); }
-        .payments-bar { display: flex; justify-content: center; gap: 15px; margin-top: 10px; opacity: 0.7; }
-        .payments-bar img { height: 25px; filter: grayscale(100%); }
-        .payments-bar img:hover { filter: grayscale(0%); }
+        /* Footer */
+        footer { background: #0a0a0a; padding: 50px 0 20px; border-top: 1px solid #222; margin-top: 50px; text-align: center; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 30px; }
+        .social-bar { display: flex; justify-content: center; gap: 15px; margin-top: 15px; }
+        .social-link { width: 40px; height: 40px; border-radius: 50%; background: #222; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: 0.3s; }
+        .social-link:hover { background: var(--primary); }
+        .payments-bar { display: flex; justify-content: center; gap: 15px; margin-top: 10px; opacity: 0.7; }
+        .payments-bar img { height: 25px; filter: grayscale(100%); }
+        .payments-bar img:hover { filter: grayscale(0%); }
 
-        @media (max-width: 768px) {
-            .header-inner { flex-wrap: wrap; gap: 10px; }
-            .nav-controls { margin-left: auto; order: 2; }
-            .mobile-menu-btn { display: block; order: 3; }
-            .logo-box { order: 1; }
-            .main-nav { display: none; width: 100%; order: 4; flex-direction: column; background: #111; padding: 10px; }
-            .main-nav.active { display: flex; }
-            .products-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .card-img-wrapper { height: 200px; }
-            .hero-title { font-size: 2rem; }
-            .hero-section { height: 350px; }
-        }
-    </style>
+        @media (max-width: 768px) {
+            .header-inner { flex-wrap: wrap; gap: 10px; }
+            .nav-controls { margin-left: auto; order: 2; }
+            .mobile-menu-btn { display: block; order: 3; }
+            .logo-box { order: 1; }
+            .main-nav { display: none; width: 100%; order: 4; flex-direction: column; background: #111; padding: 10px; }
+            .main-nav.active { display: flex; }
+            .products-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .card-img-wrapper { height: 200px; }
+            .hero-title { font-size: 2rem; }
+            .hero-section { height: 350px; }
+        }
+    </style>
 </head>
 <body>
 
-    <header>
-        <div class="container header-inner">
-            <button class="mobile-menu-btn" onclick="document.getElementById('mainNav').classList.toggle('active')"><i class="fas fa-bars"></i></button>
-            <a href="#" class="logo-box">
-                <img src="our_theme.jpg" alt="Logo" class="logo-img">
-                <div class="logo-text">FOREVER <span>STORE</span></div>
-            </a>
-            <div class="nav-controls">
-                <select class="currency-selector" id="currencySelector" onchange="updateCurrency()">
-                    <option value="JOD">JOD</option>
-                    <option value="SAR">SAR</option>
-                    <option value="USD">USD</option>
-                    <option value="EGP">EGP</option>
-                </select>
-            </div>
-            <nav class="main-nav" id="mainNav">
-                <a href="#home" class="nav-link">الرئيسية</a>
-                <a href="#ps4" class="nav-link">سوني</a>
-                <a href="#services" class="nav-link">خدمات</a>
-                <a href="#subs" class="nav-link">اشتراكات</a>
-                <a href="#pc" class="nav-link">PC</a>
-            </nav>
-        </div>
-    </header>
+    <header>
+        <div class="container header-inner">
+            <button class="mobile-menu-btn" onclick="document.getElementById('mainNav').classList.toggle('active')"><i class="fas fa-bars"></i></button>
+            <a href="#" class="logo-box">
+                <img src="our_theme.jpg" alt="Logo" class="logo-img">
+                <div class="logo-text">FOREVER <span>STORE</span></div>
+            </a>
+            <div class="nav-controls">
+                <select class="currency-selector" id="currencySelector" onchange="updateCurrency()">
+                    <option value="JOD">JOD</option>
+                    <option value="SAR">SAR</option>
+                    <option value="USD">USD</option>
+                    <option value="EGP">EGP</option>
+                </select>
+            </div>
+            <nav class="main-nav" id="mainNav">
+                <a href="#home" class="nav-link">الرئيسية</a>
+                <a href="#ps4" class="nav-link">سوني</a>
+                <a href="#services" class="nav-link">خدمات</a>
+                <a href="#subs" class="nav-link">اشتراكات</a>
+                <a href="#pc" class="nav-link">PC</a>
+            </nav>
+        </div>
+    </header>
 
-    <section class="hero-section" id="home">
-        <div class="hero-bg"></div>
-        <div class="hero-content animate__animated animate__fadeInUp">
-            <h1 class="hero-title">عالم الألعاب بين يديك</h1>
-            <p style="color:#ddd; font-size:1.1rem; margin-bottom:20px;">أفضل الأسعار، أسرع تسليم، وضمان حقيقي مدى الحياة.</p>
-            <a href="#products-area" class="btn-glow">تصفح العروض <i class="fas fa-arrow-left"></i></a>
-        </div>
-    </section>
-
-    <div class="container" id="products-area">
-        
-        <div class="section-header"><h2 class="section-title" id="ps4"><i class="fab fa-playstation"></i> عروض PlayStation</h2></div>
-        <div class="products-grid" id="ps4Grid"></div>
-
-        <div class="section-header"><h2 class="section-title" id="services"><i class="fas fa-bolt"></i> خدمات الشحن والرشق</h2></div>
-        <div class="products-grid" id="servicesGrid"></div>
-
-        <div class="section-header"><h2 class="section-title" id="subs"><i class="fas fa-ticket-alt"></i> اشتراكات المشاهدة</h2></div>
-        <div class="products-grid" id="subsGrid"></div>
-
-        <div class="section-header"><h2 class="section-title" id="pc"><i class="fab fa-steam"></i> ألعاب PC / Steam</h2></div>
-        <div class="products-grid" id="pcGrid"></div>
-
-        <div class="section-header"><h2 class="section-title"><i class="fas fa-comments"></i> تقييمات العملاء</h2></div>
-        <div class="reviews-container" id="reviewsGrid">
-            <p style="color:#666; text-align:center; width:100%;">جاري تحميل التقييمات...</p>
-        </div>
-
-        <div class="section-header" style="margin-top: 50px;"><h2 class="section-title"><i class="fas fa-feather-alt"></i> أضف تقييمك</h2></div>
-        <div class="feedback-form-container">
-            <form id="feedbackForm">
-                <input type="text" id="reviewName" class="input-field" placeholder="اسمك الكريم" required>
-                <input type="text" id="reviewProduct" class="input-field" placeholder="المنتج الذي اشتريته (اختياري)">
-                <div style="display:flex; gap:10px; margin-bottom: 15px; align-items:center;">
-                    <label style="color:var(--text-muted); font-size: 0.9rem;">تقييم النجوم:</label>
-                    <select id="reviewRating" class="custom-select" style="width: 150px; padding: 8px;">
-                        <option value="5">⭐⭐⭐⭐⭐</option>
-                        <option value="4">⭐⭐⭐⭐</option>
-                        <option value="3">⭐⭐⭐</option>
-                        <option value="2">⭐⭐</option>
-                        <option value="1">⭐</option>
-                    </select>
-                </div>
-                <textarea id="reviewComment" class="input-field" placeholder="اكتب رأيك بالتفصيل هنا..." rows="4" required></textarea>
-                <button type="submit" class="modal-btn" style="background:var(--success-color); color:black; margin-top: 10px;">إرسال التقييم</button>
-            </form>
-        </div>
-
+    <div class="discount-banner">
+        نورت المتجر! 🤩 احصل على خصم خاص عند الشراء باستخدام الكود: <strong>DDOOQ</strong> <i class="fas fa-percent"></i>
     </div>
 
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <div class="logo-box" style="justify-content:center; margin-bottom:15px;">
-                        <img src="our_theme.jpg" alt="Logo" class="logo-img">
-                        <div class="logo-text">FOREVER <span>STORE</span></div>
-                    </div>
-                    <p style="color:#999; font-size:0.9rem;">وجهتك الأولى للألعاب والخدمات الرقمية.</p>
-                    <div class="social-bar">
-                        <a href="https://www.instagram.com/foreverstore.jo/" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="https://discord.gg/SjK67aExfX" target="_blank" class="social-link"><i class="fab fa-discord"></i></a>
-                    </div>
-                </div>
-                <div>
-                    <h4 style="color:white; margin-bottom:15px;">طرق الدفع</h4>
-                    <div class="payments-bar">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Binance_Logo.svg" alt="Binance">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Orange_logo.svg" alt="Orange Money">
-                    </div>
-                    <p style="margin-top:10px; color:#666; font-size:0.8rem;">نقبل التحويل البنكي والمحافظ</p>
-                </div>
+    <section class="hero-section" id="home">
+        <div class="hero-bg"></div>
+        <div class="hero-content animate__animated animate__fadeInUp">
+            <h1 class="hero-title">عالم الألعاب بين يديك</h1>
+            <p style="color:#ddd; font-size:1.1rem; margin-bottom:20px;">أفضل الأسعار، أسرع تسليم، وضمان حقيقي مدى الحياة.</p>
+            <a href="#products-area" class="btn-glow">تصفح العروض <i class="fas fa-arrow-left"></i></a>
+        </div>
+    </section>
+
+    <div class="container" id="products-area">
+        
+        <div class="section-header"><h2 class="section-title" id="ps4"><i class="fab fa-playstation"></i> عروض PlayStation</h2></div>
+        <p style="color:var(--accent); font-weight:bold; margin-bottom:15px;"><i class="fas fa-info-circle"></i> ملاحظة: كود الخصم <strong>DDOOQ</strong> يعمل على ألعاب **PlayStation** و **PC**.</p>
+        <div class="products-grid" id="ps4Grid"></div>
+
+        <div class="section-header"><h2 class="section-title" id="services"><i class="fas fa-bolt"></i> خدمات الشحن والرشق</h2></div>
+        <div class="products-grid" id="servicesGrid"></div>
+
+        <div class="section-header"><h2 class="section-title" id="subs"><i class="fas fa-ticket-alt"></i> اشتراكات المشاهدة</h2></div>
+        <div class="products-grid" id="subsGrid"></div>
+
+        <div class="section-header"><h2 class="section-title" id="pc"><i class="fab fa-steam"></i> ألعاب PC / Steam</h2></div>
+        <div class="products-grid" id="pcGrid"></div>
+
+        <div class="section-header"><h2 class="section-title"><i class="fas fa-comments"></i> تقييمات العملاء</h2></div>
+        <div class="reviews-container" id="reviewsGrid">
+            <p style="color:#666; text-align:center; width:100%;">جاري تحميل التقييمات...</p>
+        </div>
+
+        <div class="section-header" style="margin-top: 50px;"><h2 class="section-title"><i class="fas fa-feather-alt"></i> أضف تقييمك</h2></div>
+        <div class="feedback-form-container">
+            <form id="feedbackForm">
+                <input type="text" id="reviewName" class="input-field" placeholder="اسمك الكريم" required>
+                <input type="text" id="reviewProduct" class="input-field" placeholder="المنتج الذي اشتريته (اختياري)">
+                <div style="display:flex; gap:10px; margin-bottom: 15px; align-items:center;">
+                    <label style="color:var(--text-muted); font-size: 0.9rem;">تقييم النجوم:</label>
+                    <select id="reviewRating" class="custom-select" style="width: 150px; padding: 8px;">
+                        <option value="5">⭐⭐⭐⭐⭐</option>
+                        <option value="4">⭐⭐⭐⭐</option>
+                        <option value="3">⭐⭐⭐</option>
+                        <option value="2">⭐⭐</option>
+                        <option value="1">⭐</option>
+                    </select>
+                </div>
+                <textarea id="reviewComment" class="input-field" placeholder="اكتب رأيك بالتفصيل هنا..." rows="4" required></textarea>
+                <button type="submit" class="modal-btn" style="background:var(--success-color); color:black; margin-top: 10px;">إرسال التقييم</button>
+            </form>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="logo-box" style="justify-content:center; margin-bottom:15px;">
+                        <img src="our_theme.jpg" alt="Logo" class="logo-img">
+                        <div class="logo-text">FOREVER <span>STORE</span></div>
+                    </div>
+                    <p style="color:#999; font-size:0.9rem;">وجهتك الأولى للألعاب والخدمات الرقمية.</p>
+                    <div class="social-bar">
+                        <a href="https://www.instagram.com/foreverstore.jo/" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://discord.gg/SjK67aExfX" target="_blank" class="social-link"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 style="color:white; margin-bottom:15px;">طرق الدفع</h4>
+                    <div class="payments-bar">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Binance_Logo.svg" alt="Binance">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Orange_logo.svg" alt="Orange Money">
+                    </div>
+                    <p style="margin-top:10px; color:#666; font-size:0.8rem;">نقبل التحويل البنكي والمحافظ</p>
+                </div>
+            </div>
+            <div style="border-top:1px solid #222; padding-top:20px; color:#555; font-size:0.85rem;">
+                &copy; 2025 Forever Store. جميع الحقوق محفوظة.
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="paymentModal">
+        <div class="modal-box">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <h3 style="color:white; text-align:center; margin-bottom:20px;">تأكيد الطلب 🚀</h3>
+            <div class="order-summary">
+                <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+                    <span style="color:#aaa;">المنتج:</span>
+                    <span style="color:white; font-weight:bold;" id="modalPrdName">...</span>
+                </div>
+                <div style="display:none; justify-content:space-between; margin-bottom:5px;" id="modalOriginalPriceRow">
+                    <span style="color:#666; font-size:0.9rem;">السعر الأصلي:</span>
+                    <span style="color:#666; font-weight:bold; text-decoration:line-through;" id="modalOriginalPrice">...</span>
+                </div>
+                <div style="display:none; justify-content:space-between; margin-bottom:5px;" id="modalDiscountRow">
+                    <span style="color:#2ecc71; font-size:0.9rem;">الخصم (DDOOQ):</span>
+                    <span style="color:#2ecc71; font-weight:bold;" id="modalDiscountValue">...</span>
+                </div>
+                                <div style="display:flex; justify-content:space-between; border-top: 1px dashed #333; padding-top: 10px; margin-top: 10px;">
+                    <span style="color:#aaa;">الإجمالي المطلوب:</span>
+                    <span style="color:var(--primary); font-weight:bold; font-size:1.2rem;" id="modalPrdPrice">...</span>
+                </div>
+                <div id="modalWarranty" style="margin-top:10px; font-size:0.8rem; color:#2ecc71; display:flex; align-items:center; gap:5px;">
+                    <i class="fas fa-shield-alt"></i> ضمان كامل المدة
+                </div>
+            </div>
+            <div class="discount-input">
+                <input type="text" id="discountCode" class="input-field" placeholder="أدخل كود الخصم (مثل DDOOQ)">
+                <button class="apply-btn" onclick="applyDiscount()">تطبيق</button>
             </div>
-            <div style="border-top:1px solid #222; padding-top:20px; color:#555; font-size:0.85rem;">
-                &copy; 2025 Forever Store. جميع الحقوق محفوظة.
-            </div>
-        </div>
-    </footer>
+            <div class="orange-money-box">
+                <div style="font-size:0.9rem;">Orange Money</div>
+                <div style="font-size:1.4rem; font-weight:800; letter-spacing:1px;">0785039924</div>
+                <div style="font-size:0.9rem;">محمد هنديه</div>
+                <div style="font-size:0.75rem; margin-top:5px; opacity:0.8;">🔒 موثق بهوية رسمية</div>
+            </div>
+            <input type="text" id="custName" class="input-field" placeholder="الاسم الكامل">
+            <input type="text" id="walletName" class="input-field" placeholder="اسم صاحب المحفظة المحول منها">
+            <button class="modal-btn btn-confirm" onclick="submitOrder()">تأكيد وإرسال الطلب</button>
+        </div>
+    </div>
 
-    <div class="modal-overlay" id="paymentModal">
-        <div class="modal-box">
-            <button class="close-modal" onclick="closeModal()">&times;</button>
-            <h3 style="color:white; text-align:center; margin-bottom:20px;">تأكيد الطلب 🚀</h3>
-            <div class="order-summary">
-                <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
-                    <span style="color:#aaa;">المنتج:</span>
-                    <span style="color:white; font-weight:bold;" id="modalPrdName">...</span>
-                </div>
-                <div style="display:flex; justify-content:space-between;">
-                    <span style="color:#aaa;">الإجمالي:</span>
-                    <span style="color:var(--primary); font-weight:bold; font-size:1.2rem;" id="modalPrdPrice">...</span>
-                </div>
-                <div id="modalWarranty" style="margin-top:10px; font-size:0.8rem; color:#2ecc71; display:flex; align-items:center; gap:5px;">
-                    <i class="fas fa-shield-alt"></i> ضمان كامل المدة
-                </div>
-            </div>
-            <div class="orange-money-box">
-                <div style="font-size:0.9rem;">Orange Money</div>
-                <div style="font-size:1.4rem; font-weight:800; letter-spacing:1px;">0785039924</div>
-                <div style="font-size:0.9rem;">محمد هنديه</div>
-                <div style="font-size:0.75rem; margin-top:5px; opacity:0.8;">🔒 موثق بهوية رسمية</div>
-            </div>
-            <input type="text" id="custName" class="input-field" placeholder="الاسم الكامل">
-            <input type="text" id="walletName" class="input-field" placeholder="اسم صاحب المحفظة المحول منها">
-            <button class="modal-btn btn-confirm" onclick="submitOrder()">تأكيد وإرسال الطلب</button>
-        </div>
-    </div>
+    <div class="toast-container" id="toastWrapper"></div>
 
-    <div class="toast-container" id="toastWrapper"></div>
+    <script>
+        const rates = { JOD: 1, SAR: 5.30, USD: 1.41, EGP: 70.00 };
+        let currentCurrency = 'JOD';
+        let selectedProduct = null;
+        let basePriceJOD = 0; // السعر الأساسي بالدينار الأردني
 
-    <script>
-        const rates = { JOD: 1, SAR: 5.30, USD: 1.41, EGP: 70.00 };
-        let currentCurrency = 'JOD';
-        let selectedProduct = null;
+        // 🔴🔴🔴 استبدل هذا الرابط برابط Apps Script الخاص بك 🔴🔴🔴
+        const GOOGLE_API_URL = 'PASTE_WEB_APP_URL_HERE'; 
+        const DISCOUNT_CODE = "DDOOQ";
+        const DISCOUNT_AMOUNT = 0.50; // خصم 0.50 دينار
 
-        // 🔴🔴🔴 استبدل هذا الرابط برابط Apps Script الخاص بك 🔴🔴🔴
-        const GOOGLE_API_URL = 'PASTE_WEB_APP_URL_HERE'; 
+        const products = [
+            // --- Custom ---
+            { id: 999, name: "منتج حسب الطلب", desc: "اطلب أي لعبة تريدها وسنوفرها لك.", price: 0.00, img: "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=800&auto=format&fit=crop", type: "pc", isCustom: true },
+            
+            // --- PS4 (Updated Price) ---
+            { id: 200, name: "EA SPORTS FC 26", desc: "نسخة كاملة (أونلاين + أوفلاين).", price: 7.50, oldPrice: 35.00, img: "image_fcb3e4.jpg", type: "ps4", special: true }, // Changed from 10.00 to 7.50 (Base Price)
+            { id: 201, name: "Call of Duty: Black Ops 7", desc: "النسخة الكاملة (Campaign + Multiplayer).", price: 7.50, oldPrice: 45.00, img: "bo7.jpg", type: "ps4", special: true }, // Changed from 13.00 to 7.50 (Base Price)
 
-        const products = [
-            // --- Custom ---
-            { id: 999, name: "منتج حسب الطلب", desc: "اطلب أي لعبة تريدها وسنوفرها لك.", price: 0.00, img: "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=800&auto=format&fit=crop", type: "pc", isCustom: true },
+            // --- Services ---
+            { id: 301, name: "شحن جواهر فري فاير (583)", desc: "شحن فوري ورسمي عبر الـ ID.", price: 3.60, img: "free-fire-100-diamonds-pc-builder-qatar-best-pc-gaming-store-in-qatar.webp", type: "services", noWarranty: true },
+            { id: 302, name: "رشق متابعين انستغرام", desc: "اختر الكمية المطلوبة. متابعين بجودة.", price: 1.00, img: "ad-instagram.png", type: "services", noWarranty: true, isInsta: true },
+
+            // --- Subs ---
+            { id: 101, name: "Netflix Premium (4K)", desc: "ملف خاص بك - ضمان كامل المدة.", price: 1.50, img: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/800px-Netflix_2015_logo.svg.png", type: "subs" },
+            { id: 102, name: "Crunchyroll Mega Fan", desc: "شهر كامل بدون إعلانات.", price: 3.00, img: "image_fcb0f7.png", type: "subs" },
+            { id: 103, name: "Crunchyroll (3 Months)", desc: "اشتراك 3 شهور توفير.", price: 5.00, img: "image_fcb0f7.png", type: "subs" },
+            { id: 104, name: "Crunchyroll (1 Year)", desc: "اشتراك سنة كاملة.", price: 8.00, img: "image_fcb0f7.png", type: "subs" },
+
+            // --- PC (Updated Price) ---
+            { id: 1, name: "Grand Theft Auto V", desc: "نسخة ستيم الأصلية (Offline).", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg", type: "pc" }, // Changed to 2.00 (Base Price)
+            { id: 2, name: "Elden Ring + DLC", desc: "لعبة السنة مع الإضافة.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg", type: "pc" },
+            { id: 3, name: "Call of Duty: MW III", desc: "تختيم القصة فقط.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/2519060/header.jpg", type: "pc" },
+            { id: 4, name: "Black Myth: Wukong", desc: "اللعبة الترند!", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg", type: "pc" },
+            { id: 5, name: "Minecraft", desc: "حساب أصلي (Java & Bedrock).", price: 3.00, img: "https://image.api.playstation.com/vulcan/img/rnd/202010/2117/2mFy3G4811b7d581179e832876618454952018898516d71b.png", type: "pc" },
+            { id: 6, name: "Tekken 8", desc: "قتال شوارع.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1778820/header.jpg", type: "pc" },
+            { id: 7, name: "Red Dead Redemption 2", desc: "عالم مفتوح وقصة أسطورية.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg", type: "pc" },
+            { id: 8, name: "God of War Ragnarök", desc: "مغامرة كريتوس.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/2322010/header.jpg", type: "pc" },
+            { id: 9, name: "Forza Horizon 5", desc: "سباقات سيارات.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1551360/header.jpg", type: "pc" },
+            { id: 10, name: "Resident Evil 4", desc: "رعب (Offline).", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg", type: "pc" },
+            { id: 11, name: "Cyberpunk 2077", desc: "عالم المستقبل.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg", type: "pc" },
+            { id: 12, name: "Mortal Kombat 1", desc: "قتال دموي.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1971870/header.jpg", type: "pc" },
+            { id: 13, name: "بكج Resident Evil", desc: "جميع الأجزاء كما في الصورة.", price: 5.00, img: "resdent-evil-pack.jpg", type: "pc" },
+            { id: 14, name: "بكج ألعاب السولز", desc: "أقوى ألعاب الصعوبة.", price: 3.49, img: "https://cdn.cloudflare.steamstatic.com/steam/bundles/18836/header.jpg", type: "pc" },
+            { id: 15, name: "No I'm not human", desc: "تجربة لعبة رعب برسوم خفيفة.", price: 2.00, img: "no.jpg", type: "pc" },
+            { id: 16, name: "Hollow Knight & Silksong", desc: "الجزء الاول وسيلكزونج.", price: 2.00, img: "hollow.png", type: "pc" }
+        ];
+
+
+        document.addEventListener('DOMContentLoaded', () => { 
+            renderProducts(); 
+            fetchAndRenderReviews();
+        });
+
+        function renderProducts() {
+            const containers = { ps4: document.getElementById('ps4Grid'), services: document.getElementById('servicesGrid'), subs: document.getElementById('subsGrid'), pc: document.getElementById('pcGrid') };
+            for(let key in containers) if(containers[key]) containers[key].innerHTML = '';
+            
+            currentCurrency = document.getElementById('currencySelector').value;
+            const rate = rates[currentCurrency];
+
+            products.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                
+                let displayPrice = (p.price * rate).toFixed(2);
+                let oldPriceHtml = p.oldPrice ? `<span class="old-price">${(p.oldPrice * rate).toFixed(2)} ${currentCurrency}</span>` : '';
+                let btnAction = `openModal(${p.id}, ${p.price})`;
+                let priceId = `price-${p.id}`;
+                
+                let extraHtml = '';
+                if(p.isInsta) {
+                    extraHtml = `<select class="custom-select" onchange="updateInstaPrice(this.value, ${p.id})"><option value="1">1000 متابع</option><option value="2">2000 متابع</option><option value="5">5000 متابع</option><option value="10">10000 متابع</option></select>`;
+                    btnAction = `openModal(${p.id}, 1.00, '1000 متابع')`;
+                    displayPrice = (1.00 * rate).toFixed(2);
+                }
+                if(p.isCustom) { displayPrice = "حسب الاتفاق"; oldPriceHtml = ""; btnAction = `openModal(${p.id}, 0, 'منتج حسب الطلب')`; }
+
+                let badges = '<div class="badges-container">';
+                if(p.special) badges += '<span class="badge badge-hot">HOT 🔥</span>';
+                if(p.soldOut) badges += '<span class="badge badge-sold">نفذت الكمية</span>';
+                badges += '</div>';
+                
+                let warranty = (!p.noWarranty && !p.isCustom) ? '<div class="warranty-strip"><i class="fas fa-shield-alt"></i> ضمان كامل المدة</div>' : '';
+                const btnState = p.soldOut ? 'disabled' : '';
+                const btnText = p.soldOut ? 'نفذت الكمية' : 'شراء الآن <i class="fas fa-shopping-cart"></i>';
+
+                card.innerHTML = `
+                    <div class="card-img-wrapper">${badges}<img src="${p.img}" alt="${p.name}" class="card-img" loading="lazy">${warranty}</div>
+                    <div class="card-body">
+                        <div><h3 class="product-title">${p.name}</h3><p class="product-desc">${p.desc}</p>${extraHtml}</div>
+                        <div><div class="price-area"><div class="current-price" id="${priceId}">${displayPrice} ${p.isCustom ? '' : currentCurrency}</div>${oldPriceHtml}</div>
+                        <button id="btn-${p.id}" class="add-btn" onclick="${btnAction}" ${btnState}>${btnText}</button></div>
+                    </div>`;
+                
+                if (containers[p.type]) containers[p.type].appendChild(card);
+                else if(p.type === 'sub') containers['subs'].appendChild(card);
+            });
+        }
+
+        function updateInstaPrice(qty, id) {
+            const rate = rates[currentCurrency];
+            const priceJOD = 1.00 * qty;
+            const newPrice = (priceJOD * rate).toFixed(2);
+            document.getElementById(`price-${id}`).innerText = `${newPrice} ${currentCurrency}`;
+            document.getElementById(`btn-${id}`).setAttribute('onclick', `openModal(${id}, ${priceJOD}, '${qty*1000} متابع')`);
+        }
+
+        function updateCurrency() { renderProducts(); }
+
+        function openModal(id, priceJOD, customDesc = "") {
+            const p = products.find(x => x.id === id);
+            selectedProduct = p;
+            basePriceJOD = priceJOD;
             
-            // --- PS4 ---
-            { id: 200, name: "EA SPORTS FC 26", desc: "نسخة كاملة (أونلاين + أوفلاين).", price: 10.00, oldPrice: 35.00, img: "image_fcb3e4.jpg", type: "ps4", special: true },
-            { id: 201, name: "Call of Duty: Black Ops 7", desc: "النسخة الكاملة (Campaign + Multiplayer).", price: 13.00, oldPrice: 45.00, img: "bo7.jpg", type: "ps4", special: true },
+            // إعادة ضبط الخصم عند فتح المودال
+            document.getElementById('discountCode').value = "";
+            document.getElementById('modalOriginalPriceRow').style.display = 'none';
+            document.getElementById('modalDiscountRow').style.display = 'none';
 
-            // --- Services ---
-            { id: 301, name: "شحن جواهر فري فاير (583)", desc: "شحن فوري ورسمي عبر الـ ID.", price: 3.60, img: "free-fire-100-diamonds-pc-builder-qatar-best-pc-gaming-store-in-qatar.webp", type: "services", noWarranty: true },
-            { id: 302, name: "رشق متابعين انستغرام", desc: "اختر الكمية المطلوبة. متابعين بجودة.", price: 1.00, img: "ad-instagram.png", type: "services", noWarranty: true, isInsta: true },
-
-            // --- Subs ---
-            { id: 101, name: "Netflix Premium (4K)", desc: "ملف خاص بك - ضمان كامل المدة.", price: 1.50, img: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/800px-Netflix_2015_logo.svg.png", type: "subs" },
-            { id: 102, name: "Crunchyroll Mega Fan", desc: "شهر كامل بدون إعلانات.", price: 3.00, img: "image_fcb0f7.png", type: "subs" },
-            { id: 103, name: "Crunchyroll (3 Months)", desc: "اشتراك 3 شهور توفير.", price: 5.00, img: "image_fcb0f7.png", type: "subs" },
-            { id: 104, name: "Crunchyroll (1 Year)", desc: "اشتراك سنة كاملة.", price: 8.00, img: "image_fcb0f7.png", type: "subs" },
-
-            // --- PC ---
-            { id: 1, name: "Grand Theft Auto V", desc: "نسخة ستيم الأصلية (Offline).", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg", type: "pc" },
-            { id: 2, name: "Elden Ring + DLC", desc: "لعبة السنة مع الإضافة.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg", type: "pc" },
-            { id: 3, name: "Call of Duty: MW III", desc: "تختيم القصة فقط.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/2519060/header.jpg", type: "pc" },
-            { id: 4, name: "Black Myth: Wukong", desc: "اللعبة الترند!", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg", type: "pc" },
-            { id: 5, name: "Minecraft", desc: "حساب أصلي (Java & Bedrock).", price: 3.00, img: "https://image.api.playstation.com/vulcan/img/rnd/202010/2117/2mFy3G4811b7d581179e832876618454952018898516d71b.png", type: "pc" },
-            { id: 6, name: "Tekken 8", desc: "قتال شوارع.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1778820/header.jpg", type: "pc" },
-            { id: 7, name: "Red Dead Redemption 2", desc: "عالم مفتوح وقصة أسطورية.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg", type: "pc" },
-            { id: 8, name: "God of War Ragnarök", desc: "مغامرة كريتوس.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/2322010/header.jpg", type: "pc" },
-            { id: 9, name: "Forza Horizon 5", desc: "سباقات سيارات.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1551360/header.jpg", type: "pc" },
-            { id: 10, name: "Resident Evil 4", desc: "رعب (Offline).", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg", type: "pc" },
-            { id: 11, name: "Cyberpunk 2077", desc: "عالم المستقبل.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg", type: "pc" },
-            { id: 12, name: "Mortal Kombat 1", desc: "قتال دموي.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1971870/header.jpg", type: "pc" },
-            { id: 13, name: "بكج Resident Evil", desc: "جميع الأجزاء كما في الصورة.", price: 5.00, img: "resdent-evil-pack.jpg", type: "pc" },
-            { id: 14, name: "بكج ألعاب السولز", desc: "أقوى ألعاب الصعوبة.", price: 3.49, img: "https://cdn.cloudflare.steamstatic.com/steam/bundles/18836/header.jpg", type: "pc" },
-            { id: 15, name: "No I'm not human", desc: "تجربة لعبة رعب برسوم خفيفة.", price: 2.00, img: "no.jpg", type: "pc" },
-            { id: 16, name: "Hollow Knight & Silksong", desc: "الجزء الاول وسيلكزونج.", price: 2.00, img: "hollow.png", type: "pc" }
-        ];
-
-        document.addEventListener('DOMContentLoaded', () => { 
-            renderProducts(); 
-            fetchAndRenderReviews();
-        });
-
-        function renderProducts() {
-            const containers = { ps4: document.getElementById('ps4Grid'), services: document.getElementById('servicesGrid'), subs: document.getElementById('subsGrid'), pc: document.getElementById('pcGrid') };
-            for(let key in containers) if(containers[key]) containers[key].innerHTML = '';
+            document.getElementById('modalPrdName').innerText = p.name + (customDesc ? ` (${customDesc})` : "");
             
-            currentCurrency = document.getElementById('currencySelector').value;
-            const rate = rates[currentCurrency];
-
-            products.forEach(p => {
-                const card = document.createElement('div');
-                card.className = 'product-card';
-                
-                let displayPrice = (p.price * rate).toFixed(2);
-                let oldPriceHtml = p.oldPrice ? `<span class="old-price">${(p.oldPrice * rate).toFixed(2)} ${currentCurrency}</span>` : '';
-                let btnAction = `openModal(${p.id}, '${displayPrice} ${currentCurrency}')`;
-                let priceId = `price-${p.id}`;
-                
-                let extraHtml = '';
-                if(p.isInsta) {
-                    extraHtml = `<select class="custom-select" onchange="updateInstaPrice(this.value, ${p.id})"><option value="1">1000 متابع</option><option value="2">2000 متابع</option><option value="5">5000 متابع</option><option value="10">10000 متابع</option></select>`;
-                    btnAction = `openModal(${p.id}, '${displayPrice} ${currentCurrency}', '1000 متابع')`;
-                }
-                if(p.isCustom) { displayPrice = "حسب الاتفاق"; oldPriceHtml = ""; btnAction = `openModal(${p.id}, 'حسب الاتفاق')`; }
-
-                let badges = '<div class="badges-container">';
-                if(p.special) badges += '<span class="badge badge-hot">HOT 🔥</span>';
-                if(p.soldOut) badges += '<span class="badge badge-sold">نفذت الكمية</span>';
-                badges += '</div>';
-                
-                let warranty = (!p.noWarranty && !p.isCustom) ? '<div class="warranty-strip"><i class="fas fa-shield-alt"></i> ضمان كامل المدة</div>' : '';
-                const btnState = p.soldOut ? 'disabled' : '';
-                const btnText = p.soldOut ? 'نفذت الكمية' : 'شراء الآن <i class="fas fa-shopping-cart"></i>';
-
-                card.innerHTML = `
-                    <div class="card-img-wrapper">${badges}<img src="${p.img}" alt="${p.name}" class="card-img" loading="lazy">${warranty}</div>
-                    <div class="card-body">
-                        <div><h3 class="product-title">${p.name}</h3><p class="product-desc">${p.desc}</p>${extraHtml}</div>
-                        <div><div class="price-area"><div class="current-price" id="${priceId}">${displayPrice} ${p.isCustom ? '' : currentCurrency}</div>${oldPriceHtml}</div>
-                        <button id="btn-${p.id}" class="add-btn" onclick="${btnAction}" ${btnState}>${btnText}</button></div>
-                    </div>`;
-                
-                if (containers[p.type]) containers[p.type].appendChild(card);
-                else if(p.type === 'sub') containers['subs'].appendChild(card);
-            });
-        }
-
-        function updateInstaPrice(qty, id) {
-            const rate = rates[currentCurrency];
-            const newPrice = (1.00 * qty * rate).toFixed(2);
-            document.getElementById(`price-${id}`).innerText = `${newPrice} ${currentCurrency}`;
-            document.getElementById(`btn-${id}`).setAttribute('onclick', `openModal(${id}, '${newPrice} ${currentCurrency}', '${qty*1000} متابع')`);
-        }
-
-        function updateCurrency() { renderProducts(); }
-
-        function openModal(id, priceStr, customDesc = "") {
-            const p = products.find(x => x.id === id);
-            selectedProduct = p;
-            document.getElementById('modalPrdName').innerText = p.name + (customDesc ? ` (${customDesc})` : "");
-            document.getElementById('modalPrdPrice').innerText = priceStr;
-            document.getElementById('modalWarranty').style.display = (p.noWarranty || p.isCustom) ? 'none' : 'flex';
-            document.getElementById('paymentModal').style.display = 'flex';
-        }
-
-        function closeModal() { document.getElementById('paymentModal').style.display = 'none'; }
-
-        function submitOrder() {
-            const name = document.getElementById('custName').value;
-            const wallet = document.getElementById('walletName').value;
-            if(!name || !wallet) { showToast('يرجى تعبئة البيانات!', 'error'); return; }
-
-            const btn = document.querySelector('.btn-confirm');
-            const originalText = btn.innerText;
-            btn.innerText = "جاري الإرسال...";
-            btn.style.opacity = "0.7";
-            btn.disabled = true;
-
-            const orderId = Math.floor(10000 + Math.random() * 90000);
-            const templateParams = {
-                from_name: name,
-                wallet_name: wallet,
-                product_name: document.getElementById('modalPrdName').innerText,
-                order_id: orderId,
-                price: document.getElementById('modalPrdPrice').innerText
-            };
-
-            emailjs.send('service_x31cu0s', 'template_znmanl1', templateParams)
-                .then(function() {
-                    closeModal();
-                    const toast = document.createElement('div');
-                    toast.className = 'toast-msg success';
-                    toast.innerHTML = `<i class="fas fa-check-circle"></i><div><div>تم الطلب بنجاح! <strong>#${orderId}</strong></div><div style="font-size:0.8rem;opacity:0.8;">يرجى التواصل معنا عبر الانستجرام أو الديسكورد لإتمام الطلب.</div></div>`;
-                    document.getElementById('toastWrapper').appendChild(toast);
-                    setTimeout(() => toast.classList.add('active'), 10);
-                    setTimeout(() => { toast.classList.remove('active'); setTimeout(() => toast.remove(), 500); }, 8000);
-
-                    document.getElementById('custName').value = '';
-                    document.getElementById('walletName').value = '';
-                    btn.innerText = originalText;
-                    btn.style.opacity = "1";
-                    btn.disabled = false;
-                }, function(error) {
-                    console.log('FAILED...', error);
-                    showToast('خطأ في الإرسال، حاول لاحقاً', 'error');
-                    btn.innerText = originalText;
-                    btn.style.opacity = "1";
-                    btn.disabled = false;
-                });
-        }
-
-        function showToast(msg, type) {
-            const toast = document.createElement('div');
-            toast.className = `toast-msg ${type}`;
-            toast.innerHTML = `<i class="fas fa-${type === 'error' ? 'times' : 'check'}-circle"></i> <div>${msg}</div>`;
-            const wrapper = document.getElementById('toastWrapper');
-            wrapper.appendChild(toast);
-            setTimeout(() => toast.classList.add('active'), 10);
-            setTimeout(() => { toast.classList.remove('active'); setTimeout(() => toast.remove(), 500); }, 5000);
-        }
-
-        // Reviews Functions
-        function getStars(rating) {
-            const num = parseInt(rating);
-            return '⭐'.repeat(num);
-        }
-
-        function fetchAndRenderReviews() {
-            if(GOOGLE_API_URL.includes("PASTE")) return; // لم يتم وضع الرابط بعد
+            const currentRate = rates[currentCurrency];
+            const displayPrice = (basePriceJOD * currentRate).toFixed(2);
+            document.getElementById('modalPrdPrice').innerText = `${displayPrice} ${currentCurrency}`;
             
-            fetch(GOOGLE_API_URL, { method: 'GET' })
-            .then(response => response.json())
-            .then(reviews => {
-                const container = document.getElementById('reviewsGrid');
-                container.innerHTML = '';
-                
-                if (reviews.length === 0) {
-                    container.innerHTML = '<p style="text-align: center; color: #666; width:100%;">كن أول من يقيّم هذه الخدمة!</p>';
-                    return;
-                }
+            document.getElementById('modalWarranty').style.display = (p.noWarranty || p.isCustom) ? 'none' : 'flex';
+            document.getElementById('paymentModal').style.display = 'flex';
+        }
 
-                reviews.reverse().forEach(review => {
-                    const card = document.createElement('div');
-                    card.className = 'review-card';
-                    const date = new Date(review.timestamp);
-                    const formattedDate = date.toLocaleDateString('ar-EG');
+        function applyDiscount() {
+            const code = document.getElementById('discountCode').value.toUpperCase().trim();
+            const productType = selectedProduct ? selectedProduct.type : null;
+            
+            // تحقق من الكود
+            if (code !== DISCOUNT_CODE) {
+                showToast('كود الخصم غير صحيح أو منتهي!', 'error');
+                // إعادة ضبط الشاشة
+                const currentRate = rates[currentCurrency];
+                const displayPrice = (basePriceJOD * currentRate).toFixed(2);
+                document.getElementById('modalPrdPrice').innerText = `${displayPrice} ${currentCurrency}`;
+                document.getElementById('modalOriginalPriceRow').style.display = 'none';
+                document.getElementById('modalDiscountRow').style.display = 'none';
+                return;
+            }
+            
+            // تحقق من نوع المنتج
+            if (!productType || (productType !== 'ps4' && productType !== 'pc')) {
+                showToast('هذا الكود يعمل فقط على ألعاب PlayStation و PC.', 'error');
+                return;
+            }
 
-                    card.innerHTML = `
-                        <div class="review-header">
-                            <span class="review-name">${review.name}</span>
-                            <span class="review-rating">${getStars(review.rating)}</span>
-                        </div>
-                        <p style="font-size:0.8rem; color:#aaa; margin-bottom:5px;">بخصوص: ${review.product || 'عام'}</p>
-                        <p class="review-comment">${review.comment}</p>
-                        <p class="review-date">${formattedDate}</p>
-                    `;
-                    container.appendChild(card);
-                });
-            })
-            .catch(error => console.error('Error reviews:', error));
-        }
+            // تطبيق الخصم
+            const currentRate = rates[currentCurrency];
+            const originalPrice = basePriceJOD;
+            const discountInJOD = DISCOUNT_AMOUNT;
+            let finalPriceJOD = Math.max(0, originalPrice - discountInJOD); // لا يمكن أن يكون السعر أقل من صفر
 
-        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            if(GOOGLE_API_URL.includes("PASTE")) { alert("يرجى إعداد رابط Google Sheet أولاً"); return; }
+            const discountedPriceDisplay = (finalPriceJOD * currentRate).toFixed(2);
+            const originalPriceDisplay = (originalPrice * currentRate).toFixed(2);
+            const discountValueDisplay = (discountInJOD * currentRate).toFixed(2);
 
-            const btn = this.querySelector('button');
-            btn.innerText = "جاري الإرسال...";
-            btn.disabled = true;
+            // عرض التفاصيل
+            document.getElementById('modalOriginalPrice').innerText = `${originalPriceDisplay} ${currentCurrency}`;
+            document.getElementById('modalDiscountValue').innerText = `${discountValueDisplay} ${currentCurrency}`;
+            document.getElementById('modalPrdPrice').innerText = `${discountedPriceDisplay} ${currentCurrency}`;
 
-            const reviewData = {
-                name: document.getElementById('reviewName').value,
-                product: document.getElementById('reviewProduct').value,
-                rating: document.getElementById('reviewRating').value,
-                comment: document.getElementById('reviewComment').value
-            };
+            document.getElementById('modalOriginalPriceRow').style.display = 'flex';
+            document.getElementById('modalDiscountRow').style.display = 'flex';
+            
+            showToast('تم تطبيق الخصم بنجاح! 🎉', 'success');
+        }
 
-            fetch(GOOGLE_API_URL, {
-                method: 'POST',
-                mode: 'no-cors', // مهم لـ Google Forms/Apps Script
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(reviewData)
-            })
-            .then(() => {
-                showToast('تم إرسال التقييم بنجاح!', 'success');
-                document.getElementById('feedbackForm').reset();
-                setTimeout(fetchAndRenderReviews, 1000); // تحديث بعد ثانية
-                btn.innerText = 'إرسال التقييم';
-                btn.disabled = false;
-            })
-            .catch(error => {
-                showToast('خطأ في الاتصال', 'error');
-                btn.innerText = 'إرسال التقييم';
-                btn.disabled = false;
-            });
-        });
+        function closeModal() { document.getElementById('paymentModal').style.display = 'none'; }
 
-        window.onclick = function(e) { if(e.target == document.getElementById('paymentModal')) closeModal(); }
-    </script>
+        function submitOrder() {
+            const name = document.getElementById('custName').value;
+            const wallet = document.getElementById('walletName').value;
+            if(!name || !wallet) { showToast('يرجى تعبئة الاسم واسم صاحب المحفظة!', 'error'); return; }
+
+            const btn = document.querySelector('.btn-confirm');
+            const originalText = btn.innerText;
+            btn.innerText = "جاري الإرسال...";
+            btn.style.opacity = "0.7";
+            btn.disabled = true;
+
+            const orderId = Math.floor(10000 + Math.random() * 90000);
+            const templateParams = {
+                from_name: name,
+                wallet_name: wallet,
+                product_name: document.getElementById('modalPrdName').innerText,
+                order_id: orderId,
+                price: document.getElementById('modalPrdPrice').innerText // السعر النهائي بعد الخصم
+            };
+
+            emailjs.send('service_x31cu0s', 'template_znmanl1', templateParams)
+                .then(function() {
+                    closeModal();
+                    const toast = document.createElement('div');
+                    toast.className = 'toast-msg success';
+                    toast.innerHTML = `<i class="fas fa-check-circle"></i><div><div>تم الطلب بنجاح! <strong>#${orderId}</strong></div><div style="font-size:0.8rem;opacity:0.8;">يرجى التواصل معنا عبر الانستجرام أو الديسكورد لإتمام الطلب.</div></div>`;
+                    document.getElementById('toastWrapper').appendChild(toast);
+                    setTimeout(() => toast.classList.add('active'), 10);
+                    setTimeout(() => { toast.classList.remove('active'); setTimeout(() => toast.remove(), 500); }, 8000);
+
+                    document.getElementById('custName').value = '';
+                    document.getElementById('walletName').value = '';
+                    btn.innerText = originalText;
+                    btn.style.opacity = "1";
+                    btn.disabled = false;
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    showToast('خطأ في الإرسال، حاول لاحقاً', 'error');
+                    btn.innerText = originalText;
+                    btn.style.opacity = "1";
+                    btn.disabled = false;
+                });
+        }
+
+        function showToast(msg, type) {
+            const toast = document.createElement('div');
+            toast.className = `toast-msg ${type}`;
+            toast.innerHTML = `<i class="fas fa-${type === 'error' ? 'times' : 'check'}-circle"></i> <div>${msg}</div>`;
+            const wrapper = document.getElementById('toastWrapper');
+            wrapper.appendChild(toast);
+            setTimeout(() => toast.classList.add('active'), 10);
+            setTimeout(() => { toast.classList.remove('active'); setTimeout(() => toast.remove(), 500); }, 5000);
+        }
+
+        // Reviews Functions
+        function getStars(rating) {
+            const num = parseInt(rating);
+            return '⭐'.repeat(num);
+        }
+
+        function fetchAndRenderReviews() {
+            if(GOOGLE_API_URL.includes("PASTE")) {
+                document.getElementById('reviewsGrid').innerHTML = '<p style="text-align: center; color: var(--accent); width:100%; font-weight:bold;">يرجى أولاً إعداد وربط Google Sheet/Apps Script للحصول على التقييمات وعرضها.</p>';
+                return;
+            }
+            
+            fetch(GOOGLE_API_URL, { method: 'GET' })
+            .then(response => response.json())
+            .then(reviews => {
+                const container = document.getElementById('reviewsGrid');
+                container.innerHTML = '';
+                
+                if (reviews.length === 0) {
+                    container.innerHTML = '<p style="text-align: center; color: #666; width:100%;">كن أول من يقيّم هذه الخدمة!</p>';
+                    return;
+                }
+
+                reviews.reverse().forEach(review => {
+                    const card = document.createElement('div');
+                    card.className = 'review-card';
+                    const date = new Date(review.timestamp);
+                    const formattedDate = date.toLocaleDateString('ar-EG');
+
+                    card.innerHTML = `
+                        <div class="review-header">
+                            <span class="review-name">${review.name}</span>
+                            <span class="review-rating">${getStars(review.rating)}</span>
+                        </div>
+                        <p style="font-size:0.8rem; color:#aaa; margin-bottom:5px;">بخصوص: ${review.product || 'عام'}</p>
+                        <p class="review-comment">${review.comment}</p>
+                        <p class="review-date">${formattedDate}</p>
+                    `;
+                    container.appendChild(card);
+                });
+            })
+            .catch(error => console.error('Error reviews:', error));
+        }
+
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            if(GOOGLE_API_URL.includes("PASTE")) { 
+                showToast("يرجى إعداد وربط Google Sheet/Apps Script أولاً لإرسال التقييمات.", 'error');
+                return; 
+            }
+
+            const btn = this.querySelector('button');
+            btn.innerText = "جاري الإرسال...";
+            btn.disabled = true;
+
+            const reviewData = {
+                name: document.getElementById('reviewName').value,
+                product: document.getElementById('reviewProduct').value,
+                rating: document.getElementById('reviewRating').value,
+                comment: document.getElementById('reviewComment').value
+            };
+
+            fetch(GOOGLE_API_URL, {
+                method: 'POST',
+                mode: 'no-cors', // مهم لـ Google Forms/Apps Script
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(reviewData)
+            })
+            .then(() => {
+                showToast('تم إرسال التقييم بنجاح! سيظهر قريباً.', 'success');
+                document.getElementById('feedbackForm').reset();
+                setTimeout(fetchAndRenderReviews, 1000); // تحديث بعد ثانية
+                btn.innerText = 'إرسال التقييم';
+                btn.disabled = false;
+            })
+            .catch(error => {
+                showToast('خطأ في الاتصال، قد تحتاج لضبط إعدادات CORS أو رابط التطبيق.', 'error');
+                btn.innerText = 'إرسال التقييم';
+                btn.disabled = false;
+            });
+        });
+
+        window.onclick = function(e) { if(e.target == document.getElementById('paymentModal')) closeModal(); }
+    </script>
 </body>
 </html>
