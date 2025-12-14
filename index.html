@@ -24,22 +24,11 @@
             --bg-dark: #0f0f0f; --bg-card: #141414; --text-main: #ffffff; --text-muted: #b3b3b3;
             --border-radius: 12px; --transition: 0.3s; --success: #2ecc71;
         }
-        
         * { margin: 0; padding: 0; box-sizing: border-box; outline: none; -webkit-tap-highlight-color: transparent; }
-        
-        body { 
-            font-family: 'Cairo', sans-serif; 
-            background-color: var(--bg-dark); 
-            color: var(--text-main); 
-            line-height: 1.6; 
-            overflow-x: hidden; 
-            background-image: radial-gradient(circle at 10% 20%, rgba(229, 9, 20, 0.05) 0%, transparent 20%); 
-        }
-
+        body { font-family: 'Cairo', sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; background-image: radial-gradient(circle at 10% 20%, rgba(229, 9, 20, 0.05) 0%, transparent 20%); }
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: var(--bg-dark); }
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
-        
         .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
         a { text-decoration: none; color: inherit; }
 
@@ -57,11 +46,6 @@
         .nav-link:hover { background: rgba(255,255,255,0.1); color: white; }
         .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 24px; cursor: pointer; }
 
-        /* Floating Cart - الأهم */
-        .floating-cart { position: fixed; bottom: 30px; left: 30px; background: var(--primary); color: white; padding: 15px; border-radius: 50px; box-shadow: 0 10px 30px rgba(229, 9, 20, 0.4); z-index: 9999; cursor: pointer; display: flex; align-items: center; gap: 10px; transition: 0.3s; }
-        .floating-cart:hover { transform: scale(1.1); }
-        .cart-count { background: white; color: var(--primary); padding: 2px 8px; border-radius: 10px; font-weight: bold; font-size: 0.9rem; }
-
         /* Banner */
         .discount-banner { background: linear-gradient(45deg, #500, #900); color: white; text-align: center; padding: 10px; font-weight: bold; border-bottom: 2px solid var(--primary); margin-bottom: 20px; }
         .discount-code { background: rgba(0,0,0,0.3); padding: 2px 8px; border-radius: 4px; color: var(--accent); margin: 0 5px; letter-spacing: 1px; }
@@ -78,34 +62,25 @@
         .section-header { margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; display: flex; align-items: center; gap: 10px; }
         .section-title { font-size: 1.5rem; font-weight: 800; color: white; }
         .section-title i { color: var(--primary); }
-        
         .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 25px; margin-bottom: 60px; }
-
         .product-card { background: var(--bg-card); border-radius: var(--border-radius); overflow: hidden; border: 1px solid rgba(255,255,255,0.05); transition: var(--transition); position: relative; display: flex; flex-direction: column; }
         .product-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-
         .card-img-wrapper { position: relative; width: 100%; height: 350px; background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; }
         .card-img { width: 100%; height: 100%; object-fit: contain; transition: 0.5s; }
         .product-card:hover .card-img { transform: scale(1.05); }
-
         .badges-container { position: absolute; top: 10px; left: 10px; right: 10px; display: flex; justify-content: space-between; pointer-events: none; z-index: 2; }
         .badge { padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 800; }
         .badge-hot { background: var(--primary); color: white; animation: pulse 2s infinite; }
         .badge-sold { background: #333; color: #aaa; }
-
         .warranty-strip { position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(46, 204, 113, 0.95); color: white; text-align: center; font-size: 0.8rem; padding: 4px; font-weight: 700; transform: translateY(100%); transition: var(--transition); }
         .product-card:hover .warranty-strip { transform: translateY(0); }
-
         .card-body { padding: 15px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
         .product-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 5px; line-height: 1.3; }
         .product-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px; }
-
         .custom-select { width: 100%; padding: 8px; background: #222; border: 1px solid #333; color: white; border-radius: 6px; margin-bottom: 10px; outline: none; }
-
         .price-area { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
         .current-price { font-size: 1.2rem; font-weight: 800; color: var(--primary); }
         .old-price { font-size: 0.85rem; text-decoration: line-through; color: #666; }
-
         .add-btn { width: 100%; padding: 10px; background: white; color: black; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; transition: var(--transition); }
         .add-btn:hover:not(:disabled) { background: var(--primary); color: white; }
         .add-btn:disabled { background: #333; color: #666; cursor: not-allowed; }
@@ -115,44 +90,32 @@
         .review-card { background: #1e1e1e; padding: 15px; border-radius: 10px; border-right: 3px solid var(--accent); transition: 0.3s; }
         .review-card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
         .review-header { display: flex; justify-content: space-between; margin-bottom: 10px; }
+        .review-name { font-weight: bold; color: var(--primary); }
         .review-rating { color: var(--accent); font-size: 1.1rem; }
-        .review-name { font-weight: 700; color: var(--primary); }
         .review-comment { font-size: 0.95rem; color: var(--text-muted); line-height: 1.5; }
         .review-date { font-size: 0.75rem; color: #555; margin-top: 10px; }
-
-        .feedback-form-container { max-width: 600px; margin: 0 auto 50px; padding: 25px; background: var(--bg-card); border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); }
+        .feedback-form-container { max-width: 600px; margin: 0 auto 50px; padding: 25px; background: var(--bg-card); border-radius: 16px; border: 1px solid #333; }
         .input-field { width: 100%; padding: 12px; background: #252525; border: 1px solid #333; border-radius: 8px; color: white; margin-bottom: 10px; outline: none; }
         .input-field:focus { border-color: var(--primary); }
         .discount-input { display: flex; gap: 10px; align-items: center; margin-bottom: 15px; }
         .discount-input input { flex-grow: 1; margin-bottom: 0; }
-        .apply-btn { padding: 12px 20px; background: var(--accent); color: black; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; transition: var(--transition); }
-        .apply-btn:hover { background: #ffc93c; }
+        .apply-btn { padding: 0 20px; background: var(--accent); color: black; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
 
         /* Modal */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
         .modal-box { background: #1a1a1a; width: 95%; max-width: 500px; padding: 25px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); position: relative; animation: slideUp 0.3s; max-height: 90vh; overflow-y: auto; }
         @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         .close-modal { position: absolute; top: 15px; left: 15px; background: none; border: none; color: #666; font-size: 24px; cursor: pointer; }
-        
         .order-summary { background: #252525; padding: 15px; border-radius: 8px; margin-bottom: 15px; border-right: 3px solid var(--primary); }
-        .orange-money-box { background: #ff7900; color: black; padding: 15px; border-radius: 8px; margin-bottom: 15px; text-align: center; }
-        .modal-btn { width: 100%; padding: 12px; background: var(--primary); color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; }
-
-        /* Cart items inside modal */
-        .cart-items { max-height: 150px; overflow-y: auto; background: #222; padding: 10px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #333; }
-        .cart-item { display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 5px; border-bottom: 1px solid #333; padding-bottom: 5px; align-items: center; }
-        .cart-item:last-child { border-bottom: none; }
-
-        /* Payment Methods */
         .payment-methods-select { display: flex; gap: 10px; margin-bottom: 15px; justify-content: center; }
         .pay-option { padding: 10px; border: 1px solid #444; border-radius: 8px; cursor: pointer; opacity: 0.6; transition: 0.3s; text-align: center; width: 33%; background: #222; }
         .pay-option.active { border-color: var(--primary); opacity: 1; background: rgba(229,9,20,0.1); }
         .pay-option img { height: 25px; margin: 0 auto; display: block; }
-        
         .payment-details-box { background: #222; padding: 15px; border-radius: 8px; margin-bottom: 15px; text-align: center; border: 1px dashed #555; }
         .payment-title { font-size: 0.9rem; color: #aaa; margin-bottom: 5px; }
-        .payment-number { font-size: 1.3rem; font-weight: bold; color: white; letter-spacing: 1px; margin: 5px 0; }
+        .payment-number { font-size: 1.1rem; font-weight: bold; color: white; letter-spacing: 1px; margin: 5px 0; word-break: break-all; }
         .payment-name { color: var(--accent); font-size: 0.9rem; }
+        .modal-btn { width: 100%; padding: 12px; background: var(--primary); color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; }
 
         /* Toast */
         .toast-container { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 12000; pointer-events: none; width: 100%; display: flex; justify-content: center; }
@@ -161,14 +124,22 @@
         .toast-msg.success i { color: var(--success); }
         .toast-msg.error i { color: var(--primary); }
 
-        /* LTR Support */
+        /* Footer */
+        footer { background: #0a0a0a; padding: 50px 0 20px; border-top: 1px solid #222; margin-top: 50px; text-align: center; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 30px; }
+        .social-bar { display: flex; justify-content: center; gap: 15px; margin-top: 15px; }
+        .social-link { width: 40px; height: 40px; border-radius: 50%; background: #222; display: flex; align-items: center; justify-content: center; color: white; transition: 0.3s; }
+        .social-link:hover { background: var(--primary); }
+        .payments-bar { display: flex; justify-content: center; gap: 15px; margin-top: 10px; opacity: 0.7; }
+        .payments-bar img { height: 25px; filter: grayscale(100%); }
+
+        /* LTR */
         html[dir="ltr"] body { font-family: 'Segoe UI', sans-serif; }
         html[dir="ltr"] .category-title { border-right: none; border-left: 4px solid var(--primary); }
         html[dir="ltr"] .order-summary, html[dir="ltr"] .review-card { border-right: none; border-left: 4px solid var(--primary); }
         html[dir="ltr"] .close-modal { left: auto; right: 15px; }
         html[dir="ltr"] .btn-glow i { transform: rotate(180deg); margin-left: 8px; margin-right: 0; }
         html[dir="ltr"] .nav-controls { margin-right: auto; margin-left: 0; }
-        html[dir="ltr"] .floating-cart { left: auto; right: 30px; }
 
         @media (max-width: 768px) {
             .header-inner { flex-wrap: wrap; gap: 10px; }
@@ -180,8 +151,6 @@
             .products-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .card-img-wrapper { height: 200px; }
             .hero-title { font-size: 2rem; }
-            html[dir="ltr"] .nav-controls { margin-right: auto; margin-left: 0; }
-            .floating-cart { left: auto; right: 20px; bottom: 20px; }
         }
     </style>
 </head>
@@ -228,11 +197,6 @@
         </div>
     </section>
 
-    <div class="floating-cart" onclick="openCartModal()">
-        <i class="fas fa-shopping-cart"></i>
-        <span class="cart-count" id="cartCount">0</span>
-    </div>
-
     <div class="container" id="products-area">
         
         <div class="section-header"><h2 class="section-title" id="ps4"><i class="fab fa-playstation"></i> <span data-i18n="cat_ps4">ألعاب بلاستيشن</span></h2></div>
@@ -275,7 +239,7 @@
                     </select>
                 </div>
                 <textarea id="reviewComment" class="input-field" placeholder="اكتب رأيك هنا..." rows="4" required></textarea>
-                <button type="submit" class="modal-btn" style="background:var(--success-color); color:black; margin-top: 10px;" data-i18n="send_review">إرسال التقييم</button>
+                <button type="submit" class="modal-btn" style="background:var(--success); color:black; margin-top: 10px;" data-i18n="send_review">إرسال التقييم</button>
             </form>
         </div>
     </div>
@@ -311,21 +275,25 @@
             <button class="close-modal" onclick="closeModal()">&times;</button>
             <h3 style="color:white; text-align:center; margin-bottom:20px;" data-i18n="confirm_order">تأكيد الطلب 🚀</h3>
             
-            <div class="cart-items" id="cartItemsList">
-                </div>
-
             <div class="order-summary">
                 <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
-                    <span style="color:#aaa;" data-i18n="total_label">الإجمالي:</span>
-                    <span style="color:white; font-weight:bold;" id="cartTotalOriginal">...</span>
+                    <span style="color:#aaa;" data-i18n="product_label">المنتج:</span>
+                    <span style="color:white; font-weight:bold;" id="modalPrdName">...</span>
                 </div>
-                <div style="display:none; justify-content:space-between; margin-bottom:5px;" id="cartDiscountRow">
+                <div style="display:none; justify-content:space-between; margin-bottom:5px;" id="modalOriginalPriceRow">
+                    <span style="color:#666;">Original:</span>
+                    <span style="color:#666; text-decoration:line-through;" id="modalOriginalPrice">...</span>
+                </div>
+                <div style="display:none; justify-content:space-between; margin-bottom:5px;" id="modalDiscountRow">
                     <span style="color:#2ecc71;">Discount (DDOOQ):</span>
-                    <span style="color:#2ecc71; font-weight:bold;" id="cartDiscountValue">...</span>
+                    <span style="color:#2ecc71; font-weight:bold;" id="modalDiscountValue">...</span>
                 </div>
                 <div style="display:flex; justify-content:space-between; border-top: 1px dashed #333; padding-top: 10px; margin-top: 10px;">
-                    <span style="color:#aaa;">الصافي للدفع:</span>
-                    <span style="color:var(--primary); font-weight:bold; font-size:1.2rem;" id="cartTotalFinal">...</span>
+                    <span style="color:#aaa;" data-i18n="total_label">الإجمالي:</span>
+                    <span style="color:var(--primary); font-weight:bold; font-size:1.2rem;" id="modalPrdPrice">...</span>
+                </div>
+                <div id="modalWarranty" style="margin-top:10px; font-size:0.8rem; color:#2ecc71; display:flex; align-items:center; gap:5px;">
+                    <i class="fas fa-shield-alt"></i> <span data-i18n="warranty_text">ضمان كامل المدة</span>
                 </div>
             </div>
 
@@ -373,7 +341,7 @@
                 add_review_title: "أضف تقييمك", rating_label: "التقييم:", send_review: "إرسال التقييم",
                 footer_desc: "وجهتك الأولى للألعاب والخدمات الرقمية.", payment_methods: "طرق الدفع", payment_note: "نقبل التحويل البنكي والمحافظ", rights: "جميع الحقوق محفوظة.",
                 confirm_order: "تأكيد الطلب 🚀", product_label: "المنتج:", total_label: "الإجمالي:", warranty_text: "ضمان كامل المدة", apply_btn: "تطبيق", secure_id: "موثق بهوية رسمية", confirm_btn: "تأكيد وإرسال الطلب",
-                sold_out: "نفذت الكمية", buy_now: "أضف للسلة", custom_price: "حسب الاتفاق"
+                sold_out: "نفذت الكمية", buy_now: "شراء الآن", custom_price: "حسب الاتفاق"
             },
             en: {
                 home: "Home", nav_ps4: "PlayStation", nav_bundles: "Bundles", nav_services: "Services", nav_subs: "Subscriptions", nav_pc: "PC",
@@ -385,7 +353,7 @@
                 add_review_title: "Write a Review", rating_label: "Rating:", send_review: "Submit Review",
                 footer_desc: "Your #1 destination for digital games and services.", payment_methods: "Payment Methods", payment_note: "We accept Bank Transfer & Wallets", rights: "All rights reserved.",
                 confirm_order: "Confirm Order 🚀", product_label: "Product:", total_label: "Total:", warranty_text: "Lifetime Warranty", apply_btn: "Apply", secure_id: "ID Verified", confirm_btn: "Confirm & Send",
-                sold_out: "Sold Out", buy_now: "Add to Cart", custom_price: "Contact Us"
+                sold_out: "Sold Out", buy_now: "Buy Now", custom_price: "Contact Us"
             }
         };
 
@@ -402,25 +370,39 @@
 
         const rates = { JOD: 1, SAR: 5.30, USD: 1.41, EGP: 70.00 };
         let currentCurrency = 'JOD';
-        const GOOGLE_API_URL = 'https://script.google.com/macros/s/AKfycbz6c5w_ffgvNceoTC-GVdHEsO4clftgIdlU2IOPMaYv1M8CHBsfeS-G4eq92T5TSY7I/exec'; 
-        const DISCOUNT_CODE = "DDOOQ";
-        
-        let cart = [];
+        let selectedProduct = null;
         let basePriceJOD = 0;
         let selectedPaymentMethod = 'orange';
 
+        // 🔴🔴🔴 الرابط الخاص بك 🔴🔴🔴
+        const GOOGLE_API_URL = 'https://script.google.com/macros/s/AKfycbz6c5w_ffgvNceoTC-GVdHEsO4clftgIdlU2IOPMaYv1M8CHBsfeS-G4eq92T5TSY7I/exec'; 
+        const DISCOUNT_CODE = "DDOOQ";
+
         const products = [
+            // Custom
             { id: 999, name: "منتج حسب الطلب", nameEn: "Custom Order", desc: "اطلب أي لعبة تريدها.", descEn: "Request any game.", price: 0.00, img: "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=800", type: "pc", isCustom: true },
+            
+            // PlayStation (Individual) - ONLY THESE TWO GET DISCOUNT
             { id: 200, name: "EA SPORTS FC 26", nameEn: "FC 26", desc: "نسخة كاملة.", descEn: "Full Version.", price: 10.00, oldPrice: 35.00, img: "image_fcb3e4.jpg", type: "ps4", special: true },
             { id: 201, name: "Call of Duty: Black Ops 7", nameEn: "Black Ops 7", desc: "نسخة كاملة.", descEn: "Full Version.", price: 13.00, oldPrice: 45.00, img: "bo7.jpg", type: "ps4", special: true },
+
+            // Bundles
             { id: 13, name: "بكج Resident Evil", nameEn: "RE Pack", desc: "جميع الأجزاء.", descEn: "All Parts.", price: 5.00, img: "resdent-evil-pack.jpg", type: "bundles" },
             { id: 14, name: "بكج ألعاب السولز", nameEn: "Souls Pack", desc: "أقوى ألعاب الصعوبة.", descEn: "Hard Games.", price: 3.49, img: "https://cdn.cloudflare.steamstatic.com/steam/bundles/18836/header.jpg", type: "bundles" },
+
+            // Charging (Free Fire)
             { id: 301, name: "شحن جواهر فري فاير (583)", nameEn: "Free Fire (583)", desc: "شحن فوري.", descEn: "Instant Topup.", price: 3.60, img: "free-fire-100-diamonds-pc-builder-qatar-best-pc-gaming-store-in-qatar.webp", type: "charging", noWarranty: true },
+
+            // Social
             { id: 302, name: "رشق متابعين انستغرام", nameEn: "Insta Followers", desc: "اختر الكمية.", descEn: "Choose Qty.", price: 1.00, img: "ad-instagram.png", type: "social", noWarranty: true, isInsta: true },
+
+            // Subs
             { id: 101, name: "Netflix Premium (4K)", nameEn: "Netflix 4K", desc: "ملف خاص.", descEn: "Private Profile.", price: 1.50, img: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/800px-Netflix_2015_logo.svg.png", type: "subs" },
             { id: 102, name: "Crunchyroll Mega Fan", nameEn: "Crunchyroll", desc: "شهر كامل.", descEn: "1 Month.", price: 3.00, img: "image_fcb0f7.png", type: "subs" },
             { id: 103, name: "Crunchyroll (3 Months)", nameEn: "Crunchyroll 3M", desc: "توفير.", descEn: "Saving.", price: 5.00, img: "image_fcb0f7.png", type: "subs" },
             { id: 104, name: "Crunchyroll (1 Year)", nameEn: "Crunchyroll 1Y", desc: "سنوي.", descEn: "Yearly.", price: 8.00, img: "image_fcb0f7.png", type: "subs" },
+
+            // PC (Individual) - NO DISCOUNT
             { id: 1, name: "Grand Theft Auto V", nameEn: "GTA V", desc: "ستيم أوفلاين.", descEn: "Steam Offline.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg", type: "pc" },
             { id: 2, name: "Elden Ring + DLC", nameEn: "Elden Ring", desc: "لعبة السنة.", descEn: "GOTY.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg", type: "pc" },
             { id: 3, name: "Call of Duty: MW III", nameEn: "MW III", desc: "تختيم فقط.", descEn: "Campaign.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/2519060/header.jpg", type: "pc" },
@@ -471,15 +453,15 @@
                 let oldPriceHtml = p.oldPrice ? `<span class="old-price">${(p.oldPrice * rate).toFixed(2)} ${currentCurrency}</span>` : '';
                 let priceId = `price-${p.id}`;
                 
-                let btnAction = `addToCart(${p.id})`; 
-                if (p.isCustom) btnAction = `addToCart(${p.id})`; 
+                let btnAction = `openModal(${p.id}, '${displayPrice} ${currentCurrency}')`;
+                let btnText = `${txtBuy} <i class="fas fa-shopping-cart"></i>`; // Fixed Text "Buy Now"
 
                 let extraHtml = '';
                 if(p.isInsta) {
                     extraHtml = `<select class="custom-select" id="select-${p.id}" onchange="updateInstaPrice(this.value, ${p.id})"><option value="1">1000</option><option value="2">2000</option><option value="5">5000</option><option value="10">10000</option></select>`;
-                    btnAction = `addToCart(${p.id}, true)`;
+                    btnAction = `openModal(${p.id}, '${displayPrice} ${currentCurrency}', '1000')`;
                 }
-                if(p.isCustom) { displayPrice = txtCustom; oldPriceHtml = ""; btnAction = `addToCart(${p.id})`; }
+                if(p.isCustom) { displayPrice = txtCustom; oldPriceHtml = ""; btnAction = `openModal(${p.id}, 0, 'Custom')`; }
 
                 let badges = '<div class="badges-container">';
                 if(p.special) badges += '<span class="badge badge-hot">HOT 🔥</span>';
@@ -488,7 +470,7 @@
                 
                 let warranty = (!p.noWarranty && !p.isCustom) ? `<div class="warranty-strip"><i class="fas fa-shield-alt"></i> ${i18n[currentLang].warranty_text}</div>` : '';
                 const btnState = p.soldOut ? 'disabled' : '';
-                const btnText = p.soldOut ? txtSold : `${txtBuy} <i class="fas fa-shopping-cart"></i>`;
+                if(p.soldOut) btnText = txtSold;
 
                 card.innerHTML = `
                     <div class="card-img-wrapper">${badges}<img src="${p.img}" alt="${pName}" class="card-img" loading="lazy">${warranty}</div>
@@ -507,102 +489,82 @@
             const rate = rates[currentCurrency];
             const newPrice = (1.00 * qty * rate).toFixed(2);
             document.getElementById(`price-${id}`).innerText = `${newPrice} ${currentCurrency}`;
+            document.getElementById(`btn-${id}`).setAttribute('onclick', `openModal(${id}, '${newPrice} ${currentCurrency}', '${qty*1000}')`);
         }
 
-        function updateCurrency() { 
-            renderProducts(); 
-            if(document.getElementById('paymentModal').style.display === 'flex') openCartModal();
-        }
+        function updateCurrency() { renderProducts(); }
 
-        function addToCart(id, isDynamic=false) {
-            try {
-                const product = products.find(p => p.id === id);
-                let finalPrice = product.price;
-                let name = product.name;
-
-                if (isDynamic && product.isInsta) {
-                    const select = document.getElementById(`select-${id}`);
-                    const qty = select ? select.value : 1;
-                    finalPrice = 1.00 * qty; 
-                    name = `${product.name} (${qty * 1000})`;
-                }
-
-                cart.push({ ...product, finalPrice: finalPrice, displayName: name });
-                document.getElementById('cartCount').innerText = cart.length;
-                showToast('تمت الإضافة للسلة ✅', 'success');
-                
-                // Optional: Open cart automatically on first item
-                if (cart.length === 1) openCartModal();
-            } catch (e) {
-                console.error(e);
-                showToast('حدث خطأ، حاول مجدداً', 'error');
+        function openModal(id, priceStr, customDesc = "") {
+            const p = products.find(x => x.id === id);
+            selectedProduct = p;
+            
+            // Handle Insta dynamic price logic inside modal opening
+            if(p.isInsta) {
+                 const select = document.getElementById(`select-${id}`);
+                 const qty = select ? select.value : 1;
+                 basePriceJOD = 1.00 * qty;
+                 customDesc = ` (${qty*1000})`; // Override desc
+            } else {
+                 basePriceJOD = p.price;
             }
-        }
-
-        function openCartModal() {
-            if (cart.length === 0) { showToast('السلة فارغة', 'error'); return; }
             
-            const list = document.getElementById('cartItemsList');
-            list.innerHTML = '';
-            let totalJOD = 0;
-
-            cart.forEach((item, index) => {
-                totalJOD += item.finalPrice;
-                list.innerHTML += `<div class="cart-item"><span>${item.displayName}</span><span>${item.finalPrice.toFixed(2)} JOD <i class="fas fa-trash" style="color:red;cursor:pointer;margin-right:5px;" onclick="removeFromCart(${index})"></i></span></div>`;
-            });
+            const pName = currentLang === 'en' && p.nameEn ? p.nameEn : p.name;
+            let fullName = pName + (customDesc ? ` ${customDesc}` : "");
             
-            basePriceJOD = totalJOD;
-            calculateTotalDisplay();
-            
-            document.getElementById('discountCode').value = '';
-            document.getElementById('modalDiscountRow').style.display = 'none';
+            document.getElementById('discountCode').value = "";
             document.getElementById('modalOriginalPriceRow').style.display = 'none';
-            document.getElementById('paymentModal').style.display = 'flex';
-        }
+            document.getElementById('modalDiscountRow').style.display = 'none';
 
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            document.getElementById('cartCount').innerText = cart.length;
-            openCartModal(); 
-            if (cart.length === 0) closeModal();
-        }
-
-        function calculateTotalDisplay() {
+            document.getElementById('modalPrdName').innerText = fullName;
+            
             const currentRate = rates[currentCurrency];
-            const displayTotal = (basePriceJOD * currentRate).toFixed(2);
-            document.getElementById('cartTotalFinal').innerText = `${displayTotal} ${currentCurrency}`;
-            document.getElementById('cartTotalOriginal').innerText = `${displayTotal} ${currentCurrency}`;
+            const displayPrice = (basePriceJOD * currentRate).toFixed(2);
+            document.getElementById('modalPrdPrice').innerText = basePriceJOD === 0 ? i18n[currentLang].custom_price : `${displayPrice} ${currentCurrency}`;
+
+            document.getElementById('modalWarranty').style.display = (p.noWarranty || p.isCustom) ? 'none' : 'flex';
+            
+            // Reset Payment to Orange
+            selectPayment('orange', document.querySelector('.pay-option:first-child'));
+            
+            document.getElementById('paymentModal').style.display = 'flex';
         }
 
         function applyDiscount() {
             const code = document.getElementById('discountCode').value.toUpperCase().trim();
-            if (code !== DISCOUNT_CODE) { showToast('كود خاطئ', 'error'); return; }
-
-            let totalDiscount = 0;
-            cart.forEach(item => {
-                if (item.id === 200) totalDiscount += 2.50; 
-                if (item.id === 201) totalDiscount += 5.50; 
-            });
-
-            if (totalDiscount === 0) { showToast('الكود خاص بـ FIFA و COD فقط', 'error'); return; }
-
+            
+            if (code !== DISCOUNT_CODE) { showToast('Invalid Code', 'error'); return; }
+            
+            let discountValue = 0;
+            // Discount Logic: 10 -> 7.5 (2.5 off), 13 -> 7.5 (5.5 off)
+            if (selectedProduct.id === 200) { 
+                discountValue = 2.50;
+            } else if (selectedProduct.id === 201) { 
+                discountValue = 5.50;
+            } else {
+                showToast(currentLang === 'ar' ? 'هذا الكود خاص بـ FIFA و COD فقط' : 'Code valid for FIFA & COD only', 'error'); 
+                return;
+            }
+            
             const currentRate = rates[currentCurrency];
-            const finalPriceJOD = Math.max(0, basePriceJOD - totalDiscount);
+            let finalPriceJOD = Math.max(0, basePriceJOD - discountValue);
 
+            const discountedDisplay = (finalPriceJOD * currentRate).toFixed(2);
+            const originalDisplay = (basePriceJOD * currentRate).toFixed(2);
+            const discountDisplay = (discountValue * currentRate).toFixed(2);
+
+            document.getElementById('modalOriginalPrice').innerText = `${originalDisplay} ${currentCurrency}`;
+            document.getElementById('modalDiscountValue').innerText = `${discountDisplay} ${currentCurrency}`;
+            document.getElementById('modalPrdPrice').innerText = `${discountedDisplay} ${currentCurrency}`;
+            
             document.getElementById('modalOriginalPriceRow').style.display = 'flex';
             document.getElementById('modalDiscountRow').style.display = 'flex';
-            
-            document.getElementById('cartTotalFinal').innerText = (finalPriceJOD * currentRate).toFixed(2) + ' ' + currentCurrency;
-            document.getElementById('cartDiscountValue').innerText = (totalDiscount * currentRate).toFixed(2) + ' ' + currentCurrency;
-            document.getElementById('cartTotalOriginal').innerText = (basePriceJOD * currentRate).toFixed(2) + ' ' + currentCurrency;
-            
-            showToast('تم تطبيق الخصم', 'success');
+            showToast('Discount Applied!', 'success');
         }
 
         function selectPayment(method, element) {
             selectedPaymentMethod = method;
             document.querySelectorAll('.pay-option').forEach(el => el.classList.remove('active'));
-            element.classList.add('active');
+            if(element) element.classList.add('active');
 
             const detailsBox = document.getElementById('paymentDetails');
             if (method === 'orange') {
@@ -610,7 +572,7 @@
             } else if (method === 'cliq') {
                 detailsBox.innerHTML = `<div class="payment-title">CliQ</div><div class="payment-number">0785039924</div><div class="payment-name">Alias: MOHAMMAD HINDIA</div>`;
             } else if (method === 'paypal') {
-                detailsBox.innerHTML = `<div class="payment-title">PayPal</div><div style="font-size:1rem;font-weight:bold;color:white;margin:5px 0;">lujain258369@gmail.com</div>`;
+                detailsBox.innerHTML = `<div class="payment-title">PayPal</div><div class="payment-number" style="font-size:1rem;">lujain258369@gmail.com</div>`;
             }
         }
 
@@ -622,26 +584,35 @@
             if(!name || !wallet) { showToast('Data Missing', 'error'); return; }
 
             const btn = document.querySelector('.btn-confirm');
-            btn.innerText = "..."; btn.disabled = true;
+            const originalText = btn.innerText;
+            btn.innerText = "...";
+            btn.disabled = true;
 
             const orderId = Math.floor(10000 + Math.random() * 90000);
-            let itemsString = cart.map(i => i.displayName).join(", ");
-
-            const params = { from_name: name, wallet_name: wallet, product_name: itemsString, order_id: orderId, price: document.getElementById('cartTotalFinal').innerText, payment_method: selectedPaymentMethod };
             
+            const params = { 
+                from_name: name, 
+                wallet_name: wallet, 
+                product_name: document.getElementById('modalPrdName').innerText, 
+                order_id: orderId, 
+                price: document.getElementById('modalPrdPrice').innerText,
+                payment_method: selectedPaymentMethod
+            };
+
             emailjs.send('service_x31cu0s', 'template_znmanl1', params).then(() => {
                 closeModal();
                 const toast = document.getElementById('toastWrapper');
-                const msg = `<i class="fas fa-check-circle"></i><div><div>${i18n[currentLang].confirm_order} #${orderId}</div><div style="font-size:0.8rem;opacity:0.8;">تم الطلب! تواصل معنا على الانستا/ديسكورد</div></div>`;
+                const msg = `<i class="fas fa-check-circle"></i><div><div>${i18n[currentLang].confirm_order} #${orderId}</div><div style="font-size:0.8rem;opacity:0.8;">تم الطلب بنجاح! يرجى التواصل معنا عبر الانستجرام أو الديسكورد لطلب</div></div>`;
                 const div = document.createElement('div'); div.className = 'toast-msg success'; div.innerHTML = msg;
                 toast.appendChild(div);
                 setTimeout(() => div.classList.add('active'), 10);
                 setTimeout(() => { div.classList.remove('active'); setTimeout(() => div.remove(), 500); }, 8000);
-                cart = []; document.getElementById('cartCount').innerText = 0;
+
                 document.getElementById('custName').value = '';
                 document.getElementById('walletName').value = '';
-                btn.innerText = "تأكيد وإرسال"; btn.disabled = false;
-            }).catch(() => { showToast('Error sending', 'error'); btn.innerText = "تأكيد"; btn.disabled = false; });
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }).catch(() => { showToast('Error sending email', 'error'); btn.innerText = originalText; btn.disabled = false; });
         }
 
         function showToast(msg, type) {
@@ -653,19 +624,24 @@
             setTimeout(() => { toast.classList.remove('active'); setTimeout(() => toast.remove(), 500); }, 3000);
         }
 
-        function getStars(rating) { return '⭐'.repeat(parseInt(rating)); }
         function fetchAndRenderReviews() {
-            if(GOOGLE_API_URL.includes("PASTE")) { document.getElementById('reviewsGrid').innerHTML='<p style="text-align:center;color:#666">Setup API</p>'; return; }
-            fetch(GOOGLE_API_URL).then(r=>r.json()).then(d=>{
-                const c = document.getElementById('reviewsGrid'); c.innerHTML='';
-                if(d.length===0){c.innerHTML='<p style="text-align:center;color:#666">No reviews yet</p>';return;}
-                d.reverse().forEach(r=>{
-                    const card=document.createElement('div'); card.className='review-card';
-                    card.innerHTML=`<div class="review-header"><span class="review-name">${r.name}</span><span class="review-rating">${getStars(r.rating)}</span></div><p style="font-size:0.8rem;color:#aaa">${r.product||''}</p><p class="review-comment">${r.comment}</p>`;
-                    c.appendChild(card);
+            if(GOOGLE_API_URL.includes("PASTE")) { 
+                document.getElementById('reviewsGrid').innerHTML = '<p style="text-align:center;color:#666">Setup Google Sheet API First</p>';
+                return; 
+            }
+            fetch(GOOGLE_API_URL).then(r=>r.json()).then(reviews=>{
+                const container = document.getElementById('reviewsGrid');
+                container.innerHTML = '';
+                if(reviews.length===0) { container.innerHTML='<p style="text-align:center;color:#666">No reviews yet</p>'; return; }
+                reviews.reverse().forEach(r=>{
+                    const card = document.createElement('div'); card.className='review-card';
+                    card.innerHTML = `<div class="review-header"><span class="review-name">${r.name}</span><span class="review-rating">${getStars(r.rating)}</span></div><p style="font-size:0.8rem;color:#aaa">${r.product||''}</p><p class="review-comment">${r.comment}</p>`;
+                    container.appendChild(card);
                 });
             }).catch(e=>console.error(e));
         }
+
+        function getStars(rating) { return '⭐'.repeat(parseInt(rating)); }
 
         document.getElementById('feedbackForm').addEventListener('submit', function(e){
             e.preventDefault();
