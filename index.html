@@ -90,8 +90,8 @@
         .review-card { background: #1e1e1e; padding: 15px; border-radius: 10px; border-right: 3px solid var(--accent); transition: 0.3s; }
         .review-card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
         .review-header { display: flex; justify-content: space-between; margin-bottom: 10px; }
-        .review-name { font-weight: bold; color: var(--primary); }
         .review-rating { color: var(--accent); font-size: 1.1rem; }
+        .review-name { font-weight: 700; color: var(--primary); }
         .review-comment { font-size: 0.95rem; color: var(--text-muted); line-height: 1.5; }
         .review-date { font-size: 0.75rem; color: #555; margin-top: 10px; }
         .feedback-form-container { max-width: 600px; margin: 0 auto 50px; padding: 25px; background: var(--bg-card); border-radius: 16px; border: 1px solid #333; }
@@ -102,23 +102,25 @@
         .apply-btn { padding: 0 20px; background: var(--accent); color: black; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
 
         /* Modal */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
-        .modal-box { background: #1a1a1a; width: 95%; max-width: 500px; padding: 25px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); position: relative; animation: slideUp 0.3s; max-height: 90vh; overflow-y: auto; }
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
+        .modal-box { background: #1a1a1a; width: 95%; max-width: 450px; padding: 25px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); position: relative; animation: slideUp 0.3s; max-height: 90vh; overflow-y: auto; }
         @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         .close-modal { position: absolute; top: 15px; left: 15px; background: none; border: none; color: #666; font-size: 24px; cursor: pointer; }
         .order-summary { background: #252525; padding: 15px; border-radius: 8px; margin-bottom: 15px; border-right: 3px solid var(--primary); }
         .payment-methods-select { display: flex; gap: 10px; margin-bottom: 15px; justify-content: center; }
-        .pay-option { padding: 10px; border: 1px solid #444; border-radius: 8px; cursor: pointer; opacity: 0.6; transition: 0.3s; text-align: center; width: 33%; background: #222; }
+        .pay-option { padding: 15px; border: 1px solid #444; border-radius: 8px; cursor: pointer; opacity: 0.6; transition: 0.3s; text-align: center; width: 48%; background: #222; display: flex; align-items: center; justify-content: center; gap: 5px; flex-direction: column; }
         .pay-option.active { border-color: var(--primary); opacity: 1; background: rgba(229,9,20,0.1); }
-        .pay-option img { height: 25px; margin: 0 auto; display: block; }
+        .pay-option img { height: 25px; display: block; }
+        .pay-option span { font-size: 0.8rem; font-weight: bold; margin-top: 5px; display: block; }
+        
         .payment-details-box { background: #222; padding: 15px; border-radius: 8px; margin-bottom: 15px; text-align: center; border: 1px dashed #555; }
         .payment-title { font-size: 0.9rem; color: #aaa; margin-bottom: 5px; }
-        .payment-number { font-size: 1.1rem; font-weight: bold; color: white; letter-spacing: 1px; margin: 5px 0; word-break: break-all; }
+        .payment-number { font-size: 1.2rem; font-weight: bold; color: white; letter-spacing: 1px; margin: 5px 0; direction: ltr; }
         .payment-name { color: var(--accent); font-size: 0.9rem; }
         .modal-btn { width: 100%; padding: 12px; background: var(--primary); color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; }
 
         /* Toast */
-        .toast-container { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 12000; pointer-events: none; width: 100%; display: flex; justify-content: center; }
+        .toast-container { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 3000; pointer-events: none; width: 100%; display: flex; justify-content: center; }
         .toast-msg { background: white; color: black; padding: 12px 25px; border-radius: 50px; display: flex; align-items: center; gap: 10px; font-weight: 700; opacity: 0; transform: translateY(30px); transition: 0.4s; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center; }
         .toast-msg.active { opacity: 1; transform: translateY(0); }
         .toast-msg.success i { color: var(--success); }
@@ -239,7 +241,7 @@
                     </select>
                 </div>
                 <textarea id="reviewComment" class="input-field" placeholder="اكتب رأيك هنا..." rows="4" required></textarea>
-                <button type="submit" class="modal-btn" style="background:var(--success); color:black; margin-top: 10px;" data-i18n="send_review">إرسال التقييم</button>
+                <button type="submit" class="modal-btn" style="background:var(--success-color); color:black; margin-top: 10px;" data-i18n="send_review">إرسال التقييم</button>
             </form>
         </div>
     </div>
@@ -304,22 +306,22 @@
 
             <h4 style="color:white; margin-bottom:10px; font-size:0.9rem;">اختر وسيلة الدفع:</h4>
             <div class="payment-methods-select">
-                <div class="pay-option active" onclick="selectPayment('orange', this)">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Orange_logo.svg" alt="Orange">
-                </div>
-                <div class="pay-option" onclick="selectPayment('cliq', this)">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/CliQ_logo.png/640px-CliQ_logo.png" alt="CliQ" style="height:20px;">
+                <div class="pay-option active" onclick="selectPayment('orange_cliq', this)">
+                    <div style="display:flex; gap:5px; justify-content:center; align-items:center;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Orange_logo.svg" alt="Orange" style="height:20px;">
+                        <span style="color:white; font-size:0.9rem;">&</span>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/CliQ_logo.png/640px-CliQ_logo.png" alt="CliQ" style="height:15px; filter: brightness(0) invert(1);">
+                    </div>
+                    <span>Orange / CliQ</span>
                 </div>
                 <div class="pay-option" onclick="selectPayment('paypal', this)">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" style="height:25px;">
+                    <span>PayPal</span>
                 </div>
             </div>
 
             <div class="payment-details-box" id="paymentDetails">
-                <div class="payment-title">Orange Money</div>
-                <div class="payment-number">0785039924</div>
-                <div class="payment-name">محمد هنديه</div>
-            </div>
+                </div>
 
             <input type="text" id="custName" class="input-field" placeholder="الاسم الكامل / Full Name">
             <input type="text" id="walletName" class="input-field" placeholder="اسم المحفظة / Wallet Name">
@@ -372,9 +374,9 @@
         let currentCurrency = 'JOD';
         let selectedProduct = null;
         let basePriceJOD = 0;
-        let selectedPaymentMethod = 'orange';
+        let selectedPaymentMethod = 'orange_cliq';
 
-        // 🔴🔴🔴 الرابط الخاص بك 🔴🔴🔴
+        // 🔴🔴🔴 رابط التقييمات - تأكد منه 🔴🔴🔴
         const GOOGLE_API_URL = 'https://script.google.com/macros/s/AKfycbz6c5w_ffgvNceoTC-GVdHEsO4clftgIdlU2IOPMaYv1M8CHBsfeS-G4eq92T5TSY7I/exec'; 
         const DISCOUNT_CODE = "DDOOQ";
 
@@ -391,16 +393,16 @@
             { id: 14, name: "بكج ألعاب السولز", nameEn: "Souls Pack", desc: "أقوى ألعاب الصعوبة.", descEn: "Hard Games.", price: 3.49, img: "https://cdn.cloudflare.steamstatic.com/steam/bundles/18836/header.jpg", type: "bundles" },
 
             // Charging (Free Fire)
-            { id: 301, name: "شحن جواهر فري فاير (583)", nameEn: "Free Fire (583)", desc: "شحن فوري.", descEn: "Instant Topup.", price: 3.60, img: "free-fire-100-diamonds-pc-builder-qatar-best-pc-gaming-store-in-qatar.webp", type: "charging", noWarranty: true },
+            { id: 301, name: "شحن جواهر فري فاير (640) دبل", nameEn: "Free Fire (640) double", desc: "شحن فوري.", descEn: "Instant Topup.", price: 3.60, img: "freefire", type: "charging", noWarranty: true },
 
             // Social
             { id: 302, name: "رشق متابعين انستغرام", nameEn: "Insta Followers", desc: "اختر الكمية.", descEn: "Choose Qty.", price: 1.00, img: "ad-instagram.png", type: "social", noWarranty: true, isInsta: true },
 
             // Subs
-            { id: 101, name: "Netflix Premium (4K)", nameEn: "Netflix 4K", desc: "ملف خاص.", descEn: "Private Profile.", price: 1.50, img: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/800px-Netflix_2015_logo.svg.png", type: "subs" },
-            { id: 102, name: "Crunchyroll Mega Fan", nameEn: "Crunchyroll", desc: "شهر كامل.", descEn: "1 Month.", price: 3.00, img: "image_fcb0f7.png", type: "subs" },
-            { id: 103, name: "Crunchyroll (3 Months)", nameEn: "Crunchyroll 3M", desc: "توفير.", descEn: "Saving.", price: 5.00, img: "image_fcb0f7.png", type: "subs" },
-            { id: 104, name: "Crunchyroll (1 Year)", nameEn: "Crunchyroll 1Y", desc: "سنوي.", descEn: "Yearly.", price: 8.00, img: "image_fcb0f7.png", type: "subs" },
+            { id: 101, name: "Netflix Premium (4K)", nameEn: "Netflix 4K", desc: "ملف خاص.", descEn: "Private Profile.", price: 1.50, img: "nflx4us", type: "subs" },
+            { id: 102, name: "Crunchyroll Mega Fan", nameEn: "Crunchyroll", desc: " شهر كامل الحساب مشترك لانو المشاركة حلو صح؟.", descEn: "1 Month.", price: 3.00, img: "corn.png", type: "subs" },
+            { id: 103, name: "Crunchyroll (3 Months)", nameEn: "Crunchyroll 3M", desc: "توفير .", descEn: "Saving.", price: 5.00, img: "corn.png", type: "subs" },
+            { id: 104, name: "Crunchyroll (1 Year)", nameEn: "Crunchyroll 1Y", desc: "سنوي بأفضل سعر بالسوق.", descEn: "Yearly.", price: 8.00, img: "Corn.png", type: "subs" },
 
             // PC (Individual) - NO DISCOUNT
             { id: 1, name: "Grand Theft Auto V", nameEn: "GTA V", desc: "ستيم أوفلاين.", descEn: "Steam Offline.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg", type: "pc" },
@@ -417,7 +419,10 @@
             { id: 12, name: "Mortal Kombat 1", nameEn: "MK 1", desc: "دموي.", descEn: "Bloody.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1971870/header.jpg", type: "pc" },
             { id: 15, name: "No I'm not human", nameEn: "No I'm not human", desc: "رعب خفيف.", descEn: "Light Horror.", price: 2.00, img: "no.jpg", type: "pc" },
             { id: 16, name: "Hollow Knight & Silksong", nameEn: "Hollow Knight", desc: "الجزء الأول + الثاني.", descEn: "Part 1 + 2.", price: 2.00, img: "hollow.png", type: "pc" }
+            { id: 16, name: "Stardew Valley", nameEn: "Stardew Valley", desc: "لعبة رايقين.", descEn: "Chilling .", price: 2.00, img: "stardew.png", type: "pc" }
+
         ];
+    
 
         document.addEventListener('DOMContentLoaded', () => { 
             renderProducts(); 
@@ -454,7 +459,7 @@
                 let priceId = `price-${p.id}`;
                 
                 let btnAction = `openModal(${p.id}, '${displayPrice} ${currentCurrency}')`;
-                let btnText = `${txtBuy} <i class="fas fa-shopping-cart"></i>`; // Fixed Text "Buy Now"
+                let btnText = `${txtBuy} <i class="fas fa-shopping-cart"></i>`;
 
                 let extraHtml = '';
                 if(p.isInsta) {
@@ -498,18 +503,17 @@
             const p = products.find(x => x.id === id);
             selectedProduct = p;
             
-            // Handle Insta dynamic price logic inside modal opening
             if(p.isInsta) {
                  const select = document.getElementById(`select-${id}`);
                  const qty = select ? select.value : 1;
                  basePriceJOD = 1.00 * qty;
-                 customDesc = ` (${qty*1000})`; // Override desc
+                 customDesc = ` (${qty*1000})`;
             } else {
                  basePriceJOD = p.price;
             }
             
             const pName = currentLang === 'en' && p.nameEn ? p.nameEn : p.name;
-            let fullName = pName + (customDesc ? ` ${customDesc}` : "");
+            let fullName = pName + (customDesc ? ` (${customDesc}` : "");
             
             document.getElementById('discountCode').value = "";
             document.getElementById('modalOriginalPriceRow').style.display = 'none';
@@ -523,8 +527,7 @@
 
             document.getElementById('modalWarranty').style.display = (p.noWarranty || p.isCustom) ? 'none' : 'flex';
             
-            // Reset Payment to Orange
-            selectPayment('orange', document.querySelector('.pay-option:first-child'));
+            selectPayment('orange_cliq', document.querySelector('.pay-option:first-child'));
             
             document.getElementById('paymentModal').style.display = 'flex';
         }
@@ -535,7 +538,6 @@
             if (code !== DISCOUNT_CODE) { showToast('Invalid Code', 'error'); return; }
             
             let discountValue = 0;
-            // Discount Logic: 10 -> 7.5 (2.5 off), 13 -> 7.5 (5.5 off)
             if (selectedProduct.id === 200) { 
                 discountValue = 2.50;
             } else if (selectedProduct.id === 201) { 
@@ -567,12 +569,18 @@
             if(element) element.classList.add('active');
 
             const detailsBox = document.getElementById('paymentDetails');
-            if (method === 'orange') {
-                detailsBox.innerHTML = `<div class="payment-title">Orange Money</div><div class="payment-number">0785039924</div><div class="payment-name">محمد هنديه</div>`;
-            } else if (method === 'cliq') {
-                detailsBox.innerHTML = `<div class="payment-title">CliQ</div><div class="payment-number">0785039924</div><div class="payment-name">Alias: MOHAMMAD HINDIA</div>`;
+            if (method === 'orange_cliq') {
+                detailsBox.innerHTML = `
+                    <div class="payment-title">Orange Money & CliQ</div>
+                    <div class="payment-number">0785039924</div>
+                    <div class="payment-name">محمد هنديه</div>
+                    <div class="payment-name" style="margin-top:5px; font-size:0.8rem; color:#aaa;">Alias: MOHAMMAD HINDIA</div>
+                `;
             } else if (method === 'paypal') {
-                detailsBox.innerHTML = `<div class="payment-title">PayPal</div><div class="payment-number" style="font-size:1rem;">lujain258369@gmail.com</div>`;
+                detailsBox.innerHTML = `
+                    <div class="payment-title">PayPal</div>
+                    <div class="payment-number" style="font-size:1rem; direction:ltr;">lujain258369@gmail.com</div>
+                `;
             }
         }
 
@@ -602,7 +610,7 @@
             emailjs.send('service_x31cu0s', 'template_znmanl1', params).then(() => {
                 closeModal();
                 const toast = document.getElementById('toastWrapper');
-                const msg = `<i class="fas fa-check-circle"></i><div><div>${i18n[currentLang].confirm_order} #${orderId}</div><div style="font-size:0.8rem;opacity:0.8;">تم الطلب بنجاح! يرجى التواصل معنا عبر الانستجرام أو الديسكورد لطلب</div></div>`;
+                const msg = `<i class="fas fa-check-circle"></i><div><div>${i18n[currentLang].confirm_order} #${orderId}</div><div style="font-size:0.8rem;opacity:0.8;">تم الطلب! تواصل معنا على الانستا/ديسكورد</div></div>`;
                 const div = document.createElement('div'); div.className = 'toast-msg success'; div.innerHTML = msg;
                 toast.appendChild(div);
                 setTimeout(() => div.classList.add('active'), 10);
@@ -629,14 +637,13 @@
                 document.getElementById('reviewsGrid').innerHTML = '<p style="text-align:center;color:#666">Setup Google Sheet API First</p>';
                 return; 
             }
-            fetch(GOOGLE_API_URL).then(r=>r.json()).then(reviews=>{
-                const container = document.getElementById('reviewsGrid');
-                container.innerHTML = '';
-                if(reviews.length===0) { container.innerHTML='<p style="text-align:center;color:#666">No reviews yet</p>'; return; }
-                reviews.reverse().forEach(r=>{
+            fetch(GOOGLE_API_URL).then(r=>r.json()).then(d=>{
+                const c = document.getElementById('reviewsGrid'); c.innerHTML='';
+                if(d.length===0) { c.innerHTML='<p style="text-align:center;color:#666">No reviews yet</p>'; return; }
+                d.reverse().forEach(r=>{
                     const card = document.createElement('div'); card.className='review-card';
                     card.innerHTML = `<div class="review-header"><span class="review-name">${r.name}</span><span class="review-rating">${getStars(r.rating)}</span></div><p style="font-size:0.8rem;color:#aaa">${r.product||''}</p><p class="review-comment">${r.comment}</p>`;
-                    container.appendChild(card);
+                    c.appendChild(card);
                 });
             }).catch(e=>console.error(e));
         }
