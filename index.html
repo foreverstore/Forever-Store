@@ -1,666 +1,570 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Forever Store | المتجر الأقوى</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script type="text/javascript">
-       (function(){
-          emailjs.init("vZaABNKjHKVCGOhDk"); 
-       })();
-    </script>
-
-    <style>
-        :root {
-            --primary: #e50914; --primary-dark: #b20710; --accent: #ffb700;
-            --bg-dark: #0f0f0f; --bg-card: #141414; --text-main: #ffffff; --text-muted: #b3b3b3;
-            --border-radius: 12px; --transition: 0.3s; --success: #2ecc71;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; -webkit-tap-highlight-color: transparent; }
-        body { font-family: 'Cairo', sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; background-image: radial-gradient(circle at 10% 20%, rgba(229, 9, 20, 0.05) 0%, transparent 20%); }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-dark); }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
-        .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
-        a { text-decoration: none; color: inherit; }
-
-        /* Header */
-        header { background: rgba(10, 10, 10, 0.95); border-bottom: 1px solid rgba(255,255,255,0.1); position: sticky; top: 0; z-index: 1000; padding: 12px 0; backdrop-filter: blur(12px); }
-        .header-inner { display: flex; justify-content: space-between; align-items: center; }
-        .logo-box { display: flex; align-items: center; gap: 10px; }
-        .logo-img { width: 45px; height: 45px; border-radius: 50%; border: 2px solid var(--primary); object-fit: cover; }
-        .logo-text { font-size: 20px; font-weight: 900; color: var(--text-main); line-height: 1; display: flex; flex-direction: column; }
-        .logo-text span { color: var(--primary); font-size: 12px; letter-spacing: 1px; }
-        .nav-controls { display: flex; gap: 10px; align-items: center; }
-        .lang-btn, .currency-select { background: #222; border: 1px solid #333; color: white; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: inherit; font-weight: bold; font-size: 0.9rem; }
-        .main-nav { display: flex; gap: 5px; }
-        .nav-link { color: var(--text-muted); padding: 8px 12px; border-radius: 6px; font-weight: 600; transition: var(--transition); font-size: 0.95rem; }
-        .nav-link:hover { background: rgba(255,255,255,0.1); color: white; }
-        .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 24px; cursor: pointer; }
-
-        /* Banner */
-        .discount-banner { background: linear-gradient(45deg, #500, #900); color: white; text-align: center; padding: 10px; font-weight: bold; border-bottom: 2px solid var(--primary); margin-bottom: 20px; }
-        .discount-code { background: rgba(0,0,0,0.3); padding: 2px 8px; border-radius: 4px; color: var(--accent); margin: 0 5px; letter-spacing: 1px; }
-
-        /* Hero */
-        .hero-section { position: relative; height: 400px; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; margin-bottom: 50px; }
-        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('https://wallpaperaccess.com/full/7445.jpg') center/cover; filter: brightness(0.3); z-index: 1; }
-        .hero-content { position: relative; z-index: 2; padding: 20px; }
-        .hero-title { font-size: 3rem; font-weight: 900; margin-bottom: 10px; }
-        .btn-glow { background: var(--primary); color: white; padding: 12px 35px; border-radius: 50px; font-weight: 700; box-shadow: 0 0 20px rgba(229, 9, 20, 0.4); display: inline-block; transition: var(--transition); }
-        .btn-glow:hover { transform: scale(1.05); }
-
-        /* Products Grid */
-        .section-header { margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; display: flex; align-items: center; gap: 10px; }
-        .section-title { font-size: 1.5rem; font-weight: 800; color: white; }
-        .section-title i { color: var(--primary); }
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 25px; margin-bottom: 60px; }
-        .product-card { background: var(--bg-card); border-radius: var(--border-radius); overflow: hidden; border: 1px solid rgba(255,255,255,0.05); transition: var(--transition); position: relative; display: flex; flex-direction: column; }
-        .product-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-        .card-img-wrapper { position: relative; width: 100%; height: 350px; background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .card-img { width: 100%; height: 100%; object-fit: contain; transition: 0.5s; }
-        .product-card:hover .card-img { transform: scale(1.05); }
-        .badges-container { position: absolute; top: 10px; left: 10px; right: 10px; display: flex; justify-content: space-between; pointer-events: none; z-index: 2; }
-        .badge { padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 800; }
-        .badge-hot { background: var(--primary); color: white; animation: pulse 2s infinite; }
-        .badge-sold { background: #333; color: #aaa; }
-        .warranty-strip { position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(46, 204, 113, 0.95); color: white; text-align: center; font-size: 0.8rem; padding: 4px; font-weight: 700; transform: translateY(100%); transition: var(--transition); }
-        .product-card:hover .warranty-strip { transform: translateY(0); }
-        .card-body { padding: 15px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-        .product-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 5px; line-height: 1.3; }
-        .product-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px; }
-        .custom-select { width: 100%; padding: 8px; background: #222; border: 1px solid #333; color: white; border-radius: 6px; margin-bottom: 10px; outline: none; }
-        .price-area { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
-        .current-price { font-size: 1.2rem; font-weight: 800; color: var(--primary); }
-        .old-price { font-size: 0.85rem; text-decoration: line-through; color: #666; }
-        .add-btn { width: 100%; padding: 10px; background: white; color: black; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; transition: var(--transition); }
-        .add-btn:hover:not(:disabled) { background: var(--primary); color: white; }
-        .add-btn:disabled { background: #333; color: #666; cursor: not-allowed; }
-
-        /* Reviews */
-        .reviews-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin-bottom: 40px; }
-        .review-card { background: #1e1e1e; padding: 15px; border-radius: 10px; border-right: 3px solid var(--accent); transition: 0.3s; }
-        .review-card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
-        .review-header { display: flex; justify-content: space-between; margin-bottom: 10px; }
-        .review-rating { color: var(--accent); font-size: 1.1rem; }
-        .review-name { font-weight: 700; color: var(--primary); }
-        .review-comment { font-size: 0.95rem; color: var(--text-muted); line-height: 1.5; }
-        .review-date { font-size: 0.75rem; color: #555; margin-top: 10px; }
-        .feedback-form-container { max-width: 600px; margin: 0 auto 50px; padding: 25px; background: var(--bg-card); border-radius: 16px; border: 1px solid #333; }
-        .input-field { width: 100%; padding: 12px; background: #252525; border: 1px solid #333; border-radius: 8px; color: white; margin-bottom: 10px; outline: none; }
-        .input-field:focus { border-color: var(--primary); }
-        .discount-input { display: flex; gap: 10px; align-items: center; margin-bottom: 15px; }
-        .discount-input input { flex-grow: 1; margin-bottom: 0; }
-        .apply-btn { padding: 0 20px; background: var(--accent); color: black; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
-
-        /* Modal */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
-        .modal-box { background: #1a1a1a; width: 95%; max-width: 450px; padding: 25px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); position: relative; animation: slideUp 0.3s; max-height: 90vh; overflow-y: auto; }
-        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        .close-modal { position: absolute; top: 15px; left: 15px; background: none; border: none; color: #666; font-size: 24px; cursor: pointer; }
-        .order-summary { background: #252525; padding: 15px; border-radius: 8px; margin-bottom: 15px; border-right: 3px solid var(--primary); }
-        .payment-methods-select { display: flex; gap: 10px; margin-bottom: 15px; justify-content: center; }
-        .pay-option { padding: 15px; border: 1px solid #444; border-radius: 8px; cursor: pointer; opacity: 0.6; transition: 0.3s; text-align: center; width: 48%; background: #222; display: flex; align-items: center; justify-content: center; gap: 5px; flex-direction: column; }
-        .pay-option.active { border-color: var(--primary); opacity: 1; background: rgba(229,9,20,0.1); }
-        .pay-option img { height: 25px; display: block; }
-        .pay-option span { font-size: 0.8rem; font-weight: bold; margin-top: 5px; display: block; }
-        
-        .payment-details-box { background: #222; padding: 15px; border-radius: 8px; margin-bottom: 15px; text-align: center; border: 1px dashed #555; }
-        .payment-title { font-size: 0.9rem; color: #aaa; margin-bottom: 5px; }
-        .payment-number { font-size: 1.2rem; font-weight: bold; color: white; letter-spacing: 1px; margin: 5px 0; direction: ltr; }
-        .payment-name { color: var(--accent); font-size: 0.9rem; }
-        .modal-btn { width: 100%; padding: 12px; background: var(--primary); color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; }
-
-        /* Toast */
-        .toast-container { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 3000; pointer-events: none; width: 100%; display: flex; justify-content: center; }
-        .toast-msg { background: white; color: black; padding: 12px 25px; border-radius: 50px; display: flex; align-items: center; gap: 10px; font-weight: 700; opacity: 0; transform: translateY(30px); transition: 0.4s; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center; }
-        .toast-msg.active { opacity: 1; transform: translateY(0); }
-        .toast-msg.success i { color: var(--success); }
-        .toast-msg.error i { color: var(--primary); }
-
-        /* Footer */
-        footer { background: #0a0a0a; padding: 50px 0 20px; border-top: 1px solid #222; margin-top: 50px; text-align: center; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 30px; }
-        .social-bar { display: flex; justify-content: center; gap: 15px; margin-top: 15px; }
-        .social-link { width: 40px; height: 40px; border-radius: 50%; background: #222; display: flex; align-items: center; justify-content: center; color: white; transition: 0.3s; }
-        .social-link:hover { background: var(--primary); }
-        .payments-bar { display: flex; justify-content: center; gap: 15px; margin-top: 10px; opacity: 0.7; }
-        .payments-bar img { height: 25px; filter: grayscale(100%); }
-
-        /* LTR */
-        html[dir="ltr"] body { font-family: 'Segoe UI', sans-serif; }
-        html[dir="ltr"] .category-title { border-right: none; border-left: 4px solid var(--primary); }
-        html[dir="ltr"] .order-summary, html[dir="ltr"] .review-card { border-right: none; border-left: 4px solid var(--primary); }
-        html[dir="ltr"] .close-modal { left: auto; right: 15px; }
-        html[dir="ltr"] .btn-glow i { transform: rotate(180deg); margin-left: 8px; margin-right: 0; }
-        html[dir="ltr"] .nav-controls { margin-right: auto; margin-left: 0; }
-
-        @media (max-width: 768px) {
-            .header-inner { flex-wrap: wrap; gap: 10px; }
-            .nav-controls { margin-left: auto; order: 2; }
-            .mobile-menu-btn { display: block; order: 3; }
-            .logo-box { order: 1; }
-            .main-nav { display: none; width: 100%; order: 4; flex-direction: column; background: #111; padding: 15px; }
-            .main-nav.active { display: flex; }
-            .products-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .card-img-wrapper { height: 200px; }
-            .hero-title { font-size: 2rem; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Forever Store | المتجر الأقوى</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script type="text/javascript">
+(function(){
+emailjs.init("vZaABNKjHKVCGOhDk");
+})();
+</script>
+<style>
+:root {
+--primary: #e50914; --primary-dark: #b20710; --accent: #ffb700;
+--bg-dark: #0f0f0f; --bg-card: #141414; --text-main: #ffffff; --text-muted: #b3b3b3;
+--border-radius: 12px; --transition: 0.3s; --success: #2ecc71;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; outline: none; -webkit-tap-highlight-color: transparent; }
+body { font-family: 'Cairo', sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; background-image: radial-gradient(circle at 10% 20%, rgba(229, 9, 20, 0.05) 0%, transparent 20%); }
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+.container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+a { text-decoration: none; color: inherit; }
+/* Header */
+header { background: rgba(10, 10, 10, 0.95); border-bottom: 1px solid rgba(255,255,255,0.1); position: sticky; top: 0; z-index: 1000; padding: 12px 0; backdrop-filter: blur(12px); }
+.header-inner { display: flex; justify-content: space-between; align-items: center; }
+.logo-box { display: flex; align-items: center; gap: 10px; }
+.logo-img { width: 45px; height: 45px; border-radius: 50%; border: 2px solid var(--primary); object-fit: cover; }
+.logo-text { font-size: 20px; font-weight: 900; color: var(--text-main); line-height: 1; display: flex; flex-direction: column; }
+.logo-text span { color: var(--primary); font-size: 12px; letter-spacing: 1px; }
+.nav-controls { display: flex; gap: 10px; align-items: center; }
+.lang-btn, .currency-select { background: #222; border: 1px solid #333; color: white; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: inherit; font-weight: bold; font-size: 0.9rem; }
+.main-nav { display: flex; gap: 5px; }
+.nav-link { color: var(--text-muted); padding: 8px 12px; border-radius: 6px; font-weight: 600; transition: var(--transition); font-size: 0.95rem; }
+.nav-link:hover { background: rgba(255,255,255,0.1); color: white; }
+.mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 24px; cursor: pointer; }
+/* Banner */
+.discount-banner { background: linear-gradient(45deg, #500, #900); color: white; text-align: center; padding: 10px; font-weight: bold; border-bottom: 2px solid var(--primary); margin-bottom: 20px; }
+.discount-code { background: rgba(0,0,0,0.3); padding: 2px 8px; border-radius: 4px; color: var(--accent); margin: 0 5px; letter-spacing: 1px; }
+/* Hero */
+.hero-section { position: relative; height: 400px; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; margin-bottom: 50px; }
+.hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('https://wallpaperaccess.com/full/7445.jpg') center/cover; filter: brightness(0.3); z-index: 1; }
+.hero-content { position: relative; z-index: 2; padding: 20px; }
+.hero-title { font-size: 3rem; font-weight: 900; margin-bottom: 10px; }
+.btn-glow { background: var(--primary); color: white; padding: 12px 35px; border-radius: 50px; font-weight: 700; box-shadow: 0 0 20px rgba(229, 9, 20, 0.4); display: inline-block; transition: var(--transition); }
+.btn-glow:hover { transform: scale(1.05); }
+/* Products Grid */
+.section-header { margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+.section-title { font-size: 1.5rem; font-weight: 800; color: white; }
+.section-title i { color: var(--primary); }
+.products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 25px; margin-bottom: 60px; }
+.product-card { background: var(--bg-card); border-radius: var(--border-radius); overflow: hidden; border: 1px solid rgba(255,255,255,0.05); transition: var(--transition); position: relative; display: flex; flex-direction: column; }
+.product-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+.card-img-wrapper { position: relative; width: 100%; height: 350px; background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.card-img { width: 100%; height: 100%; object-fit: contain; transition: 0.5s; }
+.product-card:hover .card-img { transform: scale(1.05); }
+.badges-container { position: absolute; top: 10px; left: 10px; right: 10px; display: flex; justify-content: space-between; pointer-events: none; z-index: 2; }
+.badge { padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 800; }
+.badge-hot { background: var(--primary); color: white; animation: pulse 2s infinite; }
+.badge-sold { background: #333; color: #aaa; }
+.warranty-strip { position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(46, 204, 113, 0.95); color: white; text-align: center; font-size: 0.8rem; padding: 4px; font-weight: 700; transform: translateY(100%); transition: var(--transition); }
+.product-card:hover .warranty-strip { transform: translateY(0); }
+.card-body { padding: 15px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+.product-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 5px; line-height: 1.3; }
+.product-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px; }
+.custom-select { width: 100%; padding: 8px; background: #222; border: 1px solid #333; color: white; border-radius: 6px; margin-bottom: 10px; outline: none; }
+.price-area { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.current-price { font-size: 1.2rem; font-weight: 800; color: var(--primary); }
+.old-price { font-size: 0.85rem; text-decoration: line-through; color: #666; }
+.add-btn { width: 100%; padding: 10px; background: white; color: black; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; transition: var(--transition); }
+.add-btn:hover:not(:disabled) { background: var(--primary); color: white; }
+.add-btn:disabled { background: #333; color: #666; cursor: not-allowed; }
+/* Reviews */
+.reviews-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin-bottom: 40px; }
+.review-card { background: #1e1e1e; padding: 15px; border-radius: 10px; border-right: 3px solid var(--accent); transition: 0.3s; }
+.review-card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+.review-header { display: flex; justify-content: space-between; margin-bottom: 10px; }
+.review-rating { color: var(--accent); font-size: 1.1rem; }
+.review-name { font-weight: 700; color: var(--primary); }
+.review-comment { font-size: 0.95rem; color: var(--text-muted); line-height: 1.5; }
+.review-date { font-size: 0.75rem; color: #555; margin-top: 10px; }
+.feedback-form-container { max-width: 600px; margin: 0 auto 50px; padding: 25px; background: var(--bg-card); border-radius: 16px; border: 1px solid #333; }
+.input-field { width: 100%; padding: 12px; background: #252525; border: 1px solid #333; border-radius: 8px; color: white; margin-bottom: 10px; outline: none; }
+.input-field:focus { border-color: var(--primary); }
+.discount-input { display: flex; gap: 10px; align-items: center; margin-bottom: 15px; }
+.discount-input input { flex-grow: 1; margin-bottom: 0; }
+.apply-btn { padding: 0 20px; background: var(--accent); color: black; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
+/* Modal */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
+.modal-box { background: #1a1a1a; width: 95%; max-width: 450px; padding: 25px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); position: relative; animation: slideUp 0.3s; max-height: 90vh; overflow-y: auto; }
+@keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.close-modal { position: absolute; top: 15px; left: 15px; background: none; border: none; color: #666; font-size: 24px; cursor: pointer; }
+.order-summary { background: #252525; padding: 15px; border-radius: 8px; margin-bottom: 15px; border-right: 3px solid var(--primary); }
+.payment-methods-select { display: flex; gap: 10px; margin-bottom: 15px; justify-content: center; }
+.pay-option { padding: 15px; border: 1px solid #444; border-radius: 8px; cursor: pointer; opacity: 0.6; transition: 0.3s; text-align: center; width: 48%; background: #222; display: flex; align-items: center; justify-content: center; gap: 5px; flex-direction: column; }
+.pay-option.active { border-color: var(--primary); opacity: 1; background: rgba(229,9,20,0.1); }
+.pay-option img { height: 25px; display: block; }
+.pay-option span { font-size: 0.8rem; font-weight: bold; margin-top: 5px; display: block; }
+.payment-details-box { background: #222; padding: 15px; border-radius: 8px; margin-bottom: 15px; text-align: center; border: 1px dashed #555; }
+.payment-title { font-size: 0.9rem; color: #aaa; margin-bottom: 5px; }
+.payment-number { font-size: 1.2rem; font-weight: bold; color: white; letter-spacing: 1px; margin: 5px 0; direction: ltr; }
+.payment-name { color: var(--accent); font-size: 0.9rem; }
+.modal-btn { width: 100%; padding: 12px; background: var(--primary); color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; }
+/* Toast */
+.toast-container { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 3000; pointer-events: none; width: 100%; display: flex; justify-content: center; }
+.toast-msg { background: white; color: black; padding: 12px 25px; border-radius: 50px; display: flex; align-items: center; gap: 10px; font-weight: 700; opacity: 0; transform: translateY(30px); transition: 0.4s; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center; }
+.toast-msg.active { opacity: 1; transform: translateY(0); }
+.toast-msg.success i { color: var(--success); }
+.toast-msg.error i { color: var(--primary); }
+/* Footer */
+footer { background: #0a0a0a; padding: 50px 0 20px; border-top: 1px solid #222; margin-top: 50px; text-align: center; }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 30px; }
+.social-bar { display: flex; justify-content: center; gap: 15px; margin-top: 15px; }
+.social-link { width: 40px; height: 40px; border-radius: 50%; background: #222; display: flex; align-items: center; justify-content: center; color: white; transition: 0.3s; }
+.social-link:hover { background: var(--primary); }
+.payments-bar { display: flex; justify-content: center; gap: 15px; margin-top: 10px; opacity: 0.7; }
+.payments-bar img { height: 25px; filter: grayscale(100%); }
+/* LTR */
+html[dir="ltr"] body { font-family: 'Segoe UI', sans-serif; }
+html[dir="ltr"] .category-title { border-right: none; border-left: 4px solid var(--primary); }
+html[dir="ltr"] .order-summary, html[dir="ltr"] .review-card { border-right: none; border-left: 4px solid var(--primary); }
+html[dir="ltr"] .close-modal { left: auto; right: 15px; }
+html[dir="ltr"] .btn-glow i { transform: rotate(180deg); margin-left: 8px; margin-right: 0; }
+html[dir="ltr"] .nav-controls { margin-right: auto; margin-left: 0; }
+@media (max-width: 768px) {
+.header-inner { flex-wrap: wrap; gap: 10px; }
+.nav-controls { margin-left: auto; order: 2; }
+.mobile-menu-btn { display: block; order: 3; }
+.logo-box { order: 1; }
+.main-nav { display: none; width: 100%; order: 4; flex-direction: column; background: #111; padding: 15px; }
+.main-nav.active { display: flex; }
+.products-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.card-img-wrapper { height: 200px; }
+.hero-title { font-size: 2rem; }
+}
+</style>
 </head>
 <body>
-
-    <header>
-        <div class="container header-inner">
-            <button class="mobile-menu-btn" onclick="document.getElementById('mainNav').classList.toggle('active')"><i class="fas fa-bars"></i></button>
-            <a href="#" class="logo-box">
-                <img src="our_theme.jpg" alt="Logo" class="logo-img">
-                <div class="logo-text">FOREVER <span>STORE</span></div>
-            </a>
-            <div class="nav-controls">
-                <button class="lang-btn" onclick="toggleLang()" id="langBtn">🇺🇸 EN</button>
-                <select class="currency-select" id="currencySelector" onchange="updateCurrency()">
-                    <option value="JOD">JOD</option>
-                    <option value="SAR">SAR</option>
-                    <option value="USD">USD</option>
-                </select>
-            </div>
-            <nav class="main-nav" id="mainNav">
-                <a href="#home" class="nav-link" data-i18n="home">الرئيسية</a>
-                <a href="#ps4" class="nav-link" data-i18n="nav_ps4">بلاستيشن</a>
-                <a href="#bundles" class="nav-link" data-i18n="nav_bundles">بكجات</a>
-                <a href="#services" class="nav-link" data-i18n="nav_services">خدمات</a>
-                <a href="#subs" class="nav-link" data-i18n="nav_subs">اشتراكات</a>
-                <a href="#pc" class="nav-link" data-i18n="nav_pc">PC</a>
-            </nav>
-        </div>
-    </header>
-
-    <div class="discount-banner">
-        <span data-i18n="banner_text">نورت المتجر! 🤩 احصل على خصم خاص بكود:</span> <strong class="discount-code">DDOOQ</strong>
-    </div>
-
-    <section class="hero-section" id="home">
-        <div class="hero-bg"></div>
-        <div class="hero-content animate__animated animate__fadeInUp">
-            <h1 class="hero-title" data-i18n="hero_title">عالم الألعاب بين يديك</h1>
-            <p style="color:#ddd; font-size:1.1rem; margin-bottom:20px;" data-i18n="hero_desc">أفضل الأسعار، أسرع تسليم، وضمان حقيقي مدى الحياة.</p>
-            <a href="#products-area" class="btn-glow">
-                <span data-i18n="browse_btn">تصفح العروض</span> <i class="fas fa-arrow-left"></i>
-            </a>
-        </div>
-    </section>
-
-    <div class="container" id="products-area">
-        
-        <div class="section-header"><h2 class="section-title" id="ps4"><i class="fab fa-playstation"></i> <span data-i18n="cat_ps4">ألعاب بلاستيشن</span></h2></div>
-        <p style="color:var(--accent); font-weight:bold; margin-bottom:15px;"><i class="fas fa-info-circle"></i> <span data-i18n="discount_note">كود الخصم DDOOQ يعمل على FIFA و Call of Duty فقط.</span></p>
-        <div class="products-grid" id="ps4Grid"></div>
-
-        <div class="section-header"><h2 class="section-title" id="bundles"><i class="fas fa-box-open"></i> <span data-i18n="cat_bundles">بكجات الألعاب</span></h2></div>
-        <div class="products-grid" id="bundlesGrid"></div>
-
-        <div class="section-header"><h2 class="section-title" id="pc"><i class="fab fa-steam"></i> <span data-i18n="cat_pc">ألعاب PC (ألعاب فردية)</span></h2></div>
-        <div class="products-grid" id="pcGrid"></div>
-
-        <div class="section-header"><h2 class="section-title" id="charging"><i class="fas fa-bolt"></i> <span data-i18n="cat_charging">خدمات الشحن (جواهر)</span></h2></div>
-        <div class="products-grid" id="chargingGrid"></div>
-
-        <div class="section-header"><h2 class="section-title" id="social"><i class="fab fa-instagram"></i> <span data-i18n="cat_social">خدمات السوشيال ميديا</span></h2></div>
-        <div class="products-grid" id="socialGrid"></div>
-
-        <div class="section-header"><h2 class="section-title" id="subs"><i class="fas fa-ticket-alt"></i> <span data-i18n="cat_subs">اشتراكات المشاهدة</span></h2></div>
-        <div class="products-grid" id="subsGrid"></div>
-
-        <div class="section-header"><h2 class="section-title"><i class="fas fa-comments"></i> <span data-i18n="reviews_title">تقييمات العملاء</span></h2></div>
-        <div class="reviews-container" id="reviewsGrid">
-            <p style="color:#666; text-align:center; width:100%;" data-i18n="loading_reviews">جاري تحميل التقييمات...</p>
-        </div>
-
-        <div class="section-header" style="margin-top: 50px;"><h2 class="section-title"><i class="fas fa-feather-alt"></i> <span data-i18n="add_review_title">أضف تقييمك</span></h2></div>
-        <div class="feedback-form-container">
-            <form id="feedbackForm">
-                <input type="text" id="reviewName" class="input-field" placeholder="الاسم" required>
-                <input type="text" id="reviewProduct" class="input-field" placeholder="المنتج (اختياري)">
-                <div style="display:flex; gap:10px; margin-bottom: 15px; align-items:center;">
-                    <label style="color:var(--text-muted); font-size: 0.9rem;" data-i18n="rating_label">التقييم:</label>
-                    <select id="reviewRating" class="custom-select" style="width: 150px; padding: 8px;">
-                        <option value="5">⭐⭐⭐⭐⭐</option>
-                        <option value="4">⭐⭐⭐⭐</option>
-                        <option value="3">⭐⭐⭐</option>
-                        <option value="2">⭐⭐</option>
-                        <option value="1">⭐</option>
-                    </select>
-                </div>
-                <textarea id="reviewComment" class="input-field" placeholder="اكتب رأيك هنا..." rows="4" required></textarea>
-                <button type="submit" class="modal-btn" style="background:var(--success-color); color:black; margin-top: 10px;" data-i18n="send_review">إرسال التقييم</button>
-            </form>
-        </div>
-    </div>
-
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <div class="logo-box" style="justify-content:center; margin-bottom:15px;">
-                        <img src="our_theme.jpg" alt="Logo" class="logo-img">
-                        <div class="logo-text">FOREVER <span>STORE</span></div>
-                    </div>
-                    <p style="color:#999; font-size:0.9rem;" data-i18n="footer_desc">وجهتك الأولى للألعاب والخدمات الرقمية.</p>
-                </div>
-                <div>
-                    <h4 style="color:white; margin-bottom:15px;" data-i18n="payment_methods">طرق الدفع</h4>
-                    <div class="payments-bar">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Binance_Logo.svg" alt="Binance">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Orange_logo.svg" alt="Orange Money">
-                    </div>
-                    <p style="margin-top:10px; color:#666; font-size:0.8rem;" data-i18n="payment_note">نقبل التحويل البنكي والمحافظ</p>
-                </div>
-            </div>
-            <div style="border-top:1px solid #222; padding-top:20px; color:#555; font-size:0.85rem;">
-                &copy; 2025 Forever Store. <span data-i18n="rights">جميع الحقوق محفوظة.</span>
-            </div>
-        </div>
-    </footer>
-
-    <div class="modal-overlay" id="paymentModal">
-        <div class="modal-box">
-            <button class="close-modal" onclick="closeModal()">&times;</button>
-            <h3 style="color:white; text-align:center; margin-bottom:20px;" data-i18n="confirm_order">تأكيد الطلب 🚀</h3>
-            
-            <div class="order-summary">
-                <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
-                    <span style="color:#aaa;" data-i18n="product_label">المنتج:</span>
-                    <span style="color:white; font-weight:bold;" id="modalPrdName">...</span>
-                </div>
-                <div style="display:none; justify-content:space-between; margin-bottom:5px;" id="modalOriginalPriceRow">
-                    <span style="color:#666;">Original:</span>
-                    <span style="color:#666; text-decoration:line-through;" id="modalOriginalPrice">...</span>
-                </div>
-                <div style="display:none; justify-content:space-between; margin-bottom:5px;" id="modalDiscountRow">
-                    <span style="color:#2ecc71;">Discount (DDOOQ):</span>
-                    <span style="color:#2ecc71; font-weight:bold;" id="modalDiscountValue">...</span>
-                </div>
-                <div style="display:flex; justify-content:space-between; border-top: 1px dashed #333; padding-top: 10px; margin-top: 10px;">
-                    <span style="color:#aaa;" data-i18n="total_label">الإجمالي:</span>
-                    <span style="color:var(--primary); font-weight:bold; font-size:1.2rem;" id="modalPrdPrice">...</span>
-                </div>
-                <div id="modalWarranty" style="margin-top:10px; font-size:0.8rem; color:#2ecc71; display:flex; align-items:center; gap:5px;">
-                    <i class="fas fa-shield-alt"></i> <span data-i18n="warranty_text">ضمان كامل المدة</span>
-                </div>
-            </div>
-
-            <div class="discount-input">
-                <input type="text" id="discountCode" class="input-field" placeholder="Code (DDOOQ)">
-                <button class="apply-btn" onclick="applyDiscount()" data-i18n="apply_btn">تطبيق</button>
-            </div>
-
-            <h4 style="color:white; margin-bottom:10px; font-size:0.9rem;">اختر وسيلة الدفع:</h4>
-            <div class="payment-methods-select">
-                <div class="pay-option active" onclick="selectPayment('orange_cliq', this)">
-                    <div style="display:flex; gap:5px; justify-content:center; align-items:center;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Orange_logo.svg" alt="Orange" style="height:20px;">
-                        <span style="color:white; font-size:0.9rem;">&</span>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/CliQ_logo.png/640px-CliQ_logo.png" alt="CliQ" style="height:15px; filter: brightness(0) invert(1);">
-                    </div>
-                    <span>Orange / CliQ</span>
-                </div>
-                <div class="pay-option" onclick="selectPayment('paypal', this)">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" style="height:25px;">
-                    <span>PayPal</span>
-                </div>
-            </div>
-
-            <div class="payment-details-box" id="paymentDetails">
-                </div>
-
-            <input type="text" id="custName" class="input-field" placeholder="الاسم الكامل / Full Name">
-            <input type="text" id="walletName" class="input-field" placeholder="اسم المحفظة / Wallet Name">
-            <button class="modal-btn" onclick="submitOrder()" data-i18n="confirm_btn">تأكيد وإرسال الطلب</button>
-        </div>
-    </div>
-
-    <div class="toast-container" id="toastWrapper"></div>
-
-    <script>
-        const i18n = {
-            ar: {
-                home: "الرئيسية", nav_ps4: "بلاستيشن", nav_bundles: "بكجات", nav_services: "خدمات", nav_subs: "اشتراكات", nav_pc: "PC",
-                banner_text: "نورت المتجر! 🤩 احصل على خصم خاص بكود:",
-                hero_title: "عالم الألعاب بين يديك", hero_desc: "أفضل الأسعار، أسرع تسليم، وضمان حقيقي مدى الحياة.", browse_btn: "تصفح العروض",
-                cat_ps4: "ألعاب بلاستيشن", cat_bundles: "بكجات الألعاب", cat_charging: "خدمات الشحن (جواهر)", cat_social: "خدمات السوشيال ميديا", cat_subs: "اشتراكات المشاهدة", cat_pc: "ألعاب PC (ألعاب فردية)",
-                discount_note: "كود الخصم DDOOQ يعمل على FIFA و Call of Duty فقط.",
-                reviews_title: "تقييمات العملاء", loading_reviews: "جاري تحميل التقييمات...",
-                add_review_title: "أضف تقييمك", rating_label: "التقييم:", send_review: "إرسال التقييم",
-                footer_desc: "وجهتك الأولى للألعاب والخدمات الرقمية.", payment_methods: "طرق الدفع", payment_note: "نقبل التحويل البنكي والمحافظ", rights: "جميع الحقوق محفوظة.",
-                confirm_order: "تأكيد الطلب 🚀", product_label: "المنتج:", total_label: "الإجمالي:", warranty_text: "ضمان كامل المدة", apply_btn: "تطبيق", secure_id: "موثق بهوية رسمية", confirm_btn: "تأكيد وإرسال الطلب",
-                sold_out: "نفذت الكمية", buy_now: "شراء الآن", custom_price: "حسب الاتفاق"
-            },
-            en: {
-                home: "Home", nav_ps4: "PlayStation", nav_bundles: "Bundles", nav_services: "Services", nav_subs: "Subscriptions", nav_pc: "PC",
-                banner_text: "Welcome! Get a special discount with code:",
-                hero_title: "Gaming World in Your Hands", hero_desc: "Best prices, fast delivery, and lifetime warranty.", browse_btn: "Browse Offers",
-                cat_ps4: "PlayStation Games", cat_bundles: "Game Bundles", cat_charging: "Top-up Services", cat_social: "Social Media", cat_subs: "Subscriptions", cat_pc: "PC Games",
-                discount_note: "Code DDOOQ works on FIFA & Call of Duty only.",
-                reviews_title: "Customer Reviews", loading_reviews: "Loading reviews...",
-                add_review_title: "Write a Review", rating_label: "Rating:", send_review: "Submit Review",
-                footer_desc: "Your #1 destination for digital games and services.", payment_methods: "Payment Methods", payment_note: "We accept Bank Transfer & Wallets", rights: "All rights reserved.",
-                confirm_order: "Confirm Order 🚀", product_label: "Product:", total_label: "Total:", warranty_text: "Lifetime Warranty", apply_btn: "Apply", secure_id: "ID Verified", confirm_btn: "Confirm & Send",
-                sold_out: "Sold Out", buy_now: "Buy Now", custom_price: "Contact Us"
-            }
-        };
-
-        let currentLang = 'ar';
-        function toggleLang() {
-            currentLang = currentLang === 'ar' ? 'en' : 'ar';
-            document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
-            document.getElementById('langBtn').innerText = currentLang === 'ar' ? '🇺🇸 EN' : '🇯🇴 العربية';
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                if(i18n[currentLang][el.getAttribute('data-i18n')]) el.innerText = i18n[currentLang][el.getAttribute('data-i18n')];
-            });
-            renderProducts();
-        }
-
-        const rates = { JOD: 1, SAR: 5.30, USD: 1.41, EGP: 70.00 };
-        let currentCurrency = 'JOD';
-        let selectedProduct = null;
-        let basePriceJOD = 0;
-        let selectedPaymentMethod = 'orange_cliq';
-
-        // 🔴🔴🔴 رابط التقييمات - تأكد منه 🔴🔴🔴
-        const GOOGLE_API_URL = 'https://script.google.com/macros/s/AKfycbz6c5w_ffgvNceoTC-GVdHEsO4clftgIdlU2IOPMaYv1M8CHBsfeS-G4eq92T5TSY7I/exec'; 
-        const DISCOUNT_CODE = "DDOOQ";
-
-        const products = [
-            // Custom
-            { id: 999, name: "منتج حسب الطلب", nameEn: "Custom Order", desc: "اطلب أي لعبة تريدها.", descEn: "Request any game.", price: 0.00, img: "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=800", type: "pc", isCustom: true },
-            
-            // PlayStation (Individual) - ONLY THESE TWO GET DISCOUNT
-            { id: 200, name: "EA SPORTS FC 26", nameEn: "FC 26", desc: "نسخة كاملة.", descEn: "Full Version.", price: 10.00, oldPrice: 35.00, img: "image_fcb3e4.jpg", type: "ps4", special: true },
-            { id: 201, name: "Call of Duty: Black Ops 7", nameEn: "Black Ops 7", desc: "نسخة كاملة.", descEn: "Full Version.", price: 13.00, oldPrice: 45.00, img: "bo7.jpg", type: "ps4", special: true },
-
-            // Bundles
-            { id: 13, name: "بكج Resident Evil", nameEn: "RE Pack", desc: "جميع الأجزاء.", descEn: "All Parts.", price: 5.00, img: "resdent-evil-pack.jpg", type: "bundles" },
-            { id: 14, name: "بكج ألعاب السولز", nameEn: "Souls Pack", desc: "أقوى ألعاب الصعوبة.", descEn: "Hard Games.", price: 3.49, img: "https://cdn.cloudflare.steamstatic.com/steam/bundles/18836/header.jpg", type: "bundles" },
-
-            // Charging (Free Fire)
-            { id: 301, name: "شحن جواهر فري فاير (640) دبل", nameEn: "Free Fire (640) double", desc: "شحن فوري.", descEn: "Instant Topup.", price: 3.60, img: "freefire", type: "charging", noWarranty: true },
-
-            // Social
-            { id: 302, name: "رشق متابعين انستغرام", nameEn: "Insta Followers", desc: "اختر الكمية.", descEn: "Choose Qty.", price: 1.00, img: "ad-instagram.png", type: "social", noWarranty: true, isInsta: true },
-
-            // Subs
-            { id: 101, name: "Netflix Premium (4K)", nameEn: "Netflix 4K", desc: "ملف خاص.", descEn: "Private Profile.", price: 1.50, img: "nflx4us", type: "subs" },
-            { id: 102, name: "Crunchyroll Mega Fan", nameEn: "Crunchyroll", desc: " شهر كامل الحساب مشترك لانو المشاركة حلو صح؟.", descEn: "1 Month.", price: 3.00, img: "corn.png", type: "subs" },
-            { id: 103, name: "Crunchyroll (3 Months)", nameEn: "Crunchyroll 3M", desc: "توفير .", descEn: "Saving.", price: 5.00, img: "corn.png", type: "subs" },
-            { id: 104, name: "Crunchyroll (1 Year)", nameEn: "Crunchyroll 1Y", desc: "سنوي بأفضل سعر بالسوق.", descEn: "Yearly.", price: 8.00, img: "Corn.png", type: "subs" },
-
-            // PC (Individual) - NO DISCOUNT
-            { id: 1, name: "Grand Theft Auto V", nameEn: "GTA V", desc: "ستيم أوفلاين.", descEn: "Steam Offline.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg", type: "pc" },
-            { id: 2, name: "Elden Ring + DLC", nameEn: "Elden Ring", desc: "لعبة السنة.", descEn: "GOTY.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg", type: "pc" },
-            { id: 3, name: "Call of Duty: MW III", nameEn: "MW III", desc: "تختيم فقط.", descEn: "Campaign.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/2519060/header.jpg", type: "pc" },
-            { id: 4, name: "Black Myth: Wukong", nameEn: "Wukong", desc: "اللعبة الترند.", descEn: "Trending.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg", type: "pc" },
-            { id: 5, name: "Minecraft", nameEn: "Minecraft", desc: "حساب أصلي.", descEn: "Original.", price: 3.00, img: "https://image.api.playstation.com/vulcan/img/rnd/202010/2117/2mFy3G4811b7d581179e832876618454952018898516d71b.png", type: "pc" },
-            { id: 6, name: "Tekken 8", nameEn: "Tekken 8", desc: "قتال.", descEn: "Fighting.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1778820/header.jpg", type: "pc" },
-            { id: 7, name: "Red Dead Redemption 2", nameEn: "RDR 2", desc: "عالم مفتوح.", descEn: "Open World.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg", type: "pc" },
-            { id: 8, name: "God of War Ragnarök", nameEn: "God of War", desc: "مغامرة.", descEn: "Adventure.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/2322010/header.jpg", type: "pc" },
-            { id: 9, name: "Forza Horizon 5", nameEn: "Forza 5", desc: "سباق.", descEn: "Racing.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1551360/header.jpg", type: "pc" },
-            { id: 10, name: "Resident Evil 4", nameEn: "RE 4", desc: "رعب.", descEn: "Horror.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg", type: "pc" },
-            { id: 11, name: "Cyberpunk 2077", nameEn: "Cyberpunk", desc: "مستقبل.", descEn: "Future.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg", type: "pc" },
-            { id: 12, name: "Mortal Kombat 1", nameEn: "MK 1", desc: "دموي.", descEn: "Bloody.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1971870/header.jpg", type: "pc" },
-            { id: 15, name: "No I'm not human", nameEn: "No I'm not human", desc: "رعب خفيف.", descEn: "Light Horror.", price: 2.00, img: "no.jpg", type: "pc" },
-            { id: 16, name: "Hollow Knight & Silksong", nameEn: "Hollow Knight", desc: "الجزء الأول + الثاني.", descEn: "Part 1 + 2.", price: 2.00, img: "hollow.png", type: "pc" }
-            { id: 16, name: "Stardew Valley", nameEn: "Stardew Valley", desc: "لعبة رايقين.", descEn: "Chilling .", price: 2.00, img: "stardew.png", type: "pc" }
-
-        ];
-    
-
-        document.addEventListener('DOMContentLoaded', () => { 
-            renderProducts(); 
-            fetchAndRenderReviews(); 
-        });
-
-        function renderProducts() {
-            const containers = { 
-                ps4: document.getElementById('ps4Grid'), 
-                bundles: document.getElementById('bundlesGrid'),
-                charging: document.getElementById('chargingGrid'),
-                social: document.getElementById('socialGrid'),
-                subs: document.getElementById('subsGrid'), 
-                pc: document.getElementById('pcGrid') 
-            };
-            
-            for(let key in containers) if(containers[key]) containers[key].innerHTML = '';
-            
-            currentCurrency = document.getElementById('currencySelector').value;
-            const rate = rates[currentCurrency];
-            const txtBuy = i18n[currentLang].buy_now;
-            const txtSold = i18n[currentLang].sold_out;
-            const txtCustom = i18n[currentLang].custom_price;
-
-            products.forEach(p => {
-                const card = document.createElement('div');
-                card.className = 'product-card';
-                
-                const pName = currentLang === 'en' && p.nameEn ? p.nameEn : p.name;
-                const pDesc = currentLang === 'en' && p.descEn ? p.descEn : p.desc;
-
-                let displayPrice = (p.price * rate).toFixed(2);
-                let oldPriceHtml = p.oldPrice ? `<span class="old-price">${(p.oldPrice * rate).toFixed(2)} ${currentCurrency}</span>` : '';
-                let priceId = `price-${p.id}`;
-                
-                let btnAction = `openModal(${p.id}, '${displayPrice} ${currentCurrency}')`;
-                let btnText = `${txtBuy} <i class="fas fa-shopping-cart"></i>`;
-
-                let extraHtml = '';
-                if(p.isInsta) {
-                    extraHtml = `<select class="custom-select" id="select-${p.id}" onchange="updateInstaPrice(this.value, ${p.id})"><option value="1">1000</option><option value="2">2000</option><option value="5">5000</option><option value="10">10000</option></select>`;
-                    btnAction = `openModal(${p.id}, '${displayPrice} ${currentCurrency}', '1000')`;
-                }
-                if(p.isCustom) { displayPrice = txtCustom; oldPriceHtml = ""; btnAction = `openModal(${p.id}, 0, 'Custom')`; }
-
-                let badges = '<div class="badges-container">';
-                if(p.special) badges += '<span class="badge badge-hot">HOT 🔥</span>';
-                if(p.soldOut) badges += `<span class="badge badge-sold">${txtSold}</span>`;
-                badges += '</div>';
-                
-                let warranty = (!p.noWarranty && !p.isCustom) ? `<div class="warranty-strip"><i class="fas fa-shield-alt"></i> ${i18n[currentLang].warranty_text}</div>` : '';
-                const btnState = p.soldOut ? 'disabled' : '';
-                if(p.soldOut) btnText = txtSold;
-
-                card.innerHTML = `
-                    <div class="card-img-wrapper">${badges}<img src="${p.img}" alt="${pName}" class="card-img" loading="lazy">${warranty}</div>
-                    <div class="card-body">
-                        <div><h3 class="product-title">${pName}</h3><p class="product-desc">${pDesc}</p>${extraHtml}</div>
-                        <div><div class="price-area"><div class="current-price" id="${priceId}">${displayPrice} ${p.isCustom ? '' : currentCurrency}</div>${oldPriceHtml}</div>
-                        <button id="btn-${p.id}" class="add-btn" onclick="${btnAction}" ${btnState}>${btnText}</button></div>
-                    </div>`;
-                
-                if (containers[p.type]) containers[p.type].appendChild(card);
-                else if(p.type === 'sub') containers['subs'].appendChild(card);
-            });
-        }
-
-        function updateInstaPrice(qty, id) {
-            const rate = rates[currentCurrency];
-            const newPrice = (1.00 * qty * rate).toFixed(2);
-            document.getElementById(`price-${id}`).innerText = `${newPrice} ${currentCurrency}`;
-            document.getElementById(`btn-${id}`).setAttribute('onclick', `openModal(${id}, '${newPrice} ${currentCurrency}', '${qty*1000}')`);
-        }
-
-        function updateCurrency() { renderProducts(); }
-
-        function openModal(id, priceStr, customDesc = "") {
-            const p = products.find(x => x.id === id);
-            selectedProduct = p;
-            
-            if(p.isInsta) {
-                 const select = document.getElementById(`select-${id}`);
-                 const qty = select ? select.value : 1;
-                 basePriceJOD = 1.00 * qty;
-                 customDesc = ` (${qty*1000})`;
-            } else {
-                 basePriceJOD = p.price;
-            }
-            
-            const pName = currentLang === 'en' && p.nameEn ? p.nameEn : p.name;
-            let fullName = pName + (customDesc ? ` (${customDesc}` : "");
-            
-            document.getElementById('discountCode').value = "";
-            document.getElementById('modalOriginalPriceRow').style.display = 'none';
-            document.getElementById('modalDiscountRow').style.display = 'none';
-
-            document.getElementById('modalPrdName').innerText = fullName;
-            
-            const currentRate = rates[currentCurrency];
-            const displayPrice = (basePriceJOD * currentRate).toFixed(2);
-            document.getElementById('modalPrdPrice').innerText = basePriceJOD === 0 ? i18n[currentLang].custom_price : `${displayPrice} ${currentCurrency}`;
-
-            document.getElementById('modalWarranty').style.display = (p.noWarranty || p.isCustom) ? 'none' : 'flex';
-            
-            selectPayment('orange_cliq', document.querySelector('.pay-option:first-child'));
-            
-            document.getElementById('paymentModal').style.display = 'flex';
-        }
-
-        function applyDiscount() {
-            const code = document.getElementById('discountCode').value.toUpperCase().trim();
-            
-            if (code !== DISCOUNT_CODE) { showToast('Invalid Code', 'error'); return; }
-            
-            let discountValue = 0;
-            if (selectedProduct.id === 200) { 
-                discountValue = 2.50;
-            } else if (selectedProduct.id === 201) { 
-                discountValue = 5.50;
-            } else {
-                showToast(currentLang === 'ar' ? 'هذا الكود خاص بـ FIFA و COD فقط' : 'Code valid for FIFA & COD only', 'error'); 
-                return;
-            }
-            
-            const currentRate = rates[currentCurrency];
-            let finalPriceJOD = Math.max(0, basePriceJOD - discountValue);
-
-            const discountedDisplay = (finalPriceJOD * currentRate).toFixed(2);
-            const originalDisplay = (basePriceJOD * currentRate).toFixed(2);
-            const discountDisplay = (discountValue * currentRate).toFixed(2);
-
-            document.getElementById('modalOriginalPrice').innerText = `${originalDisplay} ${currentCurrency}`;
-            document.getElementById('modalDiscountValue').innerText = `${discountDisplay} ${currentCurrency}`;
-            document.getElementById('modalPrdPrice').innerText = `${discountedDisplay} ${currentCurrency}`;
-            
-            document.getElementById('modalOriginalPriceRow').style.display = 'flex';
-            document.getElementById('modalDiscountRow').style.display = 'flex';
-            showToast('Discount Applied!', 'success');
-        }
-
-        function selectPayment(method, element) {
-            selectedPaymentMethod = method;
-            document.querySelectorAll('.pay-option').forEach(el => el.classList.remove('active'));
-            if(element) element.classList.add('active');
-
-            const detailsBox = document.getElementById('paymentDetails');
-            if (method === 'orange_cliq') {
-                detailsBox.innerHTML = `
-                    <div class="payment-title">Orange Money & CliQ</div>
-                    <div class="payment-number">0785039924</div>
-                    <div class="payment-name">محمد هنديه</div>
-                    <div class="payment-name" style="margin-top:5px; font-size:0.8rem; color:#aaa;">Alias: MOHAMMAD HINDIA</div>
-                `;
-            } else if (method === 'paypal') {
-                detailsBox.innerHTML = `
-                    <div class="payment-title">PayPal</div>
-                    <div class="payment-number" style="font-size:1rem; direction:ltr;">lujain258369@gmail.com</div>
-                `;
-            }
-        }
-
-        function closeModal() { document.getElementById('paymentModal').style.display = 'none'; }
-
-        function submitOrder() {
-            const name = document.getElementById('custName').value;
-            const wallet = document.getElementById('walletName').value;
-            if(!name || !wallet) { showToast('Data Missing', 'error'); return; }
-
-            const btn = document.querySelector('.btn-confirm');
-            const originalText = btn.innerText;
-            btn.innerText = "...";
-            btn.disabled = true;
-
-            const orderId = Math.floor(10000 + Math.random() * 90000);
-            
-            const params = { 
-                from_name: name, 
-                wallet_name: wallet, 
-                product_name: document.getElementById('modalPrdName').innerText, 
-                order_id: orderId, 
-                price: document.getElementById('modalPrdPrice').innerText,
-                payment_method: selectedPaymentMethod
-            };
-
-            emailjs.send('service_x31cu0s', 'template_znmanl1', params).then(() => {
-                closeModal();
-                const toast = document.getElementById('toastWrapper');
-                const msg = `<i class="fas fa-check-circle"></i><div><div>${i18n[currentLang].confirm_order} #${orderId}</div><div style="font-size:0.8rem;opacity:0.8;">تم الطلب! تواصل معنا على الانستا/ديسكورد</div></div>`;
-                const div = document.createElement('div'); div.className = 'toast-msg success'; div.innerHTML = msg;
-                toast.appendChild(div);
-                setTimeout(() => div.classList.add('active'), 10);
-                setTimeout(() => { div.classList.remove('active'); setTimeout(() => div.remove(), 500); }, 8000);
-
-                document.getElementById('custName').value = '';
-                document.getElementById('walletName').value = '';
-                btn.innerText = originalText;
-                btn.disabled = false;
-            }).catch(() => { showToast('Error sending email', 'error'); btn.innerText = originalText; btn.disabled = false; });
-        }
-
-        function showToast(msg, type) {
-            const toast = document.createElement('div');
-            toast.className = `toast-msg ${type}`;
-            toast.innerHTML = `<i class="fas fa-info-circle"></i> <div>${msg}</div>`;
-            document.getElementById('toastWrapper').appendChild(toast);
-            setTimeout(() => toast.classList.add('active'), 10);
-            setTimeout(() => { toast.classList.remove('active'); setTimeout(() => toast.remove(), 500); }, 3000);
-        }
-
-        function fetchAndRenderReviews() {
-            if(GOOGLE_API_URL.includes("PASTE")) { 
-                document.getElementById('reviewsGrid').innerHTML = '<p style="text-align:center;color:#666">Setup Google Sheet API First</p>';
-                return; 
-            }
-            fetch(GOOGLE_API_URL).then(r=>r.json()).then(d=>{
-                const c = document.getElementById('reviewsGrid'); c.innerHTML='';
-                if(d.length===0) { c.innerHTML='<p style="text-align:center;color:#666">No reviews yet</p>'; return; }
-                d.reverse().forEach(r=>{
-                    const card = document.createElement('div'); card.className='review-card';
-                    card.innerHTML = `<div class="review-header"><span class="review-name">${r.name}</span><span class="review-rating">${getStars(r.rating)}</span></div><p style="font-size:0.8rem;color:#aaa">${r.product||''}</p><p class="review-comment">${r.comment}</p>`;
-                    c.appendChild(card);
-                });
-            }).catch(e=>console.error(e));
-        }
-
-        function getStars(rating) { return '⭐'.repeat(parseInt(rating)); }
-
-        document.getElementById('feedbackForm').addEventListener('submit', function(e){
-            e.preventDefault();
-            if(GOOGLE_API_URL.includes("PASTE")) return;
-            const btn = this.querySelector('button'); btn.disabled = true;
-            const data = { name: document.getElementById('reviewName').value, product: document.getElementById('reviewProduct').value, rating: document.getElementById('reviewRating').value, comment: document.getElementById('reviewComment').value };
-            fetch(GOOGLE_API_URL, { method: 'POST', mode: 'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) })
-            .then(()=>{ showToast('Review Sent!', 'success'); this.reset(); setTimeout(fetchAndRenderReviews, 1000); btn.disabled=false; })
-            .catch(()=>{ showToast('Error', 'error'); btn.disabled=false; });
-        });
-
-        window.onclick = function(e) { if(e.target == document.getElementById('paymentModal')) closeModal(); }
-    </script>
+<header>
+<div class="container header-inner">
+<button class="mobile-menu-btn" onclick="document.getElementById('mainNav').classList.toggle('active')"><i class="fas fa-bars"></i></button>
+<a href="#" class="logo-box">
+<img src="https://i.imgur.com/1K7pF3U.png" alt="Logo" class="logo-img"> <!-- ✅ تم تغيير الصورة إلى لوجو النيون -->
+<div class="logo-text">FOREVER <span>STORE</span></div>
+</a>
+<div class="nav-controls">
+<button class="lang-btn" onclick="toggleLang()" id="langBtn">🇺🇸 EN</button>
+<select class="currency-select" id="currencySelector" onchange="updateCurrency()">
+<option value="JOD">JOD</option>
+<option value="SAR">SAR</option>
+<option value="USD">USD</option>
+</select>
+</div>
+<nav class="main-nav" id="mainNav">
+<a href="#home" class="nav-link" data-i18n="home">الرئيسية</a>
+<a href="#ps4" class="nav-link" data-i18n="nav_ps4">بلاستيشن</a>
+<a href="#bundles" class="nav-link" data-i18n="nav_bundles">بكجات</a>
+<a href="#services" class="nav-link" data-i18n="nav_services">خدمات</a>
+<a href="#subs" class="nav-link" data-i18n="nav_subs">اشتراكات</a>
+<a href="#pc" class="nav-link" data-i18n="nav_pc">PC</a>
+</nav>
+</div>
+</header>
+<div class="discount-banner">
+<span data-i18n="banner_text">نورت المتجر! 🤩 احصل على خصم خاص بكود:</span> <strong class="discount-code">DDOOQ</strong>
+</div>
+<section class="hero-section" id="home">
+<div class="hero-bg"></div>
+<div class="hero-content animate__animated animate__fadeInUp">
+<h1 class="hero-title" data-i18n="hero_title">عالم الألعاب بين يديك</h1>
+<p style="color:#ddd; font-size:1.1rem; margin-bottom:20px;" data-i18n="hero_desc">أفضل الأسعار، أسرع تسليم، وضمان حقيقي مدى الحياة.</p>
+<a href="#products-area" class="btn-glow">
+<span data-i18n="browse_btn">تصفح العروض</span> <i class="fas fa-arrow-left"></i>
+</a>
+</div>
+</section>
+<div class="container" id="products-area">
+<div class="section-header"><h2 class="section-title" id="ps4"><i class="fab fa-playstation"></i> <span data-i18n="cat_ps4">ألعاب بلاستيشن</span></h2></div>
+<p style="color:var(--accent); font-weight:bold; margin-bottom:15px;"><i class="fas fa-info-circle"></i> <span data-i18n="discount_note">كود الخصم DDOOQ يعمل على FIFA و Call of Duty فقط.</span></p>
+<div class="products-grid" id="ps4Grid"></div>
+<div class="section-header"><h2 class="section-title" id="bundles"><i class="fas fa-box-open"></i> <span data-i18n="cat_bundles">بكجات الألعاب</span></h2></div>
+<div class="products-grid" id="bundlesGrid"></div>
+<div class="section-header"><h2 class="section-title" id="pc"><i class="fab fa-steam"></i> <span data-i18n="cat_pc">ألعاب PC (ألعاب فردية)</span></h2></div>
+<div class="products-grid" id="pcGrid"></div>
+<div class="section-header"><h2 class="section-title" id="charging"><i class="fas fa-bolt"></i> <span data-i18n="cat_charging">خدمات الشحن (جواهر)</span></h2></div>
+<div class="products-grid" id="chargingGrid"></div>
+<div class="section-header"><h2 class="section-title" id="social"><i class="fab fa-instagram"></i> <span data-i18n="cat_social">خدمات السوشيال ميديا</span></h2></div>
+<div class="products-grid" id="socialGrid"></div>
+<div class="section-header"><h2 class="section-title" id="subs"><i class="fas fa-ticket-alt"></i> <span data-i18n="cat_subs">اشتراكات المشاهدة</span></h2></div>
+<div class="products-grid" id="subsGrid"></div>
+<div class="section-header"><h2 class="section-title"><i class="fas fa-comments"></i> <span data-i18n="reviews_title">تقييمات العملاء</span></h2></div>
+<div class="reviews-container" id="reviewsGrid">
+<p style="color:#666; text-align:center; width:100%;" data-i18n="loading_reviews">جاري تحميل التقييمات...</p>
+</div>
+<div class="section-header" style="margin-top: 50px;"><h2 class="section-title"><i class="fas fa-feather-alt"></i> <span data-i18n="add_review_title">أضف تقييمك</span></h2></div>
+<div class="feedback-form-container">
+<form id="feedbackForm">
+<input type="text" id="reviewName" class="input-field" placeholder="الاسم" required>
+<input type="text" id="reviewProduct" class="input-field" placeholder="المنتج (اختياري)">
+<div style="display:flex; gap:10px; margin-bottom: 15px; align-items:center;">
+<label style="color:var(--text-muted); font-size: 0.9rem;" data-i18n="rating_label">التقييم:</label>
+<select id="reviewRating" class="custom-select" style="width: 150px; padding: 8px;">
+<option value="5">⭐⭐⭐⭐⭐</option>
+<option value="4">⭐⭐⭐⭐</option>
+<option value="3">⭐⭐⭐</option>
+<option value="2">⭐⭐</option>
+<option value="1">⭐</option>
+</select>
+</div>
+<textarea id="reviewComment" class="input-field" placeholder="اكتب رأيك هنا..." rows="4" required></textarea>
+<button type="submit" class="modal-btn" style="background:var(--success-color); color:black; margin-top: 10px;" data-i18n="send_review">إرسال التقييم</button>
+</form>
+</div>
+</div>
+<footer>
+<div class="container">
+<div class="footer-grid">
+<div>
+<div class="logo-box" style="justify-content:center; margin-bottom:15px;">
+<img src="https://i.imgur.com/1K7pF3U.png" alt="Logo" class="logo-img"> <!-- ✅ تم تغيير الصورة إلى لوجو النيون -->
+<div class="logo-text">FOREVER <span>STORE</span></div>
+</div>
+<p style="color:#999; font-size:0.9rem;" data-i18n="footer_desc">وجهتك الأولى للألعاب والخدمات الرقمية.</p>
+</div>
+<div>
+<h4 style="color:white; margin-bottom:15px;" data-i18n="payment_methods">طرق الدفع</h4>
+<div class="payments-bar">
+<img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
+<img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Binance_Logo.svg" alt="Binance">
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Orange_logo.svg" alt="Orange Money">
+</div>
+<p style="margin-top:10px; color:#666; font-size:0.8rem;" data-i18n="payment_note">نقبل التحويل البنكي والمحافظ</p>
+</div>
+</div>
+<div style="border-top:1px solid #222; padding-top:20px; color:#555; font-size:0.85rem;">
+&copy; 2025 Forever Store. <span data-i18n="rights">جميع الحقوق محفوظة.</span>
+</div>
+</div>
+</footer>
+<div class="modal-overlay" id="paymentModal">
+<div class="modal-box">
+<button class="close-modal" onclick="closeModal()">&times;</button>
+<h3 style="color:white; text-align:center; margin-bottom:20px;" data-i18n="confirm_order">تأكيد الطلب 🚀</h3>
+<div class="order-summary">
+<div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+<span style="color:#aaa;" data-i18n="product_label">المنتج:</span>
+<span style="color:white; font-weight:bold;" id="modalPrdName">...</span>
+</div>
+<div style="display:none; justify-content:space-between; margin-bottom:5px;" id="modalOriginalPriceRow">
+<span style="color:#666;">Original:</span>
+<span style="color:#666; text-decoration:line-through;" id="modalOriginalPrice">...</span>
+</div>
+<div style="display:none; justify-content:space-between; margin-bottom:5px;" id="modalDiscountRow">
+<span style="color:#2ecc71;">Discount (DDOOQ):</span>
+<span style="color:#2ecc71; font-weight:bold;" id="modalDiscountValue">...</span>
+</div>
+<div style="display:flex; justify-content:space-between; border-top: 1px dashed #333; padding-top: 10px; margin-top: 10px;">
+<span style="color:#aaa;" data-i18n="total_label">الإجمالي:</span>
+<span style="color:var(--primary); font-weight:bold; font-size:1.2rem;" id="modalPrdPrice">...</span>
+</div>
+<div id="modalWarranty" style="margin-top:10px; font-size:0.8rem; color:#2ecc71; display:flex; align-items:center; gap:5px;">
+<i class="fas fa-shield-alt"></i> <span data-i18n="warranty_text">ضمان كامل المدة</span>
+</div>
+</div>
+<div class="discount-input">
+<input type="text" id="discountCode" class="input-field" placeholder="Code (DDOOQ)">
+<button class="apply-btn" onclick="applyDiscount()" data-i18n="apply_btn">تطبيق</button>
+</div>
+<h4 style="color:white; margin-bottom:10px; font-size:0.9rem;">اختر وسيلة الدفع:</h4>
+<div class="payment-methods-select">
+<div class="pay-option active" onclick="selectPayment('orange_cliq', this)">
+<div style="display:flex; gap:5px; justify-content:center; align-items:center;">
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Orange_logo.svg" alt="Orange" style="height:20px;">
+<span style="color:white; font-size:0.9rem;">&</span>
+<img src="https://imgs.search.brave.com/LJOULhIZ0vXypBiv46tYk5RZSIuH2ertphI_ML0Q8m0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/am9wYWNjLmNvbS9z/aXRlcy9kZWZhdWx0/L2ZpbGVzLzIwMjMt/MTEvY2xpcS1pcy1q/b3JkYW5zLWluc3Rh/bnQtcGF5bWVudC1h/bmQtdHJhbnNmZXIt/c3lzdGVtcy5wbmc" alt="CliQ" style="height:15px; filter: brightness(0) invert(1);">
+</div>
+<span>Orange / CliQ</span>
+</div>
+<div class="pay-option" onclick="selectPayment('paypal', this)">
+<img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" style="height:25px;">
+<span>PayPal</span>
+</div>
+</div>
+<div class="payment-details-box" id="paymentDetails">
+</div>
+<input type="text" id="custName" class="input-field" placeholder="الاسم الكامل / Full Name">
+<input type="text" id="walletName" class="input-field" placeholder="اسم المحفظة / Wallet Name">
+<button class="modal-btn" onclick="submitOrder()" data-i18n="confirm_btn">تأكيد وإرسال الطلب</button>
+</div>
+</div>
+<div class="toast-container" id="toastWrapper"></div>
+<script>
+const i18n = {
+ar: {
+home: "الرئيسية", nav_ps4: "بلاستيشن", nav_bundles: "بكجات", nav_services: "خدمات", nav_subs: "اشتراكات", nav_pc: "PC",
+banner_text: "نورت المتجر! 🤩 احصل على خصم خاص بكود:",
+hero_title: "عالم الألعاب بين يديك", hero_desc: "أفضل الأسعار، أسرع تسليم، وضمان حقيقي مدى الحياة.", browse_btn: "تصفح العروض",
+cat_ps4: "ألعاب بلاستيشن", cat_bundles: "بكجات الألعاب", cat_charging: "خدمات الشحن (جواهر)", cat_social: "خدمات السوشيال ميديا", cat_subs: "اشتراكات المشاهدة", cat_pc: "ألعاب PC (ألعاب فردية)",
+discount_note: "كود الخصم DDOOQ يعمل على FIFA و Call of Duty فقط.",
+reviews_title: "تقييمات العملاء", loading_reviews: "جاري تحميل التقييمات...",
+add_review_title: "أضف تقييمك", rating_label: "التقييم:", send_review: "إرسال التقييم",
+footer_desc: "وجهتك الأولى للألعاب والخدمات الرقمية.", payment_methods: "طرق الدفع", payment_note: "نقبل التحويل البنكي والمحافظ", rights: "جميع الحقوق محفوظة.",
+confirm_order: "تأكيد الطلب 🚀", product_label: "المنتج:", total_label: "الإجمالي:", warranty_text: "ضمان كامل المدة", apply_btn: "تطبيق", secure_id: "موثق بهوية رسمية", confirm_btn: "تأكيد وإرسال الطلب",
+sold_out: "نفذت الكمية", buy_now: "شراء الآن", custom_price: "حسب الاتفاق"
+},
+en: {
+home: "Home", nav_ps4: "PlayStation", nav_bundles: "Bundles", nav_services: "Services", nav_subs: "Subscriptions", nav_pc: "PC",
+banner_text: "Welcome! Get a special discount with code:",
+hero_title: "Gaming World in Your Hands", hero_desc: "Best prices, fast delivery, and lifetime warranty.", browse_btn: "Browse Offers",
+cat_ps4: "PlayStation Games", cat_bundles: "Game Bundles", cat_charging: "Top-up Services", cat_social: "Social Media", cat_subs: "Subscriptions", cat_pc: "PC Games",
+discount_note: "Code DDOOQ works on FIFA & Call of Duty only.",
+reviews_title: "Customer Reviews", loading_reviews: "Loading reviews...",
+add_review_title: "Write a Review", rating_label: "Rating:", send_review: "Submit Review",
+footer_desc: "Your #1 destination for digital games and services.", payment_methods: "Payment Methods", payment_note: "We accept Bank Transfer & Wallets", rights: "All rights reserved.",
+confirm_order: "Confirm Order 🚀", product_label: "Product:", total_label: "Total:", warranty_text: "Lifetime Warranty", apply_btn: "Apply", secure_id: "ID Verified", confirm_btn: "Confirm & Send",
+sold_out: "Sold Out", buy_now: "Buy Now", custom_price: "Contact Us"
+}
+};
+let currentLang = 'ar';
+function toggleLang() {
+currentLang = currentLang === 'ar' ? 'en' : 'ar';
+document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+document.getElementById('langBtn').innerText = currentLang === 'ar' ? '🇺🇸 EN' : '🇯🇴 العربية';
+document.querySelectorAll('[data-i18n]').forEach(el => {
+if(i18n[currentLang][el.getAttribute('data-i18n')]) el.innerText = i18n[currentLang][el.getAttribute('data-i18n')];
+});
+renderProducts();
+}
+const rates = { JOD: 1, SAR: 5.30, USD: 1.41, EGP: 70.00 };
+let currentCurrency = 'JOD';
+let selectedProduct = null;
+let basePriceJOD = 0;
+let selectedPaymentMethod = 'orange_cliq';
+// 🔴🔴🔴 رابط التقييمات - تأكد منه 🔴🔴🔴
+const GOOGLE_API_URL = 'https://script.google.com/macros/s/AKfycbz6c5w_ffgvNceoTC-GVdHEsO4clftgIdlU2IOPMaYv1M8CHBsfeS-G4eq92T5TSY7I/exec';
+const DISCOUNT_CODE = "DDOOQ";
+const products = [
+// Custom
+{ id: 999, name: "منتج حسب الطلب", nameEn: "Custom Order", desc: "اطلب أي لعبة تريدها.", descEn: "Request any game.", price: 0.00, img: "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=800", type: "pc", isCustom: true },
+// PlayStation (Individual) - ONLY THESE TWO GET DISCOUNT
+{ id: 200, name: "EA SPORTS FC 26", nameEn: "FC 26", desc: "نسخة كاملة.", descEn: "Full Version.", price: 10.00, oldPrice: 35.00, img: "image_fcb3e4.jpg", type: "ps4", special: true },
+{ id: 201, name: "Call of Duty: Black Ops 7", nameEn: "Black Ops 7", desc: "نسخة كاملة.", descEn: "Full Version.", price: 13.00, oldPrice: 45.00, img: "bo7.jpg", type: "ps4", special: true },
+// Bundles
+{ id: 13, name: "بكج Resident Evil", nameEn: "RE Pack", desc: "جميع الأجزاء.", descEn: "All Parts.", price: 5.00, img: "resdent-evil-pack.jpg", type: "bundles" },
+{ id: 14, name: "بكج ألعاب السولز", nameEn: "Souls Pack", desc: "أقوى ألعاب الصعوبة.", descEn: "Hard Games.", price: 3.49, img: "https://cdn.cloudflare.steamstatic.com/steam/bundles/18836/header.jpg", type: "bundles" },
+// Charging (Free Fire)
+{ id: 301, name: "شحن جواهر فري فاير (640) دبل", nameEn: "Free Fire (640) double", desc: "شحن فوري.", descEn: "Instant Topup.", price: 3.60, img: "freefire", type: "charging", noWarranty: true },
+// Social
+{ id: 302, name: "رشق متابعين انستغرام", nameEn: "Insta Followers", desc: "اختر الكمية.", descEn: "Choose Qty.", price: 1.00, img: "ad-instagram.png", type: "social", noWarranty: true, isInsta: true },
+// Subs
+{ id: 101, name: "Netflix Premium (4K)", nameEn: "Netflix 4K", desc: "ملف خاص.", descEn: "Private Profile.", price: 1.50, img: "nflx4us", type: "subs", soldOut: true },
+{ id: 102, name: "Crunchyroll Mega Fan", nameEn: "Crunchyroll", desc: " شهر كامل الحساب مشترك لانو المشاركة حلو صح؟.", descEn: "1 Month.", price: 3.00, img: "corn.png", type: "subs" },
+{ id: 103, name: "Crunchyroll (3 Months)", nameEn: "Crunchyroll 3M", desc: "توفير .", descEn: "Saving.", price: 5.00, img: "corn.png", type: "subs" },
+{ id: 104, name: "Crunchyroll (1 Year)", nameEn: "Crunchyroll 1Y", desc: "سنوي بأفضل سعر بالسوق.", descEn: "Yearly.", price: 8.00, img: "Corn.png", type: "subs" },
+// PC (Individual) - NO DISCOUNT
+{ id: 1, name: "Grand Theft Auto V", nameEn: "GTA V", desc: "ستيم أوفلاين.", descEn: "Steam Offline.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg", type: "pc" },
+{ id: 2, name: "Elden Ring + DLC", nameEn: "Elden Ring", desc: "لعبة السنة.", descEn: "GOTY.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg", type: "pc" },
+{ id: 3, name: "Call of Duty: MW III", nameEn: "MW III", desc: "تختيم فقط.", descEn: "Campaign.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/2519060/header.jpg", type: "pc" },
+{ id: 4, name: "Black Myth: Wukong", nameEn: "Wukong", desc: "اللعبة الترند.", descEn: "Trending.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg", type: "pc" },
+{ id: 5, name: "Minecraft", nameEn: "Minecraft", desc: "حساب أصلي.", descEn: "Original.", price: 3.00, img: "https://image.api.playstation.com/vulcan/img/rnd/202010/2117/2mFy3G4811b7d581179e832876618454952018898516d71b.png", type: "pc" },
+{ id: 6, name: "Tekken 8", nameEn: "Tekken 8", desc: "قتال.", descEn: "Fighting.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1778820/header.jpg", type: "pc" },
+{ id: 7, name: "Red Dead Redemption 2", nameEn: "RDR 2", desc: "عالم مفتوح.", descEn: "Open World.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg", type: "pc" },
+{ id: 8, name: "God of War Ragnarök", nameEn: "God of War", desc: "مغامرة.", descEn: "Adventure.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/2322010/header.jpg", type: "pc" },
+{ id: 9, name: "Forza Horizon 5", nameEn: "Forza 5", desc: "سباق.", descEn: "Racing.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1551360/header.jpg", type: "pc" },
+{ id: 10, name: "Resident Evil 4", nameEn: "RE 4", desc: "رعب.", descEn: "Horror.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg", type: "pc" },
+{ id: 11, name: "Cyberpunk 2077", nameEn: "Cyberpunk", desc: "مستقبل.", descEn: "Future.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg", type: "pc" },
+{ id: 12, name: "Mortal Kombat 1", nameEn: "MK 1", desc: "دموي.", descEn: "Bloody.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1971870/header.jpg", type: "pc" },
+{ id: 15, name: "No I'm not human", nameEn: "No I'm not human", desc: "رعب خفيف.", descEn: "Light Horror.", price: 2.00, img: "no.jpg", type: "pc" },
+{ id: 16, name: "Hollow Knight & Silksong", nameEn: "Hollow Knight", desc: "الجزء الأول + الثاني.", descEn: "Part 1 + 2.", price: 2.00, img: "hollow.png", type: "pc" },
+{ id: 17, name: "Stardew Valley", nameEn: "Stardew Valley", desc: "لعبة رايقين.", descEn: "Chilling .", price: 2.00, img: "stardew.png", type: "pc" }
+];
+document.addEventListener('DOMContentLoaded', () => {
+renderProducts();
+fetchAndRenderReviews();
+});
+function renderProducts() {
+const containers = {
+ps4: document.getElementById('ps4Grid'),
+bundles: document.getElementById('bundlesGrid'),
+charging: document.getElementById('chargingGrid'),
+social: document.getElementById('socialGrid'),
+subs: document.getElementById('subsGrid'),
+pc: document.getElementById('pcGrid')
+};
+for(let key in containers) if(containers[key]) containers[key].innerHTML = '';
+currentCurrency = document.getElementById('currencySelector').value;
+const rate = rates[currentCurrency];
+const txtBuy = i18n[currentLang].buy_now;
+const txtSold = i18n[currentLang].sold_out;
+const txtCustom = i18n[currentLang].custom_price;
+products.forEach(p => {
+const card = document.createElement('div');
+card.className = 'product-card';
+const pName = currentLang === 'en' && p.nameEn ? p.nameEn : p.name;
+const pDesc = currentLang === 'en' && p.descEn ? p.descEn : p.desc;
+let displayPrice = (p.price * rate).toFixed(2);
+let oldPriceHtml = p.oldPrice ? `<span class="old-price">${(p.oldPrice * rate).toFixed(2)} ${currentCurrency}</span>` : '';
+let priceId = `price-${p.id}`;
+let btnAction = `openModal(${p.id}, '${displayPrice} ${currentCurrency}')`;
+let btnText = `${txtBuy} <i class="fas fa-shopping-cart"></i>`;
+let extraHtml = '';
+if(p.isInsta) {
+extraHtml = `<select class="custom-select" id="select-${p.id}" onchange="updateInstaPrice(this.value, ${p.id})"><option value="1">1000</option><option value="2">2000</option><option value="5">5000</option><option value="10">10000</option></select>`;
+btnAction = `openModal(${p.id}, '${displayPrice} ${currentCurrency}', '1000')`;
+}
+if(p.isCustom) { displayPrice = txtCustom; oldPriceHtml = ""; btnAction = `openModal(${p.id}, 0, 'Custom')`; }
+let badges = '<div class="badges-container">';
+if(p.special) badges += '<span class="badge badge-hot">HOT 🔥</span>';
+if(p.soldOut) badges += `<span class="badge badge-sold">${txtSold}</span>`;
+badges += '</div>';
+let warranty = (!p.noWarranty && !p.isCustom) ? `<div class="warranty-strip"><i class="fas fa-shield-alt"></i> ${i18n[currentLang].warranty_text}</div>` : '';
+const btnState = p.soldOut ? 'disabled' : '';
+if(p.soldOut) btnText = txtSold;
+card.innerHTML = `
+<div class="card-img-wrapper">${badges}<img src="${p.img}" alt="${pName}" class="card-img" loading="lazy">${warranty}</div>
+<div class="card-body">
+<div><h3 class="product-title">${pName}</h3><p class="product-desc">${pDesc}</p>${extraHtml}</div>
+<div><div class="price-area"><div class="current-price" id="${priceId}">${displayPrice} ${p.isCustom ? '' : currentCurrency}</div>${oldPriceHtml}</div>
+<button id="btn-${p.id}" class="add-btn" onclick="${btnAction}" ${btnState}>${btnText}</button></div>
+</div>`;
+if (containers[p.type]) containers[p.type].appendChild(card);
+else if(p.type === 'sub') containers['subs'].appendChild(card);
+});
+}
+function updateInstaPrice(qty, id) {
+const rate = rates[currentCurrency];
+const newPrice = (1.00 * qty * rate).toFixed(2);
+document.getElementById(`price-${id}`).innerText = `${newPrice} ${currentCurrency}`;
+document.getElementById(`btn-${id}`).setAttribute('onclick', `openModal(${id}, '${newPrice} ${currentCurrency}', '${qty*1000}')`);
+}
+function updateCurrency() { renderProducts(); }
+function openModal(id, priceStr, customDesc = "") {
+const p = products.find(x => x.id === id);
+selectedProduct = p;
+if(p.isInsta) {
+const select = document.getElementById(`select-${id}`);
+const qty = select ? select.value : 1;
+basePriceJOD = 1.00 * qty;
+customDesc = ` (${qty*1000})`;
+} else {
+basePriceJOD = p.price;
+}
+const pName = currentLang === 'en' && p.nameEn ? p.nameEn : p.name;
+let fullName = pName + (customDesc ? ` (${customDesc}` : "");
+document.getElementById('discountCode').value = "";
+document.getElementById('modalOriginalPriceRow').style.display = 'none';
+document.getElementById('modalDiscountRow').style.display = 'none';
+document.getElementById('modalPrdName').innerText = fullName;
+const currentRate = rates[currentCurrency];
+const displayPrice = (basePriceJOD * currentRate).toFixed(2);
+document.getElementById('modalPrdPrice').innerText = basePriceJOD === 0 ? i18n[currentLang].custom_price : `${displayPrice} ${currentCurrency}`;
+document.getElementById('modalWarranty').style.display = (p.noWarranty || p.isCustom) ? 'none' : 'flex';
+selectPayment('orange_cliq', document.querySelector('.pay-option:first-child'));
+document.getElementById('paymentModal').style.display = 'flex';
+}
+function applyDiscount() {
+const code = document.getElementById('discountCode').value.toUpperCase().trim();
+if (code !== DISCOUNT_CODE) { showToast('Invalid Code', 'error'); return; }
+if (selectedProduct.id !== 200 && selectedProduct.id !== 201) {
+showToast(currentLang === 'ar' ? 'هذا الكود خاص بـ FIFA و COD فقط' : 'Code valid for FIFA & COD only', 'error');
+return;
+}
+const currentRate = rates[currentCurrency];
+const finalPriceJOD = 8.00; // السعر النهائي بالدينار الأردني
+const discountedDisplay = (finalPriceJOD * currentRate).toFixed(2);
+const originalDisplay = (basePriceJOD * currentRate).toFixed(2);
+const discountDisplay = ((basePriceJOD - finalPriceJOD) * currentRate).toFixed(2);
+document.getElementById('modalOriginalPrice').innerText = `${originalDisplay} ${currentCurrency}`;
+document.getElementById('modalDiscountValue').innerText = `${discountDisplay} ${currentCurrency}`;
+document.getElementById('modalPrdPrice').innerText = `${discountedDisplay} ${currentCurrency}`;
+document.getElementById('modalOriginalPriceRow').style.display = 'flex';
+document.getElementById('modalDiscountRow').style.display = 'flex';
+showToast('Discount Applied!', 'success');
+}
+function selectPayment(method, element) {
+selectedPaymentMethod = method;
+document.querySelectorAll('.pay-option').forEach(el => el.classList.remove('active'));
+if(element) element.classList.add('active');
+const detailsBox = document.getElementById('paymentDetails');
+if (method === 'orange_cliq') {
+detailsBox.innerHTML = `
+<div class="payment-title">Orange Money & CliQ</div>
+<div class="payment-number">0785039924</div>
+<div class="payment-name">محمد هنديه</div>
+<div class="payment-name" style="margin-top:5px; font-size:0.8rem; color:#aaa;">Alias: MOHAMMAD HINDIA</div>
+`;
+} else if (method === 'paypal') {
+detailsBox.innerHTML = `
+<div class="payment-title">PayPal</div>
+<div class="payment-number" style="font-size:1rem; direction:ltr;">lujain258369@gmail.com</div>
+`;
+}
+}
+function closeModal() { document.getElementById('paymentModal').style.display = 'none'; }
+function submitOrder() {
+const name = document.getElementById('custName').value;
+const wallet = document.getElementById('walletName').value;
+if(!name || !wallet) { showToast('Data Missing', 'error'); return; }
+const btn = document.querySelector('.btn-confirm');
+const originalText = btn.innerText;
+btn.innerText = "...";
+btn.disabled = true;
+const orderId = Math.floor(10000 + Math.random() * 90000);
+const params = {
+from_name: name,
+wallet_name: wallet,
+product_name: document.getElementById('modalPrdName').innerText,
+order_id: orderId,
+price: document.getElementById('modalPrdPrice').innerText,
+payment_method: selectedPaymentMethod
+};
+emailjs.send('service_x31cu0s', 'template_znmanl1', params).then(() => {
+closeModal();
+const toast = document.getElementById('toastWrapper');
+const msg = `<i class="fas fa-check-circle"></i><div><div>${i18n[currentLang].confirm_order} #${orderId}</div><div style="font-size:0.8rem;opacity:0.8;">تم الطلب! تواصل معنا على الانستا/ديسكورد</div></div>`;
+const div = document.createElement('div'); div.className = 'toast-msg success'; div.innerHTML = msg;
+toast.appendChild(div);
+setTimeout(() => div.classList.add('active'), 10);
+setTimeout(() => { div.classList.remove('active'); setTimeout(() => div.remove(), 500); }, 8000);
+document.getElementById('custName').value = '';
+document.getElementById('walletName').value = '';
+btn.innerText = originalText;
+btn.disabled = false;
+}).catch(() => { showToast('Error sending email', 'error'); btn.innerText = originalText; btn.disabled = false; });
+}
+function showToast(msg, type) {
+const toast = document.createElement('div');
+toast.className = `toast-msg ${type}`;
+toast.innerHTML = `<i class="fas fa-info-circle"></i> <div>${msg}</div>`;
+document.getElementById('toastWrapper').appendChild(toast);
+setTimeout(() => toast.classList.add('active'), 10);
+setTimeout(() => { toast.classList.remove('active'); setTimeout(() => toast.remove(), 500); }, 3000);
+}
+function fetchAndRenderReviews() {
+if(GOOGLE_API_URL.includes("PASTE")) {
+document.getElementById('reviewsGrid').innerHTML = '<p style="text-align:center;color:#666">Setup Google Sheet API First</p>';
+return;
+}
+fetch(GOOGLE_API_URL).then(r=>r.json()).then(d=>{
+const c = document.getElementById('reviewsGrid'); c.innerHTML='';
+if(d.length===0) { c.innerHTML='<p style="text-align:center;color:#666">No reviews yet</p>'; return; }
+d.reverse().forEach(r=>{
+const card = document.createElement('div'); card.className='review-card';
+card.innerHTML = `<div class="review-header"><span class="review-name">${r.name}</span><span class="review-rating">${getStars(r.rating)}</span></div><p style="font-size:0.8rem;color:#aaa">${r.product||''}</p><p class="review-comment">${r.comment}</p>`;
+c.appendChild(card);
+});
+}).catch(e=>console.error(e));
+}
+function getStars(rating) { return '⭐'.repeat(parseInt(rating)); }
+document.getElementById('feedbackForm').addEventListener('submit', function(e){
+e.preventDefault();
+if(GOOGLE_API_URL.includes("PASTE")) return;
+const btn = this.querySelector('button'); btn.disabled = true;
+const data = { name: document.getElementById('reviewName').value, product: document.getElementById('reviewProduct').value, rating: document.getElementById('reviewRating').value, comment: document.getElementById('reviewComment').value };
+fetch(GOOGLE_API_URL, { method: 'POST', mode: 'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) })
+.then(()=>{ showToast('Review Sent!', 'success'); this.reset(); setTimeout(fetchAndRenderReviews, 1000); btn.disabled=false; })
+.catch(()=>{ showToast('Error', 'error'); btn.disabled=false; });
+});
+window.onclick = function(e) { if(e.target == document.getElementById('paymentModal')) closeModal(); }
+</script>
 </body>
 </html>
+
