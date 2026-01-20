@@ -147,7 +147,7 @@ html[dir="ltr"] .nav-controls { margin-right: auto; margin-left: 0; }
 <div class="container header-inner">
 <button class="mobile-menu-btn" onclick="document.getElementById('mainNav').classList.toggle('active')"><i class="fas fa-bars"></i></button>
 <a href="#" class="logo-box">
-<img src="https://i.imgur.com/1K7pF3U.png" alt="Logo" class="logo-img"> <!-- ✅ تم تغيير الصورة إلى لوجو النيون -->
+<img src="our_theme.jpg" alt="Logo" class="logo-img">
 <div class="logo-text">FOREVER <span>STORE</span></div>
 </a>
 <div class="nav-controls">
@@ -224,7 +224,7 @@ html[dir="ltr"] .nav-controls { margin-right: auto; margin-left: 0; }
 <div class="footer-grid">
 <div>
 <div class="logo-box" style="justify-content:center; margin-bottom:15px;">
-<img src="https://i.imgur.com/1K7pF3U.png" alt="Logo" class="logo-img"> <!-- ✅ تم تغيير الصورة إلى لوجو النيون -->
+<img src="our_theme.jpg" alt="Logo" class="logo-img">
 <div class="logo-text">FOREVER <span>STORE</span></div>
 </div>
 <p style="color:#999; font-size:0.9rem;" data-i18n="footer_desc">وجهتك الأولى للألعاب والخدمات الرقمية.</p>
@@ -277,9 +277,9 @@ html[dir="ltr"] .nav-controls { margin-right: auto; margin-left: 0; }
 <div class="payment-methods-select">
 <div class="pay-option active" onclick="selectPayment('orange_cliq', this)">
 <div style="display:flex; gap:5px; justify-content:center; align-items:center;">
-<img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Orange_logo.svg" alt="Orange" style="height:20px;">
+<img src="om.png" alt="Orange" style="height:20px;">
 <span style="color:white; font-size:0.9rem;">&</span>
-<img src="https://imgs.search.brave.com/LJOULhIZ0vXypBiv46tYk5RZSIuH2ertphI_ML0Q8m0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/am9wYWNjLmNvbS9z/aXRlcy9kZWZhdWx0/L2ZpbGVzLzIwMjMt/MTEvY2xpcS1pcy1q/b3JkYW5zLWluc3Rh/bnQtcGF5bWVudC1h/bmQtdHJhbnNmZXIt/c3lzdGVtcy5wbmc" alt="CliQ" style="height:15px; filter: brightness(0) invert(1);">
+<img src="gg.png" alt="CliQ" style="height:15px; filter: brightness(0) invert(1);">
 </div>
 <span>Orange / CliQ</span>
 </div>
@@ -350,15 +350,16 @@ const products = [
 // Bundles
 { id: 13, name: "بكج Resident Evil", nameEn: "RE Pack", desc: "جميع الأجزاء.", descEn: "All Parts.", price: 5.00, img: "resdent-evil-pack.jpg", type: "bundles" },
 { id: 14, name: "بكج ألعاب السولز", nameEn: "Souls Pack", desc: "أقوى ألعاب الصعوبة.", descEn: "Hard Games.", price: 3.49, img: "https://cdn.cloudflare.steamstatic.com/steam/bundles/18836/header.jpg", type: "bundles" },
-// Charging (Free Fire)
-{ id: 301, name: "شحن جواهر فري فاير (640) دبل", nameEn: "Free Fire (640) double", desc: "شحن فوري.", descEn: "Instant Topup.", price: 3.60, img: "freefire", type: "charging", noWarranty: true },
 // Social
 { id: 302, name: "رشق متابعين انستغرام", nameEn: "Insta Followers", desc: "اختر الكمية.", descEn: "Choose Qty.", price: 1.00, img: "ad-instagram.png", type: "social", noWarranty: true, isInsta: true },
 // Subs
-{ id: 101, name: "Netflix Premium (4K)", nameEn: "Netflix 4K", desc: "ملف خاص.", descEn: "Private Profile.", price: 1.50, img: "nflx4us", type: "subs", soldOut: true },
+{ id: 101, name: "Netflix Premium (4K)", nameEn: "Netflix 4K", desc: "ملف خاص.", descEn: "Private Profile.", price: 1.50, img: "nflx4us", type: "subs" },
 { id: 102, name: "Crunchyroll Mega Fan", nameEn: "Crunchyroll", desc: " شهر كامل الحساب مشترك لانو المشاركة حلو صح؟.", descEn: "1 Month.", price: 3.00, img: "corn.png", type: "subs" },
 { id: 103, name: "Crunchyroll (3 Months)", nameEn: "Crunchyroll 3M", desc: "توفير .", descEn: "Saving.", price: 5.00, img: "corn.png", type: "subs" },
 { id: 104, name: "Crunchyroll (1 Year)", nameEn: "Crunchyroll 1Y", desc: "سنوي بأفضل سعر بالسوق.", descEn: "Yearly.", price: 8.00, img: "Corn.png", type: "subs" },
+// NEW: Snapchat Plus
+{ id: 105, name: "سناب شات بلس (شهر)", nameEn: "Snapchat Plus (1M)", desc: "اشتراك شهري.", descEn: "Monthly.", price: 2.50, img: "snap.png", type: "subs" },
+{ id: 106, name: "سناب شات بلس (سنة)", nameEn: "Snapchat Plus (1Y)", desc: "توفير كبير!", descEn: "Save Big!", price: 5.00, img: "snap.png", type: "subs" },
 // PC (Individual) - NO DISCOUNT
 { id: 1, name: "Grand Theft Auto V", nameEn: "GTA V", desc: "ستيم أوفلاين.", descEn: "Steam Offline.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg", type: "pc" },
 { id: 2, name: "Elden Ring + DLC", nameEn: "Elden Ring", desc: "لعبة السنة.", descEn: "GOTY.", price: 2.00, img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg", type: "pc" },
@@ -463,15 +464,20 @@ document.getElementById('paymentModal').style.display = 'flex';
 function applyDiscount() {
 const code = document.getElementById('discountCode').value.toUpperCase().trim();
 if (code !== DISCOUNT_CODE) { showToast('Invalid Code', 'error'); return; }
-if (selectedProduct.id !== 200 && selectedProduct.id !== 201) {
+let discountValue = 0;
+if (selectedProduct.id === 200) {
+discountValue = 2.50;
+} else if (selectedProduct.id === 201) {
+discountValue = 5.50;
+} else {
 showToast(currentLang === 'ar' ? 'هذا الكود خاص بـ FIFA و COD فقط' : 'Code valid for FIFA & COD only', 'error');
 return;
 }
 const currentRate = rates[currentCurrency];
-const finalPriceJOD = 8.00; // السعر النهائي بالدينار الأردني
+let finalPriceJOD = Math.max(0, basePriceJOD - discountValue);
 const discountedDisplay = (finalPriceJOD * currentRate).toFixed(2);
 const originalDisplay = (basePriceJOD * currentRate).toFixed(2);
-const discountDisplay = ((basePriceJOD - finalPriceJOD) * currentRate).toFixed(2);
+const discountDisplay = (discountValue * currentRate).toFixed(2);
 document.getElementById('modalOriginalPrice').innerText = `${originalDisplay} ${currentCurrency}`;
 document.getElementById('modalDiscountValue').innerText = `${discountDisplay} ${currentCurrency}`;
 document.getElementById('modalPrdPrice').innerText = `${discountedDisplay} ${currentCurrency}`;
