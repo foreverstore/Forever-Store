@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FOREVER STORE | CYBER CHECKER</title>
+    <!-- استدعاء Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- خطوط شبابية حادة ومتناسقة للـ Gaming -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Tajawal:wght@500;800&display=swap" rel="stylesheet">
     
     <style>
@@ -32,6 +34,7 @@
 </head>
 <body class="text-gray-100 min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-black">
 
+    <!-- الهيدر السايبيري -->
     <header class="border-b border-purple-900/40 bg-gray-950/70 backdrop-blur-md sticky top-0 z-50 px-4 py-4">
         <div class="max-w-5xl mx-auto flex justify-between items-center">
             <h1 class="cyber-logo text-2xl font-black tracking-widest text-purple-500 neon-glow-purple">FOREVER STORE</h1>
@@ -42,9 +45,11 @@
         </div>
     </header>
 
+    <!-- واجهة الفحص والتحقق المركزية -->
     <main class="max-w-xl w-full mx-auto px-4 py-12 flex-grow flex flex-col justify-center">
         <div class="bg-gray-950/80 border-2 border-purple-500/20 p-8 rounded-3xl shadow-2xl relative overflow-hidden backdrop-blur-xl">
             
+            <!-- تأثيرات ضوئية خلفية -->
             <div class="absolute -top-24 -left-24 w-48 h-48 bg-purple-600/10 rounded-full blur-3xl"></div>
             <div class="absolute -bottom-24 -right-24 w-48 h-48 bg-cyan-600/10 rounded-full blur-3xl"></div>
 
@@ -53,6 +58,7 @@
                 <p class="text-gray-400 text-sm">أدخل رابط المنشور أو الريل للتأكد من حالة توفر حساب السوني فوراً</p>
             </div>
 
+            <!-- حقل الإدخال وزر الفحص -->
             <div class="space-y-4 relative z-10">
                 <div class="cyber-border bg-gray-900/90 rounded-2xl p-2 transition duration-300">
                     <label class="block text-[10px] uppercase tracking-widest text-purple-400 font-bold mb-1 mr-2">Instagram Link Input</label>
@@ -65,19 +71,26 @@
                 </button>
             </div>
 
+            <!-- قسم إظهار نتيجة الفحص -->
             <div id="result-container" class="mt-8 hidden transition duration-500">
-                </div>
+                <!-- يتم تعبئتها ديناميكياً -->
+            </div>
         </div>
     </main>
 
-    <footer class="text-center py-6 text-xs tracking-widest font-mono text-purple-900/60 border-t border-purple-950/20 bg-gray-950/20">
-        &copy; 2026 FOREVER STORE // ALL RIGHTS RESERVED.
+    <!-- الفوتر مع رابط الإنستاجرام المطلوب بآخر الصفحة -->
+    <footer class="text-center py-8 px-4 flex flex-col items-center justify-center gap-4 border-t border-purple-950/20 bg-gray-950/40">
+        <a href="https://www.instagram.com/forever_store_jo/" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-purple-500/30 bg-purple-950/20 text-purple-400 hover:text-purple-300 font-bold text-sm tracking-wide transition duration-300 hover:border-purple-500/60 shadow-lg hover:shadow-purple-500/10">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            تابعنا وتواصل معنا عبر إنستاجرام
+        </a>
+        <div class="text-[10px] tracking-widest font-mono text-purple-900/50">
+            &copy; 2026 FOREVER STORE // ALL RIGHTS RESERVED.
+        </div>
     </footer>
 
+    <!-- نظام التشغيل وقاعدة البيانات المدمجة -->
     <script>
-        // ==========================================
-        // 📦 المخزون وقاعدة البيانات المدمجة 📦
-        // ==========================================
         const accountsData = [
           {
             "reel_url": "https://www.instagram.com/p/DY-Qq3CMceq",
@@ -101,7 +114,6 @@
           }
         ];
 
-        // معلومات الدفع وحساب الإنستاجرام المحدث
         const storeConfig = {
             cliq_or_orange: "0780123835",
             name: "Maryam",
@@ -125,7 +137,6 @@
                 </div>`;
 
             setTimeout(() => {
-                // تنظيف الرابط المدخل لمطابقته
                 let cleanInput = inputUrl.split('?')[0].replace(/\/$/, "");
                 cleanInput = cleanInput.replace("://m.instagram.com", "://www.instagram.com");
 
@@ -135,46 +146,38 @@
                     return cleanJsonUrl === cleanInput;
                 });
 
-                if (foundAccount) {
-                    if (foundAccount.status === 'available') {
-                        // كرت النجاح مع معلومات الدفع والإنستا المحدث
-                        resultContainer.innerHTML = `
-                            <div class="bg-gradient-to-b from-green-950/40 to-gray-950 border-2 border-green-500/30 p-6 rounded-2xl text-center shadow-lg shadow-green-500/5">
-                                <div class="inline-flex items-center gap-1.5 bg-green-500/10 border border-green-500/30 text-green-400 font-bold text-[11px] px-3 py-1 rounded-full mb-3 uppercase tracking-wider">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span> متاح حالياً
-                                </div>
-                                <h3 class="text-white font-extrabold text-xl mb-1">الحساب متوفر وجاهز للتسليم!</h3>
-                                <p class="text-cyan-400 font-black text-2xl tracking-wide mb-4 font-mono">${foundAccount.price}</p>
-                                
-                                <div class="bg-gray-900/80 border border-gray-800 rounded-xl p-3 mb-4 text-right space-y-1.5 text-xs">
-                                    <p class="text-gray-400 font-bold text-center border-b border-gray-800 pb-1 mb-1 text-purple-400">💵 معلومات الدفع المعتمدة 💵</p>
-                                    <p class="flex justify-between"><span class="text-gray-500">كليك / أورانج موني:</span> <span class="text-green-400 font-mono font-bold">${storeConfig.cliq_or_orange}</span></p>
-                                    <p class="flex justify-between"><span class="text-gray-500">الاسم المعتمد:</span> <span class="text-white font-bold">${storeConfig.name}</span></p>
-                                </div>
-
-                                <button onclick="orderAccount('${foundAccount.reel_url}')" class="w-full bg-green-500 hover:bg-green-400 text-gray-950 font-black py-3 px-4 rounded-xl transition duration-300 tracking-wide">
-                                    انسخ الرابط وابعث الإشعار ديركت ←
-                                </button>
-                            </div>
-                        `;
-                    } else {
-                        resultContainer.innerHTML = `
-                            <div class="bg-gradient-to-b from-red-950/50 to-gray-950 border-2 border-red-500/40 p-6 rounded-2xl text-center shadow-lg shadow-red-500/5">
-                                <div class="inline-flex items-center gap-1.5 bg-red-500/10 border border-red-500/30 text-red-400 font-bold text-[11px] px-3 py-1 rounded-full mb-3 uppercase tracking-wider">
-                                    SOLD OUT
-                                </div>
-                                <h3 class="text-gray-200 font-bold text-lg mb-1">للأسف، تم بيع هذا الحساب مسبقاً!</h3>
-                                <p class="text-gray-500 text-xs px-4">شيك على الحسابات الأخرى بالمنشورات الجديدة، فالك الطيب بالحساب الجاي.</p>
-                            </div>
-                        `;
-                    }
-                } else {
+                if (foundAccount && foundAccount.status === 'available') {
+                    // كرت الحساب المتوفر
                     resultContainer.innerHTML = `
-                        <div class="bg-gray-900/50 border border-gray-800 p-6 rounded-2xl text-center">
-                            <h3 class="text-yellow-500 font-bold text-base mb-1">الرابط غير مدرج بالنظام</h3>
-                            <p class="text-gray-400 text-xs mb-4">تأكد من نسخ الرابط بشكل صحيح، أو تواصل معنا بالديركت مباشرة لفحصه لك يدوياً.</p>
-                            <a href="${storeConfig.instagram_profile}" target="_blank" class="inline-block text-cyan-400 hover:text-cyan-300 font-bold text-xs underline tracking-wide">
-                                تواصل مع الدعم الفني عبر إنستاجرام
+                        <div class="bg-gradient-to-b from-green-950/40 to-gray-950 border-2 border-green-500/30 p-6 rounded-2xl text-center shadow-lg shadow-green-500/5">
+                            <div class="inline-flex items-center gap-1.5 bg-green-500/10 border border-green-500/30 text-green-400 font-bold text-[11px] px-3 py-1 rounded-full mb-3 uppercase tracking-wider">
+                                <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span> متاح حالياً
+                            </div>
+                            <h3 class="text-white font-extrabold text-xl mb-1">الحساب متوفر وجاهز للتسليم!</h3>
+                            <p class="text-cyan-400 font-black text-2xl tracking-wide mb-4 font-mono">${foundAccount.price}</p>
+                            
+                            <div class="bg-gray-900/80 border border-gray-800 rounded-xl p-3 mb-4 text-right space-y-1.5 text-xs">
+                                <p class="text-gray-400 font-bold text-center border-b border-gray-800 pb-1 mb-1 text-purple-400">💵 معلومات الدفع المعتمدة 💵</p>
+                                <p class="flex justify-between"><span class="text-gray-500">كليك / أورانج موني:</span> <span class="text-green-400 font-mono font-bold">${storeConfig.cliq_or_orange}</span></p>
+                                <p class="flex justify-between"><span class="text-gray-500">الاسم المعتمد:</span> <span class="text-white font-bold">${storeConfig.name}</span></p>
+                            </div>
+
+                            <button onclick="orderAccount('${foundAccount.reel_url}')" class="w-full bg-green-500 hover:bg-green-400 text-gray-950 font-black py-3 px-4 rounded-xl transition duration-300 tracking-wide">
+                                انسخ الرابط وابعث الإشعار ديركت ←
+                            </button>
+                        </div>
+                    `;
+                } else {
+                    // 🚨 تعديل المنطق: إذا كان الحساب "مباع" أو "غير مدرج بالنظام" يظهر هذا الكرت الأحمر الصريح 🚨
+                    resultContainer.innerHTML = `
+                        <div class="bg-gradient-to-b from-red-950/50 to-gray-950 border-2 border-red-500/40 p-6 rounded-2xl text-center shadow-lg shadow-red-500/5">
+                            <div class="inline-flex items-center gap-1.5 bg-red-500/10 border border-red-500/30 text-red-400 font-bold text-[11px] px-3 py-1 rounded-full mb-3 uppercase tracking-wider">
+                                NOT AVAILABLE
+                            </div>
+                            <h3 class="text-gray-200 font-bold text-lg mb-1">غير مدرج بالنظام أو تم بيعه مسبقاً!</h3>
+                            <p class="text-gray-500 text-xs px-4 mb-4">للأسف هذا الحساب لم نعد نملكه حالياً. يمكنك التحقق من ديركت الإنستاجرام مباشرة للتأكد من وجود بديل فوري.</p>
+                            <a href="${storeConfig.instagram_profile}" target="_blank" class="inline-block bg-red-600 hover:bg-red-500 text-white font-bold text-xs py-2 px-4 rounded-lg transition duration-300">
+                                تواصل معنا بالديركت للاستفسار ←
                             </a>
                         </div>
                     `;
