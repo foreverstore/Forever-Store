@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forever-Store | متجر المنتجات الرقمية والألعاب</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+<!-- ... existing code -->
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Font: Cairo -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS Play CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -39,8 +34,12 @@
         .glow-effect {
             box-shadow: 0 0 25px rgba(99, 102, 241, 0.25);
         }
+        .glow-hover {
+            transition: all 0.3s ease;
+        }
         .glow-hover:hover {
-            box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+            box-shadow: 0 0 35px rgba(99, 102, 241, 0.35);
+            transform: translateY(-4px);
         }
         /* Custom scrollbar */
         ::-webkit-scrollbar {
@@ -75,18 +74,31 @@
                 </div>
                 <div>
                     <h1 class="text-2xl font-black tracking-wider bg-gradient-to-r from-indigo-400 to-violet-300 bg-clip-text text-transparent">Forever-Store</h1>
-                    <p class="text-xs text-slate-400 font-medium">متجرك الموثوق للألعاب والخدمات الرقمية</p>
+                    <p class="text-xs text-slate-400 font-medium hidden sm:block">متجرك الموثوق للألعاب والخدمات الرقمية</p>
                 </div>
             </div>
 
-            <div class="flex items-center gap-3 sm:gap-4">
+            <div class="flex items-center gap-2 sm:gap-4">
+                <!-- Currency Selector -->
+                <div class="relative flex items-center bg-slate-800/90 border border-slate-700/80 rounded-xl px-2.5 py-1.5 text-xs sm:text-sm font-bold shadow-md">
+                    <i class="fa-solid fa-coins text-amber-400 ml-2"></i>
+                    <select id="currency-select" onchange="changeCurrency(this.value)" class="bg-transparent text-slate-200 outline-none cursor-pointer pr-1">
+                        <option value="JOD" class="bg-slate-900 text-white">🇯🇴 دينار أردني (JOD)</option>
+                        <option value="SAR" class="bg-slate-900 text-white">🇸🇦 ريال سعودي (SAR)</option>
+                        <option value="AED" class="bg-slate-900 text-white">🇦🇪 درهم إماراتي (AED)</option>
+                        <option value="KWD" class="bg-slate-900 text-white">🇰🇼 دينار كويتي (KWD)</option>
+                        <option value="BHD" class="bg-slate-900 text-white">🇧🇭 دينار بحريني (BHD)</option>
+                        <option value="USD" class="bg-slate-900 text-white">🇺🇸 دولار أمريكي (USD)</option>
+                    </select>
+                </div>
+
                 <!-- Instagram Link -->
                 <a href="https://www.instagram.com/forever_store_jo/" target="_blank" class="bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 p-2.5 rounded-xl text-white hover:opacity-90 transition-opacity flex items-center justify-center shadow-md" title="إنستغرام">
                     <i class="fa-brands fa-instagram text-xl"></i>
                 </a>
 
                 <!-- Cart Button -->
-                <button onclick="toggleCartModal()" class="relative bg-slate-800 hover:bg-slate-700 border border-slate-700 px-4 py-2.5 rounded-xl flex items-center gap-2.5 transition-all duration-200">
+                <button onclick="toggleCartModal()" class="relative bg-slate-800 hover:bg-slate-700 border border-slate-700 px-3 sm:px-4 py-2.5 rounded-xl flex items-center gap-2.5 transition-all duration-200">
                     <i class="fa-solid fa-cart-shopping text-indigo-400 text-lg"></i>
                     <span class="hidden sm:inline text-sm font-bold">السلة</span>
                     <span id="cart-count" class="absolute -top-2 -right-2 bg-indigo-600 text-white text-xs w-6 h-6 rounded-full flex items-center justify-center font-black shadow-md">0</span>
@@ -96,7 +108,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="relative py-16 lg:py-20 overflow-hidden bg-gradient-to-b from-[#0f172a] to-[#0b0f19] border-b border-slate-800/60">
+    <section class="relative py-14 lg:py-20 overflow-hidden bg-gradient-to-b from-[#0f172a] to-[#0b0f19] border-b border-slate-800/60">
         <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#6366f1_1px,transparent_1px)] [background-size:16px_16px]"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             
@@ -110,8 +122,8 @@
             </h2>
 
             <!-- Counter Stats -->
-            <div class="grid grid-cols-2 max-w-lg mx-auto gap-4 my-8 p-4 bg-slate-900/60 rounded-2xl border border-slate-800 backdrop-blur-sm">
-                <div class="p-3 border-l border-slate-800/80">
+            <div class="grid grid-cols-2 max-w-lg mx-auto gap-4 my-8 p-4 bg-slate-900/80 rounded-2xl border border-slate-800 backdrop-blur-md shadow-xl">
+                <div class="p-3 border-l border-slate-800">
                     <div class="text-3xl sm:text-4xl font-black text-indigo-400 flex justify-center items-center gap-1">
                         +<span id="counter-orders">1</span>
                     </div>
@@ -126,10 +138,10 @@
             </div>
 
             <div class="flex flex-wrap justify-center gap-4">
-                <a href="#products" class="bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-bold px-8 py-3.5 rounded-xl shadow-lg glow-effect transition-all duration-200">
+                <a href="#products" class="bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-black px-8 py-3.5 rounded-xl shadow-xl glow-effect transition-all duration-200">
                     تصفح المنتجات الآن <i class="fa-solid fa-arrow-down mr-2"></i>
                 </a>
-                <a href="https://wa.me/9626780123835" target="_blank" class="bg-emerald-600/20 hover:bg-emerald-600/30 border border-emerald-500/30 text-emerald-400 font-bold px-8 py-3.5 rounded-xl transition-all duration-200 flex items-center gap-2">
+                <a href="https://wa.me/9626780123835" target="_blank" class="bg-emerald-600/20 hover:bg-emerald-600/30 border border-emerald-500/40 text-emerald-400 font-bold px-8 py-3.5 rounded-xl transition-all duration-200 flex items-center gap-2 backdrop-blur-sm">
                     <i class="fa-brands fa-whatsapp text-emerald-400 text-xl"></i> تواصل عبر الواتساب
                 </a>
             </div>
@@ -143,8 +155,8 @@
                 <h3 class="text-2xl sm:text-3xl font-black text-white">قائمة المنتجات والألعاب</h3>
                 <p class="text-sm text-slate-400 mt-1">جميع الألعاب أوفلاين ستيم - تلعب بروقان وبدون أي ازعاج</p>
             </div>
-            <div class="text-sm text-indigo-400 font-bold bg-indigo-500/10 px-4 py-2 rounded-xl border border-indigo-500/20 hidden sm:block">
-                العملة: دينار أردني (JOD)
+            <div class="text-sm text-indigo-400 font-bold bg-indigo-500/10 px-4 py-2 rounded-xl border border-indigo-500/20 hidden sm:flex items-center gap-2">
+                <i class="fa-solid fa-globe"></i> العملة الحالية: <span id="current-currency-label" class="text-white">دينار أردني (JOD)</span>
             </div>
         </div>
 
@@ -170,11 +182,11 @@
                     <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
                         <span class="text-sm text-slate-400 font-semibold">السعر:</span>
                         <div class="flex items-baseline gap-1">
-                            <span class="text-2xl font-black text-emerald-400">2</span>
-                            <span class="text-xs text-slate-400 font-bold">دينار أردني</span>
+                            <span class="text-2xl font-black text-emerald-400 price-display" data-jod="2">2</span>
+                            <span class="text-xs text-slate-400 font-bold currency-symbol">JOD</span>
                         </div>
                     </div>
-                    <button onclick="addToCart('ديسكورد نيترو 3 أشهر', 2, 'fa-brands fa-discord', 'discord-3m')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
+                    <button onclick="addToCart('ديسكورد نيترو 3 أشهر', 2, 'fa-brands fa-discord', 'discord-nitro')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
                         <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
                     </button>
                 </div>
@@ -198,8 +210,8 @@
                     <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
                         <span class="text-sm text-slate-400 font-semibold">السعر:</span>
                         <div class="flex items-baseline gap-1">
-                            <span class="text-2xl font-black text-emerald-400">2</span>
-                            <span class="text-xs text-slate-400 font-bold">دينار أردني</span>
+                            <span class="text-2xl font-black text-emerald-400 price-display" data-jod="2">2</span>
+                            <span class="text-xs text-slate-400 font-bold currency-symbol">JOD</span>
                         </div>
                     </div>
                     <button onclick="addToCart('لعبة Elden Ring + DLC (أوفلاين)', 2, 'fa-solid fa-crown', 'elden-ring')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
@@ -226,8 +238,8 @@
                     <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
                         <span class="text-sm text-slate-400 font-semibold">السعر:</span>
                         <div class="flex items-baseline gap-1">
-                            <span class="text-2xl font-black text-emerald-400">2</span>
-                            <span class="text-xs text-slate-400 font-bold">دينار أردني</span>
+                            <span class="text-2xl font-black text-emerald-400 price-display" data-jod="2">2</span>
+                            <span class="text-xs text-slate-400 font-bold currency-symbol">JOD</span>
                         </div>
                     </div>
                     <button onclick="addToCart('لعبة Black Myth: Wukong (أوفلاين)', 2, 'fa-solid fa-wand-magic-sparkles', 'wukong')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
@@ -254,8 +266,8 @@
                     <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
                         <span class="text-sm text-slate-400 font-semibold">السعر:</span>
                         <div class="flex items-baseline gap-1">
-                            <span class="text-2xl font-black text-emerald-400">3</span>
-                            <span class="text-xs text-slate-400 font-bold">دنانير</span>
+                            <span class="text-2xl font-black text-emerald-400 price-display" data-jod="3">3</span>
+                            <span class="text-xs text-slate-400 font-bold currency-symbol">JOD</span>
                         </div>
                     </div>
                     <button onclick="addToCart('بكج رزدينت ايفيل', 3, 'fa-solid fa-biohazard', 're-bundle')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
@@ -269,7 +281,7 @@
                 <div>
                     <div class="relative h-48 rounded-xl bg-gradient-to-br from-red-600/20 to-slate-900 flex items-center justify-center mb-6 overflow-hidden border border-red-600/30">
                         <div class="absolute inset-0 bg-[radial-gradient(#dc2626_1px,transparent_1px)] [background-size:12px_12px] opacity-20"></div>
-                        <i class="fa-solid fa-[#9] text-7xl text-red-500 group-hover:scale-110 transition-transform duration-300 fa-skull"></i>
+                        <i class="fa-solid fa-skull text-7xl text-red-500 group-hover:scale-110 transition-transform duration-300"></i>
                         <span class="absolute top-3 right-3 bg-red-600 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md">منتج منفصل 🔥</span>
                     </div>
                     <h4 class="text-xl font-bold text-white mb-2">Resident Evil 9</h4>
@@ -282,8 +294,8 @@
                     <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
                         <span class="text-sm text-slate-400 font-semibold">السعر:</span>
                         <div class="flex items-baseline gap-1">
-                            <span class="text-2xl font-black text-emerald-400">2</span>
-                            <span class="text-xs text-slate-400 font-bold">دينار أردني</span>
+                            <span class="text-2xl font-black text-emerald-400 price-display" data-jod="2">2</span>
+                            <span class="text-xs text-slate-400 font-bold currency-symbol">JOD</span>
                         </div>
                     </div>
                     <button onclick="addToCart('لعبة Resident Evil 9 (أوفلاين)', 2, 'fa-solid fa-skull', 're9')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
@@ -310,8 +322,8 @@
                     <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
                         <span class="text-sm text-slate-400 font-semibold">السعر:</span>
                         <div class="flex items-baseline gap-1">
-                            <span class="text-2xl font-black text-emerald-400">2</span>
-                            <span class="text-xs text-slate-400 font-bold">دينار أردني</span>
+                            <span class="text-2xl font-black text-emerald-400 price-display" data-jod="2">2</span>
+                            <span class="text-xs text-slate-400 font-bold currency-symbol">JOD</span>
                         </div>
                     </div>
                     <button onclick="addToCart('بكج Hollow Knight & Silksong', 2, 'fa-solid fa-bug', 'hollow-silksong')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
@@ -338,39 +350,11 @@
                     <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
                         <span class="text-sm text-slate-400 font-semibold">السعر:</span>
                         <div class="flex items-baseline gap-1">
-                            <span class="text-2xl font-black text-emerald-400">2</span>
-                            <span class="text-xs text-slate-400 font-bold">دينار أردني</span>
+                            <span class="text-2xl font-black text-emerald-400 price-display" data-jod="2">2</span>
+                            <span class="text-xs text-slate-400 font-bold currency-symbol">JOD</span>
                         </div>
                     </div>
                     <button onclick="addToCart('لعبة Hogwarts Legacy (أوفلاين)', 2, 'fa-solid fa-hat-wizard', 'hogwarts')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
-                        <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
-                    </button>
-                </div>
-            </div>
-
-            <!-- Product 9: Elden Ring + Shadow of the Erdtree -->
-            <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
-                <div>
-                    <div class="relative h-48 rounded-xl bg-gradient-to-br from-amber-500/20 to-yellow-900/20 flex items-center justify-center mb-6 overflow-hidden border border-amber-500/30">
-                        <div class="absolute inset-0 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:12px_12px] opacity-20"></div>
-                        <i class="fa-solid fa-ring text-7xl text-amber-400 group-hover:scale-110 transition-transform duration-300"></i>
-                        <span class="absolute top-3 right-3 bg-amber-500 text-black font-black text-xs px-3 py-1 rounded-lg shadow-md">شاملة DLC الإضافة</span>
-                    </div>
-                    <h4 class="text-xl font-bold text-white mb-2">Elden Ring + DLC</h4>
-                    <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين (شاملة إضافة Shadow of the Erdtree)</p>
-                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
-                    </div>
-                </div>
-                <div>
-                    <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
-                        <span class="text-sm text-slate-400 font-semibold">السعر:</span>
-                        <div class="flex items-baseline gap-1">
-                            <span class="text-2xl font-black text-emerald-400">2</span>
-                            <span class="text-xs text-slate-400 font-bold">دينار أردني</span>
-                        </div>
-                    </div>
-                    <button onclick="addToCart('لعبة Elden Ring + DLC (أوفلاين)', 2, 'fa-solid fa-ring', 'elden-ring')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
                         <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
                     </button>
                 </div>
@@ -394,8 +378,8 @@
                     <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
                         <span class="text-sm text-slate-400 font-semibold">السعر:</span>
                         <div class="flex items-baseline gap-1">
-                            <span class="text-2xl font-black text-emerald-400">2</span>
-                            <span class="text-xs text-slate-400 font-bold">دينار أردني</span>
+                            <span class="text-2xl font-black text-emerald-400 price-display" data-jod="2">2</span>
+                            <span class="text-xs text-slate-400 font-bold currency-symbol">JOD</span>
                         </div>
                     </div>
                     <button onclick="addToCart('لعبة 007 First Light (أوفلاين)', 2, 'fa-solid fa-gun', '007')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
@@ -404,7 +388,7 @@
                 </div>
             </div>
 
-            <!-- Product 11: Forza Horizon 5 / Forza Motorsport -->
+            <!-- Product 11: Forza Horizon 5 -->
             <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
                 <div>
                     <div class="relative h-48 rounded-xl bg-gradient-to-br from-red-500/20 to-orange-600/20 flex items-center justify-center mb-6 overflow-hidden border border-red-500/30">
@@ -422,8 +406,8 @@
                     <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
                         <span class="text-sm text-slate-400 font-semibold">السعر:</span>
                         <div class="flex items-baseline gap-1">
-                            <span class="text-2xl font-black text-emerald-400">2</span>
-                            <span class="text-xs text-slate-400 font-bold">دينار أردني</span>
+                            <span class="text-2xl font-black text-emerald-400 price-display" data-jod="2">2</span>
+                            <span class="text-xs text-slate-400 font-bold currency-symbol">JOD</span>
                         </div>
                     </div>
                     <button onclick="addToCart('لعبة Forza Horizon 5 (أوفلاين)', 2, 'fa-solid fa-car-side', 'forza')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
@@ -450,8 +434,8 @@
                     <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
                         <span class="text-sm text-slate-400 font-semibold">السعر:</span>
                         <div class="flex items-baseline gap-1">
-                            <span class="text-2xl font-black text-emerald-400">2</span>
-                            <span class="text-xs text-slate-400 font-bold">دينار أردني</span>
+                            <span class="text-2xl font-black text-emerald-400 price-display" data-jod="2">2</span>
+                            <span class="text-xs text-slate-400 font-bold currency-symbol">JOD</span>
                         </div>
                     </div>
                     <button onclick="addToCart('لعبة Pragmata (أوفلاين)', 2, 'fa-solid fa-user-astronaut', 'pragmata')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
@@ -478,8 +462,8 @@
                     <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
                         <span class="text-sm text-slate-400 font-semibold">السعر:</span>
                         <div class="flex items-baseline gap-1">
-                            <span class="text-2xl font-black text-emerald-400">2</span>
-                            <span class="text-xs text-slate-400 font-bold">دينار أردني</span>
+                            <span class="text-2xl font-black text-emerald-400 price-display" data-jod="2">2</span>
+                            <span class="text-xs text-slate-400 font-bold currency-symbol">JOD</span>
                         </div>
                     </div>
                     <button onclick="addToCart('لعبة Lego Batman (أوفلاين)', 2, 'fa-solid fa-mask', 'lego-batman')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
@@ -506,8 +490,8 @@
                     <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
                         <span class="text-sm text-slate-400 font-semibold">السعر:</span>
                         <div class="flex items-baseline gap-1">
-                            <span class="text-2xl font-black text-emerald-400">3</span>
-                            <span class="text-xs text-slate-400 font-bold">دنانير</span>
+                            <span class="text-2xl font-black text-emerald-400 price-display" data-jod="3">3</span>
+                            <span class="text-xs text-slate-400 font-bold currency-symbol">JOD</span>
                         </div>
                     </div>
                     <button onclick="addToCart('بكج ألعاب السولز', 3, 'fa-solid fa-shield-halved', 'souls-bundle')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
@@ -534,8 +518,8 @@
                     <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
                         <span class="text-sm text-slate-400 font-semibold">السعر:</span>
                         <div class="flex items-baseline gap-1">
-                            <span class="text-2xl font-black text-emerald-400">3</span>
-                            <span class="text-xs text-slate-400 font-bold">دنانير</span>
+                            <span class="text-2xl font-black text-emerald-400 price-display" data-jod="3">3</span>
+                            <span class="text-xs text-slate-400 font-bold currency-symbol">JOD</span>
                         </div>
                     </div>
                     <button onclick="addToCart('بكج ألعاب التختيم', 3, 'fa-solid fa-book-open', 'story-bundle')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
@@ -549,9 +533,9 @@
 
     <!-- Cart Modal Backdrop & Drawer -->
     <div id="cart-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-lg overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-lg overflow-hidden shadow-2xl flex flex-col max-h-[92vh]">
             <!-- Modal Header -->
-            <div class="p-6 border-b border-slate-800 flex items-center justify-between">
+            <div class="p-5 border-b border-slate-800 flex items-center justify-between">
                 <div class="flex items-center gap-3">
                     <div class="w-10 h-10 rounded-xl bg-indigo-600/20 flex items-center justify-center text-indigo-400">
                         <i class="fa-solid fa-cart-shopping text-lg"></i>
@@ -564,21 +548,66 @@
             </div>
 
             <!-- Cart Items Container -->
-            <div id="cart-items-container" class="p-6 overflow-y-auto flex-grow space-y-4">
+            <div id="cart-items-container" class="p-5 overflow-y-auto flex-grow space-y-3">
                 <!-- Dynamic Items -->
             </div>
 
-            <!-- Modal Footer / Checkout -->
-            <div class="p-6 border-t border-slate-800 bg-slate-950/50">
-                <div class="flex items-center justify-between mb-4">
-                    <span class="text-slate-400 font-medium">المجموع الكلي:</span>
+            <!-- Payment Methods Selection Area -->
+            <div class="p-5 border-t border-slate-800 bg-slate-950/60">
+                <p class="text-xs font-bold text-slate-300 mb-2.5 flex items-center gap-1.5">
+                    <i class="fa-solid fa-credit-card text-indigo-400"></i> اختر طريقة الدفع المفضل لديك:
+                </p>
+                <div class="grid grid-cols-2 gap-2.5 mb-4">
+                    <!-- Visa / Mastercard Option -->
+                    <label class="cursor-pointer border border-slate-800 bg-slate-900/90 hover:border-indigo-500 rounded-xl p-2.5 flex items-center justify-between transition-all has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-950/20">
+                        <div class="flex items-center gap-2">
+                            <input type="radio" name="payment_method" value="card" checked class="accent-indigo-500">
+                            <span class="text-xs font-bold text-slate-200">فيزا / ماستركارد</span>
+                        </div>
+                        <div class="flex items-center gap-1 text-slate-300">
+                            <i class="fa-brands fa-cc-visa text-xl text-blue-400"></i>
+                            <i class="fa-brands fa-cc-mastercard text-xl text-orange-500"></i>
+                        </div>
+                    </label>
+
+                    <!-- PayPal Option -->
+                    <label class="cursor-pointer border border-slate-800 bg-slate-900/90 hover:border-indigo-500 rounded-xl p-2.5 flex items-center justify-between transition-all has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-950/20">
+                        <div class="flex items-center gap-2">
+                            <input type="radio" name="payment_method" value="paypal" class="accent-indigo-500">
+                            <span class="text-xs font-bold text-slate-200">بايبال PayPal</span>
+                        </div>
+                        <i class="fa-brands fa-paypal text-xl text-sky-400"></i>
+                    </label>
+
+                    <!-- CliQ Option -->
+                    <label class="cursor-pointer border border-slate-800 bg-slate-900/90 hover:border-indigo-500 rounded-xl p-2.5 flex items-center justify-between transition-all has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-950/20">
+                        <div class="flex items-center gap-2">
+                            <input type="radio" name="payment_method" value="cliq" class="accent-indigo-500">
+                            <span class="text-xs font-bold text-slate-200">كليك CliQ</span>
+                        </div>
+                        <span class="bg-indigo-600/30 text-indigo-300 text-[10px] font-black px-2 py-0.5 rounded border border-indigo-500/30">CliQ</span>
+                    </label>
+
+                    <!-- Crypto Option -->
+                    <label class="cursor-pointer border border-slate-800 bg-slate-900/90 hover:border-indigo-500 rounded-xl p-2.5 flex items-center justify-between transition-all has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-950/20">
+                        <div class="flex items-center gap-2">
+                            <input type="radio" name="payment_method" value="crypto" class="accent-indigo-500">
+                            <span class="text-xs font-bold text-slate-200">عملات رقمية</span>
+                        </div>
+                        <i class="fa-brands fa-bitcoin text-xl text-amber-500"></i>
+                    </label>
+                </div>
+
+                <div class="flex items-center justify-between mb-4 pt-2 border-t border-slate-800/80">
+                    <span class="text-slate-400 text-sm font-medium">المجموع الكلي:</span>
                     <div class="flex items-baseline gap-1">
                         <span id="cart-total" class="text-2xl font-black text-emerald-400">0</span>
-                        <span class="text-sm text-slate-400 font-bold">دينار أردني</span>
+                        <span id="cart-total-currency" class="text-sm text-slate-400 font-bold">JOD</span>
                     </div>
                 </div>
+                
                 <button onclick="checkout()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20">
-                    <i class="fa-brands fa-whatsapp text-xl"></i> إتمام الطلب عبر الواتساب
+                    <i class="fa-solid fa-lock"></i> إتمام الشراء والتأكيد
                 </button>
             </div>
         </div>
@@ -595,11 +624,23 @@
             </div>
             <p class="text-sm mb-6 max-w-md mx-auto text-slate-400">متجرك ومكانك الأول بأسعار تناسب الجميع - ألعاب أوفلاين وخدمات رقمية شرعية 100%.</p>
             
+            <!-- Payment Methods Icons Display -->
+            <div class="mb-6">
+                <p class="text-xs font-bold text-slate-500 mb-3">وسائل الدفع المتاحة لدينا</p>
+                <div class="flex justify-center items-center gap-4 text-3xl text-slate-400">
+                    <i class="fa-brands fa-cc-visa hover:text-blue-400 transition-colors" title="Visa"></i>
+                    <i class="fa-brands fa-cc-mastercard hover:text-orange-500 transition-colors" title="Mastercard"></i>
+                    <i class="fa-brands fa-paypal hover:text-sky-400 transition-colors" title="PayPal"></i>
+                    <span class="bg-slate-800 border border-slate-700 px-2.5 py-1 rounded-lg text-xs font-black text-indigo-300 tracking-wider">CliQ</span>
+                    <i class="fa-brands fa-bitcoin hover:text-amber-500 transition-colors" title="Crypto / USDT"></i>
+                </div>
+            </div>
+
             <div class="flex justify-center gap-4 mb-6">
-                <a href="https://www.instagram.com/forever_store_jo/" target="_blank" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-gradient-to-tr hover:from-amber-500 hover:to-purple-600 text-white flex items-center justify-center transition-all">
+                <a href="https://www.instagram.com/forever_store_jo/" target="_blank" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-gradient-to-tr hover:from-amber-500 hover:to-purple-600 text-white flex items-center justify-center transition-all" title="Instagram">
                     <i class="fa-brands fa-instagram text-lg"></i>
                 </a>
-                <a href="https://wa.me/9626780123835" target="_blank" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-emerald-600 text-white flex items-center justify-center transition-all">
+                <a href="https://wa.me/9626780123835" target="_blank" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-emerald-600 text-white flex items-center justify-center transition-all" title="WhatsApp">
                     <i class="fa-brands fa-whatsapp text-lg"></i>
                 </a>
             </div>
@@ -612,8 +653,82 @@
     <script>
         let cart = [];
         const STORE_WHATSAPP_NUMBER = "9626780123835";
+        const DISCORD_NITRO_DIRECT_LINK = "https://usr.gg/service/dyskord-nytro-3-ashhr-b3-10349";
 
-        // Dynamic Animated Counters (Medium Speed - 5 Seconds Duration)
+        // Exchange Rates relative to 1 JOD
+        const exchangeRates = {
+            JOD: { rate: 1, symbol: 'JOD', label: 'دينار أردني (JOD)' },
+            SAR: { rate: 5.29, symbol: 'SAR', label: 'ريال سعودي (SAR)' },
+            AED: { rate: 5.18, symbol: 'AED', label: 'درهم إماراتي (AED)' },
+            KWD: { rate: 0.43, symbol: 'KWD', label: 'دينار كويتي (KWD)' },
+            BHD: { rate: 0.53, symbol: 'BHD', label: 'دينار بحريني (BHD)' },
+            USD: { rate: 1.41, symbol: 'USD', label: 'دولار أمريكي (USD)' }
+        };
+
+        let currentCurrency = 'JOD';
+
+        // Detect user region/timezone automatically or default to USD
+        function autoDetectRegionCurrency() {
+            try {
+                const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+                if (timeZone.includes("Amman")) {
+                    currentCurrency = "JOD";
+                } else if (timeZone.includes("Riyadh")) {
+                    currentCurrency = "SAR";
+                } else if (timeZone.includes("Dubai")) {
+                    currentCurrency = "AED";
+                } else if (timeZone.includes("Kuwait")) {
+                    currentCurrency = "KWD";
+                } else if (timeZone.includes("Bahrain")) {
+                    currentCurrency = "BHD";
+                } else {
+                    currentCurrency = "USD"; // Default for international users outside specified regions
+                }
+            } catch (e) {
+                currentCurrency = "USD";
+            }
+
+            const selectEl = document.getElementById("currency-select");
+            if (selectEl) selectEl.value = currentCurrency;
+            updatePricesOnPage();
+        }
+
+        function changeCurrency(currencyKey) {
+            if (exchangeRates[currencyKey]) {
+                currentCurrency = currencyKey;
+                updatePricesOnPage();
+                updateCartUI();
+            }
+        }
+
+        function formatPrice(jodPrice) {
+            const currencyData = exchangeRates[currentCurrency] || exchangeRates.USD;
+            const converted = jodPrice * currencyData.rate;
+            // Round nicely
+            return (Math.round(converted * 100) / 100).toFixed(converted % 1 === 0 ? 0 : 2);
+        }
+
+        function updatePricesOnPage() {
+            const priceElements = document.querySelectorAll('.price-display');
+            const symbolElements = document.querySelectorAll('.currency-symbol');
+            const labelEl = document.getElementById('current-currency-label');
+
+            priceElements.forEach(el => {
+                const jodValue = parseFloat(el.getAttribute('data-jod'));
+                if (!isNaN(jodValue)) {
+                    el.textContent = formatPrice(jodValue);
+                }
+            });
+
+            symbolElements.forEach(el => {
+                el.textContent = currentCurrency;
+            });
+
+            if (labelEl && exchangeRates[currentCurrency]) {
+                labelEl.textContent = exchangeRates[currentCurrency].label;
+            }
+        }
+        // Dynamic Animated Counters (Super Fast Speed - 2 Seconds Duration)
         function animateCounterSmooth(id, target, durationMs) {
             const element = document.getElementById(id);
             if (!element) return;
@@ -626,8 +741,8 @@
                 const elapsed = currentTime - startTime;
                 const progress = Math.min(elapsed / durationMs, 1);
                 
-                // Ease-out cubic formula for steady, smooth deceleration
-                const easeOutProgress = 1 - Math.pow(1 - progress, 3);
+                // Fast Quad ease-out formula for punchy animation
+                const easeOutProgress = 1 - Math.pow(1 - progress, 2);
                 const currentValue = Math.floor(startValue + (target - startValue) * easeOutProgress);
 
                 element.textContent = currentValue;
@@ -643,10 +758,140 @@
         }
 
         window.onload = function() {
-            // Set animation duration to exactly 5000ms (5 seconds)
-            animateCounterSmooth('counter-orders', 400, 5000);
-            animateCounterSmooth('counter-clients', 250, 5000);
+            autoDetectRegionCurrency();
+            // Fast 2-second animation
+            animateCounterSmooth('counter-orders', 400, 2000);
+            animateCounterSmooth('counter-clients', 250, 2000);
         };
 
         function showToast(message) {
-<!-- ... existing code -->
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.textContent = message;
+            toast.classList.remove('translate-y-32', 'opacity-0');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-32', 'opacity-0');
+            }, 3000);
+        }
+
+        function toggleCartModal() {
+            const modal = document.getElementById('cart-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        function addToCart(name, priceJod, iconClass, id) {
+            const existingIndex = cart.findIndex(item => item.id === id);
+            
+            if (existingIndex > -1) {
+                cart[existingIndex].quantity += 1;
+            } else {
+                cart.push({ id, name, priceJod, iconClass, quantity: 1 });
+            }
+
+            updateCartUI();
+            showToast(`تمت إضافة "${name}" للسلة!`);
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartCount = document.getElementById('cart-count');
+            const cartItemsContainer = document.getElementById('cart-items-container');
+            const cartTotal = document.getElementById('cart-total');
+            const cartTotalCurrency = document.getElementById('cart-total-currency');
+
+            const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
+            cartCount.textContent = totalItems;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="text-center py-10 text-slate-500">
+                        <i class="fa-solid fa-basket-shopping text-5xl mb-3 text-slate-700"></i>
+                        <p class="font-bold text-sm">السلة فارغة حالياً</p>
+                        <p class="text-xs mt-1">اختر من المنتجات أعلاه وأضفها للسلة</p>
+                    </div>
+                `;
+                cartTotal.textContent = "0";
+            } else {
+                let html = '';
+                let totalJod = 0;
+
+                cart.forEach(item => {
+                    const itemTotalJod = item.priceJod * item.quantity;
+                    totalJod += itemTotalJod;
+
+                    html += `
+                        <div class="bg-slate-800/80 border border-slate-700/80 p-3.5 rounded-xl flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-lg bg-slate-900 border border-slate-700 flex items-center justify-center text-indigo-400 text-lg">
+                                    <i class="${item.iconClass}"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-sm font-bold text-white">${item.name}</h5>
+                                    <p class="text-xs text-slate-400">العدد: ${item.quantity} × ${formatPrice(item.priceJod)} ${currentCurrency}</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="font-black text-emerald-400 text-sm">${formatPrice(itemTotalJod)} ${currentCurrency}</span>
+                                <button onclick="removeFromCart('${item.id}')" class="text-slate-500 hover:text-rose-400 p-1 transition-colors">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                cartItemsContainer.innerHTML = html;
+                cartTotal.textContent = formatPrice(totalJod);
+            }
+
+            if (cartTotalCurrency) {
+                cartTotalCurrency.textContent = currentCurrency;
+            }
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert("السلة فارغة! يرجى إضافة منتجات أولاً.");
+                return;
+            }
+
+            const selectedPayment = document.querySelector('input[name="payment_method"]:checked')?.value || 'card';
+            const isNitroOnly = cart.length === 1 && cart[0].id === 'discord-nitro';
+            const containsNitro = cart.some(item => item.id === 'discord-nitro');
+
+            // If Discord Nitro is selected and payment is Visa/Mastercard or PayPal -> Redirect to Portal
+            if (containsNitro && (selectedPayment === 'card' || selectedPayment === 'paypal')) {
+                window.location.href = DISCORD_NITRO_DIRECT_LINK;
+                return;
+            }
+
+            // Otherwise (CliQ, Crypto, or Games Orders) -> Direct to WhatsApp
+            let paymentName = "فيزا / ماستركارد";
+            if (selectedPayment === 'paypal') paymentName = "بايبال PayPal";
+            if (selectedPayment === 'cliq') paymentName = "كليك CliQ";
+            if (selectedPayment === 'crypto') paymentName = "عملات رقمية Crypto";
+
+            let totalJod = 0;
+            let orderSummary = "مرحباً Forever-Store 👋\nأود إتمام الطلب التالي:\n\n";
+
+            cart.forEach((item, index) => {
+                const itemTotal = item.priceJod * item.quantity;
+                totalJod += itemTotal;
+                orderSummary += `${index + 1}. ${item.name} (العدد: ${item.quantity}) - ${formatPrice(itemTotal)} ${currentCurrency}\n`;
+            });
+
+            orderSummary += `\n💳 طريقة الدفع المختارة: ${paymentName}`;
+            orderSummary += `\n💰 المجموع الكلي: ${formatPrice(totalJod)} ${currentCurrency}`;
+            orderSummary += `\n\nيرجى تزويدي بتفاصيل الدفع والتعليمات.`;
+
+            const encodedMessage = encodeURIComponent(orderSummary);
+            window.open(`https://wa.me/${STORE_WHATSAPP_NUMBER}?text=${encodedMessage}`, '_blank');
+        }
+    </script>
+</body>
+</html>
