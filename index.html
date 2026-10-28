@@ -113,13 +113,13 @@
             <div class="grid grid-cols-2 max-w-lg mx-auto gap-4 my-8 p-4 bg-slate-900/60 rounded-2xl border border-slate-800 backdrop-blur-sm">
                 <div class="p-3 border-l border-slate-800/80">
                     <div class="text-3xl sm:text-4xl font-black text-indigo-400 flex justify-center items-center gap-1">
-                        +<span id="counter-orders">0</span>
+                        +<span id="counter-orders">1</span>
                     </div>
                     <p class="text-xs sm:text-sm text-slate-400 font-bold mt-1">طلب مكتمل</p>
                 </div>
                 <div class="p-3">
                     <div class="text-3xl sm:text-4xl font-black text-emerald-400 flex justify-center items-center gap-1">
-                        +<span id="counter-clients">0</span>
+                        +<span id="counter-clients">1</span>
                     </div>
                     <p class="text-xs sm:text-sm text-slate-400 font-bold mt-1">عميل سعيد</p>
                 </div>
@@ -180,7 +180,35 @@
                 </div>
             </div>
 
-            <!-- Product 2: Black Myth: Wukong -->
+            <!-- Elden Ring + DLC -->
+            <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
+                <div>
+                    <div class="relative h-48 rounded-xl bg-gradient-to-br from-amber-500/20 to-yellow-600/20 flex items-center justify-center mb-6 overflow-hidden border border-amber-500/30">
+                        <div class="absolute inset-0 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:12px_12px] opacity-20"></div>
+                        <i class="fa-solid fa-crown text-7xl text-amber-400 group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="absolute top-3 right-3 bg-amber-500 text-black font-black text-xs px-3 py-1 rounded-lg shadow-md">لعبة السنة + الإضافة</span>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">Elden Ring: Shadow of the Erdtree</h4>
+                    <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
+                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين</p>
+                        <p>شاملة اللعبة الأصلية وإضافة Shadow of the Erdtree! تلعب بروقان بالأوفلاين مود.</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
+                        <span class="text-sm text-slate-400 font-semibold">السعر:</span>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-2xl font-black text-emerald-400">2</span>
+                            <span class="text-xs text-slate-400 font-bold">دينار أردني</span>
+                        </div>
+                    </div>
+                    <button onclick="addToCart('لعبة Elden Ring + DLC (أوفلاين)', 2, 'fa-solid fa-crown', 'elden-ring')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
+                        <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
+                    </button>
+                </div>
+            </div>
+
+            <!-- Black Myth: Wukong -->
             <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
                 <div>
                     <div class="relative h-48 rounded-xl bg-gradient-to-br from-amber-600/20 to-orange-600/20 flex items-center justify-center mb-6 overflow-hidden border border-amber-500/30">
@@ -208,62 +236,6 @@
                 </div>
             </div>
 
-            <!-- Product 3: Cyberpunk 2077 -->
-            <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
-                <div>
-                    <div class="relative h-48 rounded-xl bg-gradient-to-br from-yellow-500/20 to-cyan-500/20 flex items-center justify-center mb-6 overflow-hidden border border-yellow-500/30">
-                        <div class="absolute inset-0 bg-[radial-gradient(#eab308_1px,transparent_1px)] [background-size:12px_12px] opacity-20"></div>
-                        <i class="fa-solid fa-robot text-7xl text-yellow-400 group-hover:scale-110 transition-transform duration-300"></i>
-                        <span class="absolute top-3 right-3 bg-yellow-500 text-black font-black text-xs px-3 py-1 rounded-lg shadow-md">شاملة الإضافة</span>
-                    </div>
-                    <h4 class="text-xl font-bold text-white mb-2">Cyberpunk 2077 + DLC</h4>
-                    <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين</p>
-                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
-                    </div>
-                </div>
-                <div>
-                    <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
-                        <span class="text-sm text-slate-400 font-semibold">السعر:</span>
-                        <div class="flex items-baseline gap-1">
-                            <span class="text-2xl font-black text-emerald-400">2</span>
-                            <span class="text-xs text-slate-400 font-bold">دينار أردني</span>
-                        </div>
-                    </div>
-                    <button onclick="addToCart('لعبة Cyberpunk 2077 (أوفلاين)', 2, 'fa-solid fa-robot', 'cyberpunk')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
-                        <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
-                    </button>
-                </div>
-            </div>
-
-            <!-- Product 4: Red Dead Redemption 2 -->
-            <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
-                <div>
-                    <div class="relative h-48 rounded-xl bg-gradient-to-br from-red-600/20 to-amber-700/20 flex items-center justify-center mb-6 overflow-hidden border border-red-500/30">
-                        <div class="absolute inset-0 bg-[radial-gradient(#ef4444_1px,transparent_1px)] [background-size:12px_12px] opacity-20"></div>
-                        <i class="fa-solid fa-hat-cowboy text-7xl text-red-400 group-hover:scale-110 transition-transform duration-300"></i>
-                        <span class="absolute top-3 right-3 bg-red-600 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md">أسطورية</span>
-                    </div>
-                    <h4 class="text-xl font-bold text-white mb-2">Red Dead Redemption 2</h4>
-                    <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين</p>
-                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
-                    </div>
-                </div>
-                <div>
-                    <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
-                        <span class="text-sm text-slate-400 font-semibold">السعر:</span>
-                        <div class="flex items-baseline gap-1">
-                            <span class="text-2xl font-black text-emerald-400">2</span>
-                            <span class="text-xs text-slate-400 font-bold">دينار أردني</span>
-                        </div>
-                    </div>
-                    <button onclick="addToCart('لعبة Red Dead Redemption 2 (أوفلاين)', 2, 'fa-solid fa-hat-cowboy', 'rdr2')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
-                        <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
-                    </button>
-                </div>
-            </div>
-
             <!-- Product 5: Resident Evil Bundle -->
             <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
                 <div>
@@ -274,7 +246,7 @@
                     </div>
                     <h4 class="text-xl font-bold text-white mb-2">بكج ألعاب رزدينت ايفيل</h4>
                     <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين شامل الأجزاء</p>
+                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين شامل الأجزاء الكلاسيكية والريماستر</p>
                         <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
                     </div>
                 </div>
@@ -292,7 +264,231 @@
                 </div>
             </div>
 
-            <!-- Product 6: Souls Bundle -->
+            <!-- Product 6: Resident Evil 9 (Single Game) -->
+            <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
+                <div>
+                    <div class="relative h-48 rounded-xl bg-gradient-to-br from-red-600/20 to-slate-900 flex items-center justify-center mb-6 overflow-hidden border border-red-600/30">
+                        <div class="absolute inset-0 bg-[radial-gradient(#dc2626_1px,transparent_1px)] [background-size:12px_12px] opacity-20"></div>
+                        <i class="fa-solid fa-[#9] text-7xl text-red-500 group-hover:scale-110 transition-transform duration-300 fa-skull"></i>
+                        <span class="absolute top-3 right-3 bg-red-600 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md">منتج منفصل 🔥</span>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">Resident Evil 9</h4>
+                    <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
+                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين (غير شاملة البكج)</p>
+                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
+                        <span class="text-sm text-slate-400 font-semibold">السعر:</span>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-2xl font-black text-emerald-400">2</span>
+                            <span class="text-xs text-slate-400 font-bold">دينار أردني</span>
+                        </div>
+                    </div>
+                    <button onclick="addToCart('لعبة Resident Evil 9 (أوفلاين)', 2, 'fa-solid fa-skull', 're9')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
+                        <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 7: Hollow Knight & Silksong Bundle -->
+            <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
+                <div>
+                    <div class="relative h-48 rounded-xl bg-gradient-to-br from-cyan-600/20 to-blue-900/20 flex items-center justify-center mb-6 overflow-hidden border border-cyan-500/30">
+                        <div class="absolute inset-0 bg-[radial-gradient(#06b6d4_1px,transparent_1px)] [background-size:12px_12px] opacity-20"></div>
+                        <i class="fa-solid fa-bug text-7xl text-cyan-400 group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="absolute top-3 right-3 bg-cyan-600 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md">بكج مميز</span>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">Hollow Knight + Silksong</h4>
+                    <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
+                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين</p>
+                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
+                        <span class="text-sm text-slate-400 font-semibold">السعر:</span>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-2xl font-black text-emerald-400">2</span>
+                            <span class="text-xs text-slate-400 font-bold">دينار أردني</span>
+                        </div>
+                    </div>
+                    <button onclick="addToCart('بكج Hollow Knight & Silksong', 2, 'fa-solid fa-bug', 'hollow-silksong')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
+                        <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 8: Hogwarts Legacy -->
+            <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
+                <div>
+                    <div class="relative h-48 rounded-xl bg-gradient-to-br from-purple-600/20 to-indigo-900/20 flex items-center justify-center mb-6 overflow-hidden border border-purple-500/30">
+                        <div class="absolute inset-0 bg-[radial-gradient(#a855f7_1px,transparent_1px)] [background-size:12px_12px] opacity-20"></div>
+                        <i class="fa-solid fa-hat-wizard text-7xl text-purple-400 group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="absolute top-3 right-3 bg-purple-600 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md">عالم السحر</span>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">Hogwarts Legacy</h4>
+                    <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
+                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين</p>
+                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
+                        <span class="text-sm text-slate-400 font-semibold">السعر:</span>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-2xl font-black text-emerald-400">2</span>
+                            <span class="text-xs text-slate-400 font-bold">دينار أردني</span>
+                        </div>
+                    </div>
+                    <button onclick="addToCart('لعبة Hogwarts Legacy (أوفلاين)', 2, 'fa-solid fa-hat-wizard', 'hogwarts')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
+                        <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 9: Elden Ring + Shadow of the Erdtree -->
+            <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
+                <div>
+                    <div class="relative h-48 rounded-xl bg-gradient-to-br from-amber-500/20 to-yellow-900/20 flex items-center justify-center mb-6 overflow-hidden border border-amber-500/30">
+                        <div class="absolute inset-0 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:12px_12px] opacity-20"></div>
+                        <i class="fa-solid fa-ring text-7xl text-amber-400 group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="absolute top-3 right-3 bg-amber-500 text-black font-black text-xs px-3 py-1 rounded-lg shadow-md">شاملة DLC الإضافة</span>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">Elden Ring + DLC</h4>
+                    <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
+                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين (شاملة إضافة Shadow of the Erdtree)</p>
+                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
+                        <span class="text-sm text-slate-400 font-semibold">السعر:</span>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-2xl font-black text-emerald-400">2</span>
+                            <span class="text-xs text-slate-400 font-bold">دينار أردني</span>
+                        </div>
+                    </div>
+                    <button onclick="addToCart('لعبة Elden Ring + DLC (أوفلاين)', 2, 'fa-solid fa-ring', 'elden-ring')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
+                        <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 10: 007 First Light -->
+            <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
+                <div>
+                    <div class="relative h-48 rounded-xl bg-gradient-to-br from-slate-700/20 to-slate-900 flex items-center justify-center mb-6 overflow-hidden border border-slate-600/30">
+                        <div class="absolute inset-0 bg-[radial-gradient(#94a3b8_1px,transparent_1px)] [background-size:12px_12px] opacity-20"></div>
+                        <i class="fa-solid fa-gun text-7xl text-slate-300 group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="absolute top-3 right-3 bg-slate-700 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md">جديد وحصري</span>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">007 First Light</h4>
+                    <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
+                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين</p>
+                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
+                        <span class="text-sm text-slate-400 font-semibold">السعر:</span>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-2xl font-black text-emerald-400">2</span>
+                            <span class="text-xs text-slate-400 font-bold">دينار أردني</span>
+                        </div>
+                    </div>
+                    <button onclick="addToCart('لعبة 007 First Light (أوفلاين)', 2, 'fa-solid fa-gun', '007')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
+                        <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 11: Forza Horizon 5 / Forza Motorsport -->
+            <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
+                <div>
+                    <div class="relative h-48 rounded-xl bg-gradient-to-br from-red-500/20 to-orange-600/20 flex items-center justify-center mb-6 overflow-hidden border border-red-500/30">
+                        <div class="absolute inset-0 bg-[radial-gradient(#ef4444_1px,transparent_1px)] [background-size:12px_12px] opacity-20"></div>
+                        <i class="fa-solid fa-car-side text-7xl text-red-400 group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="absolute top-3 right-3 bg-red-600 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md">سرعة وحماس</span>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">Forza Horizon 5</h4>
+                    <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
+                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين</p>
+                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
+                        <span class="text-sm text-slate-400 font-semibold">السعر:</span>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-2xl font-black text-emerald-400">2</span>
+                            <span class="text-xs text-slate-400 font-bold">دينار أردني</span>
+                        </div>
+                    </div>
+                    <button onclick="addToCart('لعبة Forza Horizon 5 (أوفلاين)', 2, 'fa-solid fa-car-side', 'forza')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
+                        <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 12: Pragmata -->
+            <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
+                <div>
+                    <div class="relative h-48 rounded-xl bg-gradient-to-br from-teal-500/20 to-emerald-900/20 flex items-center justify-center mb-6 overflow-hidden border border-teal-500/30">
+                        <div class="absolute inset-0 bg-[radial-gradient(#14b8a6_1px,transparent_1px)] [background-size:12px_12px] opacity-20"></div>
+                        <i class="fa-solid fa-user-astronaut text-7xl text-teal-300 group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="absolute top-3 right-3 bg-teal-600 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md">خيال علمي</span>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">Pragmata</h4>
+                    <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
+                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين</p>
+                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
+                        <span class="text-sm text-slate-400 font-semibold">السعر:</span>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-2xl font-black text-emerald-400">2</span>
+                            <span class="text-xs text-slate-400 font-bold">دينار أردني</span>
+                        </div>
+                    </div>
+                    <button onclick="addToCart('لعبة Pragmata (أوفلاين)', 2, 'fa-solid fa-user-astronaut', 'pragmata')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
+                        <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 13: Lego Batman -->
+            <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
+                <div>
+                    <div class="relative h-48 rounded-xl bg-gradient-to-br from-yellow-600/20 to-slate-900 flex items-center justify-center mb-6 overflow-hidden border border-yellow-500/30">
+                        <div class="absolute inset-0 bg-[radial-gradient(#eab308_1px,transparent_1px)] [background-size:12px_12px] opacity-20"></div>
+                        <i class="fa-solid fa-mask text-7xl text-yellow-400 group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="absolute top-3 right-3 bg-yellow-500 text-black font-black text-xs px-3 py-1 rounded-lg shadow-md">كلاسيكية ممتعة</span>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">Lego Batman Series</h4>
+                    <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
+                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين</p>
+                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
+                        <span class="text-sm text-slate-400 font-semibold">السعر:</span>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-2xl font-black text-emerald-400">2</span>
+                            <span class="text-xs text-slate-400 font-bold">دينار أردني</span>
+                        </div>
+                    </div>
+                    <button onclick="addToCart('لعبة Lego Batman (أوفلاين)', 2, 'fa-solid fa-mask', 'lego-batman')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
+                        <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 14: Souls Bundle -->
             <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
                 <div>
                     <div class="relative h-48 rounded-xl bg-gradient-to-br from-amber-600/20 to-slate-800/40 flex items-center justify-center mb-6 overflow-hidden border border-amber-600/30">
@@ -320,7 +516,7 @@
                 </div>
             </div>
 
-            <!-- Product 7: Story / Campaign Games Bundle -->
+            <!-- Product 15: Story / Campaign Games Bundle -->
             <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
                 <div>
                     <div class="relative h-48 rounded-xl bg-gradient-to-br from-purple-600/20 to-pink-600/20 flex items-center justify-center mb-6 overflow-hidden border border-purple-500/30">
@@ -417,139 +613,40 @@
         let cart = [];
         const STORE_WHATSAPP_NUMBER = "9626780123835";
 
-        // Animated Counters
-        function animateCounter(id, target, duration) {
-            let start = 0;
-            const increment = target / (duration / 16);
+        // Dynamic Animated Counters (Medium Speed - 5 Seconds Duration)
+        function animateCounterSmooth(id, target, durationMs) {
             const element = document.getElementById(id);
             if (!element) return;
 
-            const timer = setInterval(() => {
-                start += increment;
-                if (start >= target) {
-                    element.textContent = target;
-                    clearInterval(timer);
+            let startTime = null;
+            const startValue = 1;
+
+            function animationStep(currentTime) {
+                if (!startTime) startTime = currentTime;
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / durationMs, 1);
+                
+                // Ease-out cubic formula for steady, smooth deceleration
+                const easeOutProgress = 1 - Math.pow(1 - progress, 3);
+                const currentValue = Math.floor(startValue + (target - startValue) * easeOutProgress);
+
+                element.textContent = currentValue;
+
+                if (progress < 1) {
+                    requestAnimationFrame(animationStep);
                 } else {
-                    element.textContent = Math.floor(start);
+                    element.textContent = target;
                 }
-            }, 16);
+            }
+
+            requestAnimationFrame(animationStep);
         }
 
         window.onload = function() {
-            animateCounter('counter-orders', 400, 1200);
-            animateCounter('counter-clients', 250, 1200);
+            // Set animation duration to exactly 5000ms (5 seconds)
+            animateCounterSmooth('counter-orders', 400, 5000);
+            animateCounterSmooth('counter-clients', 250, 5000);
         };
 
         function showToast(message) {
-            const toast = document.getElementById('toast');
-            const toastMessage = document.getElementById('toast-message');
-            toastMessage.textContent = message;
-            toast.classList.remove('translate-y-32', 'opacity-0');
-            setTimeout(() => {
-                toast.classList.add('translate-y-32', 'opacity-0');
-            }, 3000);
-        }
-
-        function addToCart(name, price, iconClass, id) {
-            const existingItem = cart.find(item => item.id === id);
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({ id, name, price, iconClass, quantity: 1 });
-            }
-            updateCartUI();
-            showToast(`تمت إضافة "${name}" إلى السلة`);
-        }
-
-        function removeFromCart(id) {
-            cart = cart.filter(item => item.id !== id);
-            updateCartUI();
-            showToast('تم إزالة المنتج من السلة');
-        }
-
-        function updateQuantity(id, change) {
-            const item = cart.find(item => item.id === id);
-            if (item) {
-                item.quantity += change;
-                if (item.quantity <= 0) {
-                    removeFromCart(id);
-                } else {
-                    updateCartUI();
-                }
-            }
-        }
-
-        function updateCartUI() {
-            const countBadge = document.getElementById('cart-count');
-            const container = document.getElementById('cart-items-container');
-            const totalElement = document.getElementById('cart-total');
-
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-
-            countBadge.textContent = totalItems;
-            totalElement.textContent = totalPrice;
-
-            if (cart.length === 0) {
-                container.innerHTML = `
-                    <div class="text-center py-12">
-                        <div class="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center mx-auto mb-4 text-slate-500">
-                            <i class="fa-solid fa-cart-shopping text-2xl"></i>
-                        </div>
-                        <p class="text-slate-400 font-medium">سلة المشتريات فارغة حالياً</p>
-                        <p class="text-xs text-slate-500 mt-1">اختر ألعابك ومنتجاتك وأضفها للسلة لبدء الطلب</p>
-                    </div>
-                `;
-                return;
-            }
-
-            container.innerHTML = cart.map(item => `
-                <div class="flex items-center justify-between bg-slate-800/50 border border-slate-700/60 p-4 rounded-xl gap-4">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-indigo-600/20 text-indigo-400 flex items-center justify-center text-lg shrink-0">
-                            <i class="${item.iconClass}"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-white text-sm sm:text-base">${item.name}</h4>
-                            <p class="text-emerald-400 text-xs font-bold mt-0.5">${item.price} دينار أردني</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <div class="flex items-center bg-slate-800 rounded-lg border border-slate-700">
-                            <button onclick="updateQuantity('${item.id}', -1)" class="px-2.5 py-1 text-slate-400 hover:text-white transition-colors">-</button>
-                            <span class="px-2 text-sm font-bold text-white">${item.quantity}</span>
-                            <button onclick="updateQuantity('${item.id}', 1)" class="px-2.5 py-1 text-slate-400 hover:text-white transition-colors">+</button>
-                        </div>
-                        <button onclick="removeFromCart('${item.id}')" class="text-red-400 hover:text-red-300 p-2 transition-colors">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </button>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function toggleCartModal() {
-            const modal = document.getElementById('cart-modal');
-            modal.classList.toggle('hidden');
-        }
-
-        function checkout() {
-            if (cart.length === 0) {
-                showToast('السلة فارغة، يرجى إضافة منتجات أولاً');
-                return;
-            }
-
-            let message = "مرحباً Forever-Store، أود إتمام طلب المنتجات التالية:%0A%0A";
-            cart.forEach((item, index) => {
-                message += `*${index + 1}. ${item.name}*%0A   - العدد: ${item.quantity}%0A   - السعر: ${item.price * item.quantity} دينار%0A`;
-            });
-
-            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            message += `%0A💰 *المجموع الكلي:* ${totalPrice} دينار أردني`;
-
-            const whatsappUrl = `https://wa.me/${STORE_WHATSAPP_NUMBER}?text=${message}`;
-            window.open(whatsappUrl, '_blank');
-        }
-    </script>
-</body>
-</html>
+<!-- ... existing code -->
