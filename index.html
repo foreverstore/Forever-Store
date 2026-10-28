@@ -1617,6 +1617,32 @@
         // الدينار الأردني هو العملة الرئيسية الافتراضية
         let currentCurrency = 'JOD';
 
+        // Load cart and currency from localStorage
+        function loadSavedState() {
+            try {
+                const savedCart = localStorage.getItem('forever_store_cart');
+                if (savedCart) {
+                    cart = JSON.parse(savedCart);
+                }
+                const savedCurrency = localStorage.getItem('forever_store_currency');
+                if (savedCurrency && exchangeRates[savedCurrency]) {
+                    currentCurrency = savedCurrency;
+                }
+            } catch (e) {
+                console.error("Failed to load saved cart state:", e);
+            }
+        }
+
+        // Save cart to localStorage
+        function saveCartState() {
+            try {
+                localStorage.setItem('forever_store_cart', JSON.stringify(cart));
+                localStorage.setItem('forever_store_currency', currentCurrency);
+            } catch (e) {
+                console.error("Failed to save cart state:", e);
+            }
+        }
+
         // Filter products by category tab
         function filterCategory(categoryKey) {
             const tabs = document.querySelectorAll('.category-tab');
@@ -1684,6 +1710,7 @@
         function changeCurrency(currencyKey) {
             if (exchangeRates[currencyKey]) {
                 currentCurrency = currencyKey;
+                saveCartState();
                 updatePricesOnPage();
                 updateCartUI();
             }
@@ -1722,12 +1749,14 @@
             } else {
                 cart.push({ id, name, priceJod, iconClass, quantity: 1 });
             }
+            saveCartState();
             showToast(`تمت إضافة "${name}" إلى السلة`);
             updateCartUI();
         }
 
         function removeFromCart(id) {
             cart = cart.filter(item => item.id !== id);
+            saveCartState();
             updateCartUI();
         }
 
@@ -1864,7 +1893,9 @@
 
         // Initialize script on page load
         window.onload = function() {
+            loadSavedState();
             autoDetectRegionCurrency();
+            updateCartUI();
             animateCounterSmooth('counter-orders', 400, 2000);
             animateCounterSmooth('counter-clients', 250, 2000);
         };
