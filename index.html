@@ -3,195 +3,552 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FOREVER STORE | CYBER CHECKER</title>
-    <!-- استدعاء Tailwind CSS -->
+    <title>Forever-Store | متجر المنتجات الرقمية والألعاب</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- خطوط شبابية حادة ومتناسقة للـ Gaming -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Tajawal:wght@500;800&display=swap" rel="stylesheet">
-    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font: Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            card: '#1e293b',
+                            accent: '#6366f1',
+                            glow: '#818cf8',
+                            success: '#10b981',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        body { 
-            font-family: 'Tajawal', sans-serif; 
-            background-color: #030712;
-            background-image: radial-gradient(circle at 50% 50%, #1e113a 0%, #030712 100%);
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #0b0f19;
+            color: #f8fafc;
         }
-        .cyber-logo { font-family: 'Orbitron', sans-serif; }
-        .neon-glow-purple {
-            box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
-            text-shadow: 0 0 8px rgba(168, 85, 247, 0.6);
+        .glow-effect {
+            box-shadow: 0 0 25px rgba(99, 102, 241, 0.25);
         }
-        .neon-glow-cyan {
-            box-shadow: 0 0 15px rgba(6, 182, 212, 0.4);
+        .glow-hover:hover {
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
         }
-        .cyber-border {
-            border: 1px solid rgba(168, 85, 247, 0.2);
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-        .cyber-border:focus-within {
-            border-color: #06b6d4;
-            box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6366f1;
         }
     </style>
 </head>
-<body class="text-gray-100 min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-black">
+<body class="bg-[#0b0f19] text-gray-100 min-h-screen flex flex-col selection:bg-indigo-500 selection:text-white">
 
-    <!-- الهيدر السايبيري -->
-    <header class="border-b border-purple-900/40 bg-gray-950/70 backdrop-blur-md sticky top-0 z-50 px-4 py-4">
-        <div class="max-w-5xl mx-auto flex justify-between items-center">
-            <h1 class="cyber-logo text-2xl font-black tracking-widest text-purple-500 neon-glow-purple">FOREVER STORE</h1>
-            <div class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
-                <span class="text-xs tracking-wider text-cyan-400 font-bold uppercase">System Online</span>
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-5 left-5 z-50 transform translate-y-32 opacity-0 transition-all duration-300 bg-emerald-600 text-white px-6 py-3 rounded-xl shadow-2xl flex items-center gap-3">
+        <i class="fa-solid fa-circle-check text-xl"></i>
+        <span id="toast-message" class="font-bold">تمت إضافة المنتج للسلة بنجاح!</span>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-40 bg-[#0f172a]/90 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center shadow-lg glow-effect">
+                    <i class="fa-solid fa-store text-2xl text-white"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-black tracking-wider bg-gradient-to-r from-indigo-400 to-violet-300 bg-clip-text text-transparent">Forever-Store</h1>
+                    <p class="text-xs text-slate-400 font-medium">متجرك الموثوق للألعاب والخدمات الرقمية</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3 sm:gap-4">
+                <!-- Instagram Link -->
+                <a href="https://www.instagram.com/forever_store_jo/" target="_blank" class="bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 p-2.5 rounded-xl text-white hover:opacity-90 transition-opacity flex items-center justify-center shadow-md" title="إنستغرام">
+                    <i class="fa-brands fa-instagram text-xl"></i>
+                </a>
+
+                <!-- Cart Button -->
+                <button onclick="toggleCartModal()" class="relative bg-slate-800 hover:bg-slate-700 border border-slate-700 px-4 py-2.5 rounded-xl flex items-center gap-2.5 transition-all duration-200">
+                    <i class="fa-solid fa-cart-shopping text-indigo-400 text-lg"></i>
+                    <span class="hidden sm:inline text-sm font-bold">السلة</span>
+                    <span id="cart-count" class="absolute -top-2 -right-2 bg-indigo-600 text-white text-xs w-6 h-6 rounded-full flex items-center justify-center font-black shadow-md">0</span>
+                </button>
             </div>
         </div>
     </header>
 
-    <!-- واجهة الفحص والتحقق المركزية -->
-    <main class="max-w-xl w-full mx-auto px-4 py-12 flex-grow flex flex-col justify-center">
-        <div class="bg-gray-950/80 border-2 border-purple-500/20 p-8 rounded-3xl shadow-2xl relative overflow-hidden backdrop-blur-xl">
+    <!-- Hero Section -->
+    <section class="relative py-16 lg:py-20 overflow-hidden bg-gradient-to-b from-[#0f172a] to-[#0b0f19] border-b border-slate-800/60">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#6366f1_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             
-            <!-- تأثيرات ضوئية خلفية -->
-            <div class="absolute -top-24 -left-24 w-48 h-48 bg-purple-600/10 rounded-full blur-3xl"></div>
-            <div class="absolute -bottom-24 -right-24 w-48 h-48 bg-cyan-600/10 rounded-full blur-3xl"></div>
-
-            <div class="text-center mb-8 relative z-10">
-                <h2 class="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-200 to-cyan-400 mb-3">نظام التحقق الذكي</h2>
-                <p class="text-gray-400 text-sm">أدخل رابط المنشور أو الريل للتأكد من حالة توفر حساب السوني فوراً</p>
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-bold mb-6 animate-pulse">
+                <i class="fa-solid fa-shield-halved"></i> طبعاً كل شيء عنا شرعي 100%
             </div>
 
-            <!-- حقل الإدخال وزر الفحص -->
-            <div class="space-y-4 relative z-10">
-                <div class="cyber-border bg-gray-900/90 rounded-2xl p-2 transition duration-300">
-                    <label class="block text-[10px] uppercase tracking-widest text-purple-400 font-bold mb-1 mr-2">Instagram Link Input</label>
-                    <input type="text" id="reel-input" placeholder="https://www.instagram.com/..." 
-                           class="w-full bg-transparent text-left px-2 py-2 text-sm text-cyan-300 placeholder-gray-600 focus:outline-none tracking-wide">
+            <h2 class="text-3xl sm:text-5xl lg:text-6xl font-black mb-6 tracking-tight leading-tight">
+                متجرك ومكانك الأول <br/>
+                <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">بأسعار تناسب الجميع</span>
+            </h2>
+
+            <!-- Counter Stats -->
+            <div class="grid grid-cols-2 max-w-lg mx-auto gap-4 my-8 p-4 bg-slate-900/60 rounded-2xl border border-slate-800 backdrop-blur-sm">
+                <div class="p-3 border-l border-slate-800/80">
+                    <div class="text-3xl sm:text-4xl font-black text-indigo-400 flex justify-center items-center gap-1">
+                        +<span id="counter-orders">0</span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-slate-400 font-bold mt-1">طلب مكتمل</p>
                 </div>
-                
-                <button onclick="checkAccount()" class="w-full bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-500 hover:to-cyan-500 text-gray-950 font-black text-base py-4 px-4 rounded-2xl transition duration-300 tracking-wide uppercase shadow-lg neon-glow-cyan transform hover:scale-[1.01] active:scale-[0.99]">
-                    اضغط لبدء الفحص ⚡
-                </button>
+                <div class="p-3">
+                    <div class="text-3xl sm:text-4xl font-black text-emerald-400 flex justify-center items-center gap-1">
+                        +<span id="counter-clients">0</span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-slate-400 font-bold mt-1">عميل سعيد</p>
+                </div>
             </div>
 
-            <!-- قسم إظهار نتيجة الفحص -->
-            <div id="result-container" class="mt-8 hidden transition duration-500">
-                <!-- يتم تعبئتها ديناميكياً -->
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#products" class="bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-bold px-8 py-3.5 rounded-xl shadow-lg glow-effect transition-all duration-200">
+                    تصفح المنتجات الآن <i class="fa-solid fa-arrow-down mr-2"></i>
+                </a>
+                <a href="https://wa.me/9626780123835" target="_blank" class="bg-emerald-600/20 hover:bg-emerald-600/30 border border-emerald-500/30 text-emerald-400 font-bold px-8 py-3.5 rounded-xl transition-all duration-200 flex items-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-emerald-400 text-xl"></i> تواصل عبر الواتساب
+                </a>
             </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <main id="products" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 flex-grow">
+        <div class="flex items-center justify-between mb-10">
+            <div>
+                <h3 class="text-2xl sm:text-3xl font-black text-white">قائمة المنتجات والألعاب</h3>
+                <p class="text-sm text-slate-400 mt-1">جميع الألعاب أوفلاين ستيم - تلعب بروقان وبدون أي ازعاج</p>
+            </div>
+            <div class="text-sm text-indigo-400 font-bold bg-indigo-500/10 px-4 py-2 rounded-xl border border-indigo-500/20 hidden sm:block">
+                العملة: دينار أردني (JOD)
+            </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Product 1: Discord Nitro 3 Months -->
+            <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
+                <div>
+                    <div class="relative h-48 rounded-xl bg-gradient-to-br from-[#5865F2]/20 to-purple-600/20 flex items-center justify-center mb-6 overflow-hidden border border-[#5865F2]/30">
+                        <div class="absolute inset-0 bg-[radial-gradient(#5865F2_1px,transparent_1px)] [background-size:12px_12px] opacity-20"></div>
+                        <i class="fa-brands fa-discord text-7xl text-[#5865F2] group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="absolute top-3 right-3 bg-[#5865F2] text-white text-xs font-black px-3 py-1 rounded-lg shadow-md">شائع جداً</span>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">ديسكورد نيترو (3 أشهر)</h4>
+                    <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1.5">
+                        <p class="text-emerald-400 font-bold flex items-center gap-1.5"><i class="fa-solid fa-circle-check"></i> طبعاً كل شيء عنا شرعي 100%</p>
+                        <p class="flex items-center gap-1.5"><i class="fa-solid fa-user-check text-indigo-400"></i> للحسابات التي لم تفعل نيترو من قبل أو مر عليها سنة بدون تفعيل</p>
+                        <p class="flex items-center gap-1.5"><i class="fa-solid fa-clock text-amber-400"></i> شرط: عمر الحساب أكثر من شهر</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
+                        <span class="text-sm text-slate-400 font-semibold">السعر:</span>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-2xl font-black text-emerald-400">2</span>
+                            <span class="text-xs text-slate-400 font-bold">دينار أردني</span>
+                        </div>
+                    </div>
+                    <button onclick="addToCart('ديسكورد نيترو 3 أشهر', 2, 'fa-brands fa-discord', 'discord-3m')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
+                        <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 2: Black Myth: Wukong -->
+            <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
+                <div>
+                    <div class="relative h-48 rounded-xl bg-gradient-to-br from-amber-600/20 to-orange-600/20 flex items-center justify-center mb-6 overflow-hidden border border-amber-500/30">
+                        <div class="absolute inset-0 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:12px_12px] opacity-20"></div>
+                        <i class="fa-solid fa-wand-magic-sparkles text-7xl text-amber-400 group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="absolute top-3 right-3 bg-amber-600 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md">الأكثر طلباً 🔥</span>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">Black Myth: Wukong</h4>
+                    <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
+                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين</p>
+                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
+                        <span class="text-sm text-slate-400 font-semibold">السعر:</span>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-2xl font-black text-emerald-400">2</span>
+                            <span class="text-xs text-slate-400 font-bold">دينار أردني</span>
+                        </div>
+                    </div>
+                    <button onclick="addToCart('لعبة Black Myth: Wukong (أوفلاين)', 2, 'fa-solid fa-wand-magic-sparkles', 'wukong')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
+                        <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 3: Cyberpunk 2077 -->
+            <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
+                <div>
+                    <div class="relative h-48 rounded-xl bg-gradient-to-br from-yellow-500/20 to-cyan-500/20 flex items-center justify-center mb-6 overflow-hidden border border-yellow-500/30">
+                        <div class="absolute inset-0 bg-[radial-gradient(#eab308_1px,transparent_1px)] [background-size:12px_12px] opacity-20"></div>
+                        <i class="fa-solid fa-robot text-7xl text-yellow-400 group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="absolute top-3 right-3 bg-yellow-500 text-black font-black text-xs px-3 py-1 rounded-lg shadow-md">شاملة الإضافة</span>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">Cyberpunk 2077 + DLC</h4>
+                    <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
+                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين</p>
+                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
+                        <span class="text-sm text-slate-400 font-semibold">السعر:</span>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-2xl font-black text-emerald-400">2</span>
+                            <span class="text-xs text-slate-400 font-bold">دينار أردني</span>
+                        </div>
+                    </div>
+                    <button onclick="addToCart('لعبة Cyberpunk 2077 (أوفلاين)', 2, 'fa-solid fa-robot', 'cyberpunk')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
+                        <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 4: Red Dead Redemption 2 -->
+            <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
+                <div>
+                    <div class="relative h-48 rounded-xl bg-gradient-to-br from-red-600/20 to-amber-700/20 flex items-center justify-center mb-6 overflow-hidden border border-red-500/30">
+                        <div class="absolute inset-0 bg-[radial-gradient(#ef4444_1px,transparent_1px)] [background-size:12px_12px] opacity-20"></div>
+                        <i class="fa-solid fa-hat-cowboy text-7xl text-red-400 group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="absolute top-3 right-3 bg-red-600 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md">أسطورية</span>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">Red Dead Redemption 2</h4>
+                    <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
+                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين</p>
+                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
+                        <span class="text-sm text-slate-400 font-semibold">السعر:</span>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-2xl font-black text-emerald-400">2</span>
+                            <span class="text-xs text-slate-400 font-bold">دينار أردني</span>
+                        </div>
+                    </div>
+                    <button onclick="addToCart('لعبة Red Dead Redemption 2 (أوفلاين)', 2, 'fa-solid fa-hat-cowboy', 'rdr2')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
+                        <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 5: Resident Evil Bundle -->
+            <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
+                <div>
+                    <div class="relative h-48 rounded-xl bg-gradient-to-br from-rose-700/20 to-red-900/20 flex items-center justify-center mb-6 overflow-hidden border border-rose-600/30">
+                        <div class="absolute inset-0 bg-[radial-gradient(#e11d48_1px,transparent_1px)] [background-size:12px_12px] opacity-20"></div>
+                        <i class="fa-solid fa-biohazard text-7xl text-rose-500 group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="absolute top-3 right-3 bg-rose-600 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md">بكج توفيري</span>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">بكج ألعاب رزدينت ايفيل</h4>
+                    <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
+                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين شامل الأجزاء</p>
+                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
+                        <span class="text-sm text-slate-400 font-semibold">السعر:</span>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-2xl font-black text-emerald-400">3</span>
+                            <span class="text-xs text-slate-400 font-bold">دنانير</span>
+                        </div>
+                    </div>
+                    <button onclick="addToCart('بكج رزدينت ايفيل', 3, 'fa-solid fa-biohazard', 're-bundle')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
+                        <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 6: Souls Bundle -->
+            <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
+                <div>
+                    <div class="relative h-48 rounded-xl bg-gradient-to-br from-amber-600/20 to-slate-800/40 flex items-center justify-center mb-6 overflow-hidden border border-amber-600/30">
+                        <div class="absolute inset-0 bg-[radial-gradient(#d97706_1px,transparent_1px)] [background-size:12px_12px] opacity-20"></div>
+                        <i class="fa-solid fa-shield-halved text-7xl text-amber-500 group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="absolute top-3 right-3 bg-amber-600 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md">تحدي ممتع</span>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">بكج ألعاب السولز</h4>
+                    <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
+                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين يضم أشهر ألعاب السولز</p>
+                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
+                        <span class="text-sm text-slate-400 font-semibold">السعر:</span>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-2xl font-black text-emerald-400">3</span>
+                            <span class="text-xs text-slate-400 font-bold">دنانير</span>
+                        </div>
+                    </div>
+                    <button onclick="addToCart('بكج ألعاب السولز', 3, 'fa-solid fa-shield-halved', 'souls-bundle')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
+                        <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 7: Story / Campaign Games Bundle -->
+            <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
+                <div>
+                    <div class="relative h-48 rounded-xl bg-gradient-to-br from-purple-600/20 to-pink-600/20 flex items-center justify-center mb-6 overflow-hidden border border-purple-500/30">
+                        <div class="absolute inset-0 bg-[radial-gradient(#a855f7_1px,transparent_1px)] [background-size:12px_12px] opacity-20"></div>
+                        <i class="fa-solid fa-book-open text-7xl text-purple-400 group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="absolute top-3 right-3 bg-purple-600 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md">ألعاب تختيم</span>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">بكج ألعاب التختيم</h4>
+                    <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
+                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين لمجموعة ألعاب القصة</p>
+                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
+                        <span class="text-sm text-slate-400 font-semibold">السعر:</span>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-2xl font-black text-emerald-400">3</span>
+                            <span class="text-xs text-slate-400 font-bold">دنانير</span>
+                        </div>
+                    </div>
+                    <button onclick="addToCart('بكج ألعاب التختيم', 3, 'fa-solid fa-book-open', 'story-bundle')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
+                        <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
+                    </button>
+                </div>
+            </div>
+
         </div>
     </main>
 
-    <!-- الفوتر مع رابط الإنستاجرام المطلوب بآخر الصفحة -->
-    <footer class="text-center py-8 px-4 flex flex-col items-center justify-center gap-4 border-t border-purple-950/20 bg-gray-950/40">
-        <a href="https://www.instagram.com/forever_store_jo/" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-purple-500/30 bg-purple-950/20 text-purple-400 hover:text-purple-300 font-bold text-sm tracking-wide transition duration-300 hover:border-purple-500/60 shadow-lg hover:shadow-purple-500/10">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-            تابعنا وتواصل معنا عبر إنستاجرام
-        </a>
-        <div class="text-[10px] tracking-widest font-mono text-purple-900/50">
-            &copy; 2026 FOREVER STORE // ALL RIGHTS RESERVED.
+    <!-- Cart Modal Backdrop & Drawer -->
+    <div id="cart-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-lg overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
+            <!-- Modal Header -->
+            <div class="p-6 border-b border-slate-800 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-indigo-600/20 flex items-center justify-center text-indigo-400">
+                        <i class="fa-solid fa-cart-shopping text-lg"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">سلة المشتريات</h3>
+                </div>
+                <button onclick="toggleCartModal()" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center transition-colors">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Cart Items Container -->
+            <div id="cart-items-container" class="p-6 overflow-y-auto flex-grow space-y-4">
+                <!-- Dynamic Items -->
+            </div>
+
+            <!-- Modal Footer / Checkout -->
+            <div class="p-6 border-t border-slate-800 bg-slate-950/50">
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-slate-400 font-medium">المجموع الكلي:</span>
+                    <div class="flex items-baseline gap-1">
+                        <span id="cart-total" class="text-2xl font-black text-emerald-400">0</span>
+                        <span class="text-sm text-slate-400 font-bold">دينار أردني</span>
+                    </div>
+                </div>
+                <button onclick="checkout()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20">
+                    <i class="fa-brands fa-whatsapp text-xl"></i> إتمام الطلب عبر الواتساب
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#0f172a] border-t border-slate-800 text-slate-400 py-10 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center shadow-lg">
+                    <i class="fa-solid fa-store text-xl text-white"></i>
+                </div>
+                <span class="text-xl font-black text-white">Forever-Store</span>
+            </div>
+            <p class="text-sm mb-6 max-w-md mx-auto text-slate-400">متجرك ومكانك الأول بأسعار تناسب الجميع - ألعاب أوفلاين وخدمات رقمية شرعية 100%.</p>
+            
+            <div class="flex justify-center gap-4 mb-6">
+                <a href="https://www.instagram.com/forever_store_jo/" target="_blank" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-gradient-to-tr hover:from-amber-500 hover:to-purple-600 text-white flex items-center justify-center transition-all">
+                    <i class="fa-brands fa-instagram text-lg"></i>
+                </a>
+                <a href="https://wa.me/9626780123835" target="_blank" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-emerald-600 text-white flex items-center justify-center transition-all">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                </a>
+            </div>
+
+            <p class="text-xs text-slate-500">جميع الحقوق محفوظة © Forever-Store</p>
         </div>
     </footer>
 
-    <!-- نظام التشغيل وقاعدة البيانات المدمجة -->
+    <!-- JavaScript Logic -->
     <script>
-        const accountsData = [
-          {
-            "reel_url": "https://www.instagram.com/p/DY-Qq3CMceq",
-            "status": "available",
-            "price": "10 JOD"
-          },
-          {
-            "reel_url": "https://www.instagram.com/p/DX4L6bds1p_",
-            "status": "available",
-            "price": "10 JOD"
-          },
-          {
-            "reel_url": "https://www.instagram.com/p/DX4MI_bMZLf",
-            "status": "available",
-            "price": "10 JOD"
-          },
-          {
-            "reel_url": "https://www.instagram.com/p/DUnq4z_jIKW",
-            "status": "available",
-            "price": "Unknown (تشكيلة)"
-          }
-        ];
+        let cart = [];
+        const STORE_WHATSAPP_NUMBER = "9626780123835";
 
-        const storeConfig = {
-            cliq_or_orange: "0780123835",
-            name: "Maryam",
-            instagram_profile: "https://www.instagram.com/forever_store_jo/"
+        // Animated Counters
+        function animateCounter(id, target, duration) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            const element = document.getElementById(id);
+            if (!element) return;
+
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(start);
+                }
+            }, 16);
+        }
+
+        window.onload = function() {
+            animateCounter('counter-orders', 400, 1200);
+            animateCounter('counter-clients', 250, 1200);
         };
 
-        async function checkAccount() {
-            const inputUrl = document.getElementById('reel-input').value.trim();
-            const resultContainer = document.getElementById('result-container');
-            
-            if (!inputUrl) {
-                alert("يا غالي، حط رابط الريل أو المنشور أولاً عشان نفحصه!");
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            toastMessage.textContent = message;
+            toast.classList.remove('translate-y-32', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-32', 'opacity-0');
+            }, 3000);
+        }
+
+        function addToCart(name, price, iconClass, id) {
+            const existingItem = cart.find(item => item.id === id);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ id, name, price, iconClass, quantity: 1 });
+            }
+            updateCartUI();
+            showToast(`تمت إضافة "${name}" إلى السلة`);
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCartUI();
+            showToast('تم إزالة المنتج من السلة');
+        }
+
+        function updateQuantity(id, change) {
+            const item = cart.find(item => item.id === id);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(id);
+                } else {
+                    updateCartUI();
+                }
+            }
+        }
+
+        function updateCartUI() {
+            const countBadge = document.getElementById('cart-count');
+            const container = document.getElementById('cart-items-container');
+            const totalElement = document.getElementById('cart-total');
+
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+            countBadge.textContent = totalItems;
+            totalElement.textContent = totalPrice;
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12">
+                        <div class="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center mx-auto mb-4 text-slate-500">
+                            <i class="fa-solid fa-cart-shopping text-2xl"></i>
+                        </div>
+                        <p class="text-slate-400 font-medium">سلة المشتريات فارغة حالياً</p>
+                        <p class="text-xs text-slate-500 mt-1">اختر ألعابك ومنتجاتك وأضفها للسلة لبدء الطلب</p>
+                    </div>
+                `;
                 return;
             }
 
-            resultContainer.classList.remove('hidden');
-            resultContainer.innerHTML = `
-                <div class="flex flex-col items-center justify-center py-4 space-y-2">
-                    <div class="w-6 h-6 border-2 border-cyan-400 border-t-transparent rounded-full animate-spin"></div>
-                    <p class="text-center text-cyan-400 font-mono text-xs tracking-widest uppercase">Scanning Mainframe...</p>
-                </div>`;
-
-            setTimeout(() => {
-                let cleanInput = inputUrl.split('?')[0].replace(/\/$/, "");
-                cleanInput = cleanInput.replace("://m.instagram.com", "://www.instagram.com");
-
-                const foundAccount = accountsData.find(acc => {
-                    let cleanJsonUrl = acc.reel_url.split('?')[0].replace(/\/$/, "");
-                    cleanJsonUrl = cleanJsonUrl.replace("://m.instagram.com", "://www.instagram.com");
-                    return cleanJsonUrl === cleanInput;
-                });
-
-                if (foundAccount && foundAccount.status === 'available') {
-                    // كرت الحساب المتوفر
-                    resultContainer.innerHTML = `
-                        <div class="bg-gradient-to-b from-green-950/40 to-gray-950 border-2 border-green-500/30 p-6 rounded-2xl text-center shadow-lg shadow-green-500/5">
-                            <div class="inline-flex items-center gap-1.5 bg-green-500/10 border border-green-500/30 text-green-400 font-bold text-[11px] px-3 py-1 rounded-full mb-3 uppercase tracking-wider">
-                                <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span> متاح حالياً
-                            </div>
-                            <h3 class="text-white font-extrabold text-xl mb-1">الحساب متوفر وجاهز للتسليم!</h3>
-                            <p class="text-cyan-400 font-black text-2xl tracking-wide mb-4 font-mono">${foundAccount.price}</p>
-                            
-                            <div class="bg-gray-900/80 border border-gray-800 rounded-xl p-3 mb-4 text-right space-y-1.5 text-xs">
-                                <p class="text-gray-400 font-bold text-center border-b border-gray-800 pb-1 mb-1 text-purple-400">💵 معلومات الدفع المعتمدة 💵</p>
-                                <p class="flex justify-between"><span class="text-gray-500">كليك / أورانج موني:</span> <span class="text-green-400 font-mono font-bold">${storeConfig.cliq_or_orange}</span></p>
-                                <p class="flex justify-between"><span class="text-gray-500">الاسم المعتمد:</span> <span class="text-white font-bold">${storeConfig.name}</span></p>
-                            </div>
-
-                            <button onclick="orderAccount('${foundAccount.reel_url}')" class="w-full bg-green-500 hover:bg-green-400 text-gray-950 font-black py-3 px-4 rounded-xl transition duration-300 tracking-wide">
-                                انسخ الرابط وابعث الإشعار ديركت ←
-                            </button>
+            container.innerHTML = cart.map(item => `
+                <div class="flex items-center justify-between bg-slate-800/50 border border-slate-700/60 p-4 rounded-xl gap-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-600/20 text-indigo-400 flex items-center justify-center text-lg shrink-0">
+                            <i class="${item.iconClass}"></i>
                         </div>
-                    `;
-                } else {
-                    // 🚨 تعديل المنطق: إذا كان الحساب "مباع" أو "غير مدرج بالنظام" يظهر هذا الكرت الأحمر الصريح 🚨
-                    resultContainer.innerHTML = `
-                        <div class="bg-gradient-to-b from-red-950/50 to-gray-950 border-2 border-red-500/40 p-6 rounded-2xl text-center shadow-lg shadow-red-500/5">
-                            <div class="inline-flex items-center gap-1.5 bg-red-500/10 border border-red-500/30 text-red-400 font-bold text-[11px] px-3 py-1 rounded-full mb-3 uppercase tracking-wider">
-                                NOT AVAILABLE
-                            </div>
-                            <h3 class="text-gray-200 font-bold text-lg mb-1">غير مدرج بالنظام أو تم بيعه مسبقاً!</h3>
-                            <p class="text-gray-500 text-xs px-4 mb-4">للأسف هذا الحساب لم نعد نملكه حالياً. يمكنك التحقق من ديركت الإنستاجرام مباشرة للتأكد من وجود بديل فوري.</p>
-                            <a href="${storeConfig.instagram_profile}" target="_blank" class="inline-block bg-red-600 hover:bg-red-500 text-white font-bold text-xs py-2 px-4 rounded-lg transition duration-300">
-                                تواصل معنا بالديركت للاستفسار ←
-                            </a>
+                        <div>
+                            <h4 class="font-bold text-white text-sm sm:text-base">${item.name}</h4>
+                            <p class="text-emerald-400 text-xs font-bold mt-0.5">${item.price} دينار أردني</p>
                         </div>
-                    `;
-                }
-            }, 1000);
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="flex items-center bg-slate-800 rounded-lg border border-slate-700">
+                            <button onclick="updateQuantity('${item.id}', -1)" class="px-2.5 py-1 text-slate-400 hover:text-white transition-colors">-</button>
+                            <span class="px-2 text-sm font-bold text-white">${item.quantity}</span>
+                            <button onclick="updateQuantity('${item.id}', 1)" class="px-2.5 py-1 text-slate-400 hover:text-white transition-colors">+</button>
+                        </div>
+                        <button onclick="removeFromCart('${item.id}')" class="text-red-400 hover:text-red-300 p-2 transition-colors">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
         }
 
-        function orderAccount(reelUrl) {
-            navigator.clipboard.writeText(reelUrl).then(() => {
-                alert("تم نسخ رابط الحساب تلقائياً! حوّل المبلغ على المحفظة، وافتح الديركت معنا وأرسل الرابط مع صورة الإشعار لتسليمك الحساب فوراً.");
-                window.open(storeConfig.instagram_profile, '_blank');
-            }).catch(() => {
-                window.open(storeConfig.instagram_profile, '_blank');
+        function toggleCartModal() {
+            const modal = document.getElementById('cart-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                showToast('السلة فارغة، يرجى إضافة منتجات أولاً');
+                return;
+            }
+
+            let message = "مرحباً Forever-Store، أود إتمام طلب المنتجات التالية:%0A%0A";
+            cart.forEach((item, index) => {
+                message += `*${index + 1}. ${item.name}*%0A   - العدد: ${item.quantity}%0A   - السعر: ${item.price * item.quantity} دينار%0A`;
             });
+
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            message += `%0A💰 *المجموع الكلي:* ${totalPrice} دينار أردني`;
+
+            const whatsappUrl = `https://wa.me/${STORE_WHATSAPP_NUMBER}?text=${message}`;
+            window.open(whatsappUrl, '_blank');
         }
     </script>
 </body>
