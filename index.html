@@ -102,11 +102,11 @@
                 <div class="relative hidden sm:block">
                     <select id="currency-select" onchange="changeCurrency(this.value)" class="bg-slate-800 border border-slate-700 text-white text-xs font-bold rounded-xl px-3 py-2 outline-none focus:border-indigo-500 transition-colors cursor-pointer">
                         <option value="JOD">🇯🇴 JOD - دينار أردني</option>
+                        <option value="USD">🇺🇸 USD - دولار أمريكي</option>
                         <option value="SAR">🇸🇦 SAR - ريال سعودي</option>
                         <option value="AED">🇦🇪 AED - درهم إماراتي</option>
                         <option value="KWD">🇰🇼 KWD - دينار كويتي</option>
                         <option value="BHD">🇧🇭 BHD - دينار بحريني</option>
-                        <option value="USD">🇺🇸 USD - دولار أمريكي</option>
                     </select>
                 </div>
 
@@ -1073,7 +1073,7 @@
                 <div class="p-4 pt-0 flex items-center justify-between border-t border-slate-800/80 mt-auto">
                     <div>
                         <span class="text-xs text-slate-400 block">سعر ستيم الأصلي: <span class="line-through text-slate-500"><span class="price-display" data-jod="220.00">220.00</span> <span class="currency-symbol">JOD</span></span></span>
-                        <span class="text-lg font-black text-emerald-400"><span class="price-display" data-jod="5.00">3.00</span> <span class="currency-symbol text-xs">JOD</span></span>
+                        <span class="text-lg font-black text-emerald-400"><span class="price-display" data-jod="5.00">5.00</span> <span class="currency-symbol text-xs">JOD</span></span>
                     </div>
                     <button onclick="addToCart('بكج السولز الشامل (كل الألعاب الأسطورية)', 5.00, 'fa-solid fa-box-open', 'soulsborne-master')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-1.5">
                         <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
@@ -1272,22 +1272,30 @@
                     <label class="block text-xs font-bold text-slate-400 mb-2">اختر طريقة الدفع المناسبة:</label>
                     <div class="grid grid-cols-2 gap-2 text-xs font-bold">
                         <label class="bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 p-2.5 rounded-xl cursor-pointer flex items-center gap-2 text-slate-200">
-                            <input type="radio" name="payment_method" value="card" checked class="accent-indigo-500">
+                            <input type="radio" name="payment_method" value="card" checked onchange="handlePaymentMethodChange(this.value)" class="accent-indigo-500">
                             <i class="fa-solid fa-credit-card text-indigo-400"></i> فيزا / ماستركارد
                         </label>
                         <label class="bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 p-2.5 rounded-xl cursor-pointer flex items-center gap-2 text-slate-200">
-                            <input type="radio" name="payment_method" value="cliq" class="accent-indigo-500">
+                            <input type="radio" name="payment_method" value="cliq" onchange="handlePaymentMethodChange(this.value)" class="accent-indigo-500">
                             <span class="text-indigo-300 font-black">CliQ</span> كليك (الأردن)
                         </label>
                         <label class="bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 p-2.5 rounded-xl cursor-pointer flex items-center gap-2 text-slate-200">
-                            <input type="radio" name="payment_method" value="paypal" class="accent-indigo-500">
+                            <input type="radio" name="payment_method" value="paypal" onchange="handlePaymentMethodChange(this.value)" class="accent-indigo-500">
                             <i class="fa-brands fa-paypal text-sky-400"></i> باي بال PayPal
                         </label>
                         <label class="bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 p-2.5 rounded-xl cursor-pointer flex items-center gap-2 text-slate-200">
-                            <input type="radio" name="payment_method" value="crypto" class="accent-indigo-500">
+                            <input type="radio" name="payment_method" value="crypto" onchange="handlePaymentMethodChange(this.value)" class="accent-indigo-500">
                             <i class="fa-brands fa-bitcoin text-amber-400"></i> USDT / Crypto
                         </label>
                     </div>
+                </div>
+
+                <!-- Info Box for Card / PayPal Platform License -->
+                <div id="usr-payment-info-box" class="bg-indigo-950/60 border border-indigo-500/30 p-3.5 rounded-2xl flex items-start gap-3 text-xs text-indigo-200 transition-all">
+                    <i class="fa-solid fa-shield-check text-indigo-400 text-lg mt-0.5 shrink-0"></i>
+                    <p class="leading-relaxed">
+                        عند الدفع بـ <strong class="text-white">الفيزا أو باي بال</strong>، سيتم تحويلك إلى منصة <strong class="text-emerald-400">usr.gg</strong> وهي منصة مرخصة من قبل <strong class="text-white">وزارة التجارة والصناعة السعودية</strong> وتحت إدارة <strong class="text-white">شركة دكان</strong>. الدفع آمن 100% وكل شيء مضمون!
+                    </p>
                 </div>
 
                 <div class="flex items-center justify-between pt-2 border-t border-slate-800">
@@ -1302,6 +1310,31 @@
                     <i class="fa-solid fa-lock"></i> إتمام الشراء والتأكيد
                 </button>
             </div>
+        </div>
+    </div>
+
+    <!-- Payment License Confirmation Modal -->
+    <div id="payment-notice-modal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4 hidden transition-opacity duration-300">
+        <div class="bg-[#0f172a] border border-indigo-500/40 w-full max-w-md rounded-3xl p-6 shadow-2xl text-center space-y-4">
+            <div class="w-16 h-16 rounded-2xl bg-indigo-600/20 text-indigo-400 border border-indigo-500/30 flex items-center justify-center text-3xl mx-auto shadow-lg">
+                <i class="fa-solid fa-shield-check"></i>
+            </div>
+
+            <h3 class="text-lg font-black text-white">تنويه الدفع الآمن 🔒</h3>
+
+            <div class="bg-slate-900/90 border border-slate-800 p-4 rounded-2xl text-xs sm:text-sm text-slate-300 leading-relaxed text-right space-y-2">
+                <p>
+                    عند الدفع عن طريق <strong class="text-white">الفيزا أو باي بال</strong> سيتم تحويلك إلى منصة <strong class="text-emerald-400">usr.gg</strong> وهي منصة مرخصة من قبل <strong class="text-white">وزارة التجارة والصناعة السعودية</strong> وتحت إدارة <strong class="text-white">شركة دكان</strong>.
+                </p>
+                <div class="pt-2 border-t border-slate-800 flex items-center gap-2 text-emerald-400 font-bold text-xs">
+                    <i class="fa-solid fa-circle-check text-sm"></i>
+                    <span>الدفع آمن 100% وكل شيء مضمون!</span>
+                </div>
+            </div>
+
+            <button onclick="confirmPaymentNotice()" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/30">
+                <i class="fa-solid fa-check"></i> موافق ومتابعة للدفع
+            </button>
         </div>
     </div>
 
@@ -1349,7 +1382,19 @@
     <!-- JavaScript Logic -->
     <script>
         let cart = [];
+        let pendingCheckoutUrl = null;
+        let currentCurrency = 'JOD';
         const STORE_WHATSAPP_NUMBER = "962780123835";
+
+        const currencyRates = {
+            'JOD': 1.0,
+            'SAR': 5.29,
+            'AED font-black': 5.18,
+            'AED': 5.18,
+            'KWD': 0.43,
+            'BHD': 0.53,
+            'USD': 1.41
+        };
         
         const LINK_DISCORD_NITRO = "https://usr.gg/service/dyskord-nytro-3-ashhr-b3-10349";
         const LINK_STEAM_BUNDLE = "https://usr.gg/service/bkgat-alaaab-aoflayn-10667";
@@ -1357,17 +1402,25 @@
         const LINK_RE4_REMAKE = "https://usr.gg/service/rzydnt-ayfyl-4-rymyk-10672";
 
         function checkWeekendBanner() {
-            try {
-                const now = new Date();
-                const options = { timeZone: 'Asia/Amman', weekday: 'short' };
-                const ammanDayStr = new Intl.DateTimeFormat('en-US', options).format(now);
-                
-                if (ammanDayStr === 'Thu' || ammanDayStr === 'Fri') {
-                    const banner = document.getElementById('weekend-banner');
-                    if (banner) banner.classList.remove('hidden');
+            // Amman time GMT+3
+            const now = new Date();
+            const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+            const ammanTime = new Date(utc + (3600000 * 3));
+            const day = ammanTime.getDay(); // 4 = Thursday, 5 = Friday
+            const banner = document.getElementById('weekend-banner');
+            if (banner) {
+                if (day === 4 || day === 5) {
+                    banner.classList.remove('hidden');
+                } else {
+                    banner.classList.add('hidden');
                 }
-            } catch (e) {
-                console.error("Error checking Amman time:", e);
+            }
+        }
+
+        function toggleCartModal() {
+            const modal = document.getElementById('cart-modal');
+            if (modal) {
+                modal.classList.toggle('hidden');
             }
         }
 
@@ -1378,15 +1431,133 @@
             }
         }
 
-        function searchProducts() {
-            const query = document.getElementById('product-search-input').value.toLowerCase().trim();
-            const cards = document.querySelectorAll('.product-card');
+        function addToCart(name, priceJod, iconClass, id) {
+            const existingIndex = cart.findIndex(item => item.id === id);
+            if (existingIndex > -1) {
+                cart[existingIndex].quantity += 1;
+            } else {
+                cart.push({ id, name, priceJod, iconClass, quantity: 1 });
+            }
+            showToast(`تمت إضافة "${name}" إلى السلة بنجاح!`);
+            updateCartUI();
+            saveState();
+        }
 
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCartUI();
+            saveState();
+        }
+
+        function changeQuantity(id, delta) {
+            const item = cart.find(i => i.id === id);
+            if (!item) return;
+            item.quantity += delta;
+            if (item.quantity <= 0) {
+                removeFromCart(id);
+            } else {
+                updateCartUI();
+                saveState();
+            }
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cart-items-container');
+            const countBadge = document.getElementById('cart-count');
+            const totalDisplay = document.getElementById('cart-total');
+            const totalCurrencyDisplay = document.getElementById('cart-total-currency');
+
+            let totalCount = 0;
+            let totalJod = 0;
+
+            if (container) {
+                container.innerHTML = '';
+                if (cart.length === 0) {
+                    container.innerHTML = `
+                        <div class="text-center py-8 text-slate-500 space-y-2">
+                            <i class="fa-solid fa-cart-flatbed text-4xl text-slate-600 mb-2"></i>
+                            <p class="text-sm font-bold">سلتك فارغة حالياً</p>
+                            <p class="text-xs text-slate-400">تصفح ألعابنا واشتراكاتنا واستمتع بأفضل العروض!</p>
+                        </div>
+                    `;
+                } else {
+                    cart.forEach(item => {
+                        const itemTotalJod = item.priceJod * item.quantity;
+                        totalCount += item.quantity;
+                        totalJod += itemTotalJod;
+
+                        const itemEl = document.createElement('div');
+                        itemEl.className = 'bg-slate-900 border border-slate-800 p-3 rounded-2xl flex items-center justify-between gap-3';
+                        itemEl.innerHTML = `
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-indigo-600/20 text-indigo-400 border border-indigo-500/20 flex items-center justify-center text-lg shrink-0">
+                                    <i class="${item.iconClass || 'fa-solid fa-box'}"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-xs font-bold text-white leading-tight">${item.name}</h5>
+                                    <span class="text-xs font-black text-emerald-400">${formatPrice(itemTotalJod)} ${currentCurrency}</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="flex items-center bg-slate-800 border border-slate-700 rounded-lg">
+                                    <button onclick="changeQuantity('${item.id}', -1)" class="w-6 h-6 flex items-center justify-center text-slate-300 hover:text-white font-bold text-xs">-</button>
+                                    <span class="px-2 text-xs font-bold text-white">${item.quantity}</span>
+                                    <button onclick="changeQuantity('${item.id}', 1)" class="w-6 h-6 flex items-center justify-center text-slate-300 hover:text-white font-bold text-xs">+</button>
+                                </div>
+                                <button onclick="removeFromCart('${item.id}')" class="text-slate-500 hover:text-rose-400 text-xs px-1">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </button>
+                            </div>
+                        `;
+                        container.appendChild(itemEl);
+                    });
+                }
+            }
+
+            if (countBadge) countBadge.innerText = totalCount;
+            if (totalDisplay) totalDisplay.innerText = formatPrice(totalJod);
+            if (totalCurrencyDisplay) totalCurrencyDisplay.innerText = currentCurrency;
+        }
+
+        function formatPrice(priceInJod) {
+            const rate = currencyRates[currentCurrency] || 1.0;
+            const converted = priceInJod * rate;
+            return converted.toFixed(2);
+        }
+
+        function changeCurrency(val) {
+            currentCurrency = val;
+            const elements = document.querySelectorAll('.price-display');
+            elements.forEach(el => {
+                const jodValue = parseFloat(el.getAttribute('data-jod'));
+                if (!isNaN(jodValue)) {
+                    el.innerText = formatPrice(jodValue);
+                }
+            });
+            const symbols = document.querySelectorAll('.currency-symbol');
+            symbols.forEach(sym => sym.innerText = currentCurrency);
+            updateCartUI();
+            saveState();
+        }
+
+        function filterCategory(category) {
+            const tabs = document.querySelectorAll('.category-tab');
+            tabs.forEach(t => {
+                t.classList.remove('bg-indigo-600', 'text-white');
+                t.classList.add('bg-slate-800/80', 'text-slate-300');
+            });
+
+            const activeTab = document.getElementById(`tab-${category}`);
+            if (activeTab) {
+                activeTab.classList.remove('bg-slate-800/80', 'text-slate-300');
+                activeTab.classList.add('bg-indigo-600', 'text-white');
+            }
+
+            const cards = document.querySelectorAll('.product-card');
             cards.forEach(card => {
-                const title = card.querySelector('h4')?.textContent.toLowerCase() || '';
-                const desc = card.querySelector('.bg-slate-800\\/70, p')?.textContent.toLowerCase() || '';
-                
-                if (title.includes(query) || desc.includes(query)) {
+                if (category === 'all') {
+                    card.classList.remove('hidden');
+                } else if (card.classList.contains(category)) {
                     card.classList.remove('hidden');
                 } else {
                     card.classList.add('hidden');
@@ -1394,164 +1565,26 @@
             });
         }
 
-        const exchangeRates = {
-            JOD: { rate: 1, symbol: 'JOD', label: 'دينار أردني (JOD)' },
-            SAR: { rate: 5.29, symbol: 'SAR', label: 'ريال سعودي (SAR)' },
-            AED: { rate: 5.18, symbol: 'AED', label: 'درهم إماراتي (AED)' },
-            KWD: { rate: 0.43, symbol: 'KWD', label: 'دينار كويتي (KWD)' },
-            BHD: { rate: 0.53, symbol: 'BHD', label: 'دينار بحريني (BHD)' },
-            USD: { rate: 1.41, symbol: 'USD', label: 'دولار أمريكي (USD)' }
-        };
-
-        let currentCurrency = 'JOD';
-
-        function loadSavedState() {
-            try {
-                const savedCart = localStorage.getItem('forever_store_cart');
-                if (savedCart) {
-                    cart = JSON.parse(savedCart);
-                }
-                const savedCurrency = localStorage.getItem('forever_store_currency');
-                if (savedCurrency && exchangeRates[savedCurrency]) {
-                    currentCurrency = savedCurrency;
-                }
-            } catch (e) {
-                console.error("Failed to load saved cart state:", e);
-            }
-        }
-
-        function saveCartState() {
-            try {
-                localStorage.setItem('forever_store_cart', JSON.stringify(cart));
-                localStorage.setItem('forever_store_currency', currentCurrency);
-            } catch (e) {
-                console.error("Failed to save cart state:", e);
-            }
-        }
-
-        function filterCategory(categoryKey) {
-            const tabs = document.querySelectorAll('.category-tab');
-            tabs.forEach(tab => {
-                tab.classList.remove('bg-indigo-600', 'text-white');
-                tab.classList.add('bg-slate-800/80', 'text-slate-300');
-            });
-
-            const selectedTab = document.getElementById(`tab-${categoryKey}`);
-            if (selectedTab) {
-                selectedTab.classList.remove('bg-slate-800/80', 'text-slate-300');
-                selectedTab.classList.add('bg-indigo-600', 'text-white');
-            }
-
+        function searchProducts() {
+            const query = document.getElementById('product-search-input')?.value.toLowerCase().trim() || '';
             const cards = document.querySelectorAll('.product-card');
             cards.forEach(card => {
-                if (categoryKey === 'all') {
+                const text = card.innerText.toLowerCase();
+                if (text.includes(query)) {
                     card.classList.remove('hidden');
                 } else {
-                    if (card.classList.contains(categoryKey)) {
-                        card.classList.remove('hidden');
-                    } else {
-                        card.classList.add('hidden');
-                    }
+                    card.classList.add('hidden');
                 }
             });
         }
 
-        function animateCounterSmooth(elementId, targetValue, duration = 2000) {
-            const el = document.getElementById(elementId);
-            if (!el) return;
-
-            let startTimestamp = null;
-            const startValue = 1;
-
-            function step(timestamp) {
-                if (!startTimestamp) startTimestamp = timestamp;
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                
-                const easeOut = 1 - Math.pow(1 - progress, 3);
-                const currentValue = Math.floor(startValue + (targetValue - startValue) * easeOut);
-                
-                el.textContent = currentValue;
-
-                if (progress < 1) {
-                    window.requestAnimationFrame(step);
-                } else {
-                    el.textContent = targetValue;
-                }
-            }
-
-            window.requestAnimationFrame(step);
-        }
-
-        function autoDetectRegionCurrency() {
-            currentCurrency = "JOD";
-            const selectEl = document.getElementById("currency-select");
-            if (selectEl) selectEl.value = currentCurrency;
-            updatePricesOnPage();
-        }
-
-        function changeCurrency(currencyKey) {
-            if (exchangeRates[currencyKey]) {
-                currentCurrency = currencyKey;
-                saveCartState();
-                updatePricesOnPage();
-                updateCartUI();
-            }
-        }
-
-        function formatPrice(jodPrice) {
-            const currencyObj = exchangeRates[currentCurrency] || exchangeRates['JOD'];
-            const converted = jodPrice * currencyObj.rate;
-            return converted.toFixed(2).replace(/\.00$/, '');
-        }
-
-        function updatePricesOnPage() {
-            const currencyObj = exchangeRates[currentCurrency] || exchangeRates['JOD'];
-            
-            document.querySelectorAll('.price-display').forEach(el => {
-                const jodPrice = parseFloat(el.getAttribute('data-jod'));
-                if (!isNaN(jodPrice)) {
-                    el.textContent = formatPrice(jodPrice);
-                }
-            });
-
-            document.querySelectorAll('.currency-symbol').forEach(el => {
-                el.textContent = currencyObj.symbol;
-            });
-        }
-
-        function addToCart(name, priceJod, iconClass, id) {
-            const existingItem = cart.find(item => item.id === id);
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({ id, name, priceJod, iconClass, quantity: 1 });
-            }
-            saveCartState();
-            showToast(`تمت إضافة "${name}" إلى السلة`);
-            updateCartUI();
-        }
-
-        function removeFromCart(id) {
-            cart = cart.filter(item => item.id !== id);
-            saveCartState();
-            updateCartUI();
-        }
-
-        function toggleCartModal() {
-            const modal = document.getElementById('cart-modal');
-            if (modal) {
-                modal.classList.toggle('hidden');
-            }
-        }
-
-        function showToast(message) {
+        function showToast(msg) {
             const toast = document.getElementById('toast');
-            const toastMessage = document.getElementById('toast-message');
-            if (toast && toastMessage) {
-                toastMessage.textContent = message;
+            const toastMsg = document.getElementById('toast-message');
+            if (toast && toastMsg) {
+                toastMsg.innerText = msg;
                 toast.classList.remove('translate-y-32', 'opacity-0');
                 toast.classList.add('translate-y-0', 'opacity-100');
-
                 setTimeout(() => {
                     toast.classList.remove('translate-y-0', 'opacity-100');
                     toast.classList.add('translate-y-32', 'opacity-0');
@@ -1559,67 +1592,29 @@
             }
         }
 
-        function updateCartUI() {
-            const cartCount = document.getElementById('cart-count');
-            const cartItemsContainer = document.getElementById('cart-items-container');
-            const cartTotal = document.getElementById('cart-total');
-            const cartTotalCurrency = document.getElementById('cart-total-currency');
-
-            const totalItemsCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-            if (cartCount) cartCount.textContent = totalItemsCount;
-
-            if (!cartItemsContainer) return;
-
-            if (cart.length === 0) {
-                cartItemsContainer.innerHTML = `
-                    <div class="text-center py-12 text-slate-500">
-                        <i class="fa-solid fa-basket-shopping text-5xl mb-3 block opacity-40"></i>
-                        <p class="font-bold">السلة فارغة حالياً</p>
-                        <p class="text-xs mt-1">قم بإضافة بعض المنتجات والألعاب المذهلة!</p>
-                    </div>
-                `;
-                if (cartTotal) cartTotal.textContent = "0";
+        function handlePaymentMethodChange(value) {
+            const infoBox = document.getElementById('usr-payment-info-box');
+            if (!infoBox) return;
+            if (value === 'card' || value === 'paypal') {
+                infoBox.classList.remove('hidden');
             } else {
-                let html = '';
-                let totalJod = 0;
-
-                cart.forEach(item => {
-                    const itemTotalJod = item.priceJod * item.quantity;
-                    totalJod += itemTotalJod;
-
-                    html += `
-                        <div class="bg-slate-800/80 border border-slate-700/80 p-3.5 rounded-xl flex items-center justify-between">
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 rounded-lg bg-slate-900 border border-slate-700 flex items-center justify-center text-indigo-400 text-lg">
-                                    <i class="${item.iconClass}"></i>
-                                </div>
-                                <div>
-                                    <h5 class="text-sm font-bold text-white">${item.name}</h5>
-                                    <p class="text-xs text-slate-400">العدد: ${item.quantity} × ${formatPrice(item.priceJod)} ${currentCurrency}</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <span class="font-black text-emerald-400 text-sm">${formatPrice(itemTotalJod)} ${currentCurrency}</span>
-                                <button onclick="removeFromCart('${item.id}')" class="text-slate-500 hover:text-rose-400 p-1 transition-colors">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </button>
-                            </div>
-                        </div>
-                    `;
-                });
-
-                cartItemsContainer.innerHTML = html;
-                if (cartTotal) cartTotal.textContent = formatPrice(totalJod);
+                infoBox.classList.add('hidden');
             }
+        }
 
-            if (cartTotalCurrency) {
-                cartTotalCurrency.textContent = currentCurrency;
+        function confirmPaymentNotice() {
+            const modal = document.getElementById('payment-notice-modal');
+            if (modal) modal.classList.add('hidden');
+            
+            if (pendingCheckoutUrl) {
+                window.location.href = pendingCheckoutUrl;
+                pendingCheckoutUrl = null;
             }
         }
 
         function checkout() {
             if (cart.length === 0) {
-                alert("السلة فارغة! يرجى إضافة منتجات أولاً.");
+                showToast("السلة فارغة! يرجى إضافة منتجات أولاً.");
                 return;
             }
 
@@ -1628,22 +1623,23 @@
             if (selectedPayment === 'card' || selectedPayment === 'paypal') {
                 const containsNitro = cart.some(item => item.id.includes('discord-nitro'));
                 const containsRE4 = cart.some(item => item.id === 're4remake');
-                const containsBundle = cart.some(item => item.id.includes('bundle') || item.id === 'hollow-silksong');
+                const containsBundle = cart.some(item => item.id.includes('bundle') || item.id === 'hollow-silksong' || item.id === 'soulsborne-master');
 
                 if (containsNitro) {
-                    window.location.href = LINK_DISCORD_NITRO;
-                    return;
+                    pendingCheckoutUrl = LINK_DISCORD_NITRO;
+                } else if (containsRE4) {
+                    pendingCheckoutUrl = LINK_RE4_REMAKE;
+                } else if (containsBundle) {
+                    pendingCheckoutUrl = LINK_STEAM_BUNDLE;
+                } else {
+                    pendingCheckoutUrl = LINK_STEAM_SINGLE_GAME;
                 }
-                if (containsRE4) {
-                    window.location.href = LINK_RE4_REMAKE;
-                    return;
+
+                // Show confirmation modal first
+                const noticeModal = document.getElementById('payment-notice-modal');
+                if (noticeModal) {
+                    noticeModal.classList.remove('hidden');
                 }
-                if (containsBundle) {
-                    window.location.href = LINK_STEAM_BUNDLE;
-                    return;
-                }
-                
-                window.location.href = LINK_STEAM_SINGLE_GAME;
                 return;
             }
 
@@ -1667,10 +1663,59 @@
             window.open(`https://wa.me/${STORE_WHATSAPP_NUMBER}?text=${encodedMessage}`, '_blank');
         }
 
+        function saveState() {
+            try {
+                localStorage.setItem('forever_store_cart', JSON.stringify(cart));
+                localStorage.setItem('forever_store_currency', currentCurrency);
+            } catch(e) {}
+        }
+
+        function loadSavedState() {
+            try {
+                const savedCart = localStorage.getItem('forever_store_cart');
+                const savedCurr = localStorage.getItem('forever_store_currency');
+                if (savedCart) cart = JSON.parse(savedCart);
+                if (savedCurr) {
+                    currentCurrency = savedCurr;
+                    const select = document.getElementById('currency-select');
+                    if (select) select.value = savedCurr;
+                }
+            } catch(e) {}
+        }
+
+        function autoDetectRegionCurrency() {
+            try {
+                const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                if (tz.includes('Riyadh')) currentCurrency = 'SAR';
+                else if (tz.includes('Dubai')) currentCurrency = 'AED';
+                else if (tz.includes('Kuwait')) currentCurrency = 'KWD';
+                else if (tz.includes('Bahrain')) currentCurrency = 'BHD';
+                const select = document.getElementById('currency-select');
+                if (select) select.value = currentCurrency;
+            } catch(e) {}
+        }
+
+        function animateCounterSmooth(id, target, duration) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            let start = 0;
+            const increment = target / (duration / 16);
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= target) {
+                    el.innerText = target;
+                    clearInterval(timer);
+                } else {
+                    el.innerText = Math.floor(start);
+                }
+            }, 16);
+        }
+
         window.onload = function() {
             loadSavedState();
             autoDetectRegionCurrency();
             checkWeekendBanner();
+            changeCurrency(currentCurrency);
             updateCartUI();
             animateCounterSmooth('counter-orders', 400, 2000);
             animateCounterSmooth('counter-clients', 343, 2000);
