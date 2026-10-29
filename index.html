@@ -112,7 +112,7 @@
                 </div>
 
                 <!-- Cart Button Desk -->
-                <button onclick="toggleCartModal()" class="relative bg-slate-800 hover:bg-slate-700 border border-slate-700 px-3 py-1.5 sm:py-2.5 rounded-xl flex items-center gap-2 transition-all">
+                <button onclick="toggleCartModal()" class="relative bg-slate-800 hover:bg-slate-700 border border-slate-700 px-3 py-1.5 sm:py-2.5 rounded-xl flex items-center justify-center gap-2 transition-all">
                     <i class="fa-solid fa-cart-shopping text-indigo-400 text-base sm:text-lg"></i>
                     <span class="hidden sm:inline text-sm font-bold">السلة</span>
                     <span id="cart-count" class="bg-indigo-600 text-white text-[11px] w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center font-black shadow-md">0</span>
@@ -195,13 +195,14 @@
             </div>
         </div>
 
-        <!-- Products Grid (Optimized Mobile Cards) -->
+        <!-- Products Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            <!-- Product: Discord Nitro 3 Months Promo (Top Most Requested) -->
+            
+            <!-- Product: Discord Nitro 3 Months Promo -->
             <div class="product-card discord bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
                 <div>
-                    <div class="relative h-44 rounded-xl bg-gradient-to-br from-[#5865F2]/20 to-purple-800/20 flex items-center justify-center mb-5 overflow-hidden border border-[#5865F2]/30">
-                        <i class="fa-brands fa-discord text-7xl text-[#5865F2] group-hover:scale-110 transition-transform duration-300"></i>
+                    <div class="relative h-44 rounded-xl bg-slate-800 flex items-center justify-center mb-5 overflow-hidden border border-[#5865F2]/30">
+                        <img src="images/nitro-promo.jpg" onerror="this.onerror=null; this.parentElement.innerHTML='<i class=\'fa-brands fa-discord text-7xl text-[#5865F2]\'></i><span class=\'absolute top-3 right-3 bg-red-600 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md animate-pulse\'>الأكثر طلباً 🔥</span>';" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Nitro Promo">
                         <span class="absolute top-3 right-3 bg-red-600 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md animate-pulse">الأكثر طلباً 🔥</span>
                     </div>
                     <h4 class="text-xl font-bold text-white mb-2">ديسكورد نيترو 3 أشهر (برومو)</h4>
@@ -226,19 +227,17 @@
                 </div>
             </div>
 
-            <!-- STEAM OFFLINE SINGLE GAMES SECTION - ORDERED BY POPULARITY -->
-
-            <!-- 1. Resident Evil 9 (الأعلى شعبية) -->
+            <!-- 1. Resident Evil 9 -->
             <div class="product-card steam-single bg-slate-900/80 border border-slate-800 rounded-2xl p-5 sm:p-6 flex flex-col justify-between hover:border-red-500/50 transition-all duration-300 group glow-hover">
                 <div>
-                    <div class="relative h-40 sm:h-44 rounded-xl bg-gradient-to-br from-red-600/20 to-slate-900 flex items-center justify-center mb-4 sm:mb-5 overflow-hidden border border-red-600/30">
-                        <i class="fa-solid fa-skull text-6xl sm:text-7xl text-red-500 group-hover:scale-110 transition-transform duration-300"></i>
+                    <div class="relative h-40 sm:h-44 rounded-xl bg-slate-800 flex items-center justify-center mb-4 sm:mb-5 overflow-hidden border border-red-600/30">
+                        <img src="images/re9.jpg" onerror="this.onerror=null; this.parentElement.innerHTML='<i class=\'fa-solid fa-skull text-6xl text-red-500\'></i><span class=\'absolute top-3 right-3 bg-red-600 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md\'>الأعلى طلباً 🔥</span>';" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Resident Evil 9">
                         <span class="absolute top-3 right-3 bg-red-600 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md">الأعلى طلباً 🔥</span>
                     </div>
                     <h4 class="text-lg sm:text-xl font-bold text-white mb-2">Resident Evil 9</h4>
                     <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين (منتج منفصل)</p>
-                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
+                        <p class="font-bold text-emerald-400"><i class="fa-solid fa-shield-halved text-sm ml-1"></i> أوفلاين آمن 100% | حماية التختيم والسيف داتا</p>
+                        <p>تفعيل الحساب بنمط الأوفلاين يضمن لك تجربة تختيم كاملة وبأعلى جودة بدون انقطاع أو خروج مفاجئ، وتختيمك ينحفظ بجهازك بآمان!</p>
                     </div>
                 </div>
                 <div>
@@ -255,17 +254,17 @@
                 </div>
             </div>
 
-            <!-- 2. Elden Ring + DLC (الأضخم والأعلى تقييماً) -->
+            <!-- 2. Elden Ring + DLC -->
             <div class="product-card steam-single bg-slate-900/80 border border-slate-800 rounded-2xl p-5 sm:p-6 flex flex-col justify-between hover:border-amber-500/50 transition-all duration-300 group glow-hover">
                 <div>
-                    <div class="relative h-40 sm:h-44 rounded-xl bg-gradient-to-br from-amber-500/20 to-yellow-600/20 flex items-center justify-center mb-4 sm:mb-5 overflow-hidden border border-amber-500/30">
-                        <i class="fa-solid fa-crown text-6xl sm:text-7xl text-amber-400 group-hover:scale-110 transition-transform duration-300"></i>
+                    <div class="relative h-40 sm:h-44 rounded-xl bg-slate-800 flex items-center justify-center mb-4 sm:mb-5 overflow-hidden border border-amber-500/30">
+                        <img src="images/elden-ring.jpg" onerror="this.onerror=null; this.parentElement.innerHTML='<i class=\'fa-solid fa-crown text-6xl text-amber-400\'></i><span class=\'absolute top-3 right-3 bg-amber-500 text-black font-black text-xs px-3 py-1 rounded-lg shadow-md\'>لعبة السنة + DLC 👑</span>';" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Elden Ring">
                         <span class="absolute top-3 right-3 bg-amber-500 text-black font-black text-xs px-3 py-1 rounded-lg shadow-md">لعبة السنة + DLC 👑</span>
                     </div>
                     <h4 class="text-lg sm:text-xl font-bold text-white mb-2">Elden Ring: Shadow of the Erdtree</h4>
                     <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين (شاملة الإضافة الكاملة)</p>
-                        <p>شاملة اللعبة الأصلية وتوسعة Erdtree الضخمة! تلعب أوفلاين بروقان وبأفضل أداء.</p>
+                        <p class="font-bold text-emerald-400"><i class="fa-solid fa-shield-halved text-sm ml-1"></i> أوفلاين آمن 100% | شامل الإضافة الكاملة</p>
+                        <p>تفعيل الحساب بنمط الأوفلاين يضمن لك تجربة تختيم كاملة وبأعلى جودة بدون انقطاع أو خروج مفاجئ، وتختيمك ينحفظ بجهازك بآمان!</p>
                     </div>
                 </div>
                 <div>
@@ -285,14 +284,14 @@
             <!-- 3. Black Myth: Wukong -->
             <div class="product-card steam-single bg-slate-900/80 border border-slate-800 rounded-2xl p-5 sm:p-6 flex flex-col justify-between hover:border-amber-500/50 transition-all duration-300 group glow-hover">
                 <div>
-                    <div class="relative h-40 sm:h-44 rounded-xl bg-gradient-to-br from-amber-600/20 to-orange-600/20 flex items-center justify-center mb-4 sm:mb-5 overflow-hidden border border-amber-500/30">
-                        <i class="fa-solid fa-wand-magic-sparkles text-6xl sm:text-7xl text-amber-400 group-hover:scale-110 transition-transform duration-300"></i>
+                    <div class="relative h-40 sm:h-44 rounded-xl bg-slate-800 flex items-center justify-center mb-4 sm:mb-5 overflow-hidden border border-amber-500/30">
+                        <img src="images/wukong.jpg" onerror="this.onerror=null; this.parentElement.innerHTML='<i class=\'fa-solid fa-wand-magic-sparkles text-6xl text-amber-400\'></i><span class=\'absolute top-3 right-3 bg-amber-600 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md\'>شعبية فائقة 🔥</span>';" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Wukong">
                         <span class="absolute top-3 right-3 bg-amber-600 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md">شعبية فائقة 🔥</span>
                     </div>
                     <h4 class="text-lg sm:text-xl font-bold text-white mb-2">Black Myth: Wukong</h4>
                     <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين (لعبة واحدة)</p>
-                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
+                        <p class="font-bold text-emerald-400"><i class="fa-solid fa-shield-halved text-sm ml-1"></i> أوفلاين آمن 100% | حماية التختيم والسيف داتا</p>
+                        <p>تفعيل الحساب بنمط الأوفلاين يضمن لك تجربة تختيم كاملة وبأعلى جودة بدون انقطاع أو خروج مفاجئ، وتختيمك ينحفظ بجهازك بآمان!</p>
                     </div>
                 </div>
                 <div>
@@ -318,8 +317,8 @@
                     </div>
                     <h4 class="text-lg sm:text-xl font-bold text-white mb-2">The Last of Us Part I</h4>
                     <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين (لعبة واحدة)</p>
-                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
+                        <p class="font-bold text-emerald-400"><i class="fa-solid fa-shield-halved text-sm ml-1"></i> أوفلاين آمن 100% | حماية التختيم والسيف داتا</p>
+                        <p>تفعيل الحساب بنمط الأوفلاين يضمن لك تجربة تختيم كاملة وبأعلى جودة بدون انقطاع أو خروج مفاجئ، وتختيمك ينحفظ بجهازك بآمان!</p>
                     </div>
                 </div>
                 <div>
@@ -345,8 +344,8 @@
                     </div>
                     <h4 class="text-lg sm:text-xl font-bold text-white mb-2">The Last of Us Part II Remastered</h4>
                     <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين (لعبة واحدة)</p>
-                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
+                        <p class="font-bold text-emerald-400"><i class="fa-solid fa-shield-halved text-sm ml-1"></i> أوفلاين آمن 100% | حماية التختيم والسيف داتا</p>
+                        <p>تفعيل الحساب بنمط الأوفلاين يضمن لك تجربة تختيم كاملة وبأعلى جودة بدون انقطاع أو خروج مفاجئ، وتختيمك ينحفظ بجهازك بآمان!</p>
                     </div>
                 </div>
                 <div>
@@ -372,8 +371,8 @@
                     </div>
                     <h4 class="text-lg sm:text-xl font-bold text-white mb-2">God of War (2018)</h4>
                     <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين (لعبة واحدة)</p>
-                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
+                        <p class="font-bold text-emerald-400"><i class="fa-solid fa-shield-halved text-sm ml-1"></i> أوفلاين آمن 100% | حماية التختيم والسيف داتا</p>
+                        <p>تفعيل الحساب بنمط الأوفلاين يضمن لك تجربة تختيم كاملة وبأعلى جودة بدون انقطاع أو خروج مفاجئ، وتختيمك ينحفظ بجهازك بآمان!</p>
                     </div>
                 </div>
                 <div>
@@ -393,14 +392,14 @@
             <!-- 7. Resident Evil 4 Remake -->
             <div class="product-card steam-single bg-slate-900/80 border border-slate-800 rounded-2xl p-5 sm:p-6 flex flex-col justify-between hover:border-emerald-500/50 transition-all duration-300 group glow-hover">
                 <div>
-                    <div class="relative h-40 sm:h-44 rounded-xl bg-gradient-to-br from-emerald-600/20 to-slate-900 flex items-center justify-center mb-4 sm:mb-5 overflow-hidden border border-emerald-500/30">
-                        <i class="fa-solid fa-crosshairs text-6xl sm:text-7xl text-emerald-400 group-hover:scale-110 transition-transform duration-300"></i>
+                    <div class="relative h-40 sm:h-44 rounded-xl bg-slate-800 flex items-center justify-center mb-4 sm:mb-5 overflow-hidden border border-emerald-500/30">
+                        <img src="images/re4remake.jpg" onerror="this.onerror=null; this.parentElement.innerHTML='<i class=\'fa-solid fa-crosshairs text-6xl text-emerald-400\'></i><span class=\'absolute top-3 right-3 bg-emerald-600 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md\'>عرض خاص بـ 1 دينار 💥</span>';" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Resident Evil 4 Remake">
                         <span class="absolute top-3 right-3 bg-emerald-600 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md">عرض خاص بـ 1 دينار 💥</span>
                     </div>
                     <h4 class="text-lg sm:text-xl font-bold text-white mb-2">Resident Evil 4 Remake</h4>
                     <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين (لعبة واحدة)</p>
-                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
+                        <p class="font-bold text-emerald-400"><i class="fa-solid fa-bolt text-amber-400 ml-1"></i> تسليم فوري | أوفلاين آمن 100%</p>
+                        <p>تفعيل الحساب بنمط الأوفلاين يضمن لك تجربة تختيم كاملة وبأعلى جودة بدون انقطاع أو خروج مفاجئ، وتختيمك ينحفظ بجهازك بآمان!</p>
                     </div>
                 </div>
                 <div>
@@ -426,8 +425,8 @@
                     </div>
                     <h4 class="text-lg sm:text-xl font-bold text-white mb-2">Crimson Desert</h4>
                     <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين (لعبة واحدة)</p>
-                        <p>معارك سيوف وتنانين وقصة ملحمية بالصحراء القرمزية بأفضل أوفلاين.</p>
+                        <p class="font-bold text-emerald-400"><i class="fa-solid fa-shield-halved text-sm ml-1"></i> أوفلاين آمن 100% | حماية التختيم والسيف داتا</p>
+                        <p>تفعيل الحساب بنمط الأوفلاين يضمن لك تجربة تختيم كاملة وبأعلى جودة بدون انقطاع أو خروج مفاجئ، وتختيمك ينحفظ بجهازك بآمان!</p>
                     </div>
                 </div>
                 <div>
@@ -453,8 +452,8 @@
                     </div>
                     <h4 class="text-lg sm:text-xl font-bold text-white mb-2">Dying Light: The Beast</h4>
                     <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين (لعبة واحدة)</p>
-                        <p>عودة كراين الأسطورية ومغامرة زومبي جديدة بالكامل أوفلاين.</p>
+                        <p class="font-bold text-emerald-400"><i class="fa-solid fa-shield-halved text-sm ml-1"></i> أوفلاين آمن 100% | حماية التختيم والسيف داتا</p>
+                        <p>تفعيل الحساب بنمط الأوفلاين يضمن لك تجربة تختيم كاملة وبأعلى جودة بدون انقطاع أو خروج مفاجئ، وتختيمك ينحفظ بجهازك بآمان!</p>
                     </div>
                 </div>
                 <div>
@@ -480,8 +479,8 @@
                     </div>
                     <h4 class="text-lg sm:text-xl font-bold text-white mb-2">Forza Horizon 5</h4>
                     <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين (لعبة واحدة)</p>
-                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
+                        <p class="font-bold text-emerald-400"><i class="fa-solid fa-shield-halved text-sm ml-1"></i> أوفلاين آمن 100% | حماية التختيم والسيف داتا</p>
+                        <p>تفعيل الحساب بنمط الأوفلاين يضمن لك تجربة تختيم كاملة وبأعلى جودة بدون انقطاع أو خروج مفاجئ، وتختيمك ينحفظ بجهازك بآمان!</p>
                     </div>
                 </div>
                 <div>
@@ -507,8 +506,8 @@
                     </div>
                     <h4 class="text-lg sm:text-xl font-bold text-white mb-2">Uncharted: Legacy of Thieves</h4>
                     <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين (لعبة واحدة)</p>
-                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
+                        <p class="font-bold text-emerald-400"><i class="fa-solid fa-shield-halved text-sm ml-1"></i> أوفلاين آمن 100% | حماية التختيم والسيف داتا</p>
+                        <p>تفعيل الحساب بنمط الأوفلاين يضمن لك تجربة تختيم كاملة وبأعلى جودة بدون انقطاع أو خروج مفاجئ، وتختيمك ينحفظ بجهازك بآمان!</p>
                     </div>
                 </div>
                 <div>
@@ -534,8 +533,8 @@
                     </div>
                     <h4 class="text-lg sm:text-xl font-bold text-white mb-2">Pragmata (براغمتا)</h4>
                     <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين (لعبة واحدة)</p>
-                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
+                        <p class="font-bold text-emerald-400"><i class="fa-solid fa-shield-halved text-sm ml-1"></i> أوفلاين آمن 100% | حماية التختيم والسيف داتا</p>
+                        <p>تفعيل الحساب بنمط الأوفلاين يضمن لك تجربة تختيم كاملة وبأعلى جودة بدون انقطاع أو خروج مفاجئ، وتختيمك ينحفظ بجهازك بآمان!</p>
                     </div>
                 </div>
                 <div>
@@ -561,8 +560,8 @@
                     </div>
                     <h4 class="text-lg sm:text-xl font-bold text-white mb-2">Forza Motorsport 6</h4>
                     <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين (لعبة واحدة)</p>
-                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
+                        <p class="font-bold text-emerald-400"><i class="fa-solid fa-shield-halved text-sm ml-1"></i> أوفلاين آمن 100% | حماية التختيم والسيف داتا</p>
+                        <p>تفعيل الحساب بنمط الأوفلاين يضمن لك تجربة تختيم كاملة وبأعلى جودة بدون انقطاع أو خروج مفاجئ، وتختيمك ينحفظ بجهازك بآمان!</p>
                     </div>
                 </div>
                 <div>
@@ -588,8 +587,8 @@
                     </div>
                     <h4 class="text-lg sm:text-xl font-bold text-white mb-2">007 First Light</h4>
                     <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين (لعبة واحدة)</p>
-                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
+                        <p class="font-bold text-emerald-400"><i class="fa-solid fa-shield-halved text-sm ml-1"></i> أوفلاين آمن 100% | حماية التختيم والسيف داتا</p>
+                        <p>تفعيل الحساب بنمط الأوفلاين يضمن لك تجربة تختيم كاملة وبأعلى جودة بدون انقطاع أو خروج مفاجئ، وتختيمك ينحفظ بجهازك بآمان!</p>
                     </div>
                 </div>
                 <div>
@@ -615,8 +614,8 @@
                     </div>
                     <h4 class="text-lg sm:text-xl font-bold text-white mb-2">Hogwarts Legacy</h4>
                     <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين (لعبة واحدة)</p>
-                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
+                        <p class="font-bold text-emerald-400"><i class="fa-solid fa-shield-halved text-sm ml-1"></i> أوفلاين آمن 100% | حماية التختيم والسيف داتا</p>
+                        <p>تفعيل الحساب بنمط الأوفلاين يضمن لك تجربة تختيم كاملة وبأعلى جودة بدون انقطاع أو خروج مفاجئ، وتختيمك ينحفظ بجهازك بآمان!</p>
                     </div>
                 </div>
                 <div>
@@ -642,8 +641,8 @@
                     </div>
                     <h4 class="text-lg sm:text-xl font-bold text-white mb-2">Detroit: Become Human</h4>
                     <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين (لعبة واحدة)</p>
-                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
+                        <p class="font-bold text-emerald-400"><i class="fa-solid fa-shield-halved text-sm ml-1"></i> أوفلاين آمن 100% | حماية التختيم والسيف داتا</p>
+                        <p>تفعيل الحساب بنمط الأوفلاين يضمن لك تجربة تختيم كاملة وبأعلى جودة بدون انقطاع أو خروج مفاجئ، وتختيمك ينحفظ بجهازك بآمان!</p>
                     </div>
                 </div>
                 <div>
@@ -855,440 +854,6 @@
                 </div>
             </div>
 
-            <!-- STEAM OFFLINE SINGLE GAMES SECTION -->
-
-            <!-- Crimson Desert -->
-            <div class="product-card steam-single bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-amber-500/50 transition-all duration-300 group glow-hover">
-                <div>
-                    <div class="relative h-44 rounded-xl bg-gradient-to-br from-amber-600/20 to-orange-900/20 flex items-center justify-center mb-5 overflow-hidden border border-amber-500/30">
-                        <i class="fa-solid fa-shield text-7xl text-amber-400 group-hover:scale-110 transition-transform duration-300"></i>
-                        <span class="absolute top-3 right-3 bg-amber-600 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md">RPG أسطوري 🛡️</span>
-                    </div>
-                    <h4 class="text-xl font-bold text-white mb-2">Crimson Desert</h4>
-                    <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين (لعبة واحدة)</p>
-                        <p>معارك سيوف وتنانين وقصة ملحمية بالصحراء القرمزية بأفضل أوفلاين.</p>
-                    </div>
-                </div>
-                <div>
-                    <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
-                        <span class="text-sm text-slate-400 font-semibold">السعر:</span>
-                        <div class="flex items-baseline gap-1">
-                            <span class="text-2xl font-black text-emerald-400 price-display" data-jod="2">2</span>
-                            <span class="text-xs text-slate-400 font-bold currency-symbol">JOD</span>
-                        </div>
-                    </div>
-                    <button onclick="addToCart('لعبة Crimson Desert (أوفلاين)', 2, 'fa-solid fa-shield', 'crimsondesert')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
-                        <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
-                    </button>
-                </div>
-            </div>
-
-            <!-- Dying Light: The Beast -->
-            <div class="product-card steam-single bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-emerald-500/50 transition-all duration-300 group glow-hover">
-                <div>
-                    <div class="relative h-44 rounded-xl bg-gradient-to-br from-emerald-700/20 to-slate-900 flex items-center justify-center mb-5 overflow-hidden border border-emerald-600/30">
-                        <i class="fa-solid fa-biohazard text-7xl text-emerald-400 group-hover:scale-110 transition-transform duration-300"></i>
-                        <span class="absolute top-3 right-3 bg-emerald-600 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md">زومبي وباركور 🧟</span>
-                    </div>
-                    <h4 class="text-xl font-bold text-white mb-2">Dying Light: The Beast</h4>
-                    <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين (لعبة واحدة)</p>
-                        <p>عودة كراين الأسطورية ومغامرة زومبي جديدة بالكامل أوفلاين.</p>
-                    </div>
-                </div>
-                <div>
-                    <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
-                        <span class="text-sm text-slate-400 font-semibold">السعر:</span>
-                        <div class="flex items-baseline gap-1">
-                            <span class="text-2xl font-black text-emerald-400 price-display" data-jod="2">2</span>
-                            <span class="text-xs text-slate-400 font-bold currency-symbol">JOD</span>
-                        </div>
-                    </div>
-                    <button onclick="addToCart('لعبة Dying Light: The Beast (أوفلاين)', 2, 'fa-solid fa-biohazard', 'dlbeast')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
-                        <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
-                    </button>
-                </div>
-            </div>
-
-            <!-- The Last of Us Part I (Single Game) -->
-            <div class="product-card steam-single bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
-                <div>
-                    <div class="relative h-44 rounded-xl bg-gradient-to-br from-amber-700/20 to-slate-900 flex items-center justify-center mb-5 overflow-hidden border border-amber-600/30">
-                        <i class="fa-solid fa-person-shelter text-7xl text-amber-400 group-hover:scale-110 transition-transform duration-300"></i>
-                        <span class="absolute top-3 right-3 bg-amber-600 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md">قصة أسطورية 🌿</span>
-                    </div>
-                    <h4 class="text-xl font-bold text-white mb-2">The Last of Us Part I</h4>
-                    <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين (لعبة واحدة)</p>
-                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
-                    </div>
-                </div>
-                <div>
-                    <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
-                        <span class="text-sm text-slate-400 font-semibold">السعر:</span>
-                        <div class="flex items-baseline gap-1">
-                            <span class="text-2xl font-black text-emerald-400 price-display" data-jod="2">2</span>
-                            <span class="text-xs text-slate-400 font-bold currency-symbol">JOD</span>
-                        </div>
-                    </div>
-                    <button onclick="addToCart('لعبة The Last of Us Part I (أوفلاين)', 2, 'fa-solid fa-person-shelter', 'tlou1')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
-                        <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
-                    </button>
-                </div>
-            </div>
-
-            <!-- The Last of Us Part II (Single Game) -->
-            <div class="product-card steam-single bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
-                <div>
-                    <div class="relative h-44 rounded-xl bg-gradient-to-br from-emerald-700/20 to-slate-900 flex items-center justify-center mb-5 overflow-hidden border border-emerald-600/30">
-                        <i class="fa-solid fa-[#5865F2] fa-skull-crossbones text-7xl text-emerald-400 group-hover:scale-110 transition-transform duration-300"></i>
-                        <span class="absolute top-3 right-3 bg-emerald-600 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md">الجزء الثاني 🎯</span>
-                    </div>
-                    <h4 class="text-xl font-bold text-white mb-2">The Last of Us Part II Remastered</h4>
-                    <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين (لعبة واحدة)</p>
-                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
-                    </div>
-                </div>
-                <div>
-                    <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
-                        <span class="text-sm text-slate-400 font-semibold">السعر:</span>
-                        <div class="flex items-baseline gap-1">
-                            <span class="text-2xl font-black text-emerald-400 price-display" data-jod="2">2</span>
-                            <span class="text-xs text-slate-400 font-bold currency-symbol">JOD</span>
-                        </div>
-                    </div>
-                    <button onclick="addToCart('لعبة The Last of Us Part II (أوفلاين)', 2, 'fa-solid fa-skull-crossbones', 'tlou2')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
-                        <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
-                    </button>
-                </div>
-            </div>
-
-            <!-- God of War (2018) Single Game -->
-            <div class="product-card steam-single bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
-                <div>
-                    <div class="relative h-44 rounded-xl bg-gradient-to-br from-red-600/20 to-amber-900/20 flex items-center justify-center mb-5 overflow-hidden border border-red-500/30">
-                        <i class="fa-solid fa-hand-holding-hand text-7xl text-red-500 group-hover:scale-110 transition-transform duration-300"></i>
-                        <span class="absolute top-3 right-3 bg-red-600 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md">شاهكار 🪓</span>
-                    </div>
-                    <h4 class="text-xl font-bold text-white mb-2">God of War (2018)</h4>
-                    <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين (لعبة واحدة)</p>
-                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
-                    </div>
-                </div>
-                <div>
-                    <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
-                        <span class="text-sm text-slate-400 font-semibold">السعر:</span>
-                        <div class="flex items-baseline gap-1">
-                            <span class="text-2xl font-black text-emerald-400 price-display" data-jod="2">2</span>
-                            <span class="text-xs text-slate-400 font-bold currency-symbol">JOD</span>
-                        </div>
-                    </div>
-                    <button onclick="addToCart('لعبة God of War 2018 (أوفلاين)', 2, 'fa-solid fa-hand-holding-hand', 'gow2018')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
-                        <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
-                    </button>
-                </div>
-            </div>
-
-            <!-- Pragmata -->
-            <div class="product-card steam-single bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
-                <div>
-                    <div class="relative h-44 rounded-xl bg-gradient-to-br from-cyan-600/20 to-indigo-900/20 flex items-center justify-center mb-5 overflow-hidden border border-cyan-500/30">
-                        <i class="fa-solid fa-user-astronaut text-7xl text-cyan-400 group-hover:scale-110 transition-transform duration-300"></i>
-                        <span class="absolute top-3 right-3 bg-cyan-600 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md">جديد وحصري ✨</span>
-                    </div>
-                    <h4 class="text-xl font-bold text-white mb-2">Pragmata (براغمتا)</h4>
-                    <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين (لعبة واحدة)</p>
-                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
-                    </div>
-                </div>
-                <div>
-                    <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
-                        <span class="text-sm text-slate-400 font-semibold">السعر:</span>
-                        <div class="flex items-baseline gap-1">
-                            <span class="text-2xl font-black text-emerald-400 price-display" data-jod="2">2</span>
-                            <span class="text-xs text-slate-400 font-bold currency-symbol">JOD</span>
-                        </div>
-                    </div>
-                    <button onclick="addToCart('لعبة Pragmata (أوفلاين)', 2, 'fa-solid fa-user-astronaut', 'pragmata')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
-                        <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
-                    </button>
-                </div>
-            </div>
-
-            <!-- Forza Motorsport 6 -->
-            <div class="product-card steam-single bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
-                <div>
-                    <div class="relative h-44 rounded-xl bg-gradient-to-br from-orange-600/20 to-red-900/20 flex items-center justify-center mb-5 overflow-hidden border border-orange-500/30">
-                        <i class="fa-solid fa-flag-checkered text-7xl text-orange-400 group-hover:scale-110 transition-transform duration-300"></i>
-                        <span class="absolute top-3 right-3 bg-orange-600 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md">سرعة وسباقات 🏎️</span>
-                    </div>
-                    <h4 class="text-xl font-bold text-white mb-2">Forza Motorsport 6</h4>
-                    <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين (لعبة واحدة)</p>
-                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
-                    </div>
-                </div>
-                <div>
-                    <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
-                        <span class="text-sm text-slate-400 font-semibold">السعر:</span>
-                        <div class="flex items-baseline gap-1">
-                            <span class="text-2xl font-black text-emerald-400 price-display" data-jod="2">2</span>
-                            <span class="text-xs text-slate-400 font-bold currency-symbol">JOD</span>
-                        </div>
-                    </div>
-                    <button onclick="addToCart('لعبة Forza Motorsport 6 (أوفلاين)', 2, 'fa-solid fa-flag-checkered', 'forza6')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
-                        <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
-                    </button>
-                </div>
-            </div>
-
-            <!-- Detroit: Become Human -->
-            <div class="product-card steam-single bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
-                <div>
-                    <div class="relative h-44 rounded-xl bg-gradient-to-br from-blue-600/20 to-slate-900 flex items-center justify-center mb-5 overflow-hidden border border-blue-500/30">
-                        <i class="fa-solid fa-robot text-7xl text-blue-400 group-hover:scale-110 transition-transform duration-300"></i>
-                        <span class="absolute top-3 right-3 bg-blue-600 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md">قصة أسطورية 🤖</span>
-                    </div>
-                    <h4 class="text-xl font-bold text-white mb-2">Detroit: Become Human</h4>
-                    <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين (لعبة واحدة)</p>
-                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
-                    </div>
-                </div>
-                <div>
-                    <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
-                        <span class="text-sm text-slate-400 font-semibold">السعر:</span>
-                        <div class="flex items-baseline gap-1">
-                            <span class="text-2xl font-black text-emerald-400 price-display" data-jod="2">2</span>
-                            <span class="text-xs text-slate-400 font-bold currency-symbol">JOD</span>
-                        </div>
-                    </div>
-                    <button onclick="addToCart('لعبة Detroit: Become Human (أوفلاين)', 2, 'fa-solid fa-robot', 'detroit')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
-                        <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
-                    </button>
-                </div>
-            </div>
-
-            <!-- Resident Evil 4 Remake -->
-            <div class="product-card steam-single bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-emerald-500/50 transition-all duration-300 group glow-hover">
-                <div>
-                    <div class="relative h-44 rounded-xl bg-gradient-to-br from-emerald-600/20 to-slate-900 flex items-center justify-center mb-5 overflow-hidden border border-emerald-500/30">
-                        <i class="fa-solid fa-crosshairs text-7xl text-emerald-400 group-hover:scale-110 transition-transform duration-300"></i>
-                        <span class="absolute top-3 right-3 bg-emerald-600 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md">عرض خاص بـ 1 دينار 💥</span>
-                    </div>
-                    <h4 class="text-xl font-bold text-white mb-2">Resident Evil 4 Remake</h4>
-                    <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين (لعبة واحدة)</p>
-                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
-                    </div>
-                </div>
-                <div>
-                    <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
-                        <span class="text-sm text-slate-400 font-semibold">السعر:</span>
-                        <div class="flex items-baseline gap-1">
-                            <span class="text-2xl font-black text-emerald-400 price-display" data-jod="1">1</span>
-                            <span class="text-xs text-slate-400 font-bold currency-symbol">JOD</span>
-                        </div>
-                    </div>
-                    <button onclick="addToCart('لعبة Resident Evil 4 Remake (أوفلاين)', 1, 'fa-solid fa-crosshairs', 're4remake')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
-                        <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
-                    </button>
-                </div>
-            </div>
-
-            <!-- Uncharted: Legacy of Thieves Collection -->
-            <div class="product-card steam-single bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
-                <div>
-                    <div class="relative h-44 rounded-xl bg-gradient-to-br from-amber-600/20 to-yellow-800/20 flex items-center justify-center mb-5 overflow-hidden border border-amber-500/30">
-                        <i class="fa-solid fa-compass text-7xl text-amber-400 group-hover:scale-110 transition-transform duration-300"></i>
-                        <span class="absolute top-3 right-3 bg-amber-600 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md">مغامرة وحماس 🧭</span>
-                    </div>
-                    <h4 class="text-xl font-bold text-white mb-2">Uncharted: Legacy of Thieves</h4>
-                    <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين (لعبة واحدة)</p>
-                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
-                    </div>
-                </div>
-                <div>
-                    <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
-                        <span class="text-sm text-slate-400 font-semibold">السعر:</span>
-                        <div class="flex items-baseline gap-1">
-                            <span class="text-2xl font-black text-emerald-400 price-display" data-jod="2">2</span>
-                            <span class="text-xs text-slate-400 font-bold currency-symbol">JOD</span>
-                        </div>
-                    </div>
-                    <button onclick="addToCart('لعبة Uncharted: Legacy of Thieves (أوفلاين)', 2, 'fa-solid fa-compass', 'uncharted')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
-                        <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
-                    </button>
-                </div>
-            </div>
-
-            <!-- Elden Ring + DLC -->
-            <div class="product-card steam-single bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
-                <div>
-                    <div class="relative h-44 rounded-xl bg-gradient-to-br from-amber-500/20 to-yellow-600/20 flex items-center justify-center mb-5 overflow-hidden border border-amber-500/30">
-                        <i class="fa-solid fa-crown text-7xl text-amber-400 group-hover:scale-110 transition-transform duration-300"></i>
-                        <span class="absolute top-3 right-3 bg-amber-500 text-black font-black text-xs px-3 py-1 rounded-lg shadow-md">لعبة + DLC</span>
-                    </div>
-                    <h4 class="text-xl font-bold text-white mb-2">Elden Ring: Shadow of the Erdtree</h4>
-                    <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين (لعبة واحدة)</p>
-                        <p>شاملة اللعبة الأصلية وإضافة Shadow of the Erdtree! تلعب بروقان بالأوفلاين مود بدون أي مشاكل.</p>
-                    </div>
-                </div>
-                <div>
-                    <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
-                        <span class="text-sm text-slate-400 font-semibold">السعر:</span>
-                        <div class="flex items-baseline gap-1">
-                            <span class="text-2xl font-black text-emerald-400 price-display" data-jod="2">2</span>
-                            <span class="text-xs text-slate-400 font-bold currency-symbol">JOD</span>
-                        </div>
-                    </div>
-                    <button onclick="addToCart('لعبة Elden Ring + DLC (أوفلاين)', 2, 'fa-solid fa-crown', 'elden-ring')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
-                        <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
-                    </button>
-                </div>
-            </div>
-
-            <!-- Black Myth: Wukong -->
-            <div class="product-card steam-single bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
-                <div>
-                    <div class="relative h-44 rounded-xl bg-gradient-to-br from-amber-600/20 to-orange-600/20 flex items-center justify-center mb-5 overflow-hidden border border-amber-500/30">
-                        <i class="fa-solid fa-wand-magic-sparkles text-7xl text-amber-400 group-hover:scale-110 transition-transform duration-300"></i>
-                        <span class="absolute top-3 right-3 bg-amber-600 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md">الأكثر طلباً 🔥</span>
-                    </div>
-                    <h4 class="text-xl font-bold text-white mb-2">Black Myth: Wukong</h4>
-                    <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين (لعبة واحدة)</p>
-                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
-                    </div>
-                </div>
-                <div>
-                    <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
-                        <span class="text-sm text-slate-400 font-semibold">السعر:</span>
-                        <div class="flex items-baseline gap-1">
-                            <span class="text-2xl font-black text-emerald-400 price-display" data-jod="2">2</span>
-                            <span class="text-xs text-slate-400 font-bold currency-symbol">JOD</span>
-                        </div>
-                    </div>
-                    <button onclick="addToCart('لعبة Black Myth: Wukong (أوفلاين)', 2, 'fa-solid fa-wand-magic-sparkles', 'wukong')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
-                        <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
-                    </button>
-                </div>
-            </div>
-
-            <!-- Resident Evil 9 (Single Game) -->
-            <div class="product-card steam-single bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
-                <div>
-                    <div class="relative h-44 rounded-xl bg-gradient-to-br from-red-600/20 to-slate-900 flex items-center justify-center mb-5 overflow-hidden border border-red-600/30">
-                        <i class="fa-solid fa-skull text-7xl text-red-500 group-hover:scale-110 transition-transform duration-300"></i>
-                        <span class="absolute top-3 right-3 bg-red-600 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md">منتج منفصل 🔥</span>
-                    </div>
-                    <h4 class="text-xl font-bold text-white mb-2">Resident Evil 9</h4>
-                    <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين (غير شاملة البكج)</p>
-                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
-                    </div>
-                </div>
-                <div>
-                    <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
-                        <span class="text-sm text-slate-400 font-semibold">السعر:</span>
-                        <div class="flex items-baseline gap-1">
-                            <span class="text-2xl font-black text-emerald-400 price-display" data-jod="2">2</span>
-                            <span class="text-xs text-slate-400 font-bold currency-symbol">JOD</span>
-                        </div>
-                    </div>
-                    <button onclick="addToCart('لعبة Resident Evil 9 (أوفلاين)', 2, 'fa-solid fa-skull', 're9')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
-                        <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
-                    </button>
-                </div>
-            </div>
-
-            <!-- Hogwarts Legacy -->
-            <div class="product-card steam-single bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
-                <div>
-                    <div class="relative h-44 rounded-xl bg-gradient-to-br from-purple-600/20 to-indigo-900/20 flex items-center justify-center mb-5 overflow-hidden border border-purple-500/30">
-                        <i class="fa-solid fa-hat-wizard text-7xl text-purple-400 group-hover:scale-110 transition-transform duration-300"></i>
-                        <span class="absolute top-3 right-3 bg-purple-600 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md">عالم السحر</span>
-                    </div>
-                    <h4 class="text-xl font-bold text-white mb-2">Hogwarts Legacy</h4>
-                    <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين (لعبة واحدة)</p>
-                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
-                    </div>
-                </div>
-                <div>
-                    <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
-                        <span class="text-sm text-slate-400 font-semibold">السعر:</span>
-                        <div class="flex items-baseline gap-1">
-                            <span class="text-2xl font-black text-emerald-400 price-display" data-jod="2">2</span>
-                            <span class="text-xs text-slate-400 font-bold currency-symbol">JOD</span>
-                        </div>
-                    </div>
-                    <button onclick="addToCart('لعبة Hogwarts Legacy (أوفلاين)', 2, 'fa-solid fa-hat-wizard', 'hogwarts')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
-                        <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
-                    </button>
-                </div>
-            </div>
-
-            <!-- 007 First Light -->
-            <div class="product-card steam-single bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
-                <div>
-                    <div class="relative h-44 rounded-xl bg-gradient-to-br from-slate-700/20 to-slate-900 flex items-center justify-center mb-5 overflow-hidden border border-slate-600/30">
-                        <i class="fa-solid fa-gun text-7xl text-slate-300 group-hover:scale-110 transition-transform duration-300"></i>
-                        <span class="absolute top-3 right-3 bg-slate-700 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md">جديد وحصري</span>
-                    </div>
-                    <h4 class="text-xl font-bold text-white mb-2">007 First Light</h4>
-                    <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين (لعبة واحدة)</p>
-                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
-                    </div>
-                </div>
-                <div>
-                    <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
-                        <span class="text-sm text-slate-400 font-semibold">السعر:</span>
-                        <div class="flex items-baseline gap-1">
-                            <span class="text-2xl font-black text-emerald-400 price-display" data-jod="2">2</span>
-                            <span class="text-xs text-slate-400 font-bold currency-symbol">JOD</span>
-                        </div>
-                    </div>
-                    <button onclick="addToCart('لعبة 007 First Light (أوفلاين)', 2, 'fa-solid fa-gun', '007')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
-                        <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
-                    </button>
-                </div>
-            </div>
-
-            <!-- Forza Horizon 5 -->
-            <div class="product-card steam-single bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
-                <div>
-                    <div class="relative h-44 rounded-xl bg-gradient-to-br from-red-500/20 to-orange-600/20 flex items-center justify-center mb-5 overflow-hidden border border-red-500/30">
-                        <i class="fa-solid fa-car-side text-7xl text-red-400 group-hover:scale-110 transition-transform duration-300"></i>
-                        <span class="absolute top-3 right-3 bg-red-600 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md">سرعة وحماس</span>
-                    </div>
-                    <h4 class="text-xl font-bold text-white mb-2">Forza Horizon 5</h4>
-                    <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين (لعبة واحدة)</p>
-                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
-                    </div>
-                </div>
-                <div>
-                    <div class="flex items-baseline justify-between mb-4 pt-2 border-t border-slate-800">
-                        <span class="text-sm text-slate-400 font-semibold">السعر:</span>
-                        <div class="flex items-baseline gap-1">
-                            <span class="text-2xl font-black text-emerald-400 price-display" data-jod="2">2</span>
-                            <span class="text-xs text-slate-400 font-bold currency-symbol">JOD</span>
-                        </div>
-                    </div>
-                    <button onclick="addToCart('لعبة Forza Horizon 5 (أوفلاين)', 2, 'fa-solid fa-car-side', 'forza')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
-                        <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
-                    </button>
-                </div>
-            </div>
-
             <!-- STEAM OFFLINE BUNDLES SECTION -->
 
             <!-- God of War Bundle -->
@@ -1300,8 +865,8 @@
                     </div>
                     <h4 class="text-xl font-bold text-white mb-2">بكج ألعاب جود اوف وار (God of War Bundle)</h4>
                     <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> يشمل God of War (2018) + Ragnarök</p>
-                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
+                        <p class="font-bold text-emerald-400"><i class="fa-solid fa-shield-halved text-sm ml-1"></i> أوفلاين آمن 100% | شامل God of War + Ragnarök</p>
+                        <p>تفعيل الحساب بنمط الأوفلاين يضمن لك تجربة تختيم كاملة وبأعلى جودة بدون انقطاع أو خروج مفاجئ، وتختيمك ينحفظ بجهازك بآمان!</p>
                     </div>
                 </div>
                 <div>
@@ -1327,8 +892,8 @@
                     </div>
                     <h4 class="text-xl font-bold text-white mb-2">بكج ذا لاست اوف اس (The Last of Us Bundle)</h4>
                     <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> يشمل الجزء الأول Part I + الجزء الثاني Part II</p>
-                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
+                        <p class="font-bold text-emerald-400"><i class="fa-solid fa-shield-halved text-sm ml-1"></i> أوفلاين آمن 100% | شامل الجزء الأول Part I + الثاني Part II</p>
+                        <p>تفعيل الحساب بنمط الأوفلاين يضمن لك تجربة تختيم كاملة وبأعلى جودة بدون انقطاع أو خروج مفاجئ، وتختيمك ينحفظ بجهازك بآمان!</p>
                     </div>
                 </div>
                 <div>
@@ -1354,8 +919,8 @@
                     </div>
                     <h4 class="text-xl font-bold text-white mb-2">بكج Hollow Knight + Silksong</h4>
                     <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين شامل التجربتين</p>
-                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
+                        <p class="font-bold text-emerald-400"><i class="fa-solid fa-shield-halved text-sm ml-1"></i> أوفلاين آمن 100% | حماية التختيم والسيف داتا</p>
+                        <p>تفعيل الحساب بنمط الأوفلاين يضمن لك تجربة تختيم كاملة وبأعلى جودة بدون انقطاع أو خروج مفاجئ، وتختيمك ينحفظ بجهازك بآمان!</p>
                     </div>
                 </div>
                 <div>
@@ -1381,8 +946,8 @@
                     </div>
                     <h4 class="text-xl font-bold text-white mb-2">بكج ألعاب رزدينت ايفيل</h4>
                     <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين شامل الأجزاء الكلاسيكية والريماستر</p>
-                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
+                        <p class="font-bold text-emerald-400"><i class="fa-solid fa-shield-halved text-sm ml-1"></i> أوفلاين آمن 100% | شامل أجزاء السلسلة الأسطورية</p>
+                        <p>تفعيل الحساب بنمط الأوفلاين يضمن لك تجربة تختيم كاملة وبأعلى جودة بدون انقطاع أو خروج مفاجئ، وتختيمك ينحفظ بجهازك بآمان!</p>
                     </div>
                 </div>
                 <div>
@@ -1408,8 +973,8 @@
                     </div>
                     <h4 class="text-xl font-bold text-white mb-2">بكج ألعاب السولز</h4>
                     <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/50 mb-4 text-xs text-slate-300 leading-relaxed space-y-1">
-                        <p class="font-bold text-indigo-300"><i class="fa-brands fa-steam text-sm ml-1"></i> حساب ستيم أوفلاين يضم أشهر ألعاب السولز</p>
-                        <p>محد بيخرب عليك أبد، بتلعب بالأوفلاين مود زي كأنك شاريها من المتجر تماماً!</p>
+                        <p class="font-bold text-emerald-400"><i class="fa-solid fa-shield-halved text-sm ml-1"></i> أوفلاين آمن 100% | حماية التختيم والسيف داتا</p>
+                        <p>تفعيل الحساب بنمط الأوفلاين يضمن لك تجربة تختيم كاملة وبأعلى جودة بدون انقطاع أو خروج مفاجئ، وتختيمك ينحفظ بجهازك بآمان!</p>
                     </div>
                 </div>
                 <div>
@@ -1429,8 +994,8 @@
             <!-- Story Bundle -->
             <div class="product-card steam-bundle bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group glow-hover">
                 <div>
-                    <div class="relative h-44 rounded-xl bg-gradient-to-br from-purple-600/20 to-pink-600/20 flex items-center justify-center mb-5 overflow-hidden border border-purple-500/30">
-                        <i class="fa-solid fa-book-open text-7xl text-purple-400 group-hover:scale-110 transition-transform duration-300"></i>
+                    <div class="relative h-44 rounded-xl bg-slate-800 flex items-center justify-center mb-5 overflow-hidden border border-purple-500/30">
+                        <img src="images/story-bundle.jpg" onerror="this.onerror=null; this.parentElement.innerHTML='<i class=\'fa-solid fa-book-open text-7xl text-purple-400\'></i><span class=\'absolute top-3 right-3 bg-purple-600 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md\'>بكج التختيم الشامل 🎮</span>';" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Story Bundle">
                         <span class="absolute top-3 right-3 bg-purple-600 text-white text-xs font-black px-3 py-1 rounded-lg shadow-md">بكج التختيم الشامل 🎮</span>
                     </div>
                     <h4 class="text-xl font-bold text-white mb-2">بكج ألعاب التختيم (Story Bundle)</h4>
@@ -1467,81 +1032,63 @@
         </div>
     </main>
 
-    <!-- Cart Modal Backdrop & Drawer (Optimized Bottom Sheet for Mobile) -->
-    <div id="cart-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
-        <div class="bg-slate-900 border-t sm:border border-slate-800 rounded-t-2xl sm:rounded-2xl w-full max-w-lg overflow-hidden shadow-2xl flex flex-col max-h-[85vh] sm:max-h-[90vh]">
+    <!-- Shopping Cart Modal -->
+    <div id="cart-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4 hidden transition-opacity duration-300">
+        <div class="bg-[#0f172a] border border-slate-800 w-full max-w-lg rounded-t-3xl sm:rounded-3xl shadow-2xl flex flex-col max-h-[90vh] sm:max-h-[85vh] overflow-hidden">
             <!-- Modal Header -->
-            <div class="p-4 sm:p-5 border-b border-slate-800 flex items-center justify-between">
+            <div class="p-4 sm:p-5 border-b border-slate-800 flex items-center justify-between bg-slate-900/50">
                 <div class="flex items-center gap-2.5">
-                    <div class="w-8 h-8 rounded-lg bg-indigo-600/20 flex items-center justify-center text-indigo-400">
-                        <i class="fa-solid fa-cart-shopping text-base"></i>
+                    <div class="w-9 h-9 rounded-xl bg-indigo-600/20 text-indigo-400 flex items-center justify-center text-lg">
+                        <i class="fa-solid fa-cart-shopping"></i>
                     </div>
-                    <h3 class="text-base sm:text-xl font-bold text-white">سلة المشتريات</h3>
+                    <div>
+                        <h3 class="text-base sm:text-lg font-bold text-white">سلة التسوق</h3>
+                        <p class="text-[11px] text-slate-400">تحقق من المشتريات واختر طريقة الدفع</p>
+                    </div>
                 </div>
-                <button onclick="toggleCartModal()" class="w-8 h-8 rounded-lg bg-slate-800 text-slate-400 flex items-center justify-center">
-                    <i class="fa-solid fa-xmark text-base"></i>
+                <button onclick="toggleCartModal()" class="w-8 h-8 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center transition-colors">
+                    <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
 
-            <!-- Cart Notice Message -->
-            <div class="bg-indigo-950/40 border-b border-indigo-500/20 px-4 py-2.5 text-[11px] text-indigo-300 flex items-start gap-2">
-                <i class="fa-solid fa-circle-info text-indigo-400 text-xs mt-0.5 shrink-0"></i>
-                <p class="leading-relaxed">
-                    <strong class="font-bold text-white">ملاحظة:</strong> عند اختيار أكثر من منتج والدفع بالفيزا/بايبال، يرجى إضافتهم جميعاً بسلة الموقع الخارجي.
-                </p>
+            <!-- Modal Content / Items List -->
+            <div id="cart-items-container" class="p-4 sm:p-5 flex-grow overflow-y-auto space-y-3">
+                <!-- Dynamically populated via JS -->
             </div>
 
-            <!-- Cart Items Container -->
-            <div id="cart-items-container" class="p-4 overflow-y-auto flex-grow space-y-2.5">
-                <!-- Dynamic Items -->
-            </div>
-
-            <!-- Payment Methods Selection Area -->
-            <div class="p-4 border-t border-slate-800 bg-slate-950/80">
-                <p class="text-xs font-bold text-slate-300 mb-2">اختر طريقة الدفع:</p>
-                <div class="grid grid-cols-2 gap-2 mb-3">
-                    <label class="cursor-pointer border border-slate-800 bg-slate-900/90 rounded-xl p-2 flex items-center justify-between text-xs font-bold has-[:checked]:border-indigo-500">
-                        <div class="flex items-center gap-1.5">
+            <!-- Modal Footer & Payment Options -->
+            <div class="p-4 sm:p-5 border-t border-slate-800 bg-slate-900/80 space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 mb-2">اختر طريقة الدفع المناسبة:</label>
+                    <div class="grid grid-cols-2 gap-2 text-xs font-bold">
+                        <label class="bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 p-2.5 rounded-xl cursor-pointer flex items-center gap-2 text-slate-200">
                             <input type="radio" name="payment_method" value="card" checked class="accent-indigo-500">
-                            <span>فيزا / ماستر</span>
-                        </div>
-                        <i class="fa-brands fa-cc-visa text-blue-400 text-base"></i>
-                    </label>
-
-                    <label class="cursor-pointer border border-slate-800 bg-slate-900/90 rounded-xl p-2 flex items-center justify-between text-xs font-bold has-[:checked]:border-indigo-500">
-                        <div class="flex items-center gap-1.5">
-                            <input type="radio" name="payment_method" value="paypal" class="accent-indigo-500">
-                            <span>PayPal</span>
-                        </div>
-                        <i class="fa-brands fa-paypal text-sky-400 text-base"></i>
-                    </label>
-
-                    <label class="cursor-pointer border border-slate-800 bg-slate-900/90 rounded-xl p-2 flex items-center justify-between text-xs font-bold has-[:checked]:border-indigo-500">
-                        <div class="flex items-center gap-1.5">
+                            <i class="fa-solid fa-credit-card text-indigo-400"></i> فيزا / ماستركارد
+                        </label>
+                        <label class="bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 p-2.5 rounded-xl cursor-pointer flex items-center gap-2 text-slate-200">
                             <input type="radio" name="payment_method" value="cliq" class="accent-indigo-500">
-                            <span>كليك CliQ</span>
-                        </div>
-                        <span class="text-[10px] text-indigo-300 font-bold">CliQ</span>
-                    </label>
-
-                    <label class="cursor-pointer border border-slate-800 bg-slate-900/90 rounded-xl p-2 flex items-center justify-between text-xs font-bold has-[:checked]:border-indigo-500">
-                        <div class="flex items-center gap-1.5">
+                            <span class="text-indigo-300 font-black">CliQ</span> كليك (الأردن)
+                        </label>
+                        <label class="bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 p-2.5 rounded-xl cursor-pointer flex items-center gap-2 text-slate-200">
+                            <input type="radio" name="payment_method" value="paypal" class="accent-indigo-500">
+                            <i class="fa-brands fa-paypal text-sky-400"></i> باي بال PayPal
+                        </label>
+                        <label class="bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 p-2.5 rounded-xl cursor-pointer flex items-center gap-2 text-slate-200">
                             <input type="radio" name="payment_method" value="crypto" class="accent-indigo-500">
-                            <span>كريبتو</span>
-                        </div>
-                        <i class="fa-brands fa-bitcoin text-amber-500 text-base"></i>
-                    </label>
-                </div>
-
-                <div class="flex items-center justify-between mb-3 pt-1 border-t border-slate-800">
-                    <span class="text-slate-400 text-xs font-medium">المجموع الكلي:</span>
-                    <div class="flex items-baseline gap-1">
-                        <span id="cart-total" class="text-xl font-black text-emerald-400">0</span>
-                        <span id="cart-total-currency" class="text-xs text-slate-400 font-bold">JOD</span>
+                            <i class="fa-brands fa-bitcoin text-amber-400"></i> USDT / Crypto
+                        </label>
                     </div>
                 </div>
-                
-                <button onclick="checkout()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20">
+
+                <div class="flex items-center justify-between pt-2 border-t border-slate-800">
+                    <span class="text-sm font-bold text-slate-300">المجموع الكلي:</span>
+                    <div class="text-xl font-black text-emerald-400 flex items-baseline gap-1">
+                        <span id="cart-total">0</span>
+                        <span id="cart-total-currency" class="text-xs text-slate-400">JOD</span>
+                    </div>
+                </div>
+
+                <button onclick="checkout()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20 text-sm">
                     <i class="fa-solid fa-lock"></i> إتمام الشراء والتأكيد
                 </button>
             </div>
@@ -1575,7 +1122,7 @@
                 <a href="https://www.instagram.com/forever_store_jo/" target="_blank" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-gradient-to-tr hover:from-amber-500 hover:to-purple-600 text-white flex items-center justify-center transition-all" title="Instagram">
                     <i class="fa-brands fa-instagram text-lg"></i>
                 </a>
-                <a href="https://wa.me/9626780123835" target="_blank" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-emerald-600 text-white flex items-center justify-center transition-all" title="WhatsApp">
+                <a href="https://wa.me/+9626780123835" target="_blank" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-emerald-600 text-white flex items-center justify-center transition-all" title="WhatsApp">
                     <i class="fa-brands fa-whatsapp text-lg"></i>
                 </a>
             </div>
@@ -1587,12 +1134,13 @@
     <!-- JavaScript Logic -->
     <script>
         let cart = [];
-        const STORE_WHATSAPP_NUMBER = "9626780123835";
+        const STORE_WHATSAPP_NUMBER = "+9626780123835";
         
         // Custom Portal Links for Card & PayPal Payments
         const LINK_DISCORD_NITRO = "https://usr.gg/service/dyskord-nytro-3-ashhr-b3-10349";
         const LINK_STEAM_BUNDLE = "https://usr.gg/service/bkgat-alaaab-aoflayn-10667";
         const LINK_STEAM_SINGLE_GAME = "https://usr.gg/service/hsab-stym-aoflayn-10665";
+        const LINK_RE4_REMAKE = "https://usr.gg/service/rzydnt-ayfyl-4-rymyk-10672";
 
         // Exchange Rates relative to 1 JOD
         const exchangeRates = {
@@ -1781,6 +1329,8 @@
             const totalItemsCount = cart.reduce((sum, item) => sum + item.quantity, 0);
             if (cartCount) cartCount.textContent = totalItemsCount;
 
+            if (!cartItemsContainer) return;
+
             if (cart.length === 0) {
                 cartItemsContainer.innerHTML = `
                     <div class="text-center py-12 text-slate-500">
@@ -1789,7 +1339,7 @@
                         <p class="text-xs mt-1">قم بإضافة بعض المنتجات والألعاب المذهلة!</p>
                     </div>
                 `;
-                cartTotal.textContent = "0";
+                if (cartTotal) cartTotal.textContent = "0";
             } else {
                 let html = '';
                 let totalJod = 0;
@@ -1820,7 +1370,7 @@
                 });
 
                 cartItemsContainer.innerHTML = html;
-                cartTotal.textContent = formatPrice(totalJod);
+                if (cartTotal) cartTotal.textContent = formatPrice(totalJod);
             }
 
             if (cartTotalCurrency) {
@@ -1839,10 +1389,15 @@
             // Smart External Redirection for Card / PayPal Payments
             if (selectedPayment === 'card' || selectedPayment === 'paypal') {
                 const containsNitro = cart.some(item => item.id.includes('discord-nitro'));
+                const containsRE4 = cart.some(item => item.id === 're4remake');
                 const containsBundle = cart.some(item => item.id.includes('bundle') || item.id === 'hollow-silksong');
 
                 if (containsNitro) {
                     window.location.href = LINK_DISCORD_NITRO;
+                    return;
+                }
+                if (containsRE4) {
+                    window.location.href = LINK_RE4_REMAKE;
                     return;
                 }
                 if (containsBundle) {
