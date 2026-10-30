@@ -5,26 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forever-Store | متجر المنتجات الرقمية والألعاب</title>
 
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Font: Cairo -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-    <!-- Tailwind CSS Play CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        cairo: ['Cairo', 'sans-serif'],
-                    },
+                    fontFamily: { cairo: ['Cairo', 'sans-serif'] },
                     colors: {
                         brand: {
-                            dark: '#0f172a',
-                            card: '#1e293b',
-                            accent: '#6366f1',
-                            glow: '#818cf8',
-                            success: '#10b981',
+                            dark: '#0f172a', card: '#1e293b', accent: '#6366f1',
+                            glow: '#818cf8', success: '#10b981',
                         }
                     }
                 }
@@ -32,86 +24,49 @@
         }
     </script>
     <style>
-        body {
-            font-family: 'Cairo', sans-serif;
-            background-color: #0b0f17;
-            color: #e2e8f0;
-        }
-        .glow-effect {
-            box-shadow: 0 0 20px rgba(99, 102, 241, 0.15);
-        }
-        .glow-hover {
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .glow-hover:hover {
-            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.6);
-            transform: translateY(-2px);
-        }
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0b0f17;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #1e293b;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #334155;
-        }
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
+        body { font-family: 'Cairo', sans-serif; background-color: #0b0f17; color: #e2e8f0; }
+        .glow-effect { box-shadow: 0 0 20px rgba(99, 102, 241, 0.15); }
+        .glow-hover { transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); }
+        .glow-hover:hover { box-shadow: 0 4px 20px rgba(15, 23, 42, 0.6); transform: translateY(-2px); }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0b0f17; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #334155; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="bg-[#0b0f17] text-slate-200 min-h-screen flex flex-col selection:bg-indigo-500/30 selection:text-indigo-200 pb-20 sm:pb-0">
 
-    <!-- Top Announcement Bar for Weekend Offer (Warm Soft Accent) -->
-    <div id="weekend-banner" class="hidden bg-amber-500/10 border-b border-amber-500/20 text-amber-300 text-xs sm:text-sm font-bold py-2 px-4 text-center flex items-center justify-center gap-2">
-        <span class="bg-amber-500/20 text-amber-300 text-[10px] sm:text-xs font-bold px-2.5 py-0.5 rounded-md border border-amber-500/30">🔥 عرض الويكند</span>
-        <span class="font-semibold text-amber-200">اشتري أي لعبتين أوفلاين والثالثة علينا! (عرض فرصة الويكند) 💥🎉</span>
-    </div>
-
-    <!-- Product Details Modal -->
+    <!-- ================= Product Details Modal ================= -->
     <div id="product-details-modal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4 hidden transition-opacity duration-300">
         <div class="bg-[#0f172a] border border-slate-800 w-full max-w-lg rounded-3xl p-5 sm:p-6 shadow-2xl space-y-4 relative overflow-hidden">
             <button onclick="closeProductModal()" class="absolute top-4 left-4 w-8 h-8 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center transition-colors">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-
             <div class="flex items-center gap-3">
                 <div id="modal-product-icon" class="w-12 h-12 rounded-2xl bg-indigo-600/20 border border-indigo-500/30 text-indigo-400 flex items-center justify-center text-2xl shrink-0">
                     <i class="fa-solid fa-box"></i>
                 </div>
                 <div>
                     <h3 id="modal-product-title" class="text-base sm:text-lg font-bold text-white leading-tight"></h3>
-                    <span id="modal-product-badge" class="inline-block mt-1 bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 text-[10px] font-bold px-2.5 py-0.5 rounded-md">تفاصيل المنتج 💎</span>
+                    <span class="inline-block mt-1 bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 text-[10px] font-bold px-2.5 py-0.5 rounded-md">تفاصيل المنتج 💎</span>
                 </div>
             </div>
-
             <div class="bg-slate-900/90 border border-slate-800 p-4 rounded-2xl text-xs sm:text-sm text-slate-300 space-y-3 leading-relaxed">
                 <div>
                     <span class="text-slate-400 block font-bold mb-1">وصف ومواصفات المنتج:</span>
                     <p id="modal-product-desc" class="text-slate-200 font-medium"></p>
                 </div>
-
                 <div id="modal-product-note-container" class="bg-indigo-950/40 border border-indigo-500/20 p-3 rounded-xl text-indigo-200 text-xs">
                     <i class="fa-solid fa-circle-info text-indigo-400 ml-1"></i>
                     <span id="modal-product-note"></span>
                 </div>
-
                 <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between text-xs">
                     <span class="text-slate-400 font-bold">الضمان والتسليم:</span>
                     <span class="text-emerald-400 font-bold"><i class="fa-solid fa-shield-halved ml-1"></i> تسليم سريع وضمان كامل 100%</span>
                 </div>
             </div>
-
             <div class="flex items-center justify-between pt-2 border-t border-slate-800">
                 <div>
                     <span class="text-xs text-slate-400 block">السعر النهائي:</span>
@@ -124,13 +79,13 @@
         </div>
     </div>
 
-    <!-- Notification Toast -->
+    <!-- ================= Notification Toast ================= -->
     <div id="toast" class="fixed bottom-20 sm:bottom-5 left-4 right-4 sm:right-auto sm:left-5 z-50 transform translate-y-32 opacity-0 transition-all duration-300 bg-emerald-950/90 border border-emerald-500/30 text-emerald-200 px-5 py-3 rounded-xl shadow-xl flex items-center gap-3 pointer-events-none font-bold backdrop-blur-md">
         <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
         <span id="toast-message" class="font-bold text-xs sm:text-sm">انضمت للسلة بنجاح يا وحش! 🛒</span>
     </div>
 
-    <!-- Header / Navbar -->
+    <!-- ================= Header / Navbar ================= -->
     <header class="sticky top-0 z-40 bg-[#0f172a]/80 backdrop-blur-md border-b border-slate-800/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
             <div class="flex items-center gap-2.5">
@@ -144,7 +99,6 @@
             </div>
 
             <div class="flex items-center gap-3">
-                <!-- Currency Selector -->
                 <div class="relative hidden sm:block">
                     <select id="currency-select" onchange="changeCurrency(this.value)" class="bg-slate-900 border border-slate-800 text-slate-300 text-xs font-semibold rounded-xl px-3 py-2 outline-none focus:border-indigo-500/50 transition-colors cursor-pointer">
                         <option value="JOD">🇯🇴 JOD - دينار أردني</option>
@@ -155,8 +109,6 @@
                         <option value="BHD">🇧🇭 BHD - دينار بحريني</option>
                     </select>
                 </div>
-
-                <!-- Shopping Cart Button -->
                 <button onclick="toggleCartModal()" class="relative bg-indigo-600/90 hover:bg-indigo-600 text-white font-bold px-4 py-2 sm:px-4 sm:py-2.5 rounded-xl border border-indigo-500/30 transition-all duration-200 flex items-center gap-2 text-xs sm:text-sm">
                     <i class="fa-solid fa-cart-shopping text-sm text-indigo-200"></i>
                     <span class="hidden sm:inline">سلتك</span>
@@ -168,38 +120,30 @@
 
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
 
-        <!-- Hero Section & Stats -->
+        <!-- ================= Hero Section ================= -->
         <section class="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-6 sm:p-10 mb-8 text-center relative overflow-hidden">
             <div class="relative z-10 max-w-2xl mx-auto">
                 <span class="inline-block bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 text-xs font-bold px-3 py-1 rounded-full mb-3">تسليم سريع وضمان ذهبي ⚡👑</span>
                 <h2 class="text-2xl sm:text-3xl font-bold text-slate-100 mb-3 leading-snug">منوّر المتجر! أسعار خرافية للجميع ومع ضمانات 👑✨</h2>
                 <p class="text-xs sm:text-sm text-slate-400 font-medium mb-6">ألعابك واشتراكاتك المفضلة بأسعار مناسبة وتسليم هادئ وسلس 🔥</p>
-                
-                <!-- Quick Search -->
                 <div class="relative max-w-md mx-auto">
                     <input type="text" id="product-search-input" onkeyup="searchProducts()" placeholder="شو حاب تشتري اليوم؟ اكتب اسم اللعبة هنا..." class="w-full bg-slate-900/90 border border-slate-800 text-slate-200 placeholder-slate-500 text-xs sm:text-sm rounded-xl px-4 py-3 pl-10 outline-none focus:border-indigo-500/40 transition-all">
                     <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-slate-500 text-sm"></i>
                 </div>
             </div>
-
-            <!-- Store Live Stats -->
             <div class="grid grid-cols-2 sm:grid-cols-2 gap-4 mt-8 pt-6 border-t border-slate-800/60 max-w-lg mx-auto">
                 <div class="bg-slate-900/60 p-3.5 rounded-xl border border-slate-800/80">
-                    <div class="text-xl sm:text-2xl font-bold text-emerald-400 flex justify-center items-center gap-1">
-                        +<span id="counter-orders">409</span>
-                    </div>
+                    <div class="text-xl sm:text-2xl font-bold text-emerald-400 flex justify-center items-center gap-1">+<span id="counter-orders">409</span></div>
                     <div class="text-[11px] sm:text-xs font-medium text-slate-400">طلب تم بنجاح 🚀</div>
                 </div>
                 <div class="bg-slate-900/60 p-3.5 rounded-xl border border-slate-800/80">
-                    <div class="text-xl sm:text-2xl font-bold text-indigo-400 flex justify-center items-center gap-1">
-                        +<span id="counter-clients">343</span>
-                    </div>
+                    <div class="text-xl sm:text-2xl font-bold text-indigo-400 flex justify-center items-center gap-1">+<span id="counter-clients">343</span></div>
                     <div class="text-[11px] sm:text-xs font-medium text-slate-400">زبون مبسوط معنا 🌟</div>
                 </div>
             </div>
         </section>
 
-        <!-- Category Horizontal Tabs -->
+        <!-- ================= Category Tabs ================= -->
         <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-2 mb-8">
             <button id="tab-all" onclick="filterCategory('all')" class="category-tab whitespace-nowrap bg-indigo-600/90 text-white border border-indigo-500/30 text-xs font-bold px-4 py-2 rounded-xl transition-all">
                 <i class="fa-solid fa-border-all ml-1"></i> الكل
@@ -221,15 +165,13 @@
             </button>
         </div>
 
-        <!-- Products Section Organized by Headings -->
+        <!-- ================= Products Grid ================= -->
         <div id="products-grid" class="space-y-12">
 
-            <!-- ================= SECTION 1: BEST SELLERS ================= -->
+            <!-- ========== SECTION 1: BEST SELLERS ========== -->
             <section class="section-block category-bestsellers space-y-4">
                 <div class="flex items-center gap-3 border-b border-slate-800/80 pb-3">
-                    <h3 class="text-lg sm:text-xl font-bold text-slate-100 flex items-center gap-2">
-                        <span>🔥</span> الأكثر مبيعاً
-                    </h3>
+                    <h3 class="text-lg sm:text-xl font-bold text-slate-100 flex items-center gap-2"><span>🔥</span> الأكثر مبيعاً</h3>
                     <span class="text-xs text-slate-400 font-normal">أقوى المنتجات المطلوبة والأعلى تقييماً 🚀</span>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -282,7 +224,7 @@
                         </div>
                     </div>
 
-                    <!-- 3. Spotify Premium 3 Months (Returned to Front Bestsellers) -->
+                    <!-- 3. Spotify Premium 3 Months -->
                     <div onclick="openProductModal('كود سبوتيفاي بريميوم (3 أشهر)', 3.00, 'fa-brands fa-spotify', 'spotify-3m', 'كود سبوتيفاي بريميوم رسمي 3 أشهر يربط بحسابك الشخصي لموسيقى وأغاني أوفلاين وبدون إعلانات نهائياً.', 'تفعيل الكود سريع ومضمون 100% ويشمل التشغيل بالخلفية وتنزيل المحتوى أوفلاين.')" class="product-card subscriptions bg-slate-900/70 border border-slate-800 rounded-xl overflow-hidden glow-hover flex flex-col justify-between cursor-pointer">
                         <div class="p-4">
                             <div class="h-40 bg-slate-950 rounded-lg mb-3 border border-slate-800/80 overflow-hidden relative flex items-center justify-center">
@@ -292,7 +234,7 @@
                             <h4 class="text-base font-bold text-slate-100 mb-1">كود سبوتيفاي بريميوم (3 أشهر)</h4>
                             <p class="text-xs text-slate-400 mb-3">يتفعل مباشرة على حسابك الشخصي! استماع بدون إعلانات وبأعلى جودة وتنزيل الأغاني.</p>
                             <div class="bg-slate-950/60 p-2.5 rounded-lg text-xs text-emerald-300/90 mb-3 border border-slate-800">
-                                <i class="fa-solid fa-shield-check ml-1 text-emerald-400"></i> تفعيل رسمي 100% مباشر وسلس على حسابك!
+                                <i class="fa-solid fa-shield-halved ml-1 text-emerald-400"></i> تفعيل رسمي 100% مباشر وسلس على حسابك!
                             </div>
                         </div>
                         <div class="p-4 pt-0 flex items-center justify-between border-t border-slate-800/60 mt-auto">
@@ -309,17 +251,39 @@
                 </div>
             </section>
 
-            <!-- ================= SECTION 2: OFFLINE GAMES ================= -->
+            <!-- ========== SECTION 2: OFFLINE GAMES ========== -->
             <section class="section-block category-offline space-y-4">
                 <div class="flex items-center gap-3 border-b border-slate-800/80 pb-3">
-                    <h3 class="text-xl sm:text-2xl font-black text-white flex items-center gap-2">
-                        <span>🎮</span> قسم الألعاب أوفلاين
-                    </h3>
+                    <h3 class="text-xl sm:text-2xl font-black text-white flex items-center gap-2"><span>🎮</span> قسم الألعاب أوفلاين</h3>
                     <span class="text-xs text-slate-500 font-semibold">أضخم مكتبة ألعاب ستيم بتفعيل أوفلاين آمن ومبتكر</span>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
 
-                    <!-- 007 First Light (Positioned in Offline Games) -->
+                    <!-- Resident Evil 9 (DUPLICATED HERE) -->
+                    <div onclick="openProductModal('Resident Evil 9', 2.00, 'fa-brands fa-steam', 're9', 'لعبة رعب وشغف أسطورية جاهزة للتختيم الكامل بنمط الأوفلاين.', 'تفعيل الحساب بنمط الأوفلاين يضمن لك تجربة تختيم كاملة وبأعلى جودة بدون انقطاع وتختيمك ينحفظ بجهازك بآمان!')" class="product-card offline bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between cursor-pointer">
+                        <div class="p-4">
+                            <div class="h-40 bg-slate-950 rounded-xl mb-3 border border-slate-800 overflow-hidden relative flex items-center justify-center">
+                                <img src="images/re9.jpg" onerror="this.src='https://placehold.co/400x250/0f172a/6366f1?text=Resident+Evil+9'" alt="Resident Evil 9" class="w-full h-full object-cover">
+                                <span class="absolute top-2 right-2 bg-rose-600 text-white text-[10px] font-black px-2 py-0.5 rounded-md">رعب وبقاء 😱</span>
+                            </div>
+                            <h4 class="text-base font-bold text-white mb-1">Resident Evil 9</h4>
+                            <div class="bg-slate-800/70 p-2.5 rounded-xl text-xs text-slate-300 mb-3 border border-slate-700/50">
+                                <i class="fa-solid fa-shield-halved text-emerald-400 ml-1"></i> أوفلاين آمن 100%<br>
+                                <span class="text-[11px] text-slate-400 mt-1 block">تفعيل الحساب بنمط الأوفلاين يضمن لك تجربة تختيم كاملة وبأعلى جودة بدون انقطاع أو خروج مفاجئ، وتختيمك ينحفظ بجهازك بآمان!</span>
+                            </div>
+                        </div>
+                        <div class="p-4 pt-0 flex items-center justify-between border-t border-slate-800/80 mt-auto">
+                            <div>
+                                <span class="text-xs text-slate-400 block">سعر ستيم الأصلي: <span class="line-through text-slate-500"><span class="price-display" data-jod="49.00">49.00</span> <span class="currency-symbol">JOD</span></span></span>
+                                <span class="text-lg font-black text-emerald-400"><span class="price-display" data-jod="2.00">2.00</span> <span class="currency-symbol text-xs">JOD</span></span>
+                            </div>
+                            <button onclick="event.stopPropagation(); addToCart('Resident Evil 9', 2.00, 'fa-brands fa-steam', 're9')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-1.5">
+                                <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 007 First Light -->
                     <div onclick="openProductModal('007 First Light', 2.00, 'fa-solid fa-gun', '007-game', 'لعبة الجاسوسية والأكشن الشهيرة 007 First Light بتفعيل أوفلاين آمن ومضمون 100%.', 'تفعيل الحساب بنمط الأوفلاين يضمن لك تجربة تختيم كاملة وبأعلى جودة بدون انقطاع أو خروج مفاجئ، وتختيمك ينحفظ بجهازك بآمان!')" class="product-card offline bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between cursor-pointer">
                         <div class="p-4">
                             <div class="h-40 bg-slate-950 rounded-xl mb-3 border border-slate-800 overflow-hidden relative flex items-center justify-center">
@@ -367,7 +331,7 @@
                         </div>
                     </div>
 
-                    <!-- Marvel's Spider-Man 2 -->
+                    <!-- Spider-Man 2 -->
                     <div onclick="openProductModal('Marvel\'s Spider-Man 2', 2.00, 'fa-brands fa-steam', 'spiderman2', 'تأرجح في نيويورك مع بيتر باركر ومايلز موراليس وتحدي فينوم!', 'تفعيل الحساب بنمط الأوفلاين يضمن لك تجربة تختيم كاملة وبأعلى جودة!')" class="product-card offline bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between cursor-pointer">
                         <div class="p-4">
                             <div class="h-40 bg-slate-950 rounded-xl mb-3 border border-slate-800 overflow-hidden relative flex items-center justify-center">
@@ -391,7 +355,7 @@
                         </div>
                     </div>
 
-                    <!-- Elden Ring: Shadow of the Erdtree -->
+                    <!-- Elden Ring -->
                     <div class="product-card offline bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between cursor-pointer" onclick="openProductModal('Elden Ring: Shadow of the Erdtree', 2.00, 'fa-brands fa-steam', 'elden-ring', 'لعبة السنة الأسطورية شاملة إضافة Shadow of the Erdtree.', 'تفعيل أوفلاين رسمي وآمن 100%.')">
                         <div class="p-4">
                             <div class="h-40 bg-slate-950 rounded-xl mb-3 border border-slate-800 overflow-hidden relative flex items-center justify-center">
@@ -416,7 +380,7 @@
                     </div>
 
                     <!-- Black Myth: Wukong -->
-                    <div class="product-card offline bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between cursor-pointer" onclick="openProductModal('Black Myth: Wukong', 2.00, 'fa-brands fa-steam', 'wukong', 'لعبة بطل الأساطوريات الصينية ووكينغ بتفعيل أوفلاين كامل.', 'تفعيل أوفلاين رسمي وآمن 100%.')">
+                    <div class="product-card offline bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between cursor-pointer" onclick="openProductModal('Black Myth: Wukong', 2.00, 'fa-brands fa-steam', 'wukong', 'لعبة بطل الأساطير الصينية ووكينغ بتفعيل أوفلاين كامل.', 'تفعيل أوفلاين رسمي وآمن 100%.')">
                         <div class="p-4">
                             <div class="h-40 bg-slate-950 rounded-xl mb-3 border border-slate-800 overflow-hidden relative flex items-center justify-center">
                                 <img src="images/wukong.jpg" onerror="this.src='https://placehold.co/400x250/0f172a/6366f1?text=Wukong'" alt="Black Myth Wukong" class="w-full h-full object-cover">
@@ -487,7 +451,7 @@
                         </div>
                     </div>
 
-                    <!-- The Witcher 3: Wild Hunt -->
+                    <!-- The Witcher 3 -->
                     <div class="product-card offline bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between cursor-pointer" onclick="openProductModal('The Witcher 3: Wild Hunt', 2.00, 'fa-brands fa-steam', 'witcher3', 'مغامرة جيرالت وتحدياته العظيمة مع كامل الإضافات.', 'تفعيل أوفلاين آمن 100%.')">
                         <div class="p-4">
                             <div class="h-40 bg-slate-950 rounded-xl mb-3 border border-slate-800 overflow-hidden relative flex items-center justify-center">
@@ -559,7 +523,7 @@
                         </div>
                     </div>
 
-                    <!-- Ghost of Tsushima DIRECTOR'S CUT -->
+                    <!-- Ghost of Tsushima -->
                     <div class="product-card offline bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between cursor-pointer" onclick="openProductModal('Ghost of Tsushima DIRECTOR\'S CUT', 2.00, 'fa-brands fa-steam', 'tsushima', 'رحلة جين ساكاي لحماية جزيرة تسوشيما مع النسخة المخرجة.', 'تفعيل أوفلاين آمن 100%.')">
                         <div class="p-4">
                             <div class="h-40 bg-slate-950 rounded-xl mb-3 border border-slate-800 overflow-hidden relative flex items-center justify-center">
@@ -634,17 +598,15 @@
                 </div>
             </section>
 
-            <!-- ================= SECTION 3: GAME BUNDLES ================= -->
+            <!-- ========== SECTION 3: BUNDLES ========== -->
             <section class="section-block category-bundles space-y-4">
                 <div class="flex items-center gap-3 border-b border-slate-800/80 pb-3">
-                    <h3 class="text-xl sm:text-2xl font-black text-white flex items-center gap-2">
-                        <span>📦</span> قسم بكجات الألعاب
-                    </h3>
+                    <h3 class="text-xl sm:text-2xl font-black text-white flex items-center gap-2"><span>📦</span> قسم بكجات الألعاب</h3>
                     <span class="text-xs text-slate-500 font-semibold">بكجات تجميعية مميزة لأقوى الألعاب بتوفير ضخم</span>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
 
-                    <!-- Soulsborne Master Ultimate Bundle -->
+                    <!-- Soulsborne Master Bundle -->
                     <div class="product-card bundles bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between">
                         <div class="p-4">
                             <div class="h-40 bg-slate-950 rounded-xl mb-3 border border-slate-800 overflow-hidden relative flex items-center justify-center">
@@ -667,7 +629,7 @@
                         </div>
                     </div>
 
-                    <!-- Hollow Knight + Silksong Bundle -->
+                    <!-- Hollow Knight Bundle -->
                     <div class="product-card bundles bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between">
                         <div class="p-4">
                             <div class="h-40 bg-slate-950 rounded-xl mb-3 border border-slate-800 overflow-hidden relative flex items-center justify-center">
@@ -713,7 +675,7 @@
                         </div>
                     </div>
 
-                    <!-- The Last of Us Bundle -->
+                    <!-- TLOU Bundle -->
                     <div class="product-card bundles bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between">
                         <div class="p-4">
                             <div class="h-40 bg-slate-950 rounded-xl mb-3 border border-slate-800 overflow-hidden relative flex items-center justify-center">
@@ -739,15 +701,37 @@
                 </div>
             </section>
 
-            <!-- ================= SECTION 4: DISCORD SERVICES ================= -->
+            <!-- ========== SECTION 4: DISCORD SERVICES ========== -->
             <section class="section-block category-discord space-y-4">
                 <div class="flex items-center gap-3 border-b border-slate-800/80 pb-3">
-                    <h3 class="text-xl sm:text-2xl font-black text-white flex items-center gap-2">
-                        <span>💬</span> قسم خدمات الديسكورد
-                    </h3>
+                    <h3 class="text-xl sm:text-2xl font-black text-white flex items-center gap-2"><span>💬</span> قسم خدمات الديسكورد</h3>
                     <span class="text-xs text-slate-500 font-semibold">تفعيل نيترو وبوستات لتلفيل سيرفرات الديسكورد بأفضل السعر</span>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+                    <!-- Discord Nitro 3 Months (DUPLICATED HERE) -->
+                    <div onclick="openProductModal('ديسكورد نيترو 3 أشهر + 2 بوست', 2.00, 'fa-brands fa-discord', 'discord-nitro-3m', 'اشتراك نيترو قيمنق كامل لمدة 3 أشهر مع البوستات لتفعيل سيرفرك.', 'شروط التفعيل: ينطبق على الحسابات التي عمرها أكثر من شهر، والتي لم تفعل نيترو سابقاً أو لم تفعل اشتراك خلال آخر سنة بالكامل.')" class="product-card discord subscriptions bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between cursor-pointer">
+                        <div class="p-4">
+                            <div class="h-40 bg-indigo-950/50 rounded-xl mb-3 border border-indigo-900/30 overflow-hidden relative flex items-center justify-center">
+                                <img src="images/nitro-promo.jpg" onerror="this.src='https://placehold.co/400x250/312e81/a5b4fc?text=Discord+Nitro+3M'" alt="Discord Nitro 3 Months" class="w-full h-full object-cover">
+                                <span class="absolute top-2 right-2 bg-amber-500 text-black text-[10px] font-black px-2 py-0.5 rounded-md">الأكثر مبيعاً 🔥</span>
+                            </div>
+                            <h4 class="text-base font-bold text-white mb-1">ديسكورد نيترو 3 أشهر + 2 بوست</h4>
+                            <p class="text-xs text-slate-400 mb-3">اشتراك نيترو قيمنق 3 أشهر كامل مع بوستين لسيرفرك. ينطبق للحسابات بعمر فوق الشهر.</p>
+                            <div class="bg-slate-800/70 p-2.5 rounded-xl text-xs text-indigo-300 mb-3 border border-slate-700/50">
+                                <i class="fa-solid fa-bolt text-indigo-400 ml-1"></i> شروط: عمر الحساب أكثر من شهر + ما تفعل به نيترو من سنة أو أبداً.
+                            </div>
+                        </div>
+                        <div class="p-4 pt-0 flex items-center justify-between border-t border-slate-800/80 mt-auto">
+                            <div>
+                                <span class="text-xs text-slate-400 block">السعر الأصلي: <span class="line-through text-slate-500"><span class="price-display" data-jod="21.00">21.00</span> <span class="currency-symbol">JOD</span></span></span>
+                                <span class="text-lg font-black text-emerald-400"><span class="price-display" data-jod="2.00">2.00</span> <span class="currency-symbol text-xs">JOD</span></span>
+                            </div>
+                            <button onclick="event.stopPropagation(); addToCart('ديسكورد نيترو 3 أشهر + 2 بوست', 2.00, 'fa-brands fa-discord', 'discord-nitro-3m')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-1.5">
+                                <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
+                            </button>
+                        </div>
+                    </div>
 
                     <!-- Discord Nitro All Accounts -->
                     <div class="product-card discord bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between">
@@ -818,25 +802,23 @@
                 </div>
             </section>
 
-            <!-- ================= SECTION 5: SUBSCRIPTIONS ================= -->
+            <!-- ========== SECTION 5: SUBSCRIPTIONS ========== -->
             <section class="section-block category-subscriptions space-y-4">
                 <div class="flex items-center gap-3 border-b border-slate-800/80 pb-3">
-                    <h3 class="text-xl sm:text-2xl font-black text-white flex items-center gap-2">
-                        <span>⚡</span> قسم الاشتراكات
-                    </h3>
+                    <h3 class="text-xl sm:text-2xl font-black text-white flex items-center gap-2"><span>⚡</span> قسم الاشتراكات</h3>
                     <span class="text-xs text-slate-400 font-bold">اشتراكات ترفيهية وذكاء اصطناعي بسعر خرافي!</span>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
 
-                    <!-- Google Gemini Advanced 18 Months (UPDATED TO 5.00 JOD) -->
+                    <!-- Gemini Advanced -->
                     <div class="product-card subscriptions bg-slate-900/90 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between">
                         <div class="p-4">
                             <div class="h-40 bg-slate-950 rounded-xl mb-3 border border-slate-800 overflow-hidden relative flex items-center justify-center">
                                 <img src="images/gemini.jpg" onerror="this.src='https://placehold.co/400x250/0f172a/818cf8?text=Google+Gemini+18M'" alt="Google Gemini Advanced" class="w-full h-full object-cover">
-                                <span class="absolute top-2 right-2 bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-[10px] font-black px-2 py-0.5 rounded-md shadow">ذكااء اصطناعي ✨</span>
+                                <span class="absolute top-2 right-2 bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-[10px] font-black px-2 py-0.5 rounded-md shadow">ذكاء اصطناعي ✨</span>
                             </div>
                             <h4 class="text-base font-bold text-white mb-1">اشتراك جيمناي (Gemini Advanced) 18 شهر</h4>
-                            <p class="text-xs text-slate-400 mb-3">تفعيل رسمي ومباشر على <strong class="text-white">حسابك الشخصي</strong> الخاص لمدة 18 شهر كاملة! • ذكاء اصطناعي متطور + مساحة تخزين سحابية ضخمة.</p>
+                            <p class="text-xs text-slate-400 mb-3">تفعيل رسمي ومباشر على <strong class="text-white">حسابك الشخصي</strong> لمدة 18 شهر كاملة! • ذكاء اصطناعي متطور + مساحة تخزين سحابية ضخمة.</p>
                             <div class="bg-slate-800/70 p-2.5 rounded-xl text-xs text-indigo-300 mb-3 border border-slate-700/50">
                                 <i class="fa-solid fa-shield-halved text-emerald-400 ml-1"></i> تفعيل رسمي آمن 100% على ايميلك الشخصي.
                             </div>
@@ -852,7 +834,7 @@
                         </div>
                     </div>
 
-                    <!-- YouTube Premium 1 Month -->
+                    <!-- YouTube Premium -->
                     <div class="product-card subscriptions bg-slate-900/90 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between">
                         <div class="p-4">
                             <div class="h-40 bg-slate-950 rounded-xl mb-3 border border-slate-800 overflow-hidden relative flex items-center justify-center">
@@ -873,7 +855,7 @@
                         </div>
                     </div>
 
-                    <!-- Spotify Premium 3 Months -->
+                    <!-- Spotify Premium -->
                     <div class="product-card subscriptions bg-slate-900/90 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between">
                         <div class="p-4">
                             <div class="h-40 bg-slate-950 rounded-xl mb-3 border border-slate-800 overflow-hidden relative flex items-center justify-center">
@@ -920,7 +902,7 @@
 
         </div>
 
-        <!-- Golden Guarantee Section -->
+        <!-- ========== Golden Guarantee Section ========== -->
         <section class="mt-12 border-t border-slate-800/80 pt-10">
             <div class="bg-gradient-to-r from-amber-950/40 via-slate-900 to-indigo-950/40 border border-amber-500/30 rounded-3xl p-6 sm:p-8 relative overflow-hidden shadow-2xl">
                 <div class="flex flex-col sm:flex-row items-center gap-5 mb-6 text-center sm:text-right">
@@ -932,7 +914,6 @@
                         <p class="text-xs sm:text-sm text-slate-300 font-bold mt-1">حقك محفوظ وحساباتك مضمونة 100% مع ضماناتنا الشاملة:</p>
                     </div>
                 </div>
-
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div class="bg-slate-900/90 p-4 rounded-2xl border border-slate-800 flex items-start gap-3 shadow-md">
                         <i class="fa-solid fa-circle-check text-emerald-400 text-lg mt-0.5 shrink-0"></i>
@@ -961,10 +942,9 @@
 
     </main>
 
-    <!-- Shopping Cart Modal -->
+    <!-- ================= Shopping Cart Modal ================= -->
     <div id="cart-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4 hidden transition-opacity duration-300">
         <div class="bg-[#0f172a] border border-slate-800 w-full max-w-lg rounded-t-3xl sm:rounded-3xl shadow-2xl flex flex-col max-h-[90vh] sm:max-h-[85vh] overflow-hidden">
-            <!-- Modal Header -->
             <div class="p-4 sm:p-5 border-b border-slate-800 flex items-center justify-between bg-slate-900/50">
                 <div class="flex items-center gap-2.5">
                     <div class="w-9 h-9 rounded-xl bg-indigo-600/20 text-indigo-400 flex items-center justify-center text-lg">
@@ -980,12 +960,10 @@
                 </button>
             </div>
 
-            <!-- Modal Content / Items List -->
             <div id="cart-items-container" class="p-4 sm:p-5 flex-grow overflow-y-auto space-y-3">
                 <!-- Dynamically populated via JS -->
             </div>
 
-            <!-- Modal Footer & Payment Options -->
             <div class="p-4 sm:p-5 border-t border-slate-800 bg-slate-900/80 space-y-4">
                 <div>
                     <label class="block text-xs font-bold text-slate-300 mb-2">كيف بتحب تدفع؟</label>
@@ -1009,6 +987,13 @@
                     </div>
                 </div>
 
+                <div id="usr-payment-info-box" class="bg-indigo-950/60 border border-indigo-500/30 p-3.5 rounded-2xl flex items-start gap-3 text-xs text-indigo-200 transition-all">
+                    <i class="fa-solid fa-shield-halved text-indigo-400 text-lg mt-0.5 shrink-0"></i>
+                    <p class="leading-relaxed">
+                        عند الدفع بـ <strong class="text-white">الفيزا أو باي بال</strong>، سيتم تحويلك إلى منصة <strong class="text-emerald-400">usr.gg</strong> وهي منصة مرخصة من قبل <strong class="text-white">وزارة التجارة والصناعة السعودية</strong> وتحت إدارة <strong class="text-white">شركة دكان</strong>. الدفع آمن 100% وكل شيء مضمون!
+                    </p>
+                </div>
+
                 <div class="flex items-center justify-between pt-2 border-t border-slate-800">
                     <span class="text-sm font-bold text-slate-300">المجموع الكلي:</span>
                     <div class="text-xl font-black text-emerald-400 flex items-baseline gap-1">
@@ -1024,86 +1009,13 @@
         </div>
     </div>
 
-    <!-- Shopping Cart Modal -->
-    <div id="cart-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4 hidden transition-opacity duration-300">
-        <div class="bg-[#0f172a] border border-slate-800 w-full max-w-lg rounded-t-3xl sm:rounded-3xl shadow-2xl flex flex-col max-h-[90vh] sm:max-h-[85vh] overflow-hidden">
-            <!-- Modal Header -->
-            <div class="p-4 sm:p-5 border-b border-slate-800 flex items-center justify-between bg-slate-900/50">
-                <div class="flex items-center gap-2.5">
-                    <div class="w-9 h-9 rounded-xl bg-indigo-600/20 text-indigo-400 flex items-center justify-center text-lg">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-base sm:text-lg font-bold text-white">سلة التسوق</h3>
-                        <p class="text-[11px] text-slate-400">تحقق من المشتريات واختر طريقة الدفع</p>
-                    </div>
-                </div>
-                <button onclick="toggleCartModal()" class="w-8 h-8 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center transition-colors">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-
-            <!-- Modal Content / Items List -->
-            <div id="cart-items-container" class="p-4 sm:p-5 flex-grow overflow-y-auto space-y-3">
-                <!-- Dynamically populated via JS -->
-            </div>
-
-            <!-- Modal Footer & Payment Options -->
-            <div class="p-4 sm:p-5 border-t border-slate-800 bg-slate-900/80 space-y-4">
-                <div>
-                    <label class="block text-xs font-bold text-slate-400 mb-2">اختر طريقة الدفع المناسبة:</label>
-                    <div class="grid grid-cols-2 gap-2 text-xs font-bold">
-                        <label class="bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 p-2.5 rounded-xl cursor-pointer flex items-center gap-2 text-slate-200">
-                            <input type="radio" name="payment_method" value="card" checked onchange="handlePaymentMethodChange(this.value)" class="accent-indigo-500">
-                            <i class="fa-solid fa-credit-card text-indigo-400"></i> فيزا / ماستركارد
-                        </label>
-                        <label class="bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 p-2.5 rounded-xl cursor-pointer flex items-center gap-2 text-slate-200">
-                            <input type="radio" name="payment_method" value="cliq" onchange="handlePaymentMethodChange(this.value)" class="accent-indigo-500">
-                            <span class="text-indigo-300 font-black">CliQ</span> كليك (الأردن)
-                        </label>
-                        <label class="bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 p-2.5 rounded-xl cursor-pointer flex items-center gap-2 text-slate-200">
-                            <input type="radio" name="payment_method" value="paypal" onchange="handlePaymentMethodChange(this.value)" class="accent-indigo-500">
-                            <i class="fa-brands fa-paypal text-sky-400"></i> باي بال PayPal
-                        </label>
-                        <label class="bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 p-2.5 rounded-xl cursor-pointer flex items-center gap-2 text-slate-200">
-                            <input type="radio" name="payment_method" value="crypto" onchange="handlePaymentMethodChange(this.value)" class="accent-indigo-500">
-                            <i class="fa-brands fa-bitcoin text-amber-400"></i> USDT / Crypto
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Info Box for Card / PayPal Platform License -->
-                <div id="usr-payment-info-box" class="bg-indigo-950/60 border border-indigo-500/30 p-3.5 rounded-2xl flex items-start gap-3 text-xs text-indigo-200 transition-all">
-                    <i class="fa-solid fa-shield-check text-indigo-400 text-lg mt-0.5 shrink-0"></i>
-                    <p class="leading-relaxed">
-                        عند الدفع بـ <strong class="text-white">الفيزا أو باي بال</strong>، سيتم تحويلك إلى منصة <strong class="text-emerald-400">usr.gg</strong> وهي منصة مرخصة من قبل <strong class="text-white">وزارة التجارة والصناعة السعودية</strong> وتحت إدارة <strong class="text-white">شركة دكان</strong>. الدفع آمن 100% وكل شيء مضمون!
-                    </p>
-                </div>
-
-                <div class="flex items-center justify-between pt-2 border-t border-slate-800">
-                    <span class="text-sm font-bold text-slate-300">المجموع الكلي:</span>
-                    <div class="text-xl font-black text-emerald-400 flex items-baseline gap-1">
-                        <span id="cart-total">0</span>
-                        <span id="cart-total-currency" class="text-xs text-slate-400">JOD</span>
-                    </div>
-                </div>
-
-                <button onclick="checkout()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20 text-sm">
-                    <i class="fa-solid fa-lock"></i> إتمام الشراء والتأكيد
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Payment License Confirmation Modal -->
+    <!-- ================= Payment Notice Modal ================= -->
     <div id="payment-notice-modal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4 hidden transition-opacity duration-300">
         <div class="bg-[#0f172a] border border-indigo-500/40 w-full max-w-md rounded-3xl p-6 shadow-2xl text-center space-y-4">
             <div class="w-16 h-16 rounded-2xl bg-indigo-600/20 text-indigo-400 border border-indigo-500/30 flex items-center justify-center text-3xl mx-auto shadow-lg">
-                <i class="fa-solid fa-shield-check"></i>
+                <i class="fa-solid fa-shield-halved"></i>
             </div>
-
             <h3 class="text-lg font-black text-white">تنويه الدفع الآمن 🔒</h3>
-
             <div class="bg-slate-900/90 border border-slate-800 p-4 rounded-2xl text-xs sm:text-sm text-slate-300 leading-relaxed text-right space-y-2">
                 <p>
                     عند الدفع عن طريق <strong class="text-white">الفيزا أو باي بال</strong> سيتم تحويلك إلى منصة <strong class="text-emerald-400">usr.gg</strong> وهي منصة مرخصة من قبل <strong class="text-white">وزارة التجارة والصناعة السعودية</strong> وتحت إدارة <strong class="text-white">شركة دكان</strong>.
@@ -1117,14 +1029,13 @@
                     <span>الدفع آمن 100% وكل شيء مضمون!</span>
                 </div>
             </div>
-
             <button onclick="confirmPaymentNotice()" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/30">
                 <i class="fa-solid fa-check"></i> موافق ومتابعة للدفع
             </button>
         </div>
     </div>
 
-    <!-- Footer -->
+    <!-- ================= Footer ================= -->
     <footer class="bg-[#0f172a] border-t border-slate-800 text-slate-400 py-10 mt-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="flex items-center justify-center gap-3 mb-4">
@@ -1134,7 +1045,7 @@
                 <span class="text-xl font-black text-white">Forever-Store</span>
             </div>
             <p class="text-sm mb-6 max-w-md mx-auto text-slate-400">متجرك ومكانك الأول بأسعار تناسب الجميع - ألعاب أوفلاين وخدمات رقمية شرعية 100%.</p>
-            
+
             <div class="mb-6">
                 <p class="text-xs font-bold text-slate-500 mb-3">وسائل الدفع المتاحة لدينا</p>
                 <div class="flex justify-center items-center gap-4 text-3xl text-slate-400">
@@ -1155,79 +1066,96 @@
                 </a>
             </div>
 
-            <div class="mb-4">
-                <button onclick="togglePoliciesModal()" class="text-xs font-bold text-indigo-400 hover:text-indigo-300 underline transition-colors">
-                    <i class="fa-solid fa-file-contract ml-1"></i> الشروط والسياسة
-                </button>
-            </div>
-
             <p class="text-xs text-slate-500">جميع الحقوق محفوظة © Forever-Store</p>
         </div>
     </footer>
 
-    <!-- JavaScript Logic -->
+    <!-- ================= JavaScript Logic ================= -->
     <script>
-        // Global State & Core Helper Logic
-        let cart = JSON.parse(localStorage.getItem('fs_cart') || '[]');
-        let currentCurrency = localStorage.getItem('fs_currency') || 'JOD';
+        // ===== Safe Config =====
+        const rates = { JOD: 1, USD: 1.41, SAR: 5.29, AED: 5.18, KWD: 0.43, BHD: 0.53 };
+        const symbols = { JOD: 'JOD', USD: '$', SAR: 'SAR', AED: 'AED', KWD: 'KWD', BHD: 'BHD' };
+
+        // ===== Safe State Init (محصّن ضد فشل localStorage) =====
+        let cart = [];
+        let currentCurrency = 'JOD';
         let currentSelectedProduct = null;
 
-        const rates = {
-            JOD: 1,
-            USD: 1.41,
-            SAR: 5.29,
-            AED: 5.18,
-            KWD: 0.43,
-            BHD: 0.53
+        try {
+            const savedCart = localStorage.getItem('fs_cart');
+            if (savedCart) {
+                const parsed = JSON.parse(savedCart);
+                if (Array.isArray(parsed)) {
+                    cart = parsed.filter(item =>
+                        item && item.id && item.name &&
+                        typeof item.priceJod === 'number' &&
+                        typeof item.quantity === 'number' && item.quantity > 0
+                    );
+                }
+            }
+            const savedCurrency = localStorage.getItem('fs_currency');
+            if (savedCurrency && rates[savedCurrency]) currentCurrency = savedCurrency;
+        } catch (e) {
+            console.warn('localStorage unavailable, using defaults:', e);
+            cart = [];
+            currentCurrency = 'JOD';
+        }
+
+        // ===== Checkout URLs =====
+        const CHECKOUT_URLS = {
+            nitro: 'https://usr.gg/service/dyskord-nytro-3-ashhr-b3-10349',
+            bundle: 'https://usr.gg/service/bkgat-alaaab-aoflayn-10667',
+            steamOffline: 'https://usr.gg/service/hsab-stym-aoflayn-10665',
+            spotify: 'https://usr.gg/service/kod-sbotyfay-brymyom-3-ashhr-10675',
+            default: 'https://usr.gg/'
         };
 
-        const symbols = {
-            JOD: 'JOD',
-            USD: '$',
-            SAR: 'SAR',
-            AED: 'AED',
-            KWD: 'KWD',
-            BHD: 'BHD'
-        };
+        const NITRO_IDS = ['discord-nitro-3m', 'discord-nitro-all'];
+        const BUNDLE_IDS = ['soulsborne-master', 'hollow-silksong', 'gow-bundle', 'tlou-bundle'];
+        const STEAM_OFFLINE_IDS = [
+            're9', '007-game', 'gow-ragnarok', 'spiderman2', 'elden-ring',
+            'wukong', 'tlou1', 'silenthill2', 'witcher3', 'cyberpunk2077',
+            'baldursgate3', 'tsushima', 'forza6', 're4remake'
+        ];
 
+        // ===== Init on load =====
         document.addEventListener('DOMContentLoaded', () => {
-            updateCartUI();
-            updateCurrencyDisplay();
-            const currSelect = document.getElementById('currency-select');
-            if (currSelect) currSelect.value = currentCurrency;
-            
-            // Start animated counters
-            animateCounters();
+            try {
+                updateCartUI();
+                updateCurrencyDisplay();
+                const currSelect = document.getElementById('currency-select');
+                if (currSelect) currSelect.value = currentCurrency;
+                animateCounters();
+            } catch (e) {
+                console.error('Init error:', e);
+            }
         });
 
-        // Animated Counters Function (Smooth 2-second animation)
         function animateCounters() {
             const animateElement = (id, target, duration) => {
                 const el = document.getElementById(id);
                 if (!el) return;
                 let startTime = null;
-
                 const step = (timestamp) => {
                     if (!startTime) startTime = timestamp;
                     const progress = Math.min((timestamp - startTime) / duration, 1);
                     el.innerText = Math.floor(progress * target);
-                    if (progress < 1) {
-                        window.requestAnimationFrame(step);
-                    } else {
-                        el.innerText = target;
-                    }
+                    if (progress < 1) window.requestAnimationFrame(step);
+                    else el.innerText = target;
                 };
-
                 window.requestAnimationFrame(step);
             };
-
             animateElement('counter-orders', 409, 2000);
             animateElement('counter-clients', 343, 2000);
         }
 
         function saveState() {
-            localStorage.setItem('fs_cart', JSON.stringify(cart));
-            localStorage.setItem('fs_currency', currentCurrency);
+            try {
+                localStorage.setItem('fs_cart', JSON.stringify(cart));
+                localStorage.setItem('fs_currency', currentCurrency);
+            } catch (e) {
+                console.warn('Could not save state:', e);
+            }
         }
 
         function showToast(message) {
@@ -1237,23 +1165,30 @@
                 toastMsg.innerText = message;
                 toast.classList.remove('translate-y-32', 'opacity-0');
                 toast.classList.add('translate-y-0', 'opacity-100');
-                setTimeout(() => {
+                clearTimeout(window._toastTimer);
+                window._toastTimer = setTimeout(() => {
                     toast.classList.remove('translate-y-0', 'opacity-100');
                     toast.classList.add('translate-y-32', 'opacity-0');
                 }, 2500);
             }
         }
 
+        // ✅ دالة الإضافة للسلة
         function addToCart(name, priceJod, iconClass, id) {
-            const existingIndex = cart.findIndex(item => item.id === id);
-            if (existingIndex > -1) {
-                cart[existingIndex].quantity += 1;
-            } else {
-                cart.push({ id, name, priceJod, iconClass, quantity: 1 });
+            try {
+                const existingIndex = cart.findIndex(item => item.id === id);
+                if (existingIndex > -1) {
+                    cart[existingIndex].quantity += 1;
+                } else {
+                    cart.push({ id, name, priceJod, iconClass, quantity: 1 });
+                }
+                showToast(`انضمت "${name}" لسلتك بنجاح! 🛒🔥`);
+                updateCartUI();
+                saveState();
+            } catch (e) {
+                console.error('addToCart error:', e);
+                showToast('حدث خطأ، جرب مرة ثانية 🙏');
             }
-            showToast(`انضمت "${name}" لسلتك بنجاح! 🛒🔥`);
-            updateCartUI();
-            saveState();
         }
 
         function removeFromCart(id) {
@@ -1266,12 +1201,8 @@
             const item = cart.find(item => item.id === id);
             if (item) {
                 item.quantity += delta;
-                if (item.quantity <= 0) {
-                    removeFromCart(id);
-                } else {
-                    updateCartUI();
-                    saveState();
-                }
+                if (item.quantity <= 0) removeFromCart(id);
+                else { updateCartUI(); saveState(); }
             }
         }
 
@@ -1283,7 +1214,6 @@
 
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
             if (cartCountEl) cartCountEl.innerText = totalItems;
-
             if (!container) return;
 
             if (cart.length === 0) {
@@ -1299,44 +1229,41 @@
                 if (totalEl) totalEl.innerText = '0.00';
                 if (checkoutBtn) {
                     checkoutBtn.disabled = true;
-                    checkoutBtn.classList.add('opacity-50', 'cursor-not-allowed', 'hover:bg-emerald-500');
-                    checkoutBtn.classList.remove('hover:bg-emerald-400');
+                    checkoutBtn.classList.add('opacity-50', 'cursor-not-allowed');
                 }
                 return;
             }
 
             if (checkoutBtn) {
                 checkoutBtn.disabled = false;
-                checkoutBtn.classList.remove('opacity-50', 'cursor-not-allowed', 'hover:bg-emerald-500');
-                checkoutBtn.classList.add('hover:bg-emerald-400');
+                checkoutBtn.classList.remove('opacity-50', 'cursor-not-allowed');
             }
 
             let grandTotalJod = 0;
             container.innerHTML = cart.map(item => {
-                const itemTotal = item.priceJod * item.quantity;
-                grandTotalJod += itemTotal;
-                const rate = rates[currentCurrency] || 1;
-                const convertedPrice = (itemTotal * rate).toFixed(2);
-
+                grandTotalJod += item.priceJod * item.quantity;
+                const itemPriceStr = convertPrice(item.priceJod);
                 return `
-                    <div class="bg-slate-900/90 border border-slate-800 p-3 rounded-xl flex items-center justify-between gap-3">
-                        <div class="flex items-center gap-3 overflow-hidden">
-                            <div class="w-10 h-10 rounded-lg bg-indigo-950/80 border border-indigo-500/20 text-indigo-400 flex items-center justify-center shrink-0">
-                                <i class="${item.iconClass || 'fa-solid fa-gamepad'}"></i>
-                            </div>
-                            <div class="truncate">
-                                <h5 class="text-xs font-bold text-white truncate">${item.name}</h5>
-                                <span class="text-xs font-bold text-emerald-400">${convertedPrice} ${symbols[currentCurrency]}</span>
+                    <div class="bg-slate-800/60 border border-slate-700/60 rounded-xl p-3 flex items-center gap-2.5">
+                        <div class="w-10 h-10 rounded-lg bg-indigo-600/20 border border-indigo-500/30 text-indigo-400 flex items-center justify-center text-base shrink-0">
+                            <i class="${item.iconClass}"></i>
+                        </div>
+                        <div class="flex-grow min-w-0">
+                            <h4 class="text-xs sm:text-sm font-bold text-white truncate">${item.name}</h4>
+                            <div class="text-[11px] text-slate-400 mt-0.5 flex items-center gap-1">
+                                <span class="text-emerald-400 font-bold">${itemPriceStr}</span>
+                                <span class="text-slate-500">${symbols[currentCurrency]}</span>
                             </div>
                         </div>
-
-                        <div class="flex items-center gap-2 shrink-0">
-                            <div class="flex items-center bg-slate-950 border border-slate-800 rounded-lg">
-                                <button onclick="updateQuantity('${item.id}', -1)" class="w-7 h-7 text-slate-400 hover:text-white flex items-center justify-center font-bold text-xs">-</button>
-                                <span class="w-6 text-center text-xs font-bold text-white">${item.quantity}</span>
-                                <button onclick="updateQuantity('${item.id}', 1)" class="w-7 h-7 text-slate-400 hover:text-white flex items-center justify-center font-bold text-xs">+</button>
-                            </div>
-                            <button onclick="removeFromCart('${item.id}')" class="text-slate-500 hover:text-rose-400 p-1 text-xs">
+                        <div class="flex items-center gap-1 shrink-0">
+                            <button onclick="updateQuantity('${item.id}', -1)" class="w-7 h-7 rounded-lg bg-slate-700 hover:bg-slate-600 text-slate-200 flex items-center justify-center text-[10px] transition-colors">
+                                <i class="fa-solid fa-minus"></i>
+                            </button>
+                            <span class="text-xs font-bold text-white w-5 text-center">${item.quantity}</span>
+                            <button onclick="updateQuantity('${item.id}', 1)" class="w-7 h-7 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white flex items-center justify-center text-[10px] transition-colors">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                            <button onclick="removeFromCart('${item.id}')" class="w-7 h-7 rounded-lg bg-rose-600/20 hover:bg-rose-600 text-rose-400 hover:text-white flex items-center justify-center text-[10px] transition-colors mr-0.5" title="حذف">
                                 <i class="fa-solid fa-trash"></i>
                             </button>
                         </div>
@@ -1344,135 +1271,201 @@
                 `;
             }).join('');
 
-            if (totalEl) {
-                const rate = rates[currentCurrency] || 1;
-                totalEl.innerText = (grandTotalJod * rate).toFixed(2);
-            }
+            if (totalEl) totalEl.innerText = convertPrice(grandTotalJod);
+            const totalCurrEl = document.getElementById('cart-total-currency');
+            if (totalCurrEl) totalCurrEl.innerText = symbols[currentCurrency];
         }
 
-        function toggleCartModal() {
-            const modal = document.getElementById('cart-modal');
-            if (modal) {
-                modal.classList.toggle('hidden');
-            }
-        }
-
-        function openProductModal(name, priceJod, iconClass, id, desc, note) {
-            currentSelectedProduct = { name, priceJod, iconClass, id, desc, note };
-            document.getElementById('modal-product-title').innerText = name;
-            document.getElementById('modal-product-desc').innerText = desc || 'منتج رقمي مميز مع تفعيل آمن وسريع وضمان كامل.';
-            
+        function convertPrice(jod) {
             const rate = rates[currentCurrency] || 1;
-            document.getElementById('modal-product-price').innerText = (priceJod * rate).toFixed(2);
+            return (jod * rate).toFixed(2);
+        }
 
-            const iconEl = document.getElementById('modal-product-icon');
-            if (iconEl) iconEl.innerHTML = `<i class="${iconClass || 'fa-solid fa-box'}"></i>`;
+        function changeCurrency(curr) {
+            if (!rates[curr]) return;
+            currentCurrency = curr;
+            saveState();
+            updateCurrencyDisplay();
+            showToast(`تم تغيير العملة إلى ${curr} 💱`);
+        }
 
-            const noteContainer = document.getElementById('modal-product-note-container');
-            const noteText = document.getElementById('modal-product-note');
-            if (note) {
-                noteText.innerText = note;
-                noteContainer.classList.remove('hidden');
-            } else {
-                noteContainer.classList.add('hidden');
+        function updateCurrencyDisplay() {
+            document.querySelectorAll('.price-display').forEach(el => {
+                const jod = parseFloat(el.dataset.jod);
+                if (!isNaN(jod)) el.innerText = convertPrice(jod);
+            });
+            document.querySelectorAll('.currency-symbol').forEach(el => {
+                el.innerText = symbols[currentCurrency];
+            });
+
+            if (cart.length > 0) {
+                const grandTotalJod = cart.reduce((sum, item) => sum + item.priceJod * item.quantity, 0);
+                const totalEl = document.getElementById('cart-total');
+                const totalCurrEl = document.getElementById('cart-total-currency');
+                if (totalEl) totalEl.innerText = convertPrice(grandTotalJod);
+                if (totalCurrEl) totalCurrEl.innerText = symbols[currentCurrency];
             }
+
+            if (currentSelectedProduct) {
+                const modalPriceEl = document.getElementById('modal-product-price');
+                if (modalPriceEl) modalPriceEl.innerText = convertPrice(currentSelectedProduct.price);
+            }
+        }
+
+        function openProductModal(name, price, iconClass, id, desc, note) {
+            currentSelectedProduct = { name, price, iconClass, id, desc, note };
+            document.getElementById('modal-product-title').innerText = name;
+            document.getElementById('modal-product-icon').innerHTML = `<i class="${iconClass}"></i>`;
+            document.getElementById('modal-product-desc').innerText = desc;
+            document.getElementById('modal-product-note').innerText = note;
+            document.getElementById('modal-product-price').innerText = convertPrice(price);
 
             const addBtn = document.getElementById('modal-add-btn');
-            addBtn.onclick = function() {
-                addToCart(name, priceJod, iconClass, id);
-                closeProductModal();
-            };
+            if (addBtn) {
+                addBtn.onclick = () => {
+                    addToCart(name, price, iconClass, id);
+                    closeProductModal();
+                };
+            }
 
             document.getElementById('product-details-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
         }
 
         function closeProductModal() {
             document.getElementById('product-details-modal').classList.add('hidden');
+            document.body.style.overflow = '';
+            currentSelectedProduct = null;
         }
 
-        function changeCurrency(newCurr) {
-            currentCurrency = newCurr;
-            saveState();
-            updateCurrencyDisplay();
-            updateCartUI();
-        }
-
-        function updateCurrencyDisplay() {
-            const rate = rates[currentCurrency] || 1;
-            const symbol = symbols[currentCurrency] || 'JOD';
-
-            document.querySelectorAll('.currency-symbol').forEach(el => el.innerText = symbol);
-            document.querySelectorAll('#cart-total-currency').forEach(el => el.innerText = symbol);
-
-            document.querySelectorAll('.price-display').forEach(el => {
-                const baseJod = parseFloat(el.getAttribute('data-jod'));
-                if (!isNaN(baseJod)) {
-                    el.innerText = (baseJod * rate).toFixed(2);
-                }
-            });
+        function toggleCartModal() {
+            const modal = document.getElementById('cart-modal');
+            const isHidden = modal.classList.contains('hidden');
+            if (isHidden) {
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            } else {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
         }
 
         function filterCategory(cat) {
             document.querySelectorAll('.category-tab').forEach(tab => {
                 tab.classList.remove('bg-indigo-600/90', 'text-white', 'border-indigo-500/30');
-                tab.classList.add('bg-slate-900/80', 'text-slate-300', 'border-slate-800');
+                tab.classList.add('bg-slate-900/80', 'border-slate-800', 'hover:bg-slate-800', 'text-slate-300');
             });
-
             const activeTab = document.getElementById(`tab-${cat}`);
             if (activeTab) {
-                activeTab.classList.remove('bg-slate-900/80', 'text-slate-300', 'border-slate-800');
+                activeTab.classList.remove('bg-slate-900/80', 'border-slate-800', 'hover:bg-slate-800', 'text-slate-300');
                 activeTab.classList.add('bg-indigo-600/90', 'text-white', 'border-indigo-500/30');
             }
 
-            document.querySelectorAll('.section-block').forEach(block => {
-                if (cat === 'all') {
-                    block.classList.remove('hidden');
-                } else if (block.classList.contains(`category-${cat}`)) {
-                    block.classList.remove('hidden');
-                } else {
-                    block.classList.add('hidden');
-                }
-            });
+            const sections = document.querySelectorAll('.section-block');
+            if (cat === 'all') {
+                sections.forEach(s => s.style.display = '');
+            } else {
+                sections.forEach(s => {
+                    if (s.classList.contains(`category-${cat}`)) s.style.display = '';
+                    else s.style.display = 'none';
+                });
+            }
+
+            const searchInput = document.getElementById('product-search-input');
+            if (searchInput) searchInput.value = '';
+            document.querySelectorAll('.product-card').forEach(c => c.style.display = '');
         }
 
         function searchProducts() {
-            const query = document.getElementById('product-search-input').value.toLowerCase().trim();
-            document.querySelectorAll('.product-card').forEach(card => {
-                const title = card.querySelector('h4')?.innerText.toLowerCase() || '';
-                const desc = card.querySelector('p')?.innerText.toLowerCase() || '';
-                if (title.includes(query) || desc.includes(query)) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
+            const query = document.getElementById('product-search-input').value.trim().toLowerCase();
+            const cards = document.querySelectorAll('.product-card');
+
+            cards.forEach(card => {
+                const title = (card.querySelector('h4')?.innerText || '').toLowerCase();
+                const desc = (card.querySelector('p')?.innerText || '').toLowerCase();
+                card.style.display = (title.includes(query) || desc.includes(query)) ? '' : 'none';
+            });
+
+            document.querySelectorAll('.section-block').forEach(section => {
+                const visible = section.querySelectorAll('.product-card:not([style*="display: none"])');
+                section.style.display = visible.length > 0 ? '' : 'none';
             });
         }
 
+        function handlePaymentMethodChange(method) {
+            const box = document.getElementById('usr-payment-info-box');
+            if (!box) return;
+            box.style.display = (method === 'card' || method === 'paypal') ? 'flex' : 'none';
+        }
+
+        function getCheckoutUrl() {
+            const ids = cart.map(i => i.id);
+            if (ids.some(id => NITRO_IDS.includes(id))) return CHECKOUT_URLS.nitro;
+            if (ids.some(id => BUNDLE_IDS.includes(id))) return CHECKOUT_URLS.bundle;
+            if (ids.some(id => STEAM_OFFLINE_IDS.includes(id))) return CHECKOUT_URLS.steamOffline;
+            if (ids.some(id => id.includes('spotify'))) return CHECKOUT_URLS.spotify;
+            return CHECKOUT_URLS.default;
+        }
+
         function checkout() {
-            if (cart.length === 0) return;
-
-            const selectedPayment = document.querySelector('input[name="payment_method"]:checked')?.value || 'card';
-
-            if (selectedPayment === 'card' || selectedPayment === 'paypal') {
+            if (cart.length === 0) {
+                showToast('سلتك فاضية! ضيف منتجات أول 😅');
+                return;
+            }
+            const method = document.querySelector('input[name="payment_method"]:checked')?.value || 'card';
+            if (method === 'card' || method === 'paypal') {
                 document.getElementById('payment-notice-modal').classList.remove('hidden');
-            } else if (selectedPayment === 'cliq') {
-                alert('للدفع عبر كليك (CliQ - الأردن)، يرجى التحويل إلى الاسم والرمز المعتمد وتزويد الدعم الفني بإشعار الدفع عبر الواتساب.');
-                window.open('https://wa.me/962780123835', '_blank');
-            } else if (selectedPayment === 'crypto') {
-                alert('للدفع عبر USDT (Binance Pay / TRC20)، يرجى التواصل مباشرة مع الدعم لتزويدك بالعنوان التوافق.');
-                window.open('https://wa.me/962780123835', '_blank');
+            } else {
+                proceedToCheckout();
             }
         }
 
         function confirmPaymentNotice() {
             document.getElementById('payment-notice-modal').classList.add('hidden');
-            const hasSpotify = cart.some(item => item.id === 'spotify-3m');
-            if (hasSpotify) {
-                window.open('https://usr.gg/service/kod-sbotyfay-brymyom-3-ashhr-10675', '_blank');
-            } else {
-                window.open('https://usr.gg/', '_blank');
-            }
+            proceedToCheckout();
         }
+
+        function proceedToCheckout() {
+            const method = document.querySelector('input[name="payment_method"]:checked')?.value || 'card';
+
+            if (method === 'cliq' || method === 'crypto') {
+                const items = cart.map(item => `• ${item.name} × ${item.quantity}`).join('\n');
+                const totalJod = cart.reduce((sum, item) => sum + item.priceJod * item.quantity, 0);
+                const totalStr = convertPrice(totalJod);
+                const methodLabel = method === 'cliq' ? 'CliQ' : 'USDT / Crypto';
+                const msg = `مرحباً Forever-Store 👋\n\nعندي طلب:\n${items}\n\nالمجموع الكلي: ${totalStr} ${symbols[currentCurrency]}\nطريقة الدفع: ${methodLabel}\n\nبانتظار تفعيل الطلب 🙏`;
+                window.open(`https://wa.me/962780123835?text=${encodeURIComponent(msg)}`, '_blank');
+            } else {
+                window.open(getCheckoutUrl(), '_blank');
+            }
+
+            toggleCartModal();
+            showToast('تم تحويلك لإتمام الطلب! 🚀');
+        }
+
+        // ===== Global UX Helpers =====
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeProductModal();
+                const cartModal = document.getElementById('cart-modal');
+                if (cartModal && !cartModal.classList.contains('hidden')) toggleCartModal();
+                const pn = document.getElementById('payment-notice-modal');
+                if (pn) pn.classList.add('hidden');
+            }
+        });
+
+        ['product-details-modal', 'cart-modal', 'payment-notice-modal'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.addEventListener('click', (e) => {
+                    if (e.target === el) {
+                        if (id === 'product-details-modal') closeProductModal();
+                        else if (id === 'cart-modal') toggleCartModal();
+                        else el.classList.add('hidden');
+                    }
+                });
+            }
+        });
     </script>
 </body>
 </html>
