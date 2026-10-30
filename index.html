@@ -111,6 +111,34 @@
         </div>
     </div>
 
+    <!-- Terms Modal (نافذة الشروط المنبثقة المخفية) -->
+    <div id="terms-modal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4 hidden transition-opacity duration-300">
+        <div class="bg-[#0f172a] border border-slate-800 w-full max-w-lg rounded-3xl p-6 shadow-2xl space-y-4 relative overflow-hidden flex flex-col">
+            <button onclick="toggleTermsModal()" class="absolute top-4 left-4 w-8 h-8 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-lg shrink-0 border border-amber-500/30">
+                    <i class="fa-solid fa-file-contract"></i>
+                </div>
+                <h3 class="text-base sm:text-lg font-bold text-white">الشروط وسياسة المتجر 📜</h3>
+            </div>
+            <div class="bg-slate-950/90 border border-slate-800 p-4 rounded-2xl text-xs sm:text-sm text-slate-300 space-y-4 leading-relaxed">
+                <p class="flex items-start gap-2.5">
+                    <i class="fa-solid fa-shield-check text-emerald-400 mt-1 shrink-0 text-base"></i>
+                    <span>جميع منتجاتنا مغطاة بالضمان الذهبي، ونظراً لطبيعة المنتجات الرقمية والحسابات الرقمية المسلمة فإنه لا يمكن الاسترجاع أو الاستبدال إلا في حالة وجود خلل فني مثبت من المتجر.</span>
+                </p>
+                <p class="flex items-start gap-2.5 pt-3 border-t border-slate-800">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-400 mt-1 shrink-0 text-base"></i>
+                    <span>في حال تغيير شروط وقوانين التفعيل من قبل المنصات الخارجية أو الشركات الأصلية بعد إتمام التفعيل بنجاح لا نتحمل المسؤولية الناتجة عن تغيير القوانين.</span>
+                </p>
+            </div>
+            <button onclick="toggleTermsModal()" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-bold py-2.5 rounded-xl transition-all text-xs">
+                إغلاق النافذة
+            </button>
+        </div>
+    </div>
+
     <!-- Toast Notification -->
     <div id="toast" class="fixed bottom-20 sm:bottom-5 left-4 right-4 sm:right-auto sm:left-5 z-50 transform translate-y-32 opacity-0 transition-all duration-300 bg-emerald-950/90 border border-emerald-500/30 text-emerald-200 px-5 py-3 rounded-xl shadow-xl flex items-center gap-3 pointer-events-none font-bold backdrop-blur-md">
         <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
@@ -907,40 +935,8 @@
 
         </div>
 
-        <!-- Collapsible Terms & Policy Section (زر الشروط المطوي الأنيق) -->
-        <section class="mt-12 border-t border-slate-800/80 pt-8">
-            <div class="max-w-3xl mx-auto">
-                <button onclick="toggleTermsAccordion()" class="w-full bg-slate-900/90 hover:bg-slate-800/90 border border-slate-800 p-4 sm:p-5 rounded-2xl flex items-center justify-between transition-all duration-300 shadow-xl group">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-lg shrink-0 border border-amber-500/30">
-                            <i class="fa-solid fa-file-contract"></i>
-                        </div>
-                        <div class="text-right">
-                            <h3 class="text-sm sm:text-base font-bold text-white group-hover:text-amber-400 transition-colors">الشروط والأحكام وسياسة المتجر 📜</h3>
-                            <p class="text-[11px] text-slate-400">اضغط للاطلاع على قوانين الشراء والضمان الذهبي</p>
-                        </div>
-                    </div>
-                    <div id="terms-chevron" class="w-8 h-8 rounded-full bg-slate-800 text-slate-400 flex items-center justify-center text-xs transition-transform duration-300">
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </div>
-                </button>
-
-                <!-- Accordion Body -->
-                <div id="terms-body" class="hidden mt-3 bg-slate-900/90 border border-slate-800 p-5 rounded-2xl text-xs sm:text-sm text-slate-300 space-y-3 leading-relaxed shadow-2xl transition-all">
-                    <p class="flex items-start gap-2.5">
-                        <i class="fa-solid fa-shield-check text-emerald-400 mt-1 shrink-0 text-sm"></i>
-                        <span>جميع منتجاتنا مغطاة بالضمان الذهبي، ونظراً لطبيعة المنتجات الرقمية والحسابات الرقمية المسلمة فإنه لا يمكن الاسترجاع أو الاستبدال إلا في حالة وجود خلل فني مثبت من المتجر.</span>
-                    </p>
-                    <p class="flex items-start gap-2.5 pt-2 border-t border-slate-800">
-                        <i class="fa-solid fa-triangle-exclamation text-amber-400 mt-1 shrink-0 text-sm"></i>
-                        <span>في حال تغيير شروط وقوانين التفعيل من قبل المنصات الخارجية أو الشركات الأصلية بعد إتمام التفعيل بنجاح لا نتحمل المسؤولية الناتجة عن تغيير القوانين.</span>
-                    </p>
-                </div>
-            </div>
-        </section>
-
         <!-- Golden Guarantee Section -->
-        <section class="mt-8">
+        <section class="mt-12">
             <div class="bg-gradient-to-r from-indigo-950/40 via-slate-900 to-slate-900 border border-indigo-500/30 rounded-3xl p-6 sm:p-8 relative overflow-hidden shadow-2xl">
                 <div class="flex flex-col sm:flex-row items-center gap-5 mb-6 text-center sm:text-right">
                     <div class="w-14 h-14 rounded-2xl bg-indigo-500/20 border border-indigo-400/40 text-indigo-400 flex items-center justify-center text-3xl shrink-0 shadow-inner">
@@ -1099,6 +1095,13 @@
                 </a>
             </div>
 
+            <!-- Footer Terms Link (رابط الشروط بالأسفل تحت الأيقونات) -->
+            <div class="mb-6">
+                <button onclick="toggleTermsModal()" class="text-xs text-slate-400 hover:text-amber-400 transition-colors font-bold underline underline-offset-4">
+                    <i class="fa-solid fa-file-contract ml-1"></i> الشروط والأحكام وسياسة المتجر
+                </button>
+            </div>
+
             <p class="text-xs text-slate-500">جميع الحقوق محفوظة © Forever-Store</p>
         </div>
     </footer>
@@ -1176,12 +1179,17 @@
             animateElement('counter-clients', 343, 2000);
         }
 
-        function toggleTermsAccordion() {
-            const body = document.getElementById('terms-body');
-            const chevron = document.getElementById('terms-chevron');
-            if (body && chevron) {
-                body.classList.toggle('hidden');
-                chevron.classList.toggle('rotate-180');
+        function toggleTermsModal() {
+            const modal = document.getElementById('terms-modal');
+            if (modal) {
+                const isHidden = modal.classList.contains('hidden');
+                if (isHidden) {
+                    modal.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }
             }
         }
 
@@ -1505,16 +1513,19 @@
                 if (cartModal && !cartModal.classList.contains('hidden')) toggleCartModal();
                 const pn = document.getElementById('payment-notice-modal');
                 if (pn) pn.classList.add('hidden');
+                const tm = document.getElementById('terms-modal');
+                if (tm) tm.classList.add('hidden');
             }
         });
 
-        ['product-details-modal', 'cart-modal', 'payment-notice-modal'].forEach(id => {
+        ['product-details-modal', 'cart-modal', 'payment-notice-modal', 'terms-modal'].forEach(id => {
             const el = document.getElementById(id);
             if (el) {
                 el.addEventListener('click', (e) => {
                     if (e.target === el) {
                         if (id === 'product-details-modal') closeProductModal();
                         else if (id === 'cart-modal') toggleCartModal();
+                        else if (id === 'terms-modal') toggleTermsModal();
                         else el.classList.add('hidden');
                     }
                 });
