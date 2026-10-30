@@ -1,103 +1,810 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl" class="dark">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>forever-store | متجر المنتجات الرقمية للألعاب والاشتراكات</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+                     </div>
+                    </div>
+
+                    <!-- 3. Story Games Master Bundle (بكج التختيم) -->
+                    <div onclick="openProductModal('بكج الألعاب القصصية الضخم (بكج التختيم)', 3.50, 'fa-solid fa-box-open', 'story-bundle', 'تشكيلة أسطورية من 7 من أقوى الألعاب القصصية العالمية.', 'يشمل: Black Myth Wukong + Elden Ring + God of War Ragnarok + Red Dead Redemption 2 + Spider-Man 2 + The Last of Us Part 1 + Resident Evil 4 Remake.')" class="product-card bundles bg-slate-900/70 border border-slate-800 rounded-xl overflow-hidden glow-hover flex flex-col justify-between cursor-pointer">
+                    <!-- 3. Spotify Premium 3 Months (Returned to Front Bestsellers) -->
+                    <div onclick="openProductModal('كود سبوتيفاي بريميوم (3 أشهر)', 3.00, 'fa-brands fa-spotify', 'spotify-3m', 'كود سبوتيفاي بريميوم رسمي 3 أشهر يربط بحسابك الشخصي لموسيقى وأغاني أوفلاين وبدون إعلانات نهائياً.', 'تفعيل الكود سريع ومضمون 100% ويشمل التشغيل بالخلفية وتنزيل المحتوى أوفلاين.')" class="product-card subscriptions bg-slate-900/70 border border-slate-800 rounded-xl overflow-hidden glow-hover flex flex-col justify-between cursor-pointer">
+                        <div class="p-4">
+                            <div class="h-40 bg-slate-950 rounded-lg mb-3 border border-slate-800/80 overflow-hidden relative flex items-center justify-center">
+                                <img src="images/story-bundle.jpg" onerror="this.src='https://placehold.co/400x250/1e293b/94a3b8?text=Story+Bundle'" alt="Story Bundle" class="w-full h-full object-cover opacity-90">
+                                <span class="absolute top-2 right-2 bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[10px] font-bold px-2 py-0.5 rounded-md">الأكثر مبيعاً 🔥</span>
+                                <img src="images/spotify.jpg" onerror="this.src='https://placehold.co/400x250/1e293b/10b981?text=Spotify+Premium'" alt="Spotify Premium" class="w-full h-full object-cover opacity-90">
+                                <span class="absolute top-2 right-2 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[10px] font-bold px-2 py-0.5 rounded-md">طلب عالي 🎧</span>
+                            </div>
+                            <h4 class="text-base font-bold text-slate-100 mb-1">بكج الألعاب القصصية الضخم (بكج التختيم)</h4>
+                            <div class="bg-slate-950/60 p-2.5 rounded-lg text-xs text-slate-300 mb-3 border border-slate-800">
+                                <i class="fa-solid fa-layer-group text-amber-400/80 ml-1"></i> تشكيلة أسطورية ضخمة من أقوى ألعاب القصة العالمية: (Black Myth Wukong + Elden Ring + God of War Ragnarok + Red Dead Redemption 2 + Spider-Man 2 + The Last of Us Part 1 + Resident Evil 4 Remake) بتوفير شامل!
+                            <h4 class="text-base font-bold text-slate-100 mb-1">كود سبوتيفاي بريميوم (3 أشهر)</h4>
+                            <p class="text-xs text-slate-400 mb-3">يتفعل مباشرة على حسابك الشخصي! استماع بدون إعلانات وبأعلى جودة وتنزيل الأغاني.</p>
+                            <div class="bg-slate-950/60 p-2.5 rounded-lg text-xs text-emerald-300/90 mb-3 border border-slate-800">
+                                <i class="fa-solid fa-shield-check ml-1 text-emerald-400"></i> تفعيل رسمي 100% مباشر وسلس على حسابك!
+                            </div>
+                        </div>
+                        <div class="p-4 pt-0 flex items-center justify-between border-t border-slate-800/60 mt-auto">
+                            <div>
+                                <span class="text-xs text-slate-500 block">سعر ستيم الأصلي: <span class="line-through text-slate-600"><span class="price-display" data-jod="110.00">110.00</span> <span class="currency-symbol">JOD</span></span></span>
+                                <span class="text-base font-bold text-emerald-400"><span class="price-display" data-jod="3.50">3.50</span> <span class="currency-symbol text-xs">JOD</span></span>
+                                <span class="text-xs text-slate-500 block">السعر الأصلي: <span class="line-through text-slate-600"><span class="price-display" data-jod="12.00">12.00</span> <span class="currency-symbol">JOD</span></span></span>
+                                <span class="text-base font-bold text-emerald-400"><span class="price-display" data-jod="3.00">3.00</span> <span class="currency-symbol text-xs">JOD</span></span>
+                            </div>
+                            <button onclick="event.stopPropagation(); addToCart('بكج الألعاب القصصية الضخم (بكج التختيم)', 3.50, 'fa-solid fa-box-open', 'story-bundle')" class="bg-indigo-600/90 hover:bg-indigo-600 text-white font-bold px-3.5 py-2 rounded-lg text-xs transition-all flex items-center gap-1.5 border border-indigo-500/30">
+                            <button onclick="event.stopPropagation(); addToCart('كود سبوتيفاي بريميوم (3 أشهر)', 3.00, 'fa-brands fa-spotify', 'spotify-3m')" class="bg-indigo-600/90 hover:bg-indigo-600 text-white font-bold px-3.5 py-2 rounded-lg text-xs transition-all flex items-center gap-1.5 border border-indigo-500/30">
+                                <i class="fa-solid fa-cart-plus"></i> ضيف للسلة
+                            </button>
+                        </div>
+@@ -318,32 +319,32 @@ <h3 class="text-xl sm:text-2xl font-black text-white flex items-center gap-2">
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+                    <!-- Red Dead Redemption 2 -->
+                    <div class="product-card offline bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between">
+                    <!-- 007 First Light (Positioned in Offline Games) -->
+                    <div onclick="openProductModal('007 First Light', 2.00, 'fa-solid fa-gun', '007-game', 'لعبة الجاسوسية والأكشن الشهيرة 007 First Light بتفعيل أوفلاين آمن ومضمون 100%.', 'تفعيل الحساب بنمط الأوفلاين يضمن لك تجربة تختيم كاملة وبأعلى جودة بدون انقطاع أو خروج مفاجئ، وتختيمك ينحفظ بجهازك بآمان!')" class="product-card offline bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between cursor-pointer">
+                        <div class="p-4">
+                            <div class="h-40 bg-slate-950 rounded-xl mb-3 border border-slate-800 overflow-hidden relative flex items-center justify-center">
+                                <img src="images/rdr2.jpg" onerror="this.src='https://placehold.co/400x250/0f172a/6366f1?text=Red+Dead+Redemption+2'" alt="Red Dead Redemption 2" class="w-full h-full object-cover">
+                                <span class="absolute top-2 right-2 bg-indigo-600 text-white text-[10px] font-black px-2 py-0.5 rounded-md">عالم مفتوح 🤠</span>
+                                <img src="images/007.jpg" onerror="this.src='https://placehold.co/400x250/0f172a/6366f1?text=007+First+Light'" alt="007 First Light" class="w-full h-full object-cover">
+                                <span class="absolute top-2 right-2 bg-indigo-600 text-white text-[10px] font-black px-2 py-0.5 rounded-md">أكشن وجاسوسية 🕵️‍♂️</span>
+                            </div>
+                            <h4 class="text-base font-bold text-white mb-1">Red Dead Redemption 2</h4>
+                            <h4 class="text-base font-bold text-white mb-1">007 First Light</h4>
+                            <div class="bg-slate-800/70 p-2.5 rounded-xl text-xs text-slate-300 mb-3 border border-slate-700/50">
+                                <i class="fa-solid fa-shield-halved text-emerald-400 ml-1"></i> أوفلاين آمن 100%<br>
+                                <span class="text-[11px] text-slate-400 mt-1 block">تفعيل الحساب بنمط الأوفلاين يضمن لك تجربة تختيم كاملة وبأعلى جودة بدون انقطاع أو خروج مفاجئ، وتختيمك ينحفظ بجهازك بآمان!</span>
+                                <i class="fa-solid fa-shield-halved text-emerald-400 ml-1"></i> أوفلاين آمن 100% ورسمي<br>
+                                <span class="text-[11px] text-slate-400 mt-1 block">تفعيل أوفلاين سريع ومباشر لتختيم اللعبة بجهازك بكل أمان وشغف!</span>
+                            </div>
+                        </div>
+                        <div class="p-4 pt-0 flex items-center justify-between border-t border-slate-800/80 mt-auto">
+                            <div>
+                                <span class="text-xs text-slate-400 block">سعر ستيم الأصلي: <span class="line-through text-slate-500"><span class="price-display" data-jod="42.00">42.00</span> <span class="currency-symbol">JOD</span></span></span>
+                                <span class="text-xs text-slate-400 block">سعر ستيم الأصلي: <span class="line-through text-slate-500"><span class="price-display" data-jod="45.00">45.00</span> <span class="currency-symbol">JOD</span></span></span>
+                                <span class="text-lg font-black text-emerald-400"><span class="price-display" data-jod="2.00">2.00</span> <span class="currency-symbol text-xs">JOD</span></span>
+                            </div>
+                            <button onclick="addToCart('Red Dead Redemption 2', 2.00, 'fa-brands fa-steam', 'rdr2')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-1.5">
+                            <button onclick="event.stopPropagation(); addToCart('007 First Light', 2.00, 'fa-solid fa-gun', '007-game')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-1.5">
+                                <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- God of War Ragnarök -->
+                    <div class="product-card offline bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between">
+                    <div onclick="openProductModal('God of War Ragnarök', 2.00, 'fa-brands fa-steam', 'gow-ragnarok', 'ملحمة كراتوس وأتريوس العظيمة في عالم الشمال بنمط أوفلاين كامل.', 'تفعيل الحساب بنمط الأوفلاين يضمن لك تجربة تختيم كاملة وبأعلى جودة بدون انقطاع وتختيمك ينحفظ بجهازك بآمان!')" class="product-card offline bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between cursor-pointer">
+                        <div class="p-4">
+                            <div class="h-40 bg-slate-950 rounded-xl mb-3 border border-slate-800 overflow-hidden relative flex items-center justify-center">
+                                <img src="images/gow-ragnarok.jpg" onerror="this.src='https://placehold.co/400x250/0f172a/6366f1?text=God+of+War+Ragnarok'" alt="God of War Ragnarok" class="w-full h-full object-cover">
+@@ -360,14 +361,14 @@ <h4 class="text-base font-bold text-white mb-1">God of War Ragnarök</h4>
+                                <span class="text-xs text-slate-400 block">سعر ستيم الأصلي: <span class="line-through text-slate-500"><span class="price-display" data-jod="42.00">42.00</span> <span class="currency-symbol">JOD</span></span></span>
+                                <span class="text-lg font-black text-emerald-400"><span class="price-display" data-jod="2.00">2.00</span> <span class="currency-symbol text-xs">JOD</span></span>
+                            </div>
+                            <button onclick="addToCart('God of War Ragnarök', 2.00, 'fa-brands fa-steam', 'gow-ragnarok')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-1.5">
+                            <button onclick="event.stopPropagation(); addToCart('God of War Ragnarök', 2.00, 'fa-brands fa-steam', 'gow-ragnarok')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-1.5">
+                                <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Marvel's Spider-Man 2 -->
+                    <div class="product-card offline bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between">
+                    <div onclick="openProductModal('Marvel\'s Spider-Man 2', 2.00, 'fa-brands fa-steam', 'spiderman2', 'تأرجح في نيويورك مع بيتر باركر ومايلز موراليس وتحدي فينوم!', 'تفعيل الحساب بنمط الأوفلاين يضمن لك تجربة تختيم كاملة وبأعلى جودة!')" class="product-card offline bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between cursor-pointer">
+                        <div class="p-4">
+                            <div class="h-40 bg-slate-950 rounded-xl mb-3 border border-slate-800 overflow-hidden relative flex items-center justify-center">
+                                <img src="images/spiderman2.jpg" onerror="this.src='https://placehold.co/400x250/0f172a/6366f1?text=Spider-Man+2'" alt="Spider-Man 2" class="w-full h-full object-cover">
+@@ -384,14 +385,14 @@ <h4 class="text-base font-bold text-white mb-1">Marvel's Spider-Man 2</h4>
+                                <span class="text-xs text-slate-400 block">سعر ستيم الأصلي: <span class="line-through text-slate-500"><span class="price-display" data-jod="42.00">42.00</span> <span class="currency-symbol">JOD</span></span></span>
+                                <span class="text-lg font-black text-emerald-400"><span class="price-display" data-jod="2.00">2.00</span> <span class="currency-symbol text-xs">JOD</span></span>
+                            </div>
+                            <button onclick="addToCart('Marvel\'s Spider-Man 2', 2.00, 'fa-brands fa-steam', 'spiderman2')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-1.5">
+                            <button onclick="event.stopPropagation(); addToCart('Marvel\'s Spider-Man 2', 2.00, 'fa-brands fa-steam', 'spiderman2')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-1.5">
+                                <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Elden Ring: Shadow of the Erdtree -->
+                    <div class="product-card offline bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between">
+                    <div class="product-card offline bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between cursor-pointer" onclick="openProductModal('Elden Ring: Shadow of the Erdtree', 2.00, 'fa-brands fa-steam', 'elden-ring', 'لعبة السنة الأسطورية شاملة إضافة Shadow of the Erdtree.', 'تفعيل أوفلاين رسمي وآمن 100%.')">
+                        <div class="p-4">
+                            <div class="h-40 bg-slate-950 rounded-xl mb-3 border border-slate-800 overflow-hidden relative flex items-center justify-center">
+                                <img src="images/elden-ring.jpg" onerror="this.src='https://placehold.co/400x250/0f172a/6366f1?text=Elden+Ring'" alt="Elden Ring" class="w-full h-full object-cover">
+@@ -408,14 +409,14 @@ <h4 class="text-base font-bold text-white mb-1">Elden Ring: Shadow of the Erdtre
+                                <span class="text-xs text-slate-400 block">سعر ستيم الأصلي: <span class="line-through text-slate-500"><span class="price-display" data-jod="55.00">55.00</span> <span class="currency-symbol">JOD</span></span></span>
+                                <span class="text-lg font-black text-emerald-400"><span class="price-display" data-jod="2.00">2.00</span> <span class="currency-symbol text-xs">JOD</span></span>
+                            </div>
+                            <button onclick="addToCart('Elden Ring: Shadow of the Erdtree', 2.00, 'fa-brands fa-steam', 'elden-ring')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-1.5">
+                            <button onclick="event.stopPropagation(); addToCart('Elden Ring: Shadow of the Erdtree', 2.00, 'fa-brands fa-steam', 'elden-ring')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-1.5">
+                                <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Black Myth: Wukong -->
+                    <div class="product-card offline bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between">
+                    <div class="product-card offline bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between cursor-pointer" onclick="openProductModal('Black Myth: Wukong', 2.00, 'fa-brands fa-steam', 'wukong', 'لعبة بطل الأساطوريات الصينية ووكينغ بتفعيل أوفلاين كامل.', 'تفعيل أوفلاين رسمي وآمن 100%.')">
+                        <div class="p-4">
+                            <div class="h-40 bg-slate-950 rounded-xl mb-3 border border-slate-800 overflow-hidden relative flex items-center justify-center">
+                                <img src="images/wukong.jpg" onerror="this.src='https://placehold.co/400x250/0f172a/6366f1?text=Wukong'" alt="Black Myth Wukong" class="w-full h-full object-cover">
+@@ -432,14 +433,14 @@ <h4 class="text-base font-bold text-white mb-1">Black Myth: Wukong</h4>
+                                <span class="text-xs text-slate-400 block">سعر ستيم الأصلي: <span class="line-through text-slate-500"><span class="price-display" data-jod="42.00">42.00</span> <span class="currency-symbol">JOD</span></span></span>
+                                <span class="text-lg font-black text-emerald-400"><span class="price-display" data-jod="2.00">2.00</span> <span class="currency-symbol text-xs">JOD</span></span>
+                            </div>
+                            <button onclick="addToCart('Black Myth: Wukong', 2.00, 'fa-brands fa-steam', 'wukong')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-1.5">
+                            <button onclick="event.stopPropagation(); addToCart('Black Myth: Wukong', 2.00, 'fa-brands fa-steam', 'wukong')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-1.5">
+                                <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- The Last of Us Part I -->
+                    <div class="product-card offline bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between">
+                    <div class="product-card offline bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between cursor-pointer" onclick="openProductModal('The Last of Us Part I', 2.00, 'fa-brands fa-steam', 'tlou1', 'قصة جويل وإيلي الخالدة بتحديث بصري رائع ورسمي.', 'تفعيل أوفلاين آمن 100%.')">
+                        <div class="p-4">
+                            <div class="h-40 bg-slate-950 rounded-xl mb-3 border border-slate-800 overflow-hidden relative flex items-center justify-center">
+                                <img src="images/tlou1.jpg" onerror="this.src='https://placehold.co/400x250/0f172a/6366f1?text=The+Last+of+Us+1'" alt="TLOU Part 1" class="w-full h-full object-cover">
+@@ -456,14 +457,14 @@ <h4 class="text-base font-bold text-white mb-1">The Last of Us Part I</h4>
+                                <span class="text-xs text-slate-400 block">سعر ستيم الأصلي: <span class="line-through text-slate-500"><span class="price-display" data-jod="42.00">42.00</span> <span class="currency-symbol">JOD</span></span></span>
+                                <span class="text-lg font-black text-emerald-400"><span class="price-display" data-jod="2.00">2.00</span> <span class="currency-symbol text-xs">JOD</span></span>
+                            </div>
+                            <button onclick="addToCart('The Last of Us Part I', 2.00, 'fa-brands fa-steam', 'tlou1')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-1.5">
+                            <button onclick="event.stopPropagation(); addToCart('The Last of Us Part I', 2.00, 'fa-brands fa-steam', 'tlou1')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-1.5">
+                                <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Silent Hill 2 Remake -->
+                    <div class="product-card offline bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between">
+                    <div class="product-card offline bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between cursor-pointer" onclick="openProductModal('Silent Hill 2 Remake', 2.00, 'fa-brands fa-steam', 'silenthill2', 'تجربة الرعب النفسي الخالدة مع تطويرات جرافيكس قوية.', 'تفعيل أوفلاين آمن 100%.')">
+                        <div class="p-4">
+                            <div class="h-40 bg-slate-950 rounded-xl mb-3 border border-slate-800 overflow-hidden relative flex items-center justify-center">
+                                <img src="images/silenthill2.jpg" onerror="this.src='https://placehold.co/400x250/0f172a/6366f1?text=Silent+Hill+2'" alt="Silent Hill 2" class="w-full h-full object-cover">
+@@ -480,14 +481,14 @@ <h4 class="text-base font-bold text-white mb-1">Silent Hill 2 Remake</h4>
+                                <span class="text-xs text-slate-400 block">سعر ستيم الأصلي: <span class="line-through text-slate-500"><span class="price-display" data-jod="42.00">42.00</span> <span class="currency-symbol">JOD</span></span></span>
+                                <span class="text-lg font-black text-emerald-400"><span class="price-display" data-jod="2.00">2.00</span> <span class="currency-symbol text-xs">JOD</span></span>
+                            </div>
+                            <button onclick="addToCart('Silent Hill 2 Remake', 2.00, 'fa-brands fa-steam', 'silenthill2')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-1.5">
+                            <button onclick="event.stopPropagation(); addToCart('Silent Hill 2 Remake', 2.00, 'fa-brands fa-steam', 'silenthill2')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-1.5">
+                                <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- The Witcher 3: Wild Hunt -->
+                    <div class="product-card offline bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between">
+                    <div class="product-card offline bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between cursor-pointer" onclick="openProductModal('The Witcher 3: Wild Hunt', 2.00, 'fa-brands fa-steam', 'witcher3', 'مغامرة جيرالت وتحدياته العظيمة مع كامل الإضافات.', 'تفعيل أوفلاين آمن 100%.')">
+                        <div class="p-4">
+                            <div class="h-40 bg-slate-950 rounded-xl mb-3 border border-slate-800 overflow-hidden relative flex items-center justify-center">
+                                <img src="images/witcher3.jpg" onerror="this.src='https://placehold.co/400x250/0f172a/6366f1?text=The+Witcher+3'" alt="The Witcher 3" class="w-full h-full object-cover">
+@@ -504,14 +505,14 @@ <h4 class="text-base font-bold text-white mb-1">The Witcher 3: Wild Hunt</h4>
+                                <span class="text-xs text-slate-400 block">سعر ستيم الأصلي: <span class="line-through text-slate-500"><span class="price-display" data-jod="35.00">35.00</span> <span class="currency-symbol">JOD</span></span></span>
+                                <span class="text-lg font-black text-emerald-400"><span class="price-display" data-jod="2.00">2.00</span> <span class="currency-symbol text-xs">JOD</span></span>
+                            </div>
+                            <button onclick="addToCart('The Witcher 3: Wild Hunt', 2.00, 'fa-brands fa-steam', 'witcher3')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-1.5">
+                            <button onclick="event.stopPropagation(); addToCart('The Witcher 3: Wild Hunt', 2.00, 'fa-brands fa-steam', 'witcher3')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-1.5">
+                                <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Cyberpunk 2077 -->
+                    <div class="product-card offline bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between">
+                    <div class="product-card offline bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between cursor-pointer" onclick="openProductModal('Cyberpunk 2077', 2.00, 'fa-brands fa-steam', 'cyberpunk2077', 'عالم نايت سيتي المليء بالأكشن والإثارة المستقبلية.', 'تفعيل أوفلاين آمن 100%.')">
+                        <div class="p-4">
+                            <div class="h-40 bg-slate-950 rounded-xl mb-3 border border-slate-800 overflow-hidden relative flex items-center justify-center">
+                                <img src="images/cyberpunk2077.jpg" onerror="this.src='https://placehold.co/400x250/0f172a/6366f1?text=Cyberpunk+2077'" alt="Cyberpunk 2077" class="w-full h-full object-cover">
+@@ -528,14 +529,14 @@ <h4 class="text-base font-bold text-white mb-1">Cyberpunk 2077</h4>
+                                <span class="text-xs text-slate-400 block">سعر ستيم الأصلي: <span class="line-through text-slate-500"><span class="price-display" data-jod="42.00">42.00</span> <span class="currency-symbol">JOD</span></span></span>
+                                <span class="text-lg font-black text-emerald-400"><span class="price-display" data-jod="2.00">2.00</span> <span class="currency-symbol text-xs">JOD</span></span>
+                            </div>
+                            <button onclick="addToCart('Cyberpunk 2077', 2.00, 'fa-brands fa-steam', 'cyberpunk2077')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-1.5">
+                            <button onclick="event.stopPropagation(); addToCart('Cyberpunk 2077', 2.00, 'fa-brands fa-steam', 'cyberpunk2077')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-1.5">
+                                <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Baldur's Gate 3 -->
+                    <div class="product-card offline bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between">
+                    <div class="product-card offline bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between cursor-pointer" onclick="openProductModal('Baldur\'s Gate 3', 2.00, 'fa-brands fa-steam', 'baldursgate3', 'لعبة السنة وتجربة الآر بي جي العميقة الأفضل.', 'تفعيل أوفلاين آمن 100%.')">
+                        <div class="p-4">
+                            <div class="h-40 bg-slate-950 rounded-xl mb-3 border border-slate-800 overflow-hidden relative flex items-center justify-center">
+                                <img src="images/baldursgate3.jpg" onerror="this.src='https://placehold.co/400x250/0f172a/6366f1?text=Baldurs+Gate+3'" alt="Baldurs Gate 3" class="w-full h-full object-cover">
+@@ -552,14 +553,14 @@ <h4 class="text-base font-bold text-white mb-1">Baldur's Gate 3</h4>
+                                <span class="text-xs text-slate-400 block">سعر ستيم الأصلي: <span class="line-through text-slate-500"><span class="price-display" data-jod="42.00">42.00</span> <span class="currency-symbol">JOD</span></span></span>
+                                <span class="text-lg font-black text-emerald-400"><span class="price-display" data-jod="2.00">2.00</span> <span class="currency-symbol text-xs">JOD</span></span>
+                            </div>
+                            <button onclick="addToCart('Baldur\'s Gate 3', 2.00, 'fa-brands fa-steam', 'baldursgate3')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-1.5">
+                            <button onclick="event.stopPropagation(); addToCart('Baldur\'s Gate 3', 2.00, 'fa-brands fa-steam', 'baldursgate3')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-1.5">
+                                <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Ghost of Tsushima DIRECTOR'S CUT -->
+                    <div class="product-card offline bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between">
+                    <div class="product-card offline bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between cursor-pointer" onclick="openProductModal('Ghost of Tsushima DIRECTOR\'S CUT', 2.00, 'fa-brands fa-steam', 'tsushima', 'رحلة جين ساكاي لحماية جزيرة تسوشيما مع النسخة المخرجة.', 'تفعيل أوفلاين آمن 100%.')">
+                        <div class="p-4">
+                            <div class="h-40 bg-slate-950 rounded-xl mb-3 border border-slate-800 overflow-hidden relative flex items-center justify-center">
+                                <img src="images/tsushima.jpg" onerror="this.src='https://placehold.co/400x250/0f172a/6366f1?text=Ghost+of+Tsushima'" alt="Ghost of Tsushima" class="w-full h-full object-cover">
+@@ -576,14 +577,14 @@ <h4 class="text-base font-bold text-white mb-1">Ghost of Tsushima DIRECTOR'S CUT
+                                <span class="text-xs text-slate-400 block">سعر ستيم الأصلي: <span class="line-through text-slate-500"><span class="price-display" data-jod="42.00">42.00</span> <span class="currency-symbol">JOD</span></span></span>
+                                <span class="text-lg font-black text-emerald-400"><span class="price-display" data-jod="2.00">2.00</span> <span class="currency-symbol text-xs">JOD</span></span>
+                            </div>
+                            <button onclick="addToCart('Ghost of Tsushima DIRECTOR\'S CUT', 2.00, 'fa-brands fa-steam', 'tsushima')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-1.5">
+                            <button onclick="event.stopPropagation(); addToCart('Ghost of Tsushima DIRECTOR\'S CUT', 2.00, 'fa-brands fa-steam', 'tsushima')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-1.5">
+                                <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Forza Horizon 6 -->
+                    <div class="product-card offline bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between">
+                    <div class="product-card offline bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between cursor-pointer" onclick="openProductModal('Forza Horizon 6', 2.00, 'fa-brands fa-steam', 'forza6', 'عالم سباقات السيارات المليء بالإثارة والسرعة.', 'تفعيل أوفلاين آمن 100%.')">
+                        <div class="p-4">
+                            <div class="h-40 bg-slate-950 rounded-xl mb-3 border border-slate-800 overflow-hidden relative flex items-center justify-center">
+                                <img src="images/forza6.jpg" onerror="this.src='https://placehold.co/400x250/0f172a/6366f1?text=Forza+Horizon+6'" alt="Forza Horizon 6" class="w-full h-full object-cover">
+@@ -600,14 +601,14 @@ <h4 class="text-base font-bold text-white mb-1">Forza Horizon 6</h4>
+                                <span class="text-xs text-slate-400 block">سعر ستيم الأصلي: <span class="line-through text-slate-500"><span class="price-display" data-jod="42.00">42.00</span> <span class="currency-symbol">JOD</span></span></span>
+                                <span class="text-lg font-black text-emerald-400"><span class="price-display" data-jod="2.00">2.00</span> <span class="currency-symbol text-xs">JOD</span></span>
+                            </div>
+                            <button onclick="addToCart('Forza Horizon 6', 2.00, 'fa-brands fa-steam', 'forza6')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-1.5">
+                            <button onclick="event.stopPropagation(); addToCart('Forza Horizon 6', 2.00, 'fa-brands fa-steam', 'forza6')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-1.5">
+                                <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Resident Evil 4 Remake -->
+                    <div class="product-card offline bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between">
+                    <div class="product-card offline bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between cursor-pointer" onclick="openProductModal('Resident Evil 4 Remake', 1.00, 'fa-brands fa-steam', 're4remake', 'تختيم ريميك الأسطورة رزق كينيدي بعرض خاص جداً.', 'تفعيل أوفلاين آمن 100%.')">
+                        <div class="p-4">
+                            <div class="h-40 bg-slate-950 rounded-xl mb-3 border border-slate-800 overflow-hidden relative flex items-center justify-center">
+                                <img src="images/re4remake.jpg" onerror="this.src='https://placehold.co/400x250/0f172a/6366f1?text=Resident+Evil+4'" alt="RE4 Remake" class="w-full h-full object-cover">
+@@ -624,7 +625,7 @@ <h4 class="text-base font-bold text-white mb-1">Resident Evil 4 Remake</h4>
+                                <span class="text-xs text-slate-400 block">سعر ستيم الأصلي: <span class="line-through text-slate-500"><span class="price-display" data-jod="28.00">28.00</span> <span class="currency-symbol">JOD</span></span></span>
+                                <span class="text-lg font-black text-emerald-400"><span class="price-display" data-jod="1.00">1.00</span> <span class="currency-symbol text-xs">JOD</span></span>
+                            </div>
+                            <button onclick="addToCart('Resident Evil 4 Remake', 1.00, 'fa-brands fa-steam', 're4remake')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-1.5">
+                            <button onclick="event.stopPropagation(); addToCart('Resident Evil 4 Remake', 1.00, 'fa-brands fa-steam', 're4remake')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-1.5">
+                                <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
+                            </button>
+                        </div>
+@@ -1166,91 +1167,80 @@ <h3 class="text-lg font-black text-white">تنويه الدفع الآمن 🔒<
+
+    <!-- JavaScript Logic -->
     <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            50: '#f0fdfa',
-                            100: '#ccfbf1',
-                            500: '#14b8a6',
-                            600: '#0d9488',
-                            900: '#134e4a',
-                        }
+        let cart = [];
+        let pendingCheckoutUrl = null;
+        let currentCurrency = 'JOD';
+        const STORE_WHATSAPP_NUMBER = "962780123835";
+        // Global State & Core Helper Logic
+        let cart = JSON.parse(localStorage.getItem('fs_cart') || '[]');
+        let currentCurrency = localStorage.getItem('fs_currency') || 'JOD';
+        let currentSelectedProduct = null;
+
+        const rates = {
+            JOD: 1,
+            USD: 1.41,
+            SAR: 5.29,
+            AED: 5.18,
+            KWD: 0.43,
+            BHD: 0.53
+        };
+
+        function openProductModal(name, priceJod, iconClass, id, desc, note) {
+            const modal = document.getElementById('product-details-modal');
+            const titleEl = document.getElementById('modal-product-title');
+            const descEl = document.getElementById('modal-product-desc');
+            const noteEl = document.getElementById('modal-product-note');
+            const priceEl = document.getElementById('modal-product-price');
+            const iconEl = document.getElementById('modal-product-icon');
+            const addBtn = document.getElementById('modal-add-btn');
+        const symbols = {
+            JOD: 'JOD',
+            USD: '$',
+            SAR: 'SAR',
+            AED: 'AED',
+            KWD: 'KWD',
+            BHD: 'BHD'
+        };
+
+            if (titleEl) titleEl.innerText = name;
+            if (descEl) descEl.innerText = desc || "منتج رقمي مميز مع ضمان تشغيل كامل وتسليم فوري.";
+            if (noteEl) noteEl.innerText = note || "خدمة رقمية معتمدة ومضمونة 100%.";
+            if (priceEl) priceEl.innerText = formatPrice(priceJod);
+            if (iconEl) iconEl.innerHTML = `<i class="${iconClass || 'fa-solid fa-box'}"></i>`;
+            if (addBtn) {
+                addBtn.onclick = function() {
+                    addToCart(name, priceJod, iconClass, id);
+                    closeProductModal();
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCartUI();
+            updateCurrencyDisplay();
+            const currSelect = document.getElementById('currency-select');
+            if (currSelect) currSelect.value = currentCurrency;
+            
+            // Start animated counters
+            animateCounters();
+        });
+
+        // Animated Counters Function (Smooth 2-second animation)
+        function animateCounters() {
+            const animateElement = (id, target, duration) => {
+                const el = document.getElementById(id);
+                if (!el) return;
+                let startTime = null;
+
+                const step = (timestamp) => {
+                    if (!startTime) startTime = timestamp;
+                    const progress = Math.min((timestamp - startTime) / duration, 1);
+                    el.innerText = Math.floor(progress * target);
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    } else {
+                        el.innerText = target;
                     }
+                };
+            }
+
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeProductModal() {
+            const modal = document.getElementById('product-details-modal');
+            if (modal) modal.classList.add('hidden');
+        }
+                window.requestAnimationFrame(step);
+            };
+
+        function confirmPaymentNotice() {
+            const noticeModal = document.getElementById('payment-notice-modal');
+            if (noticeModal) noticeModal.classList.add('hidden');
+            if (pendingCheckoutUrl) {
+                window.open(pendingCheckoutUrl, '_blank');
+            }
+            animateElement('counter-orders', 409, 2000);
+            animateElement('counter-clients', 343, 2000);
+        }
+
+        const currencyRates = {
+            'JOD': 1.0,
+            'SAR': 5.29,
+            'AED font-black': 5.18,
+            'AED': 5.18,
+            'KWD': 0.43,
+            'BHD': 0.53,
+            'USD': 1.41
+        };
+        
+        const LINK_DISCORD_NITRO = "https://usr.gg/service/dyskord-nytro-3-ashhr-b3-10349";
+        const LINK_STEAM_BUNDLE = "https://usr.gg/service/bkgat-alaaab-aoflayn-10667";
+        const LINK_STEAM_SINGLE_GAME = "https://usr.gg/service/hsab-stym-aoflayn-10665";
+        const LINK_RE4_REMAKE = "https://usr.gg/service/rzydnt-ayfyl-4-rymyk-10672";
+        const LINK_SPOTIFY_3M = "https://usr.gg/service/kod-sbotyfay-brymyom-3-ashhr-10675";
+
+        function checkWeekendBanner() {
+            // Amman time GMT+3
+            const now = new Date();
+            const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+            const ammanTime = new Date(utc + (3600000 * 3));
+            const day = ammanTime.getDay(); // 4 = Thursday, 5 = Friday
+            const banner = document.getElementById('weekend-banner');
+            if (banner) {
+                if (day === 4 || day === 5) {
+                    banner.classList.remove('hidden');
+                } else {
+                    banner.classList.add('hidden');
                 }
             }
         }
-    </script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Cairo -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Cairo', sans-serif;
-            background-color: #0b0f17;
-            color: #f1f5f9;
-        }
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0f172a;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #475569;
-        }
-    </style>
-</head>
-<body class="bg-[#0b0f17] text-slate-100 min-h-screen flex flex-col antialiased">
 
-    <!-- Header / Navbar -->
-    <header class="sticky top-0 z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+        function toggleCartModal() {
+            const modal = document.getElementById('cart-modal');
+            if (modal) {
+                modal.classList.toggle('hidden');
+            }
+        function saveState() {
+            localStorage.setItem('fs_cart', JSON.stringify(cart));
+            localStorage.setItem('fs_currency', currentCurrency);
+        }
+
+        function togglePoliciesModal() {
+            const modal = document.getElementById('policies-modal');
+            if (modal) {
+                modal.classList.toggle('hidden');
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            if (toast && toastMsg) {
+                toastMsg.innerText = message;
+                toast.classList.remove('translate-y-32', 'opacity-0');
+                toast.classList.add('translate-y-0', 'opacity-100');
+                setTimeout(() => {
+                    toast.classList.remove('translate-y-0', 'opacity-100');
+                    toast.classList.add('translate-y-32', 'opacity-0');
+                }, 2500);
+            }
+        }
+
+@@ -1261,191 +1251,228 @@ <h3 class="text-lg font-black text-white">تنويه الدفع الآمن 🔒<
+            } else {
+                cart.push({ id, name, priceJod, iconClass, quantity: 1 });
+            }
+            showToast(`انضمت "${name}" لسلتك بنجاح! 🔥`);
+            showToast(`انضمت "${name}" لسلتك بنجاح! 🛒🔥`);
+            updateCartUI();
+            saveState();
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cart-items-container');
+            const countBadge = document.getElementById('cart-count');
+            const totalDisplay = document.getElementById('cart-total');
+            const totalCurrencyDisplay = document.getElementById('cart-total-currency');
+            const checkoutBtn = document.getElementById('checkout-btn');
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCartUI();
+            saveState();
+        }
+
+            let totalCount = 0;
+            let totalJod = 0;
+
+            if (container) {
+                container.innerHTML = '';
+                if (cart.length === 0) {
+                    container.innerHTML = `
+                        <div class="text-center py-8 text-slate-500 space-y-2">
+                            <i class="fa-solid fa-cart-flatbed text-4xl text-slate-600 mb-2"></i>
+                            <p class="text-sm font-bold">سلتك فاضية حالياً يا غالي</p>
+                            <p class="text-xs text-slate-400">نقي ألعابك وخليك جاهز للتختيم! 🎮</p>
+                        </div>
+                    `;
+                    if (checkoutBtn) {
+                        checkoutBtn.disabled = true;
+                        checkoutBtn.classList.add('opacity-50', 'cursor-not-allowed', 'hover:bg-emerald-500');
+                        checkoutBtn.classList.remove('hover:bg-emerald-400');
+                    }
+        function updateQuantity(id, delta) {
+            const item = cart.find(item => item.id === id);
+            if (item) {
+                item.quantity += delta;
+                if (item.quantity <= 0) {
+                    removeFromCart(id);
+                } else {
+                    if (checkoutBtn) {
+                        checkoutBtn.disabled = false;
+                        checkoutBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                        checkoutBtn.classList.add('hover:bg-emerald-400');
+                    }
+                    cart.forEach(item => {
+                        const itemTotalJod = item.priceJod * item.quantity;
+                        totalCount += item.quantity;
+                        totalJod += itemTotalJod;
+
+                        const itemEl = document.createElement('div');
+                        itemEl.className = 'bg-slate-900 border border-slate-800 p-3 rounded-2xl flex items-center justify-between gap-3';
+                        itemEl.innerHTML = `
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-indigo-600/20 text-indigo-400 border border-indigo-500/20 flex items-center justify-center text-lg shrink-0">
+                                    <i class="${item.iconClass || 'fa-solid fa-box'}"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-xs font-bold text-white leading-tight">${item.name}</h5>
+                                    <span class="text-xs font-black text-emerald-400">${formatPrice(itemTotalJod)} ${currentCurrency}</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="flex items-center bg-slate-800 border border-slate-700 rounded-lg">
+                                    <button onclick="changeQuantity('${item.id}', -1)" class="w-6 h-6 flex items-center justify-center text-slate-300 hover:text-white font-bold text-xs">-</button>
+                                    <span class="px-2 text-xs font-bold text-white">${item.quantity}</span>
+                                    <button onclick="changeQuantity('${item.id}', 1)" class="w-6 h-6 flex items-center justify-center text-slate-300 hover:text-white font-bold text-xs">+</button>
+                                </div>
+                                <button onclick="removeFromCart('${item.id}')" class="text-slate-500 hover:text-rose-400 text-xs px-1">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </button>
+                            </div>
+                        `;
+                        container.appendChild(itemEl);
+                    });
+                    updateCartUI();
+                    saveState();
+                }
+            }
+
+            if (countBadge) countBadge.innerText = totalCount;
+            if (totalDisplay) totalDisplay.innerText = formatPrice(totalJod);
+            if (totalCurrencyDisplay) totalCurrencyDisplay.innerText = currentCurrency;
+        }
+
+        function checkout() {
+        function updateCartUI() {
+            const cartCountEl = document.getElementById('cart-count');
+            const container = document.getElementById('cart-items-container');
+            const totalEl = document.getElementById('cart-total');
+            const checkoutBtn = document.getElementById('checkout-btn');
+
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            if (cartCountEl) cartCountEl.innerText = totalItems;
+
+            if (!container) return;
+
+            if (cart.length === 0) {
+                showToast("سلتك فاضية! ضيف لك كم لعبة واشتراك أول.");
+                container.innerHTML = `
+                    <div class="text-center py-10 space-y-3">
+                        <div class="w-16 h-16 rounded-full bg-slate-800/80 text-slate-500 flex items-center justify-center text-2xl mx-auto">
+                            <i class="fa-solid fa-cart-arrow-down"></i>
+                        </div>
+                        <p class="text-sm font-bold text-slate-300">سلتك فاضية حالياً يا غالي!</p>
+                        <p class="text-xs text-slate-500">اختار العابك واشتراكاتك المفضلين وضيفهم للسلة ✨</p>
+                    </div>
+                `;
+                if (totalEl) totalEl.innerText = '0.00';
+                if (checkoutBtn) {
+                    checkoutBtn.disabled = true;
+                    checkoutBtn.classList.add('opacity-50', 'cursor-not-allowed', 'hover:bg-emerald-500');
+                    checkoutBtn.classList.remove('hover:bg-emerald-400');
+                }
+                return;
+            }
+
+            const selectedPayment = document.querySelector('input[name="payment_method"]:checked')?.value || 'card';
+            if (checkoutBtn) {
+                checkoutBtn.disabled = false;
+                checkoutBtn.classList.remove('opacity-50', 'cursor-not-allowed', 'hover:bg-emerald-500');
+                checkoutBtn.classList.add('hover:bg-emerald-400');
+            }
+
+            if (selectedPayment === 'card' || selectedPayment === 'paypal') {
+                const containsSpotify = cart.some(item => item.id.includes('spotify'));
+                const containsNitro = cart.some(item => item.id.includes('discord-nitro'));
+                const containsRE4 = cart.some(item => item.id === 're4remake');
+                const containsBundle = cart.some(item => item.id.includes('bundle') || item.id === 'hollow-silksong' || item.id === 'soulsborne-master');
+
+                if (containsSpotify) {
+                    pendingCheckoutUrl = LINK_SPOTIFY_3M;
+                } else if (containsNitro) {
+                    pendingCheckoutUrl = LINK_DISCORD_NITRO;
+                } else if (containsRE4) {
+                    pendingCheckoutUrl = LINK_RE4_REMAKE;
+                } else if (containsBundle) {
+                    pendingCheckoutUrl = LINK_STEAM_BUNDLE;
+                } else {
+                    pendingCheckoutUrl = LINK_STEAM_SINGLE_GAME;
+                }
+            let grandTotalJod = 0;
+            container.innerHTML = cart.map(item => {
+                const itemTotal = item.priceJod * item.quantity;
+                grandTotalJod += itemTotal;
+                const rate = rates[currentCurrency] || 1;
+                const convertedPrice = (itemTotal * rate).toFixed(2);
+
+                // Show confirmation modal first upon clicking checkout
+                const noticeModal = document.getElementById('payment-notice-modal');
+                if (noticeModal) {
+                    noticeModal.classList.remove('hidden');
+                }
+                return;
+                return `
+                    <div class="bg-slate-900/90 border border-slate-800 p-3 rounded-xl flex items-center justify-between gap-3">
+                        <div class="flex items-center gap-3 overflow-hidden">
+                            <div class="w-10 h-10 rounded-lg bg-indigo-950/80 border border-indigo-500/20 text-indigo-400 flex items-center justify-center shrink-0">
+                                <i class="${item.iconClass || 'fa-solid fa-gamepad'}"></i>
+                            </div>
+                            <div class="truncate">
+                                <h5 class="text-xs font-bold text-white truncate">${item.name}</h5>
+                                <span class="text-xs font-bold text-emerald-400">${convertedPrice} ${symbols[currentCurrency]}</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-2 shrink-0">
+                            <div class="flex items-center bg-slate-950 border border-slate-800 rounded-lg">
+                                <button onclick="updateQuantity('${item.id}', -1)" class="w-7 h-7 text-slate-400 hover:text-white flex items-center justify-center font-bold text-xs">-</button>
+                                <span class="w-6 text-center text-xs font-bold text-white">${item.quantity}</span>
+                                <button onclick="updateQuantity('${item.id}', 1)" class="w-7 h-7 text-slate-400 hover:text-white flex items-center justify-center font-bold text-xs">+</button>
+                            </div>
+                            <button onclick="removeFromCart('${item.id}')" class="text-slate-500 hover:text-rose-400 p-1 text-xs">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            if (totalEl) {
+                const rate = rates[currentCurrency] || 1;
+                totalEl.innerText = (grandTotalJod * rate).toFixed(2);
+            }
+        }
+
+        function toggleCartModal() {
+            const modal = document.getElementById('cart-modal');
+            if (modal) {
+                modal.classList.toggle('hidden');
+            }
+        }
+
+            let paymentName = "كليك CliQ";
+            if (selectedPayment === 'crypto') paymentName = "عملات رقمية Crypto";
+        function openProductModal(name, priceJod, iconClass, id, desc, note) {
+            currentSelectedProduct = { name, priceJod, iconClass, id, desc, note };
+            document.getElementById('modal-product-title').innerText = name;
+            document.getElementById('modal-product-desc').innerText = desc || 'منتج رقمي مميز مع تفعيل آمن وسريع وضمان كامل.';
             
-            <!-- Logo & Brand Name -->
-            <div class="flex items-center gap-3 cursor-pointer" onclick="filterCategory('all')">
-                <div class="relative w-12 h-12 rounded-xl bg-slate-950/80 border border-teal-500/30 p-1 flex items-center justify-center shadow-lg shadow-teal-500/10 group hover:border-teal-400 transition-all">
-                    <img src="forever-store.jpg" alt="forever-store logo" class="w-full h-full object-contain rounded-lg filter drop-shadow-[0_0_8px_rgba(20,184,166,0.5)]">
-                </div>
-                <div class="flex flex-col">
-                    <span class="text-xl font-extrabold tracking-wider bg-gradient-to-r from-teal-400 via-cyan-300 to-indigo-400 bg-clip-text text-transparent drop-shadow-sm">
-                        forever-store
-                    </span>
-                    <span class="text-[10px] text-slate-400 font-medium tracking-widest uppercase">Digital Gaming Store</span>
-                </div>
-            </div>
+            const rate = rates[currentCurrency] || 1;
+            document.getElementById('modal-product-price').innerText = (priceJod * rate).toFixed(2);
 
-            <!-- Currency Selector & Cart Button -->
-            <div class="flex items-center gap-3">
-                <!-- Currency Switcher -->
-                <select id="currencySelect" onchange="changeCurrency(this.value)" class="bg-slate-800 text-slate-200 border border-slate-700 text-xs sm:text-sm rounded-xl px-2.5 py-2 focus:outline-none focus:border-teal-500 transition-all font-semibold cursor-pointer">
-                    <option value="JOD" selected>JOD (د.أ)</option>
-                    <option value="USD">USD ($)</option>
-                    <option value="SAR">SAR (ر.س)</option>
-                </select>
+            let totalJod = 0;
+            let orderSummary = "مرحباً Forever-Store 👋\nأود إتمام الطلب التالي:\n\n";
+            const iconEl = document.getElementById('modal-product-icon');
+            if (iconEl) iconEl.innerHTML = `<i class="${iconClass || 'fa-solid fa-box'}"></i>`;
 
-                <!-- Cart Toggle Button -->
-                <button onclick="toggleCartModal()" class="relative bg-teal-500/10 hover:bg-teal-500/20 text-teal-400 border border-teal-500/30 font-bold px-4 py-2 rounded-xl flex items-center gap-2 transition-all">
-                    <i class="fa-solid fa-cart-shopping text-lg"></i>
-                    <span class="hidden sm:inline text-sm">السلة</span>
-                    <span id="cartCountBadge" class="bg-teal-500 text-slate-950 text-xs font-extrabold rounded-full w-5 h-5 flex items-center justify-center">0</span>
-                </button>
-            </div>
-        </div>
-    </header>
+            cart.forEach((item, index) => {
+                const itemTotal = item.priceJod * item.quantity;
+                totalJod += itemTotal;
+                orderSummary += `${index + 1}. ${item.name} (العدد: ${item.quantity}) - ${formatPrice(itemTotal)} ${currentCurrency}\n`;
+            });
+            const noteContainer = document.getElementById('modal-product-note-container');
+            const noteText = document.getElementById('modal-product-note');
+            if (note) {
+                noteText.innerText = note;
+                noteContainer.classList.remove('hidden');
+            } else {
+                noteContainer.classList.add('hidden');
+            }
 
-    <!-- Top Weekend Offer Banner -->
-    <div class="bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-400 text-slate-950 py-2.5 px-4 text-center text-xs sm:text-sm font-black tracking-wide shadow-md shadow-amber-500/10 flex items-center justify-center gap-2">
-        <span>🔥</span>
-        <span>اشتري أي لعبتين أوفلاين والثالثة علينا! (عرض فرصة الويكند)</span>
-        <span>💥</span>
-    </div>
+            orderSummary += `\n💳 طريقة الدفع المختارة: ${paymentName}`;
+            orderSummary += `\n💰 المجموع الكلي: ${formatPrice(totalJod)} ${currentCurrency}`;
+            orderSummary += `\n\nيرجى تزويدي بتفاصيل الدفع والتعليمات.`;
+            const addBtn = document.getElementById('modal-add-btn');
+            addBtn.onclick = function() {
+                addToCart(name, priceJod, iconClass, id);
+                closeProductModal();
+            };
 
-    <!-- Main Container -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full">
+            const encodedMessage = encodeURIComponent(orderSummary);
+            window.open(`https://wa.me/${STORE_WHATSAPP_NUMBER}?text=${encodedMessage}`, '_blank');
+            document.getElementById('product-details-modal').classList.remove('hidden');
+        }
 
-        <!-- Hero Section -->
-        <section class="mb-10 text-center">
-            <h1 class="text-3xl sm:text-5xl font-black mb-3 tracking-tight bg
+        function saveState() {
+            try {
+                localStorage.setItem('forever_store_cart', JSON.stringify(cart));
+                localStorage.setItem('forever_store_currency', currentCurrency);
+            } catch(e) {}
+        function closeProductModal() {
+            document.getElementById('product-details-modal').classList.add('hidden');
+        }
+
+        function changeCurrency(newCurr) {
+            currentCurrency = newCurr;
+            saveState();
+            updateCurrencyDisplay();
+            updateCartUI();
+        }
+
+        function loadSavedState() {
+            try {
+                const savedCart = localStorage.getItem('forever_store_cart');
+                const savedCurr = localStorage.getItem('forever_store_currency');
+                if (savedCart) cart = JSON.parse(savedCart);
+                if (savedCurr) {
+                    currentCurrency = savedCurr;
+                    const select = document.getElementById('currency-select');
+                    if (select) select.value = savedCurr;
+        function updateCurrencyDisplay() {
+            const rate = rates[currentCurrency] || 1;
+            const symbol = symbols[currentCurrency] || 'JOD';
+
+            document.querySelectorAll('.currency-symbol').forEach(el => el.innerText = symbol);
+            document.querySelectorAll('#cart-total-currency').forEach(el => el.innerText = symbol);
+
+            document.querySelectorAll('.price-display').forEach(el => {
+                const baseJod = parseFloat(el.getAttribute('data-jod'));
+                if (!isNaN(baseJod)) {
+                    el.innerText = (baseJod * rate).toFixed(2);
+                }
+            } catch(e) {}
+            });
+        }
+
+        function autoDetectRegionCurrency() {
+            try {
+                const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                if (tz.includes('Riyadh')) currentCurrency = 'SAR';
+                else if (tz.includes('Dubai')) currentCurrency = 'AED';
+                else if (tz.includes('Kuwait')) currentCurrency = 'KWD';
+                else if (tz.includes('Bahrain')) currentCurrency = 'BHD';
+                const select = document.getElementById('currency-select');
+                if (select) select.value = currentCurrency;
+            } catch(e) {}
+        function filterCategory(cat) {
+            document.querySelectorAll('.category-tab').forEach(tab => {
+                tab.classList.remove('bg-indigo-600/90', 'text-white', 'border-indigo-500/30');
+                tab.classList.add('bg-slate-900/80', 'text-slate-300', 'border-slate-800');
+            });
+
+            const activeTab = document.getElementById(`tab-${cat}`);
+            if (activeTab) {
+                activeTab.classList.remove('bg-slate-900/80', 'text-slate-300', 'border-slate-800');
+                activeTab.classList.add('bg-indigo-600/90', 'text-white', 'border-indigo-500/30');
+            }
+
+            document.querySelectorAll('.section-block').forEach(block => {
+                if (cat === 'all') {
+                    block.classList.remove('hidden');
+                } else if (block.classList.contains(`category-${cat}`)) {
+                    block.classList.remove('hidden');
+                } else {
+                    block.classList.add('hidden');
+                }
+            });
+        }
+
+        function animateCounterSmooth(id, target, duration) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            let start = 0;
+            const increment = target / (duration / 16);
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= target) {
+                    el.innerText = target;
+                    clearInterval(timer);
+        function searchProducts() {
+            const query = document.getElementById('product-search-input').value.toLowerCase().trim();
+            document.querySelectorAll('.product-card').forEach(card => {
+                const title = card.querySelector('h4')?.innerText.toLowerCase() || '';
+                const desc = card.querySelector('p')?.innerText.toLowerCase() || '';
+                if (title.includes(query) || desc.includes(query)) {
+                    card.style.display = 'flex';
+                } else {
+                    el.innerText = Math.floor(start);
+                    card.style.display = 'none';
+                }
+            }, 16);
+            });
+        }
+
+        window.onload = function() {
+            loadSavedState();
+            autoDetectRegionCurrency();
+            checkWeekendBanner();
+            changeCurrency(currentCurrency);
+            updateCartUI();
+            animateCounterSmooth('counter-orders', 409, 1000);
+            animateCounterSmooth('counter-clients', 343, 2000);
+        };
+        function checkout() {
+            if (cart.length === 0) return;
+
+            const selectedPayment = document.querySelector('input[name="payment_method"]:checked')?.value || 'card';
+
+            if (selectedPayment === 'card' || selectedPayment === 'paypal') {
+                document.getElementById('payment-notice-modal').classList.remove('hidden');
+            } else if (selectedPayment === 'cliq') {
+                alert('للدفع عبر كليك (CliQ - الأردن)، يرجى التحويل إلى الاسم والرمز المعتمد وتزويد الدعم الفني بإشعار الدفع عبر الواتساب.');
+                window.open('https://wa.me/962780123835', '_blank');
+            } else if (selectedPayment === 'crypto') {
+                alert('للدفع عبر USDT (Binance Pay / TRC20)، يرجى التواصل مباشرة مع الدعم لتزويدك بالعنوان التوافق.');
+                window.open('https://wa.me/962780123835', '_blank');
+            }
+        }
+
+        function confirmPaymentNotice() {
+            document.getElementById('payment-notice-modal').classList.add('hidden');
+            const hasSpotify = cart.some(item => item.id === 'spotify-3m');
+            if (hasSpotify) {
+                window.open('https://usr.gg/service/kod-sbotyfay-brymyom-3-ashhr-10675', '_blank');
+            } else {
+                window.open('https://usr.gg/', '_blank');
+            }
+        }
+    </script>
+</body>
+</html>
