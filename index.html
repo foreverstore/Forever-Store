@@ -37,10 +37,10 @@
 </head>
 <body class="bg-[#0b0f17] text-slate-200 min-h-screen flex flex-col selection:bg-indigo-500/30 selection:text-indigo-200 pb-20 sm:pb-0">
 
-    <!-- Top Announcement Bar -->
-    <div class="bg-indigo-950/80 border-b border-indigo-500/20 text-indigo-200 text-xs sm:text-sm font-bold py-2.5 px-4 text-center flex items-center justify-center gap-2 backdrop-blur-md">
-        <span class="bg-indigo-500/20 text-indigo-300 text-[10px] sm:text-xs font-bold px-2.5 py-0.5 rounded-md border border-indigo-500/30">🔥 العروض الكبرى</span>
-        <span class="font-semibold text-slate-200">أفضل الألعاب والاشتراكات الرقمية بأسعار خرافية وضمان ذهبي ⚡👑</span>
+    <!-- Top Announcement Bar (عرض الألعاب: كل لعبتين والثالثة مجاناً) -->
+    <div class="bg-gradient-to-r from-amber-600 via-amber-500 to-indigo-600 text-slate-950 text-xs sm:text-sm font-black py-3 px-4 text-center flex items-center justify-center gap-2 shadow-lg">
+        <span class="bg-slate-950 text-amber-400 text-[10px] sm:text-xs font-black px-2.5 py-1 rounded-md border border-amber-400/30">🔥 عرض الألعاب الأوفلاين</span>
+        <span class="text-white">اشتري أي لعبتين أوفلاين واحصل على الثالثة مجاناً! (أضف لعبتين وسنسلمك الثالثة تلقائياً) 🎁</span>
     </div>
 
     <!-- Product Details Modal -->
@@ -111,7 +111,7 @@
         </div>
     </div>
 
-    <!-- Terms Modal (نافذة الشروط المنبثقة المخفية) -->
+    <!-- Terms Modal -->
     <div id="terms-modal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4 hidden transition-opacity duration-300">
         <div class="bg-[#0f172a] border border-slate-800 w-full max-w-lg rounded-3xl p-6 shadow-2xl space-y-4 relative overflow-hidden flex flex-col">
             <button onclick="toggleTermsModal()" class="absolute top-4 left-4 w-8 h-8 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center transition-colors">
@@ -521,6 +521,27 @@
                 </div>
 
                 <div class="flex gap-4 overflow-x-auto no-scrollbar pb-3 pt-1 snap-x">
+
+                    <!-- Resident Evil 9 (أحدث ألعاب الرعب والبقاء في المقدمة) -->
+                    <div onclick="openProductModal('Resident Evil 9 (رزدينت ايفيل 9)', 2.00, 'fa-solid fa-biohazard', 're9-game', 'أحدث وأقوى ألعاب الرعب والبقاء المرتقبة! عش رعب الأجزاء الجديدة كلياً بوضوح وبصريات خيالية.', 'تفعيل أوفلاين آمن ومباشر بنسبة 100%.', true)" class="product-card games bg-slate-900 border border-rose-500/40 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between cursor-pointer min-w-[280px] sm:min-w-[320px] max-w-[320px] snap-start shrink-0">
+                        <div class="p-4">
+                            <div class="h-40 bg-slate-950 rounded-xl mb-3 border border-slate-800 overflow-hidden relative flex items-center justify-center">
+                                <img src="images/re9.jpg" onerror="this.src='https://placehold.co/400x250/0f172a/e11d48?text=Resident+Evil+9'" alt="Resident Evil 9" class="w-full h-full object-cover">
+                                <span class="absolute top-2 right-2 bg-rose-600 text-white text-[10px] font-black px-2 py-0.5 rounded-md shadow">أحدث ألعاب الرعب 🔥</span>
+                            </div>
+                            <h4 class="text-base font-bold text-white mb-1">Resident Evil 9</h4>
+                            <p class="text-xs text-slate-400 mb-3">أحدث إصدارات سلسلة رعب البقاء العالمية.</p>
+                        </div>
+                        <div class="p-4 pt-0 flex items-center justify-between border-t border-slate-800/80 mt-auto">
+                            <div>
+                                <span class="text-xs text-slate-400 block">سعر ستيم: <span class="line-through text-slate-500"><span class="price-display" data-jod="50.00">50.00</span> <span class="currency-symbol">JOD</span></span></span>
+                                <span class="text-lg font-black text-emerald-400"><span class="price-display" data-jod="2.00">2.00</span> <span class="currency-symbol text-xs">JOD</span></span>
+                            </div>
+                            <button onclick="event.stopPropagation(); addToCart('Resident Evil 9', 2.00, 'fa-solid fa-biohazard', 're9-game')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-1.5">
+                                <i class="fa-solid fa-cart-plus"></i> أضف للسلة
+                            </button>
+                        </div>
+                    </div>
 
                     <!-- Resident Evil 4 Remake (عرض خاص بسعر 0.85) -->
                     <div onclick="openProductModal('Resident Evil 4 Remake (رزدينت ايفيل 4)', 0.85, 'fa-solid fa-biohazard', 're4-remake', 'أيقونة ألعاب الرعب والبقاء بحلتها الرائعة ورسومات جديدة كلياً مع قصة ليون الأسطورية!', 'تفعيل أوفلاين آمن ومباشر 100%.', true)" class="product-card games bg-slate-900 border border-emerald-500/40 rounded-2xl overflow-hidden glow-hover flex flex-col justify-between cursor-pointer min-w-[280px] sm:min-w-[320px] max-w-[320px] snap-start shrink-0">
@@ -997,34 +1018,33 @@
                 <!-- Dynamically populated via JS -->
             </div>
 
+            <!-- ملاحظة عرض الألعاب تلقائياً في السلة -->
+            <div class="px-4 py-2 bg-amber-500/10 border-t border-amber-500/20 text-amber-300 text-xs flex items-center gap-2">
+                <i class="fa-solid fa-gift text-amber-400 text-base shrink-0"></i>
+                <span>عروض الألعاب: أضف لعبتين بالموقع وسنقوم تلقائياً بتسليمك الـ 3 ألعاب التي طلبتها! 🎁</span>
+            </div>
+
             <div class="p-4 sm:p-5 border-t border-slate-800 bg-slate-900/80 space-y-4">
                 <div>
                     <label class="block text-xs font-bold text-slate-300 mb-2">طريقة الدفع المفضلة:</label>
                     <div class="grid grid-cols-2 gap-2 text-xs font-bold">
                         <label class="bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 p-2.5 rounded-xl cursor-pointer flex items-center gap-2 text-slate-200">
-                            <input type="radio" name="payment_method" value="card" checked onchange="handlePaymentMethodChange(this.value)" class="accent-indigo-500">
+                            <input type="radio" name="payment_method" value="card" checked class="accent-indigo-500">
                             <i class="fa-solid fa-credit-card text-indigo-400"></i> فيزا / ماستركارد
                         </label>
                         <label class="bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 p-2.5 rounded-xl cursor-pointer flex items-center gap-2 text-slate-200">
-                            <input type="radio" name="payment_method" value="cliq" onchange="handlePaymentMethodChange(this.value)" class="accent-indigo-500">
+                            <input type="radio" name="payment_method" value="cliq" class="accent-indigo-500">
                             <span class="text-indigo-300 font-black">CliQ</span> كليك (الأردن)
                         </label>
                         <label class="bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 p-2.5 rounded-xl cursor-pointer flex items-center gap-2 text-slate-200">
-                            <input type="radio" name="payment_method" value="paypal" onchange="handlePaymentMethodChange(this.value)" class="accent-indigo-500">
+                            <input type="radio" name="payment_method" value="paypal" class="accent-indigo-500">
                             <i class="fa-brands fa-paypal text-sky-400"></i> باي بال PayPal
                         </label>
                         <label class="bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 p-2.5 rounded-xl cursor-pointer flex items-center gap-2 text-slate-200">
-                            <input type="radio" name="payment_method" value="crypto" onchange="handlePaymentMethodChange(this.value)" class="accent-indigo-500">
+                            <input type="radio" name="payment_method" value="crypto" class="accent-indigo-500">
                             <i class="fa-brands fa-bitcoin text-amber-400"></i> USDT / Crypto
                         </label>
                     </div>
-                </div>
-
-                <div id="usr-payment-info-box" class="bg-indigo-950/60 border border-indigo-500/30 p-3.5 rounded-2xl flex items-start gap-3 text-xs text-indigo-200 transition-all">
-                    <i class="fa-solid fa-shield-halved text-indigo-400 text-lg mt-0.5 shrink-0"></i>
-                    <p class="leading-relaxed">
-                        عند الدفع عبر <strong class="text-white">الفيزا أو باي بال</strong>، يتم التحويل لصفحة الدفع المعتمدة عبر بوابة <strong class="text-emerald-400">usr.gg</strong> المرخصة رسمياً بجهة موثوقة وآمنة 100%.
-                    </p>
                 </div>
 
                 <div class="flex items-center justify-between pt-2 border-t border-slate-800">
@@ -1042,7 +1062,7 @@
         </div>
     </div>
 
-    <!-- Payment Notice Modal -->
+    <!-- Payment Notice Modal (تظهر فقط عند الضغط على زر ادفع للفيزا أو باي بال) -->
     <div id="payment-notice-modal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4 hidden transition-opacity duration-300">
         <div class="bg-[#0f172a] border border-indigo-500/40 w-full max-w-md rounded-3xl p-6 shadow-2xl text-center space-y-4">
             <div class="w-16 h-16 rounded-2xl bg-indigo-600/20 text-indigo-400 border border-indigo-500/30 flex items-center justify-center text-3xl mx-auto shadow-lg">
@@ -1095,7 +1115,6 @@
                 </a>
             </div>
 
-            <!-- Footer Terms Link (رابط الشروط بالأسفل تحت الأيقونات) -->
             <div class="mb-6">
                 <button onclick="toggleTermsModal()" class="text-xs text-slate-400 hover:text-amber-400 transition-colors font-bold underline underline-offset-4">
                     <i class="fa-solid fa-file-contract ml-1"></i> الشروط والأحكام وسياسة المتجر
@@ -1146,7 +1165,7 @@
 
         const NITRO_IDS = ['discord-nitro-3m', 'discord-nitro-3m-sec', 'boosts-1m-14', 'boosts-3m-14'];
         const BUNDLE_IDS = ['takhteem-master-bundle', 'takhteem-bundle-main', 'spiderman-bundle', 'soulsborne-master', 're-bundle', 'tlou-bundle', 'hollow-knight-bundle', 'gow-bundle', 'tomb-raider-bundle', 'dying-light-bundle'];
-        const STEAM_OFFLINE_IDS = ['re9', 'wukong', 'gow-ragnarok', 'tsushima', 'silenthill2', 'forza-6', 'pragmata', '007-game', 'witcher3', 'detroit'];
+        const STEAM_OFFLINE_IDS = ['re9', 're9-game', 'wukong', 'gow-ragnarok', 'tsushima', 'silenthill2', 'forza-6', 'pragmata', '007-game', 'witcher3', 'detroit'];
         const RE4_IDS = ['re4-remake'];
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -1454,12 +1473,6 @@
             });
         }
 
-        function handlePaymentMethodChange(method) {
-            const box = document.getElementById('usr-payment-info-box');
-            if (!box) return;
-            box.style.display = (method === 'card' || method === 'paypal') ? 'flex' : 'none';
-        }
-
         function getCheckoutUrl() {
             const ids = cart.map(i => i.id);
             if (ids.some(id => RE4_IDS.includes(id))) return CHECKOUT_URLS.re4;
@@ -1534,4 +1547,3 @@
     </script>
 </body>
 </html>
-```eof
