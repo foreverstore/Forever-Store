@@ -1,7 +1,7 @@
 backend:
   name: github
-  repo: foreverstore/Forever-Store # استبدل بـ username/repo الخاص بك
-  branch: main # أو master حسب اسم الفرع الرئيسي لديك
+  repo: foreverstore/Forever-Store
+  branch: main
 
 media_folder: "images"
 public_folder: "images"
