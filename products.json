@@ -1,0 +1,37 @@
+{
+  "items": [
+    {
+      "id": "takhteem-master-bundle",
+      "name": "بكج التختيم الشامل",
+      "price": 3.50,
+      "iconClass": "fa-solid fa-gamepad",
+      "category": "bestsellers",
+      "desc": "• 10 ألعاب من العيار الثقيل بملف واحد:\n   1. The Last of Us Part I\n   2. The Last of Us Part II\n   3. Silent Hill 2 Remake\n   4. God of War: Ragnarok\n   5. Resident Evil 4 Remake\n   6. Spider-Man 2\n   7. Spider-Man Morales\n   8. Spider-Man Remastered\n   9. Uncharted Collection\n   10. Ghost of Tsushima\n• ألعاب رسمية 100% وليست كراك.\n• تفعيل أوفلاين مضمون بنسبة 100%.",
+      "note": "تختيم أسطوري لأقوى الألعاب عالمياً.",
+      "isGameOrBundle": true,
+      "isWhatsApp": false
+    },
+    {
+      "id": "discord-nitro-3m",
+      "name": "ديسكورد نيترو (3 أشهر)",
+      "price": 3.00,
+      "iconClass": "fa-brands fa-discord",
+      "category": "discord",
+      "desc": "• اشتراك ديسكورد نيترو بريميوم لمدة 3 أشهر:\n• سيرفر بوستات، إيموجيات متحركة، وبث أعلى جودة.\n• شروط التفعيل:\n   - عمر الحساب أكثر من شهر.\n   - ما يكون عليه نيترو متفعل خلال آخر سنة.",
+      "note": "تفعيل مضمون ومباشر فور الطلب.",
+      "isGameOrBundle": false,
+      "isWhatsApp": false
+    },
+    {
+      "id": "spotify-code-3m",
+      "name": "كود سبوتيفاي بريميوم (3 أشهر)",
+      "price": 1.50,
+      "iconClass": "fa-brands fa-spotify",
+      "category": "subscriptions",
+      "desc": "• كود تفعيل رسمي سبوتيفاي بريميوم يضاف مباشرة لحسابك الشخصي!\n• استماع بجودة عالية، بدون إعلانات، وتحميل الأغاني بدون نت.",
+      "note": "كود رسمي يتفعل على حسابك الشخصي المباشر.",
+      "isGameOrBundle": false,
+      "isWhatsApp": false
+    }
+  ]
+}
